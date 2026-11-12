@@ -1,0 +1,30 @@
+{
+  "raw_source": {
+    "path": "results/raw/solver-sensitivity-20261021T191746Z-23418-serial.json",
+    "sha256": "95733761bd0dd0d799b4e39dca288dacd19171f9c22ae28a8afb45cdf16ce50b"
+  },
+  "review": {
+    "path": "results/processed/solver_sensitivity_review.json",
+    "sha256": "74f6970d9d83b91a7f575e5138899eaeac25b4a0180fc9b19a9419ba97e959c1"
+  },
+  "processor": {
+    "path": "scripts/process_solver_sensitivity.py",
+    "sha256": "7927871f55fd338e153d2d743b31ddec6aa5b3f8d9a8669ea9de9cefbfab5dfb"
+  },
+  "plotting_inventory": {
+    "path": "environment/requirements-postprocessing-resolved.txt",
+    "sha256": "e7845de9d2dd08c397109b9cee73dd1caef3eaa7ed9f164dd9a64a2472582fbe"
+  },
+  "python": "/Users/faiq/Projects/fem-advection-diffusion/environment/build/postprocessing-venv/bin/python",
+  "python_version": "3.13.16",
+  "matplotlib_version": "3.10.7",
+  "regeneration_command": "/Users/faiq/Projects/fem-advection-diffusion/environment/build/postprocessing-venv/bin/python /Users/faiq/Projects/fem-advection-diffusion/scripts/process_solver_sensitivity.py",
+  "output_sha256": {
+    "results/processed/solver-sensitivity-20261021T191746Z-23418-table.json": "409693fb17b0fb9938e432f8cdf987e7f6d5228bbef6ce4c104b78b0c55554a1",
+    "results/processed/solver-sensitivity-20261021T191746Z-23418-table.md": "05689c80339c50e7a2a5ecfc2364c6db1441d13d237071152e7f4fd5c8254da6",
+    "results/figures/solver-sensitivity-20261021T191746Z-23418.png": "c6674304694bd4274ccabcd06122f812fecedba0f2d97d889b81425fa3420cbf",
+    "results/figures/solver-sensitivity-20261021T191746Z-23418.svg": "3f8c28d0e9258c6c2d75fd31f0775081e6ff410a738d022a03f4eff7a1aa590e"
+  },
+  "processing_only": true,
+  "new_fem_experiment_run": false
+}

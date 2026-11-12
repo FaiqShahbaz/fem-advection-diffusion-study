@@ -1,0 +1,7 @@
+# Phase 0 installation inputs; full tested environment lock is still pending.
+# Version choices and PyPI metadata provenance: python_plan.json.
+firedrake[check]==2026.10.0
+irksome==2026.0.0
+petsc4py==3.26.0
+mpi4py==4.1.2
+h5py==3.16.0

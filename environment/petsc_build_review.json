@@ -1,0 +1,29 @@
+{
+  "review_date_local": "2026-10-07",
+  "timezone": "Asia/Karachi",
+  "status": "PETSc main build and supplied checks reviewed and accepted; Python stack remains unverified",
+  "build_manifest": "environment/records/petsc-build-check-20261007T120242Z-10241-manifest.json",
+  "build_manifest_sha256": "732af732fdd09b33b06328a4a824ec8ce843da7a77609202fffe122d7274acc8",
+  "source_commit": "1136c0bd63ce5f2898c194cf902c865c0c60698c",
+  "build_exit_status": 0,
+  "check_exit_status": 0,
+  "observed_success_lines": [
+    "C/C++ example src/snes/tutorials/ex19 run successfully with 1 MPI process",
+    "C/C++ example src/snes/tutorials/ex19 run successfully with 2 MPI processes",
+    "C/C++ example src/snes/tutorials/ex19 run successfully with HYPRE",
+    "C/C++ example src/snes/tutorials/ex19 run successfully with MUMPS",
+    "C/C++ example src/snes/tutorials/ex19 run successfully with SuiteSparse",
+    "C/C++ example src/snes/tutorials/ex19 run successfully with SuperLU_DIST",
+    "C/C++ example src/vec/vec/tests/ex47 run successfully with HDF5",
+    "Completed PETSc check examples"
+  ],
+  "library_path": "environment/build/petsc/arch-firedrake-default/lib/libpetsc.dylib",
+  "library_sha256": "3fc99f702f0f23632373db22b06c2494088d0f179f291fc6201d56418723e657",
+  "library_inspection": "/Users/faiq/Projects/fem-advection-diffusion/environment/build/petsc/arch-firedrake-default/lib/libpetsc.dylib: Mach-O 64-bit dynamically linked shared library arm64",
+  "recorded_messages": [
+    "ld: warning: reducing alignment of section __DATA,__common from 0x8000 to 0x4000 because it exceeds segment maximum alignment",
+    "warning: no debug symbols in executable (-arch arm64)"
+  ],
+  "message_assessment": "These messages did not stop compilation. The supplied runtime checks passed; preserve the messages rather than claiming they prove or disprove all possible runtime behavior.",
+  "next_checkpoint": "Install pinned Python packages into the project .venv, then separately verify imports, vendor checks, assembly/solve, and two-rank execution."
+}

@@ -1,0 +1,1441 @@
+#!/usr/bin/env python3
+
+"""Script for preparing an environment to install Firedrake into."""
+
+# To avoid the pitfalls inherent in having executable configuration files
+# this script is intentionally extremely dumb. All configure options are set
+# in advance and the only run-time logic that happens is dispatching on the
+# right package manager and arch.
+
+import sys
+import time
+
+
+def print_and_stop(msg: str) -> None:
+    """Print a message to stdout and stop the script."""
+    print(msg, file=sys.stdout, end="")
+    exit(0)
+
+
+def error(msg: str):
+    """Print an error message to stderr and stop the script.
+
+    To make it distinct in the terminal output, messages are prefixed with 'ERROR: '.
+
+    """
+    print(f"ERROR: {msg}", file=sys.stderr)
+    # wait so users have a chance to see the message before it gets swamped by stdout
+    time.sleep(3)
+    exit(1)
+
+
+def warn(msg: str):
+    """Print a warning message to stderr.
+
+    To make it distinct in the terminal output, messages are prefixed with 'WARNING: '.
+
+    """
+    print(f"WARNING: {msg}", file=sys.stderr)
+    # wait so users have a chance to see the message before it gets swamped by stdout
+    time.sleep(1)
+
+
+# Start by checking the Python version, older Pythons may not be able to run
+# this script.
+MINIMUM_PYTHON_VERSION = "3.11"
+if sys.version < MINIMUM_PYTHON_VERSION:
+    error(f"Firedrake requires Python {MINIMUM_PYTHON_VERSION} or greater")
+
+
+import argparse
+import dataclasses
+import enum
+import os
+import platform
+import shlex
+from collections.abc import Mapping, Sequence
+
+
+# Attributes that we expect to change occasionally
+
+SUPPORTED_PETSC_VERSION = "v3.26.0"
+
+
+def main():
+    parser = make_parser()
+    args = parser.parse_args()
+
+    if args.no_package_manager:
+        warn(
+            "Passing '--no-package-manager' is deprecated, please set '--os unknown' instead"
+        )
+        args.os = "unknown"
+
+    os_ = OS(args.os) if args.os else detect_os()
+    scalar_type = ScalarType(args.scalar_type)
+    int_type = IntType(args.int_type)
+    gpu_arch = GPUPlatform(args.gpu_arch)
+
+    arch_key = (os_, scalar_type, int_type, gpu_arch)
+    arch_key_str = f"{{{', '.join(f'{k.__class__.__name__}: {k.value}' for k in arch_key)}}}"
+    if arch_key in OFFICIAL_ARCHS:
+        arch = OFFICIAL_ARCHS[arch_key]
+    elif arch_key in RETIRED_ARCHS:
+        arch = RETIRED_ARCHS[arch_key]
+        warn(f"""\
+You have selected an older configuration of Firedrake that we no longer test:
+
+  {arch_key_str}
+  (last modified {arch.last_modified})
+
+If you encounter issues please get in touch with the Firedrake team on GitHub or Slack.""")
+    elif arch_key in COMMUNITY_ARCHS:
+        arch = COMMUNITY_ARCHS[arch_key]
+        warn(f"""\
+You have selected an untested, community-maintained Firedrake configuration:
+
+  {arch_key_str}
+  (last modified {arch.last_modified})
+
+If you encounter issues please contact {arch.maintainer} {arch.contact}.""")
+    else:
+        error(f"""\
+Firedrake configuration not found for option set:
+
+  {arch_key_str}
+
+Please consider passing '--os unknown' or building manually.""")
+
+    if args.show_system_packages:
+        try:
+            arch.show_system_packages(args.passthrough)
+        except InvalidConfigurationError:
+            error(
+                "Don't know what system dependencies to install for this arch "
+                f"'{arch_key_str}', please install them manually"
+            )
+    elif args.show_petsc_configure_options:
+        arch.show_petsc_configure_options(args.passthrough)
+    elif args.show_petsc_version:
+        print_and_stop(SUPPORTED_PETSC_VERSION)
+    elif args.show_extra_repo_pkg_url:
+        arch.show_url(args.passthrough)
+    else:
+        assert args.show_env
+        arch.show_env(args.passthrough)
+
+
+def make_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(
+        description="""\
+Print out the configuration options needed to install Firedrake.
+
+This script takes in arguments declaring the operating system, target
+configuration (termed 'ARCH') and install step (installing system packages,
+PETSc 'configure', or preparing the environment for 'pip install') and simply
+prints options to the screen so they can be passed to the external command.
+
+If a supported operating system (Ubuntu or macOS with homebrew) is detected
+then 'firedrake-configure' will specify additional system packages to install
+that are used inside PETSc 'configure' instead of building from source.
+
+Please see https://firedrakeproject.org/install for more information."""
+    )
+
+    package_manager_group = parser.add_mutually_exclusive_group()
+    package_manager_group.add_argument(
+        "--os",
+        "--package-manager",  # old alias
+        choices=[os_.value for os_ in OS],
+        required=False,
+        help="The operating system, if not provided 'firedrake-configure' "
+        "will attempt to guess it.",
+    )
+    # old alias for '--os unknown'
+    package_manager_group.add_argument(
+        "--no-package-manager",
+        action="store_true",
+        required=False,
+        help="(Deprecated) Equivalent to '--os unknown'.",
+    )
+
+    parser.add_argument(
+        "--scalar-type",
+        "--arch",  # old alias
+        choices=[st.value for st in ScalarType],
+        default=ScalarType.DEFAULT.value,
+        help="PETSc scalar type.",
+    )
+    parser.add_argument(
+        "--int-type",
+        choices=[it.value for it in IntType],
+        default=IntType.INT32.value,
+        help="PETSc integer type.",
+    )
+    parser.add_argument(
+        "--gpu-arch",
+        choices=[gpu_opt.value for gpu_opt in GPUPlatform],
+        default=GPUPlatform.NO_GPU.value,
+        help=(
+            "Target GPU architecture. WARNING: This is an experimental feature. "
+            "GPU support in Firedrake is currently very limited."
+        ),
+    )
+
+    cmd_group = parser.add_mutually_exclusive_group(required=True)
+    cmd_group.add_argument(
+        "--show-system-packages",
+        action="store_true",
+        help=(
+            "Print out the system packages Firedrake needs including those "
+            "expected by PETSc."
+        ),
+    )
+    cmd_group.add_argument(
+        "--show-petsc-configure-options",
+        action="store_true",
+        help="Print out arguments to pass to PETSc configure.",
+    )
+    cmd_group.add_argument(
+        "--show-petsc-version",
+        action="store_true",
+        help="Print out the officially supported PETSc version tag.",
+    )
+    cmd_group.add_argument(
+        "--show-env",
+        action="store_true",
+        help="Print out the environment variables that need to be exported to install Firedrake.",
+    )
+    # TODO: This is specific to particular archs, probably not the right design
+    # choice to enable for all.
+    cmd_group.add_argument(
+        "--show-extra-repo-pkg-url",
+        action="store_true",
+        help="Print out the URL of any package required to enable non-OS repo access for this build",
+    )
+
+    parser.add_argument(
+        "passthrough",
+        nargs="*",
+        metavar="-- OPTION[=VALUE] ...",
+        help=(
+            "After a literal '--', extra options appended verbatim to the generated "
+            "options. This can be useful to overwrite problematic default options."
+        ),
+    )
+
+    return parser
+
+
+def detect_os() -> "OS":
+    if platform.system() == "Linux":
+        try:
+            os_info = platform.freedesktop_os_release()
+        except OSError:
+            pass
+        else:
+            if os_info["NAME"] == "Ubuntu":
+                if os_info["VERSION_ID"] == "24.04":
+                    if platform.machine() == "x86_64":
+                        return OS.UBUNTU_2404_X86_64
+                    elif platform.machine() == "aarch64":
+                        return OS.UBUNTU_2404_AARCH64
+                if os_info["VERSION_ID"] == "26.04":
+                    if platform.machine() == "x86_64":
+                        return OS.UBUNTU_2604_X86_64
+                    elif platform.machine() == "aarch64":
+                        return OS.UBUNTU_2604_AARCH64
+            elif os_info["NAME"] == "Fedora Linux":
+                if os_info["VERSION_ID"] == "44":
+                    if platform.machine() == "x86_64":
+                        return OS.FEDORA_44_X86_64
+
+    elif platform.system() == "Darwin":
+        if platform.machine() == "arm64":
+            return OS.MACOS_ARM64
+
+    error("""\
+Cannot identify operating system, to configure Firedrake please specify the
+operating system manually. Run 'python3 firedrake-configure --help' to see
+the available options.""")
+
+
+class OS(enum.Enum):
+    UBUNTU_2404_X86_64 = "ubuntu24.04-x86_64"
+    UBUNTU_2404_AARCH64 = "ubuntu24.04-aarch64"
+    UBUNTU_2604_X86_64 = "ubuntu26.04-x86_64"
+    UBUNTU_2604_AARCH64 = "ubuntu26.04-aarch64"
+    FEDORA_44_X86_64 = "fedora44-x86_64"
+    MACOS_ARM64 = "macos-arm64"
+    UNKNOWN = "unknown"
+
+
+class ScalarType(enum.Enum):
+    DEFAULT = "default"
+    COMPLEX = "complex"
+
+
+class IntType(enum.Enum):
+    INT32 = "int32"
+    INT64 = "int64"
+
+
+class GPUPlatform(enum.Enum):
+    NO_GPU = "none"
+    CUDA = "cuda"
+    HIP = "hip"
+
+
+class InvalidConfigurationError(Exception):
+    pass
+
+
+@dataclasses.dataclass(frozen=True, kw_only=True)
+class Arch:
+    name: str
+    """Name of the configuration.
+
+    This will be prefixed by 'arch-firedrake-' when generating the PETSc arch name.
+
+    """
+    system_packages: Sequence[str] | None = None
+    """System packages."""
+    extra_petsc_configure_options: Sequence[str] = ()
+    """Extra options passed to PETSc configure."""
+    coptflags: Sequence[str] = ()
+    """Optimisation flags passed to PETSc via --COPTFLAGS."""
+    cxxoptflags: Sequence[str] = ()
+    """Optimisation flags passed to PETSc via --CXXOPTFLAGS."""
+    foptflags: Sequence[str] = ()
+    """Optimisation flags passed to PETSc via --FOPTFLAGS."""
+    include_dirs: Sequence[str] = ()
+    """Extra include directories used during PETSc configure and install"""
+    library_dirs: Sequence[str] = ()
+    """Extra library directories used during PETSc configure and install"""
+    extra_env_vars: Mapping[str, str] = dataclasses.field(default_factory=dict)
+    """Extra environment variables that need setting during Firedrake install.
+
+    If the special strings '$PETSC_DIR', '$PETSC_ARCH' or '$PATH' are used then
+    these will be replaced.
+
+    """
+    extra_url: str | None = None
+    """The URL to a deb package that will enable vendor-specific software development
+    repositories, or None if not required.
+    """
+
+    common_petsc_configure_options = [
+        "--with-c2html=0",
+        "--with-debugging=0",
+        "--with-fortran-bindings=0",
+        "--with-shared-libraries=1",
+        "--with-strict-petscerrorcode",
+    ]
+
+    def show_system_packages(self, extra_options: Sequence[str] = ()) -> None:
+        if self.system_packages is None:
+            raise InvalidConfigurationError
+        else:
+            packages = [*self.system_packages, *(shlex.quote(option) for option in extra_options)]
+            print_and_stop(" ".join(packages))
+
+    def show_petsc_configure_options(self, extra_options: Sequence[str] = ()) -> None:
+        include_dirs = " ".join(f"-I{idir}" for idir in self.include_dirs)
+        library_dirs = " ".join(f"-L{ldir}" for ldir in self.library_dirs)
+        dir_flags = " ".join((include_dirs, library_dirs))
+        opts = [
+            f"PETSC_ARCH=arch-firedrake-{self.name}",
+            f"--CFLAGS+='{dir_flags}'",
+            f"--CXXFLAGS+='{dir_flags}'",
+            f"--FFLAGS+='{dir_flags}'",
+            f"--COPTFLAGS='{' '.join(self.coptflags)}'",
+            f"--CXXOPTFLAGS='{' '.join(self.cxxoptflags)}'",
+            f"--FOPTFLAGS='{' '.join(self.foptflags)}'",
+            *self.common_petsc_configure_options,
+            *self.extra_petsc_configure_options,
+            *(shlex.quote(option) for option in extra_options),
+        ]
+        print_and_stop(" ".join(opts))
+
+    def show_url(self, extra_options: Sequence[str] = ()) -> None:
+        assert self.extra_url
+        parts = [self.extra_url, *(shlex.quote(option) for option in extra_options)]
+        print_and_stop(" ".join(parts))
+
+    def show_env(self, extra_options: Sequence[str] = ()) -> None:
+        # TODO: inspect the current directory and error if PETSc isn't found
+        petsc_dir = f"{os.getcwd()}/petsc"
+        petsc_arch = f"arch-firedrake-{self.name}"
+
+        env = {
+            "PETSC_DIR": petsc_dir,
+            "PETSC_ARCH": petsc_arch,
+            "HDF5_MPI": "ON",
+        }
+        env |= self.extra_env_vars
+
+        replace_mapping = {
+            "$PETSC_DIR": petsc_dir,
+            "$PETSC_ARCH": petsc_arch,
+            "$PATH": os.environ.get("PATH", ""),
+        }
+
+        def replace_vars(value: str):
+            for from_, to in replace_mapping.items():
+                value = value.replace(from_, to)
+            return value
+
+        env_items = [f"{name}={replace_vars(value)}" for name, value in env.items()]
+        env_items.extend(shlex.quote(option) for option in extra_options)
+        print_and_stop(" ".join(env_items))
+
+
+@dataclasses.dataclass(frozen=True, kw_only=True)
+class RetiredArch(Arch):
+    """A configuration that Firedrake used to test but no longer does.
+
+    For example this includes older versions of Ubuntu.
+
+    """
+
+    last_modified: str
+    """Date the configuration was last modified (YYYY-MM-DD).
+
+    This is useful for judging the age, and hence likelihood to work, of
+    submitted configurations.
+
+    """
+
+
+@dataclasses.dataclass(frozen=True, kw_only=True)
+class CommunityArch(Arch):
+    maintainer: str
+    """Name of the person or team maintaining a particular arch."""
+    contact: str
+    """Contact details for the maintainer.
+
+    The 'maintainer' and 'contact' fields are concatenated together into the
+    message:
+
+        "...if you encounter issues please contact {maintainer} {contact}"
+
+    so make sure the grammar is right! For example:
+
+        "...if you encounter issues please contact the Firedrake team on Slack"
+
+    or:
+
+        "...if you encounter issues please contact Your Name at email@address.com"
+
+    """
+    last_modified: str
+    """Date the configuration was last modified (YYYY-MM-DD).
+
+    This is useful for judging the age, and hence likelihood to work, of
+    submitted configurations.
+
+    """
+
+
+ArchKey = tuple[OS, ScalarType, IntType, GPUPlatform]
+
+# Configurations with official support that are tested in CI
+OFFICIAL_ARCHS: Mapping[ArchKey, Arch] = {
+
+    # Ubuntu 26.04 x86
+
+    (OS.UBUNTU_2604_X86_64, ScalarType.DEFAULT, IntType.INT32, GPUPlatform.NO_GPU): Arch(
+        name="default",
+        system_packages=[
+            "bison",
+            "build-essential",
+            "cmake",
+            "flex",
+            "gfortran",
+            "git",
+            "ninja-build",
+            "pkg-config",
+            "python3-dev",
+            "python3-pip",
+            "zlib1g-dev",
+
+            # PETSc external packages
+            "libfftw3-dev",
+            "libfftw3-mpi-dev",
+            "libhdf5-mpi-dev",
+            "libhwloc-dev",
+            "libhypre-dev",
+            "libmumps-ptscotch-dev",
+            "libmetis-dev",
+            "libnetcdf-dev",
+            "libopenblas-dev",
+            "libopenmpi-dev",
+            "libpnetcdf-dev",
+            "libptscotch-dev",
+            "libscalapack-openmpi-dev",
+            "libsuitesparse-dev",
+            "libsuperlu-dev",
+            "libsuperlu-dist-dev",
+        ],
+        extra_petsc_configure_options=[
+            "--with-bison",
+            "--with-fftw",
+            "--with-hdf5-include=/usr/include/hdf5/openmpi",
+            "--with-hdf5-lib=[/usr/lib/x86_64-linux-gnu/hdf5/openmpi/libhdf5.so,/usr/lib/x86_64-linux-gnu/hdf5/openmpi/libhdf5_hl.so]",
+            "--with-hwloc",
+            "--with-hypre",
+            "--with-metis",
+            "--with-mumps",
+            "--with-netcdf",
+            "--with-pnetcdf",
+            "--with-ptscotch",
+            "--with-ptscotch-lib='-lptesmumps -lptscotch -lptscotcherr -lesmumps -lscotch -lscotcherr'",
+            "--with-ptscotch-include=/usr/include/scotch",
+            "--with-scalapack-lib=-lscalapack-openmpi",
+            "--with-suitesparse",
+            "--with-superlu_dist",
+            "--with-zlib",
+        ],
+        coptflags=["-O3", "-march=native", "-mtune=native"],
+        cxxoptflags=["-O3", "-march=native", "-mtune=native"],
+        foptflags=["-O3", "-march=native", "-mtune=native"],
+        include_dirs=[
+            "/usr/include/hypre",
+            "/usr/include/superlu",
+            "/usr/include/superlu-dist",
+        ],
+    ),
+
+    (OS.UBUNTU_2604_X86_64, ScalarType.COMPLEX, IntType.INT32, GPUPlatform.NO_GPU): Arch(
+        name="complex",
+        system_packages=[
+            "bison",
+            "build-essential",
+            "cmake",
+            "flex",
+            "gfortran",
+            "git",
+            "ninja-build",
+            "pkg-config",
+            "python3-dev",
+            "python3-pip",
+            "zlib1g-dev",
+
+            # PETSc external packages
+            "libfftw3-dev",
+            "libfftw3-mpi-dev",
+            "libhwloc-dev",
+            "libhdf5-mpi-dev",
+            "libmumps-ptscotch-dev",
+            "libmetis-dev",
+            "libnetcdf-dev",
+            "libopenblas-dev",
+            "libopenmpi-dev",
+            "libpnetcdf-dev",
+            "libptscotch-dev",
+            "libscalapack-openmpi-dev",
+            "libsuitesparse-dev",
+            "libsuperlu-dev",
+            "libsuperlu-dist-dev",
+        ],
+        extra_petsc_configure_options=[
+            "--with-scalar-type=complex",
+            "--with-bison",
+            "--with-fftw",
+            "--with-hdf5-include=/usr/include/hdf5/openmpi",
+            "--with-hdf5-lib=[/usr/lib/x86_64-linux-gnu/hdf5/openmpi/libhdf5.so,/usr/lib/x86_64-linux-gnu/hdf5/openmpi/libhdf5_hl.so]",
+            "--with-hwloc",
+            "--with-metis",
+            "--with-mumps",
+            "--with-netcdf",
+            "--with-pnetcdf",
+            "--with-ptscotch",
+            "--with-ptscotch-lib='-lptesmumps -lptscotch -lptscotcherr -lesmumps -lscotch -lscotcherr'",
+            "--with-ptscotch-include=/usr/include/scotch",
+            "--with-scalapack-lib=-lscalapack-openmpi",
+            "--with-suitesparse",
+            "--with-superlu_dist",
+            "--with-zlib",
+        ],
+        coptflags=["-O3", "-march=native", "-mtune=native"],
+        cxxoptflags=["-O3", "-march=native", "-mtune=native"],
+        foptflags=["-O3", "-march=native", "-mtune=native"],
+        include_dirs=[
+            "/usr/include/superlu",
+            "/usr/include/superlu-dist",
+        ],
+    ),
+
+    (OS.UBUNTU_2604_X86_64, ScalarType.DEFAULT, IntType.INT64, GPUPlatform.NO_GPU): Arch(
+        name="int64",
+        system_packages=[
+            "bison",
+            "build-essential",
+            "cmake",
+            "flex",
+            "gfortran",
+            "git",
+            "ninja-build",
+            "pkg-config",
+            "python3-dev",
+            "python3-pip",
+
+            # PETSc external packages
+            "libfftw3-dev",
+            "libfftw3-mpi-dev",
+            "libhdf5-mpi-dev",
+            "libhwloc-dev",
+            "libnetcdf-dev",
+            "libopenblas-dev",
+            "libopenmpi-dev",
+            "libpnetcdf-dev",
+            "libscalapack-openmpi-dev",
+            "libsuitesparse-dev",
+            "libsuperlu-dev",
+        ],
+        extra_petsc_configure_options=[
+            "--with-64-bit-indices",
+            "--with-bison",
+            "--with-fftw",
+            "--with-hdf5",
+            "--with-hwloc",
+            "--download-hypre",
+            "--download-metis",
+            "--download-mumps",
+            "--with-netcdf",
+            "--with-pnetcdf",
+            "--download-ptscotch",
+            "--with-scalapack-lib=-lscalapack-openmpi",
+            "--with-suitesparse",
+            "--download-superlu_dist",
+            "--with-zlib",
+        ],
+        coptflags=["-O3", "-march=native", "-mtune=native"],
+        cxxoptflags=["-O3", "-march=native", "-mtune=native"],
+        foptflags=["-O3", "-march=native", "-mtune=native"],
+        include_dirs=[
+            "/usr/include/hdf5/openmpi",
+            "/usr/include/superlu",
+        ],
+        library_dirs=[
+            "/usr/lib/x86_64-linux-gnu/hdf5/openmpi",
+        ],
+    ),
+
+    # Ubuntu 26.04 aarch64
+
+    (OS.UBUNTU_2604_AARCH64, ScalarType.DEFAULT, IntType.INT32, GPUPlatform.NO_GPU): Arch(
+        name="default",
+        system_packages=[
+            "bison",
+            "build-essential",
+            "cmake",
+            "flex",
+            "gfortran",
+            "git",
+            "ninja-build",
+            "pkg-config",
+            "python3-dev",
+            "python3-pip",
+            "zlib1g-dev",
+
+            # PETSc external packages
+            "libfftw3-dev",
+            "libfftw3-mpi-dev",
+            "libhwloc-dev",
+            "libhdf5-mpi-dev",
+            "libhypre-dev",
+            "libmumps-ptscotch-dev",
+            "libmetis-dev",
+            "libnetcdf-dev",
+            "libopenblas-dev",
+            "libopenmpi-dev",
+            "libpnetcdf-dev",
+            "libptscotch-dev",
+            "libscalapack-openmpi-dev",
+            "libsuitesparse-dev",
+            "libsuperlu-dev",
+            "libsuperlu-dist-dev",
+        ],
+        extra_petsc_configure_options=[
+            "--with-bison",
+            "--with-fftw",
+            "--with-hdf5-include=/usr/include/hdf5/openmpi",
+            "--with-hdf5-lib=[/usr/lib/aarch64-linux-gnu/hdf5/openmpi/libhdf5.so,/usr/lib/aarch64-linux-gnu/hdf5/openmpi/libhdf5_hl.so]",
+            "--with-hwloc",
+            "--with-metis",
+            "--with-mumps",
+            "--with-netcdf",
+            "--with-pnetcdf",
+            "--with-ptscotch",
+            "--with-ptscotch-lib='-lptesmumps -lptscotch -lptscotcherr -lesmumps -lscotch -lscotcherr'",
+            "--with-ptscotch-include=/usr/include/scotch",
+            "--with-scalapack-lib=-lscalapack-openmpi",
+            "--with-suitesparse",
+            "--with-superlu_dist",
+            "--with-zlib",
+            "--download-hypre",
+        ],
+        coptflags=["-O3", "-march=native", "-mtune=native"],
+        cxxoptflags=["-O3", "-march=native", "-mtune=native"],
+        foptflags=["-O3", "-march=native", "-mtune=native"],
+        include_dirs=[
+            "/usr/include/hypre",
+            "/usr/include/superlu",
+            "/usr/include/superlu-dist",
+        ],
+    ),
+
+    (OS.UBUNTU_2604_AARCH64, ScalarType.COMPLEX, IntType.INT32, GPUPlatform.NO_GPU): Arch(
+        name="complex",
+        system_packages=[
+            "bison",
+            "build-essential",
+            "cmake",
+            "flex",
+            "gfortran",
+            "git",
+            "ninja-build",
+            "pkg-config",
+            "python3-dev",
+            "python3-pip",
+            "zlib1g-dev",
+
+            # PETSc external packages
+            "libfftw3-dev",
+            "libfftw3-mpi-dev",
+            "libhwloc-dev",
+            "libhdf5-mpi-dev",
+            "libmumps-ptscotch-dev",
+            "libmetis-dev",
+            "libnetcdf-dev",
+            "libopenblas-dev",
+            "libopenmpi-dev",
+            "libpnetcdf-dev",
+            "libptscotch-dev",
+            "libscalapack-openmpi-dev",
+            "libsuitesparse-dev",
+            "libsuperlu-dev",
+            "libsuperlu-dist-dev",
+        ],
+        extra_petsc_configure_options=[
+            "--with-scalar-type=complex",
+            "--with-bison",
+            "--with-fftw",
+            "--with-hdf5-include=/usr/include/hdf5/openmpi",
+            "--with-hdf5-lib=[/usr/lib/aarch64-linux-gnu/hdf5/openmpi/libhdf5.so,/usr/lib/aarch64-linux-gnu/hdf5/openmpi/libhdf5_hl.so]",
+            "--with-hwloc",
+            "--with-metis",
+            "--with-mumps",
+            "--with-netcdf",
+            "--with-pnetcdf",
+            "--with-ptscotch",
+            "--with-ptscotch-lib='-lptesmumps -lptscotch -lptscotcherr -lesmumps -lscotch -lscotcherr'",
+            "--with-ptscotch-include=/usr/include/scotch",
+            "--with-scalapack-lib=-lscalapack-openmpi",
+            "--with-suitesparse",
+            "--with-superlu_dist",
+            "--with-zlib",
+        ],
+        coptflags=["-O3", "-march=native", "-mtune=native"],
+        cxxoptflags=["-O3", "-march=native", "-mtune=native"],
+        foptflags=["-O3", "-march=native", "-mtune=native"],
+        include_dirs=[
+            "/usr/include/superlu",
+            "/usr/include/superlu-dist",
+        ],
+    ),
+
+    # Ubuntu 26.04 x86 CUDA
+
+    (OS.UBUNTU_2404_X86_64, ScalarType.DEFAULT, IntType.INT32, GPUPlatform.CUDA): Arch(
+        name="default-cuda",
+        system_packages=[
+            "bison",
+            "build-essential",
+            "cmake",
+            "flex",
+            "gfortran",
+            "git",
+            "ninja-build",
+            "pkg-config",
+            "python3-dev",
+            "python3-pip",
+            "zlib1g-dev",
+
+            # PETSc external packages
+            "libfftw3-dev",
+            "libfftw3-mpi-dev",
+            "libhwloc-dev",
+            "libhdf5-mpi-dev",
+            "libmumps-ptscotch-dev",
+            "libmetis-dev",
+            "libnetcdf-dev",
+            "libopenblas-dev",
+            "libopenmpi-dev",
+            "libpnetcdf-dev",
+            "libptscotch-dev",
+            "libscalapack-openmpi-dev",
+
+            # CUDA packages
+            "cuda-compat-13-0",
+            "cuda-nvtx-13-0",
+            "cuda-cudart-dev-13-0",
+            "cuda-command-line-tools-13-0",
+            "cuda-minimal-build-13-0",
+            "cuda-libraries-dev-13-0",
+            "cuda-nvml-dev-13-0",
+            "libnpp-dev-13-0",
+            "libcusparse-dev-13-0",
+            "libcublas-dev-13-0",
+        ],
+        extra_petsc_configure_options=[
+            "--with-bison",
+            "--with-fftw",
+            "--with-hdf5-include=/usr/include/hdf5/openmpi",
+            "--with-hdf5-lib=[/usr/lib/x86_64-linux-gnu/hdf5/openmpi/libhdf5.so,/usr/lib/x86_64-linux-gnu/hdf5/openmpi/libhdf5_hl.so]",
+            "--with-hwloc",
+            "--with-metis",
+            "--with-mumps",
+            "--with-netcdf",
+            "--with-pnetcdf",
+            "--with-ptscotch",
+            "--with-scalapack-lib=-lscalapack-openmpi",
+            "--with-zlib",
+            "--download-hypre",
+            "--download-suitesparse",
+            "--download-superlu_dist",
+
+            # CUDA options
+            "--with-cuda=1",
+            "--with-openmp=1",
+            "--with-cxx-dialect=c++17",
+            "--download-umpire",
+        ],
+        coptflags=["-O3", "-march=native", "-mtune=native"],
+        cxxoptflags=["-O3", "-march=native", "-mtune=native"],
+        foptflags=["-O3", "-march=native", "-mtune=native"],
+        include_dirs=[
+            "/usr/include/scotch",
+            "/usr/include/superlu",
+            "/usr/include/superlu-dist",
+        ],
+        extra_env_vars={
+            "PATH": "/usr/local/cuda/bin:$PATH",
+        },
+        extra_url="https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2404/x86_64/cuda-keyring_1.1-1_all.deb",
+    ),
+
+    # macOS arm64
+
+    (OS.MACOS_ARM64, ScalarType.DEFAULT, IntType.INT32, GPUPlatform.NO_GPU): Arch(
+        name="default",
+        system_packages=[
+            "autoconf",
+            "automake",
+            "boost",
+            "gcc",
+            "libtool",
+            "make",
+            "ninja",
+            "pkg-config",
+            "python",
+
+            # PETSc external packages
+            "cmake",
+            "fftw",
+            "hwloc",
+            "metis",
+            "openblas",
+            "openmpi",
+            "scalapack",
+            "suitesparse",
+            "zlib",
+        ],
+        extra_petsc_configure_options=[
+            # External packages
+            "--with-fftw-dir=/opt/homebrew",
+            "--with-hwloc-dir=/opt/homebrew",
+            "--with-metis-dir=/opt/homebrew",
+            "--with-scalapack-dir=/opt/homebrew",
+            "--with-suitesparse-dir=/opt/homebrew",
+            "--with-zlib-dir=/opt/homebrew",
+            "--download-bison",
+            "--download-hdf5",
+            "--download-hypre",
+            "--download-mumps",
+            "--download-netcdf",
+            "--download-pnetcdf",
+            "--download-ptscotch",
+            "--download-superlu_dist",
+
+            # Avoid macos + openmpi + mumps segmentation violation issue;
+            # see https://github.com/firedrakeproject/firedrake/issues/4102 and https://github.com/firedrakeproject/firedrake/issues/4113.
+            "-download-mumps-avoid-mpi-in-place",
+        ],
+        coptflags=["-O3", "-march=native", "-mtune=native"],
+        cxxoptflags=["-O3", "-march=native", "-mtune=native"],
+        foptflags=["-O3"],
+        extra_env_vars={
+            "HDF5_DIR": "$PETSC_DIR/$PETSC_ARCH",
+            "CC": "mpicc",
+        },
+    ),
+
+    (OS.MACOS_ARM64, ScalarType.COMPLEX, IntType.INT32, GPUPlatform.NO_GPU): Arch(
+        name="complex",
+        system_packages=[
+            "autoconf",
+            "automake",
+            "boost",
+            "gcc",
+            "libtool",
+            "make",
+            "ninja",
+            "pkg-config",
+            "python",
+
+            # PETSc external packages
+            "cmake",
+            "fftw",
+            "hwloc",
+            "metis",
+            "openblas",
+            "openmpi",
+            "scalapack",
+            "suitesparse",
+            "zlib",
+        ],
+        extra_petsc_configure_options=[
+            "--with-scalar-type=complex",
+
+            # External packages
+            "--with-fftw-dir=/opt/homebrew",
+            "--with-hwloc-dir=/opt/homebrew",
+            "--with-metis-dir=/opt/homebrew",
+            "--with-scalapack-dir=/opt/homebrew",
+            "--with-suitesparse-dir=/opt/homebrew",
+            "--with-zlib-dir=/opt/homebrew",
+            "--download-bison",
+            "--download-hdf5",
+            "--download-mumps",
+            "--download-netcdf",
+            "--download-pnetcdf",
+            "--download-ptscotch",
+            "--download-superlu_dist",
+
+            # Avoid macos + openmpi + mumps segmentation violation issue;
+            # see https://github.com/firedrakeproject/firedrake/issues/4102 and https://github.com/firedrakeproject/firedrake/issues/4113.
+            "-download-mumps-avoid-mpi-in-place",
+        ],
+        coptflags=["-O3", "-march=native", "-mtune=native"],
+        cxxoptflags=["-O3", "-march=native", "-mtune=native"],
+        foptflags=["-O3"],
+        extra_env_vars={
+            "HDF5_DIR": "$PETSC_DIR/$PETSC_ARCH",
+            "CC": "mpicc",
+        },
+    ),
+
+    # Sane default configurations for unknown platforms
+
+    (OS.UNKNOWN, ScalarType.DEFAULT, IntType.INT32, GPUPlatform.NO_GPU): Arch(
+        name="default",
+        extra_petsc_configure_options=[
+            "--download-bison",
+            "--download-fftw",
+            "--download-hdf5",
+            "--download-hwloc",
+            "--download-hypre",
+            "--download-metis",
+            "--download-mumps",
+            "--download-netcdf",
+            "--download-pnetcdf",
+            "--download-ptscotch",
+            "--download-scalapack",
+            "--download-suitesparse",
+            "--download-superlu_dist",
+            "--download-zlib",
+        ],
+        coptflags=["-O3", "-march=native", "-mtune=native"],
+        cxxoptflags=["-O3", "-march=native", "-mtune=native"],
+        foptflags=["-O3", "-march=native", "-mtune=native"],
+        extra_env_vars={
+            "HDF5_DIR": "$PETSC_DIR/$PETSC_ARCH",
+            "CC": "mpicc",
+        },
+    ),
+
+    (OS.UNKNOWN, ScalarType.COMPLEX, IntType.INT32, GPUPlatform.NO_GPU): Arch(
+        name="complex",
+        extra_petsc_configure_options=[
+            "--with-scalar-type=complex",
+            "--download-bison",
+            "--download-fftw",
+            "--download-hdf5",
+            "--download-hwloc",
+            "--download-hypre",
+            "--download-metis",
+            "--download-mumps",
+            "--download-netcdf",
+            "--download-pnetcdf",
+            "--download-ptscotch",
+            "--download-scalapack",
+            "--download-suitesparse",
+            "--download-superlu_dist",
+            "--download-zlib",
+        ],
+        coptflags=["-O3", "-march=native", "-mtune=native"],
+        cxxoptflags=["-O3", "-march=native", "-mtune=native"],
+        foptflags=["-O3", "-march=native", "-mtune=native"],
+        extra_env_vars={
+            "HDF5_DIR": "$PETSC_DIR/$PETSC_ARCH",
+            "CC": "mpicc",
+        },
+    ),
+
+    (OS.UNKNOWN, ScalarType.DEFAULT, IntType.INT64, GPUPlatform.NO_GPU): Arch(
+        name="int64",
+        extra_petsc_configure_options=[
+            "--with-64-bit-indices",
+            "--download-bison",
+            "--download-fftw",
+            "--download-hdf5",
+            "--download-hwloc",
+            "--download-hypre",
+            "--download-metis",
+            "--download-mumps",
+            "--download-netcdf",
+            "--download-pnetcdf",
+            "--download-ptscotch",
+            "--download-scalapack",
+            "--download-suitesparse",
+            "--download-superlu_dist",
+            "--download-zlib",
+        ],
+        coptflags=["-O3", "-march=native", "-mtune=native"],
+        cxxoptflags=["-O3", "-march=native", "-mtune=native"],
+        foptflags=["-O3", "-march=native", "-mtune=native"],
+        extra_env_vars={
+            "HDF5_DIR": "$PETSC_DIR/$PETSC_ARCH",
+            "CC": "mpicc",
+        },
+    ),
+}
+
+
+# Configurations that Firedrake used to support, these are considered
+# more reliable that community configs.
+RETIRED_ARCHS: Mapping[ArchKey, RetiredArch] = {
+
+    # Ubuntu 24.04 x86
+
+    (OS.UBUNTU_2404_X86_64, ScalarType.DEFAULT, IntType.INT32, GPUPlatform.NO_GPU): RetiredArch(
+        name="default",
+        last_modified="2026-05-13",
+        system_packages=[
+            "bison",
+            "build-essential",
+            "cmake",
+            "flex",
+            "gfortran",
+            "git",
+            "ninja-build",
+            "pkg-config",
+            "python3-dev",
+            "python3-pip",
+
+            # PETSc external packages
+            "libfftw3-dev",
+            "libfftw3-mpi-dev",
+            "libhwloc-dev",
+            "libhdf5-mpi-dev",
+            "libmumps-ptscotch-dev",
+            "libmetis-dev",
+            "libnetcdf-dev",
+            "libopenblas-dev",
+            "libopenmpi-dev",
+            "libpnetcdf-dev",
+            "libptscotch-dev",
+            "libscalapack-openmpi-dev",
+            "libsuitesparse-dev",
+            "libsuperlu-dev",
+            "libsuperlu-dist-dev",
+        ],
+        extra_petsc_configure_options=[
+            "--with-bison",
+            "--with-fftw",
+            "--with-hdf5",
+            "--with-hwloc",
+            "--with-metis",
+            "--with-mumps",
+            "--with-netcdf",
+            "--with-pnetcdf",
+            "--with-ptscotch",
+            "--with-scalapack-lib=-lscalapack-openmpi",
+            "--with-suitesparse",
+            "--with-superlu_dist",
+            "--with-zlib",
+            "--download-hypre",
+        ],
+        coptflags=["-O3", "-march=native", "-mtune=native"],
+        cxxoptflags=["-O3", "-march=native", "-mtune=native"],
+        foptflags=["-O3", "-march=native", "-mtune=native"],
+        include_dirs=[
+            "/usr/include/hdf5/openmpi",
+            "/usr/include/scotch",
+            "/usr/include/superlu",
+            "/usr/include/superlu-dist",
+        ],
+        library_dirs=[
+            "/usr/lib/x86_64-linux-gnu/hdf5/openmpi",
+        ],
+    ),
+
+    (OS.UBUNTU_2404_X86_64, ScalarType.COMPLEX, IntType.INT32, GPUPlatform.NO_GPU): RetiredArch(
+        name="complex",
+        last_modified="2026-05-13",
+        system_packages=[
+            "bison",
+            "build-essential",
+            "cmake",
+            "flex",
+            "gfortran",
+            "git",
+            "ninja-build",
+            "pkg-config",
+            "python3-dev",
+            "python3-pip",
+
+            # PETSc external packages
+            "libfftw3-dev",
+            "libfftw3-mpi-dev",
+            "libhwloc-dev",
+            "libhdf5-mpi-dev",
+            "libmumps-ptscotch-dev",
+            "libmetis-dev",
+            "libnetcdf-dev",
+            "libopenblas-dev",
+            "libopenmpi-dev",
+            "libpnetcdf-dev",
+            "libptscotch-dev",
+            "libscalapack-openmpi-dev",
+            "libsuitesparse-dev",
+            "libsuperlu-dev",
+            "libsuperlu-dist-dev",
+        ],
+        extra_petsc_configure_options=[
+            "--with-scalar-type=complex",
+            "--with-bison",
+            "--with-fftw",
+            "--with-hdf5",
+            "--with-hwloc",
+            "--with-metis",
+            "--with-mumps",
+            "--with-netcdf",
+            "--with-pnetcdf",
+            "--with-ptscotch",
+            "--with-scalapack-lib=-lscalapack-openmpi",
+            "--with-suitesparse",
+            "--with-superlu_dist",
+            "--with-zlib",
+        ],
+        coptflags=["-O3", "-march=native", "-mtune=native"],
+        cxxoptflags=["-O3", "-march=native", "-mtune=native"],
+        foptflags=["-O3", "-march=native", "-mtune=native"],
+        include_dirs=[
+            "/usr/include/hdf5/openmpi",
+            "/usr/include/scotch",
+            "/usr/include/superlu",
+            "/usr/include/superlu-dist",
+        ],
+        library_dirs=[
+            "/usr/lib/x86_64-linux-gnu/hdf5/openmpi",
+        ],
+    ),
+
+    # Ubuntu 24.04 aarch64
+
+    (OS.UBUNTU_2404_AARCH64, ScalarType.DEFAULT, IntType.INT32, GPUPlatform.NO_GPU): RetiredArch(
+        name="default",
+        last_modified="2026-05-13",
+        system_packages=[
+            "bison",
+            "build-essential",
+            "cmake",
+            "flex",
+            "gfortran",
+            "git",
+            "ninja-build",
+            "pkg-config",
+            "python3-dev",
+            "python3-pip",
+
+            # PETSc external packages
+            "libfftw3-dev",
+            "libfftw3-mpi-dev",
+            "libhwloc-dev",
+            "libhdf5-mpi-dev",
+            "libmumps-ptscotch-dev",
+            "libmetis-dev",
+            "libnetcdf-dev",
+            "libopenblas-dev",
+            "libopenmpi-dev",
+            "libpnetcdf-dev",
+            "libptscotch-dev",
+            "libscalapack-openmpi-dev",
+            "libsuitesparse-dev",
+            "libsuperlu-dev",
+            "libsuperlu-dist-dev",
+        ],
+        extra_petsc_configure_options=[
+            "--with-bison",
+            "--with-fftw",
+            "--with-hdf5",
+            "--with-hwloc",
+            "--with-metis",
+            "--with-mumps",
+            "--with-netcdf",
+            "--with-pnetcdf",
+            "--with-ptscotch",
+            "--with-scalapack-lib=-lscalapack-openmpi",
+            "--with-suitesparse",
+            "--with-superlu_dist",
+            "--with-zlib",
+            "--download-hypre",
+        ],
+        coptflags=["-O3", "-march=native", "-mtune=native"],
+        cxxoptflags=["-O3", "-march=native", "-mtune=native"],
+        foptflags=["-O3", "-march=native", "-mtune=native"],
+        include_dirs=[
+            "/usr/include/hdf5/openmpi",
+            "/usr/include/scotch",
+            "/usr/include/superlu",
+            "/usr/include/superlu-dist",
+        ],
+        library_dirs=[
+            "/usr/lib/aarch64-linux-gnu/hdf5/openmpi",
+        ],
+    ),
+
+    (OS.UBUNTU_2404_AARCH64, ScalarType.COMPLEX, IntType.INT32, GPUPlatform.NO_GPU): RetiredArch(
+        name="complex",
+        last_modified="2026-05-13",
+        system_packages=[
+            "bison",
+            "build-essential",
+            "cmake",
+            "flex",
+            "gfortran",
+            "git",
+            "ninja-build",
+            "pkg-config",
+            "python3-dev",
+            "python3-pip",
+
+            # PETSc external packages
+            "libfftw3-dev",
+            "libfftw3-mpi-dev",
+            "libhwloc-dev",
+            "libhdf5-mpi-dev",
+            "libmumps-ptscotch-dev",
+            "libmetis-dev",
+            "libnetcdf-dev",
+            "libopenblas-dev",
+            "libopenmpi-dev",
+            "libpnetcdf-dev",
+            "libptscotch-dev",
+            "libscalapack-openmpi-dev",
+            "libsuitesparse-dev",
+            "libsuperlu-dev",
+            "libsuperlu-dist-dev",
+        ],
+        extra_petsc_configure_options=[
+            "--with-scalar-type=complex",
+            "--with-bison",
+            "--with-fftw",
+            "--with-hdf5",
+            "--with-hwloc",
+            "--with-metis",
+            "--with-mumps",
+            "--with-netcdf",
+            "--with-pnetcdf",
+            "--with-ptscotch",
+            "--with-scalapack-lib=-lscalapack-openmpi",
+            "--with-suitesparse",
+            "--with-superlu_dist",
+            "--with-zlib",
+        ],
+        coptflags=["-O3", "-march=native", "-mtune=native"],
+        cxxoptflags=["-O3", "-march=native", "-mtune=native"],
+        foptflags=["-O3", "-march=native", "-mtune=native"],
+        include_dirs=[
+            "/usr/include/hdf5/openmpi",
+            "/usr/include/scotch",
+            "/usr/include/superlu",
+            "/usr/include/superlu-dist",
+        ],
+        library_dirs=[
+            "/usr/lib/aarch64-linux-gnu/hdf5/openmpi",
+        ],
+    ),
+}
+
+
+# 'Best effort' configurations that are not tested in CI
+COMMUNITY_ARCHS: Mapping[ArchKey, CommunityArch] = {
+
+    (OS.UBUNTU_2404_X86_64, ScalarType.DEFAULT, GPUPlatform.HIP): CommunityArch(
+        name="default-hip",
+        maintainer="the G-ADOPT team",
+        contact="at help@gadopt.org",
+        last_modified="2026-07-07",
+        system_packages=[
+            "bison",
+            "build-essential",
+            "cmake",
+            "flex",
+            "gfortran",
+            "git",
+            "ninja-build",
+            "pkg-config",
+            "python3-dev",
+            "python3-pip",
+
+            # PETSc external packages
+            "libfftw3-dev",
+            "libfftw3-mpi-dev",
+            "libhwloc-dev",
+            "libhdf5-mpi-dev",
+            "libmumps-ptscotch-dev",
+            "libmetis-dev",
+            "libnetcdf-dev",
+            "libopenblas-dev",
+            "libopenmpi-dev",
+            "libpnetcdf-dev",
+            "libptscotch-dev",
+            "libscalapack-openmpi-dev",
+
+            # HIP packages
+            "rocm-hip-libraries",
+            "rocm-hip-runtime",
+            "rocm-language-runtime",
+            "rocm-ml-libraries",
+            "rocm-opencl-runtime",
+            "rocm-developer-tools",
+            "rocm-hip-runtime-dev",
+            "rocm-hip-sdk",
+            "rocm-opencl-sdk",
+            "rocm-openmp-sdk"
+        ],
+        extra_petsc_configure_options=[
+            "--with-bison",
+            "--with-fftw",
+            "--with-hdf5",
+            "--with-hwloc",
+            "--with-metis",
+            "--with-mumps",
+            "--with-netcdf",
+            "--with-pnetcdf",
+            "--with-ptscotch",
+            "--with-scalapack-lib=-lscalapack-openmpi",
+            "--with-zlib",
+            "--download-hypre",
+            "--download-suitesparse",
+            "--download-superlu_dist",
+
+            # HIP options
+            "--with-hip=1",
+            "--with-hip-dir=/opt/rocm",
+            "--with-hip-arch=gfx90a",
+            "--with-openmp=1",
+            "--with-cxx-dialect=c++17",
+            "--download-umpire",
+        ],
+        coptflags=["-O3", "-march=native", "-mtune=native"],
+        cxxoptflags=["-O3", "-march=native", "-mtune=native"],
+        foptflags=["-O3", "-march=native", "-mtune=native"],
+        include_dirs=[
+            "/usr/include/hdf5/openmpi",
+            "/usr/include/scotch",
+            "/usr/include/superlu",
+            "/usr/include/superlu-dist",
+        ],
+        library_dirs=[
+            "/usr/lib/x86_64-linux-gnu/hdf5/openmpi",
+        ],
+        # Note - must be set before PETSc install
+        extra_env_vars={
+            "CMAKE_PREFIX_PATH": "/opt/rocm/lib/cmake/hip:/opt/rocm/lib/cmake/hipblas:/opt/rocm/lib/cmake/hipblas-common:/opt/rocm/lib/cmake/rocsolver:/opt/rocm/lib/cmake/rocblas",
+        },
+        # See https://rocm.docs.amd.com/projects/install-on-linux/en/latest/install/quick-start.html for latest
+        # installer package URL.
+        # Must be installed with apt (not dpkg).
+        extra_url="https://repo.radeon.com/amdgpu-install/7.2.4/ubuntu/noble/amdgpu-install_7.2.4.70204-1_all.deb",
+    ),
+
+    (OS.FEDORA_44_X86_64, ScalarType.DEFAULT, IntType.INT32, GPUPlatform.NO_GPU): CommunityArch(
+        name="default",
+        maintainer="Thomas Duvernay",
+        contact="at thomas.duvernay@proton.me",
+        last_modified="2026-08-17",
+        system_packages=[
+            "@development-tools",
+            "@c-development",
+            "boost-openmpi-devel",
+            "cmake",
+            "gcc-gfortran",
+            "ninja-build",
+            "pkgconf-pkg-config",
+            "python3-devel",
+            "python3-pip",
+
+            # PETSc external packages
+            "fftw-devel",
+            "fftw-openmpi-devel",
+            "hdf5-openmpi-devel",
+            "hwloc-devel",
+            "hypre-openmpi-devel",
+            "lapack-devel",
+            "MUMPS-openmpi-devel",
+            "netcdf-openmpi-devel",
+            "openblas-devel",
+            "openmpi-devel",
+            "ptscotch-openmpi-devel",
+            "scalapack-openmpi-devel",
+            "suitesparse-devel",
+            "SuperLU-devel",
+            "superlu_dist-openmpi-devel"
+        ],
+        extra_petsc_configure_options=[
+            "--with-bison",
+            "--with-fftw",
+            "--with-hdf5-include=/usr/include/openmpi-x86_64",
+            "--with-hdf5-lib=[/usr/lib64/openmpi/lib/libhdf5.so,/usr/lib64/openmpi/lib/libhdf5_hl.so]",
+            "--with-hwloc",
+            "--with-hypre",
+            "--download-metis",
+            "--with-mumps",
+            "--with-netcdf",
+            "--download-pnetcdf",
+            "--with-ptscotch",
+            "--with-ptscotch-lib='-lptesmumps -lptscotch -lptscotcherr -lesmumps -lscotch -lscotcherr'",
+            "--with-ptscotch-include=/usr/include/openmpi-x86_64/scotch",
+            "--with-scalapack-lib=/usr/lib64/openmpi/lib/libscalapack.so",
+            "--with-suitesparse",
+            "--with-superlu_dist",
+            "--with-zlib",
+        ],
+        coptflags=["-O3", "-march=native", "-mtune=native"],
+        cxxoptflags=["-O3", "-march=native", "-mtune=native"],
+        foptflags=["-O3", "-march=native", "-mtune=native"],
+        include_dirs=[
+            "/usr/include/openmpi-x86_64/hypre",
+            "/usr/include/openmpi-x86_64/superlu_dist",
+        ],
+    ),
+}
+
+
+if __name__ == "__main__":
+    main()

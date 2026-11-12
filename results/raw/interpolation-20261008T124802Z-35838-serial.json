@@ -1,0 +1,479 @@
+{
+  "status": "passed",
+  "ranks": 1,
+  "group": "all",
+  "config": {
+    "purpose": "Initial P1/P2 nodal interpolation refinement for the agreed MMS; temporal/transient FEM convergence is separate",
+    "mesh_subdivisions": [
+      8,
+      16,
+      32
+    ],
+    "mesh_diagonal": "left",
+    "element_family": "CG",
+    "element_degrees": [
+      1,
+      2
+    ],
+    "evaluation_time": 0.0,
+    "exact_solution": "sin(pi*x)*sin(pi*y)",
+    "boundary_values": "zero",
+    "quadrature_degree": 10,
+    "quadrature_control_degree": 14,
+    "mpi_probe": {
+      "element_degree": 2,
+      "mesh_subdivisions": 32
+    },
+    "expected_orders": {
+      "1": {
+        "l2_error": 2.0,
+        "h1_seminorm_error": 1.0
+      },
+      "2": {
+        "l2_error": 3.0,
+        "h1_seminorm_error": 2.0
+      }
+    },
+    "checks": {
+      "domain_area_atol": 1e-12,
+      "boundary_trace_l2_max": 1e-12,
+      "analytic_norm_rtol": 1e-10,
+      "analytic_norm_atol": 1e-12,
+      "quadrature_comparison_rtol": 1e-06,
+      "quadrature_comparison_atol": 1e-13,
+      "observed_order_atol": 0.35,
+      "serial_mpi_comparison_rtol": 1e-09,
+      "serial_mpi_comparison_atol": 1e-12
+    }
+  },
+  "measurements": [
+    {
+      "case_id": "P1-n8",
+      "element_degree": 1,
+      "mesh_subdivisions": 8,
+      "total_dofs": 81,
+      "expected_total_dofs": 81,
+      "expected_free_dofs": 49,
+      "expected_cells": 128,
+      "h": 0.1767766952966369,
+      "h_definition": "Maximum diameter of the right triangles in the stated structured mesh",
+      "metrics": {
+        "domain_area": 1.0000000000000002,
+        "l2_error": 0.0155534683098119,
+        "h1_seminorm_error": 0.4328319497400562,
+        "boundary_trace_l2": 0.0,
+        "exact_l2_norm": 0.5000000000000002,
+        "exact_h1_seminorm": 2.2214414690791844,
+        "interpolant_l2_norm": 0.4873958203048733
+      },
+      "control_metrics": {
+        "domain_area": 1.0000000000000002,
+        "l2_error": 0.015553468309811969,
+        "h1_seminorm_error": 0.43283194974005634,
+        "boundary_trace_l2": 0.0,
+        "exact_l2_norm": 0.5000000000000001,
+        "exact_h1_seminorm": 2.221441469079185,
+        "interpolant_l2_norm": 0.48739582030487333
+      },
+      "quadrature_comparison": {
+        "l2_error": {
+          "absolute_difference": 6.938893903907228e-17,
+          "allowed_difference": 1.5553568309811968e-08
+        },
+        "h1_seminorm_error": {
+          "absolute_difference": 1.6653345369377348e-16,
+          "allowed_difference": 4.328320497400563e-07
+        }
+      },
+      "checks": {
+        "dimension": true,
+        "positive_errors": true,
+        "primary_finite": true,
+        "primary_area": true,
+        "primary_boundary": true,
+        "primary_exact_l2": true,
+        "primary_exact_h1": true,
+        "control_finite": true,
+        "control_area": true,
+        "control_boundary": true,
+        "control_exact_l2": true,
+        "control_exact_h1": true,
+        "l2_error_quadrature": true,
+        "h1_seminorm_error_quadrature": true
+      },
+      "status": "passed"
+    },
+    {
+      "case_id": "P1-n16",
+      "element_degree": 1,
+      "mesh_subdivisions": 16,
+      "total_dofs": 289,
+      "expected_total_dofs": 289,
+      "expected_free_dofs": 225,
+      "expected_cells": 512,
+      "h": 0.08838834764831845,
+      "h_definition": "Maximum diameter of the right triangles in the stated structured mesh",
+      "metrics": {
+        "domain_area": 1.0000000000000002,
+        "l2_error": 0.0039231518861216836,
+        "h1_seminorm_error": 0.2176696101038459,
+        "boundary_trace_l2": 0.0,
+        "exact_l2_norm": 0.5,
+        "exact_h1_seminorm": 2.221441469079183,
+        "interpolant_l2_norm": 0.49680270761566375
+      },
+      "control_metrics": {
+        "domain_area": 1.0000000000000002,
+        "l2_error": 0.003923151886121682,
+        "h1_seminorm_error": 0.2176696101038459,
+        "boundary_trace_l2": 0.0,
+        "exact_l2_norm": 0.5,
+        "exact_h1_seminorm": 2.221441469079183,
+        "interpolant_l2_norm": 0.49680270761566375
+      },
+      "quadrature_comparison": {
+        "l2_error": {
+          "absolute_difference": 1.734723475976807e-18,
+          "allowed_difference": 3.923251886121681e-09
+        },
+        "h1_seminorm_error": {
+          "absolute_difference": 0.0,
+          "allowed_difference": 2.1766971010384587e-07
+        }
+      },
+      "checks": {
+        "dimension": true,
+        "positive_errors": true,
+        "primary_finite": true,
+        "primary_area": true,
+        "primary_boundary": true,
+        "primary_exact_l2": true,
+        "primary_exact_h1": true,
+        "control_finite": true,
+        "control_area": true,
+        "control_boundary": true,
+        "control_exact_l2": true,
+        "control_exact_h1": true,
+        "l2_error_quadrature": true,
+        "h1_seminorm_error_quadrature": true
+      },
+      "status": "passed"
+    },
+    {
+      "case_id": "P1-n32",
+      "element_degree": 1,
+      "mesh_subdivisions": 32,
+      "total_dofs": 1089,
+      "expected_total_dofs": 1089,
+      "expected_free_dofs": 961,
+      "expected_cells": 2048,
+      "h": 0.04419417382415922,
+      "h_definition": "Maximum diameter of the right triangles in the stated structured mesh",
+      "metrics": {
+        "domain_area": 1.0000000000000002,
+        "l2_error": 0.000982973758112223,
+        "h1_seminorm_error": 0.1089922187047551,
+        "boundary_trace_l2": 0.0,
+        "exact_l2_norm": 0.5000000000000006,
+        "exact_h1_seminorm": 2.2214414690791804,
+        "interpolant_l2_norm": 0.49919777700268
+      },
+      "control_metrics": {
+        "domain_area": 1.0000000000000002,
+        "l2_error": 0.0009829737581122156,
+        "h1_seminorm_error": 0.10899221870475513,
+        "boundary_trace_l2": 0.0,
+        "exact_l2_norm": 0.5000000000000006,
+        "exact_h1_seminorm": 2.221441469079181,
+        "interpolant_l2_norm": 0.49919777700268
+      },
+      "quadrature_comparison": {
+        "l2_error": {
+          "absolute_difference": 7.37257477290143e-18,
+          "allowed_difference": 9.830737581122156e-10
+        },
+        "h1_seminorm_error": {
+          "absolute_difference": 2.7755575615628914e-17,
+          "allowed_difference": 1.0899231870475513e-07
+        }
+      },
+      "checks": {
+        "dimension": true,
+        "positive_errors": true,
+        "primary_finite": true,
+        "primary_area": true,
+        "primary_boundary": true,
+        "primary_exact_l2": true,
+        "primary_exact_h1": true,
+        "control_finite": true,
+        "control_area": true,
+        "control_boundary": true,
+        "control_exact_l2": true,
+        "control_exact_h1": true,
+        "l2_error_quadrature": true,
+        "h1_seminorm_error_quadrature": true
+      },
+      "status": "passed"
+    },
+    {
+      "case_id": "P2-n8",
+      "element_degree": 2,
+      "mesh_subdivisions": 8,
+      "total_dofs": 289,
+      "expected_total_dofs": 289,
+      "expected_free_dofs": 225,
+      "expected_cells": 128,
+      "h": 0.1767766952966369,
+      "h_definition": "Maximum diameter of the right triangles in the stated structured mesh",
+      "metrics": {
+        "domain_area": 1.0000000000000002,
+        "l2_error": 0.0005469140991504649,
+        "h1_seminorm_error": 0.03356942168307997,
+        "boundary_trace_l2": 0.0,
+        "exact_l2_norm": 0.5000000000000002,
+        "exact_h1_seminorm": 2.2214414690791844,
+        "interpolant_l2_norm": 0.49993909112769885
+      },
+      "control_metrics": {
+        "domain_area": 1.0000000000000002,
+        "l2_error": 0.000546914099139918,
+        "h1_seminorm_error": 0.033569421683079886,
+        "boundary_trace_l2": 0.0,
+        "exact_l2_norm": 0.5000000000000001,
+        "exact_h1_seminorm": 2.221441469079185,
+        "interpolant_l2_norm": 0.4999390911276989
+      },
+      "quadrature_comparison": {
+        "l2_error": {
+          "absolute_difference": 1.054690189350449e-14,
+          "allowed_difference": 5.47014099139918e-10
+        },
+        "h1_seminorm_error": {
+          "absolute_difference": 8.326672684688674e-17,
+          "allowed_difference": 3.3569521683079885e-08
+        }
+      },
+      "checks": {
+        "dimension": true,
+        "positive_errors": true,
+        "primary_finite": true,
+        "primary_area": true,
+        "primary_boundary": true,
+        "primary_exact_l2": true,
+        "primary_exact_h1": true,
+        "control_finite": true,
+        "control_area": true,
+        "control_boundary": true,
+        "control_exact_l2": true,
+        "control_exact_h1": true,
+        "l2_error_quadrature": true,
+        "h1_seminorm_error_quadrature": true
+      },
+      "status": "passed"
+    },
+    {
+      "case_id": "P2-n16",
+      "element_degree": 2,
+      "mesh_subdivisions": 16,
+      "total_dofs": 1089,
+      "expected_total_dofs": 1089,
+      "expected_free_dofs": 961,
+      "expected_cells": 512,
+      "h": 0.08838834764831845,
+      "h_definition": "Maximum diameter of the right triangles in the stated structured mesh",
+      "metrics": {
+        "domain_area": 1.0000000000000002,
+        "l2_error": 6.871217523754571e-05,
+        "h1_seminorm_error": 0.008431481021589107,
+        "boundary_trace_l2": 0.0,
+        "exact_l2_norm": 0.5,
+        "exact_h1_seminorm": 2.221441469079183,
+        "interpolant_l2_norm": 0.49999614542750326
+      },
+      "control_metrics": {
+        "domain_area": 1.0000000000000002,
+        "l2_error": 6.87121752375221e-05,
+        "h1_seminorm_error": 0.008431481021589074,
+        "boundary_trace_l2": 0.0,
+        "exact_l2_norm": 0.5,
+        "exact_h1_seminorm": 2.221441469079183,
+        "interpolant_l2_norm": 0.4999961454275033
+      },
+      "quadrature_comparison": {
+        "l2_error": {
+          "absolute_difference": 2.360850230587186e-17,
+          "allowed_difference": 6.88121752375221e-11
+        },
+        "h1_seminorm_error": {
+          "absolute_difference": 3.2959746043559335e-17,
+          "allowed_difference": 8.431581021589074e-09
+        }
+      },
+      "checks": {
+        "dimension": true,
+        "positive_errors": true,
+        "primary_finite": true,
+        "primary_area": true,
+        "primary_boundary": true,
+        "primary_exact_l2": true,
+        "primary_exact_h1": true,
+        "control_finite": true,
+        "control_area": true,
+        "control_boundary": true,
+        "control_exact_l2": true,
+        "control_exact_h1": true,
+        "l2_error_quadrature": true,
+        "h1_seminorm_error_quadrature": true
+      },
+      "status": "passed"
+    },
+    {
+      "case_id": "P2-n32",
+      "element_degree": 2,
+      "mesh_subdivisions": 32,
+      "total_dofs": 4225,
+      "expected_total_dofs": 4225,
+      "expected_free_dofs": 3969,
+      "expected_cells": 2048,
+      "h": 0.04419417382415922,
+      "h_definition": "Maximum diameter of the right triangles in the stated structured mesh",
+      "metrics": {
+        "domain_area": 1.0000000000000002,
+        "l2_error": 8.59993190422603e-06,
+        "h1_seminorm_error": 0.002110323498397932,
+        "boundary_trace_l2": 0.0,
+        "exact_l2_norm": 0.5000000000000006,
+        "exact_h1_seminorm": 2.2214414690791804,
+        "interpolant_l2_norm": 0.4999997583343107
+      },
+      "control_metrics": {
+        "domain_area": 1.0000000000000002,
+        "l2_error": 8.599931904225403e-06,
+        "h1_seminorm_error": 0.0021103234983979066,
+        "boundary_trace_l2": 0.0,
+        "exact_l2_norm": 0.5000000000000006,
+        "exact_h1_seminorm": 2.221441469079181,
+        "interpolant_l2_norm": 0.49999975833431076
+      },
+      "quadrature_comparison": {
+        "l2_error": {
+          "absolute_difference": 6.2680438096818225e-19,
+          "allowed_difference": 8.699931904225403e-12
+        },
+        "h1_seminorm_error": {
+          "absolute_difference": 2.5587171270657905e-17,
+          "allowed_difference": 2.1104234983979064e-09
+        }
+      },
+      "checks": {
+        "dimension": true,
+        "positive_errors": true,
+        "primary_finite": true,
+        "primary_area": true,
+        "primary_boundary": true,
+        "primary_exact_l2": true,
+        "primary_exact_h1": true,
+        "control_finite": true,
+        "control_area": true,
+        "control_boundary": true,
+        "control_exact_l2": true,
+        "control_exact_h1": true,
+        "l2_error_quadrature": true,
+        "h1_seminorm_error_quadrature": true
+      },
+      "status": "passed"
+    }
+  ],
+  "rates": [
+    {
+      "element_degree": 1,
+      "metric": "l2_error",
+      "coarse_case": "P1-n8",
+      "fine_case": "P1-n16",
+      "observed_order": 1.9871512306615609,
+      "theoretical_expected_order": 2.0,
+      "allowed_order_difference": 0.35,
+      "status": "passed"
+    },
+    {
+      "element_degree": 1,
+      "metric": "h1_seminorm_error",
+      "coarse_case": "P1-n8",
+      "fine_case": "P1-n16",
+      "observed_order": 0.9916669964367139,
+      "theoretical_expected_order": 1.0,
+      "allowed_order_difference": 0.35,
+      "status": "passed"
+    },
+    {
+      "element_degree": 1,
+      "metric": "l2_error",
+      "coarse_case": "P1-n16",
+      "fine_case": "P1-n32",
+      "observed_order": 1.996788383522632,
+      "theoretical_expected_order": 2.0,
+      "allowed_order_difference": 0.35,
+      "status": "passed"
+    },
+    {
+      "element_degree": 1,
+      "metric": "h1_seminorm_error",
+      "coarse_case": "P1-n16",
+      "fine_case": "P1-n32",
+      "observed_order": 0.9979148598559966,
+      "theoretical_expected_order": 1.0,
+      "allowed_order_difference": 0.35,
+      "status": "passed"
+    },
+    {
+      "element_degree": 2,
+      "metric": "l2_error",
+      "coarse_case": "P2-n8",
+      "fine_case": "P2-n16",
+      "observed_order": 2.9926765938654167,
+      "theoretical_expected_order": 3.0,
+      "allowed_order_difference": 0.35,
+      "status": "passed"
+    },
+    {
+      "element_degree": 2,
+      "metric": "h1_seminorm_error",
+      "coarse_case": "P2-n8",
+      "fine_case": "P2-n16",
+      "observed_order": 1.993289709843601,
+      "theoretical_expected_order": 2.0,
+      "allowed_order_difference": 0.35,
+      "status": "passed"
+    },
+    {
+      "element_degree": 2,
+      "metric": "l2_error",
+      "coarse_case": "P2-n16",
+      "fine_case": "P2-n32",
+      "observed_order": 2.9981686140400754,
+      "theoretical_expected_order": 3.0,
+      "allowed_order_difference": 0.35,
+      "status": "passed"
+    },
+    {
+      "element_degree": 2,
+      "metric": "h1_seminorm_error",
+      "coarse_case": "P2-n16",
+      "fine_case": "P2-n32",
+      "observed_order": 1.9983218969460557,
+      "theoretical_expected_order": 2.0,
+      "allowed_order_difference": 0.35,
+      "status": "passed"
+    }
+  ],
+  "interpolation_trends_checked": true,
+  "evaluation_time": 0.0,
+  "analytic_exact_norms": {
+    "l2": 0.5,
+    "h1_seminorm": 2.221441469079183
+  },
+  "project_linear_solve_run": false,
+  "time_integration_run": false,
+  "transient_fem_convergence_verified": false,
+  "performance_measurement": false
+}

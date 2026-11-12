@@ -1,0 +1,85 @@
+{
+  "started_utc": "2026-10-08T09:40:00.289473+00:00",
+  "status": "imports, MPI, tableaux, and vendor checks passed; project FEM verification pending",
+  "installation_review": "environment/python_installation_review.json",
+  "installation_review_sha256": "28ed047c6f1c393d76edfabe9fa62dd16a9a3bdb047fdac377d2af7988baf730",
+  "selected_tools": {
+    "python": "/opt/homebrew/opt/python@3.13/bin/python3.13",
+    "mpicc": "/opt/homebrew/opt/open-mpi/bin/mpicc",
+    "mpicxx": "/opt/homebrew/opt/open-mpi/bin/mpicxx",
+    "mpif90": "/opt/homebrew/opt/open-mpi/bin/mpif90",
+    "mpiexec": "/opt/homebrew/opt/open-mpi/bin/mpiexec"
+  },
+  "selected_environment": {
+    "PETSC_DIR": "/Users/faiq/Projects/fem-advection-diffusion/environment/build/petsc",
+    "PETSC_ARCH": "arch-firedrake-default",
+    "HDF5_DIR": "/Users/faiq/Projects/fem-advection-diffusion/environment/build/petsc/arch-firedrake-default",
+    "HDF5_MPI": "ON",
+    "OPENBLAS_NUM_THREADS": "1",
+    "OMP_NUM_THREADS": "1",
+    "FIREDRAKE_CACHE_DIR": "/Users/faiq/Projects/fem-advection-diffusion/environment/build/runtime-cache",
+    "PYOP2_CACHE_DIR": "/Users/faiq/Projects/fem-advection-diffusion/environment/build/runtime-cache/pyop2",
+    "FIREDRAKE_TSFC_KERNEL_CACHE_DIR": "/Users/faiq/Projects/fem-advection-diffusion/environment/build/runtime-cache/tsfc",
+    "XDG_CACHE_HOME": "/Users/faiq/Projects/fem-advection-diffusion/environment/build/runtime-cache",
+    "TMPDIR": "/Users/faiq/Projects/fem-advection-diffusion/environment/build/runtime-tmp",
+    "PYTHONNOUSERSITE": "1",
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "FIREDRAKE_CI": "1"
+  },
+  "inherited_library_settings": {},
+  "commands": {
+    "serial_probe": [
+      "/Users/faiq/Projects/fem-advection-diffusion/.venv/bin/python",
+      "/Users/faiq/Projects/fem-advection-diffusion/environment/runtime_probe.py",
+      "--expected-size",
+      "1",
+      "--output",
+      "/Users/faiq/Projects/fem-advection-diffusion/environment/records/python-runtime-20261008T094000Z-29664-serial.json"
+    ],
+    "two_rank_probe": [
+      "/opt/homebrew/opt/open-mpi/bin/mpiexec",
+      "-n",
+      "2",
+      "/Users/faiq/Projects/fem-advection-diffusion/.venv/bin/python",
+      "/Users/faiq/Projects/fem-advection-diffusion/environment/runtime_probe.py",
+      "--expected-size",
+      "2",
+      "--output",
+      "/Users/faiq/Projects/fem-advection-diffusion/environment/records/python-runtime-20261008T094000Z-29664-two-rank.json"
+    ],
+    "firedrake_vendor_check": [
+      "/Users/faiq/Projects/fem-advection-diffusion/.venv/bin/python",
+      "/Users/faiq/Projects/fem-advection-diffusion/.venv/bin/firedrake-check",
+      "--mpiexec",
+      "/opt/homebrew/opt/open-mpi/bin/mpiexec -n"
+    ]
+  },
+  "completed_steps": [
+    "serial_probe",
+    "two_rank_probe",
+    "firedrake_vendor_check"
+  ],
+  "script_sha256": {
+    "check_python_runtime.py": "d0784d5ba3fc156f7c78321a4772b638bf38689cfc46bc69aae4f6f93bcb73b3",
+    "runtime_probe.py": "3e9e21a9803d04b5742c16d39406c640a6557be6b69193b3126ab36745cd0e8d",
+    "configure_petsc.py": "da97e917ff176d5a1d577b986622b36304441728180a5d57277a78e58698af02"
+  },
+  "project_fem_or_time_step_checks_run": false,
+  "vendor_process_counts": [
+    1,
+    2,
+    3
+  ],
+  "probe_records": {
+    "serial": {
+      "path": "environment/records/python-runtime-20261008T094000Z-29664-serial.json",
+      "sha256": "4653a415aaae453e69f9d3174bc1e7c7ee8e6ecddb6847ebeb642f304517ad6b"
+    },
+    "two-rank": {
+      "path": "environment/records/python-runtime-20261008T094000Z-29664-two-rank.json",
+      "sha256": "707eee78ed0512e8e4c2733ad61d432cca20acab5d70b423571b42d4d7cf32d5"
+    }
+  },
+  "finished_utc": "2026-10-08T09:41:19.222182+00:00",
+  "checkpoint_exit_status": 0
+}

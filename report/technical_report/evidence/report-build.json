@@ -1,0 +1,53 @@
+{
+  "status": "completed serial study; report revised 12 November 2026",
+  "operation": "Saved-data typesetting only",
+  "numerical_experiment_run": false,
+  "pdf": {
+    "path": "report/technical_report/technical_report.pdf",
+    "sha256": "a8d8a54ac41e4907c323d8be5c25ea9bc73d697c4d955da247980afcaad4b7c2",
+    "pages": 12
+  },
+  "engine": "/Library/TeX/texbin/pdflatex",
+  "engine_version": "pdfTeX 3.141592653-2.6-1.40.27 (TeX Live 2025)",
+  "commands": [
+    [
+      "/Library/TeX/texbin/pdflatex",
+      "-interaction=nonstopmode",
+      "-halt-on-error",
+      "-file-line-error",
+      "-output-directory",
+      "/Users/faiq/Projects/fem-advection-diffusion/report/technical_report/.build",
+      "main.tex"
+    ],
+    [
+      "/Library/TeX/texbin/pdflatex",
+      "-interaction=nonstopmode",
+      "-halt-on-error",
+      "-file-line-error",
+      "-output-directory",
+      "/Users/faiq/Projects/fem-advection-diffusion/report/technical_report/.build",
+      "main.tex"
+    ]
+  ],
+  "source_date_epoch": "1794441600",
+  "input_sha256": {
+    "report/technical_report/main.tex": "3caf2c0367d7a6e608e45bccb17cfd2877c9dbf4c0b71e81ca1d84f46457274a",
+    "report/technical_report/evidence/data.tex": "b6526acd318d2f198701445a611beeec6cfb19dfce224e1d8adfb84d1b11b508",
+    "report/technical_report/evidence/claims.json": "e285ca2ea8917eba618ff053c820cdad2e1a482ee57d40eae0bb6c0a00bf20d2",
+    "report/technical_report/evidence/primary_sources.json": "35ed5c83a1e70cb6e2f53cb42f0e6b2d6f203fc9cce130185ce77e80fd1a4b69",
+    "scripts/prepare_report.py": "7a5db5829196ee5151fd8dca755286968774c64412d7812b0a0e6df40f60c70b",
+    "scripts/check_saved_results.py": "db1269e40d5a11369b65d72edbf323716f23685b106e8e848b33950e4e363992",
+    "scripts/check_report_evidence.py": "0ab27840207bbf84aa8dedd109acb480ca89fbf6f95afe316d3dd3c2a6b8ab25",
+    "scripts/build_report.py": "01fcfcca936dac0f61b9b18dd919d4bc1b96cccc1f9c05a0c80cbee228d1dd29",
+    "report/technical_report/images/spatial.png": "9bf838e7f14228e6f9e1ff80f57722c5d5dae4e2a5354d94834110c4c1c96e2a",
+    "report/technical_report/images/temporal.png": "229b796031cc94b8117b8994f6a0a2ca2c4f747405a56fc8f7f4f0669a45d0bc",
+    "report/technical_report/images/accuracy_cost.png": "d20d8f84fa4c5e1599920a8ef93e65b81346e0942e510cc7bcc0f05b16b34660",
+    "report/technical_report/images/solver_work.png": "2762a8ee40498e0bdb1813eeb4622693bb0a563ace1df2d048b36278b5e756db",
+    "report/technical_report/images/selected_cost.png": "b7ae923e820a1f9c037f8b66ff341c6a21e9ebd19d3606930daf2b38513c3877"
+  },
+  "limitations": [
+    "No numerical solve or experiment rerun.",
+    "Native TeX is separate from the frozen FEM environment.",
+    "Cross-platform bitwise PDF reproducibility is not asserted."
+  ]
+}

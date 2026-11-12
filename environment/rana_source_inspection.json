@@ -1,0 +1,22 @@
+{
+  "inspected_date": "2026-10-21",
+  "purpose": "Pin the installed RanaLD and auxiliary-PC context interfaces before researcher-run construction",
+  "installed_source_sha256": {
+    ".venv/lib/python3.13/site-packages/irksome/pc.py": "bb6ff87009f7017f1839b9a3fe031f4dfb04fbce7f5de4331470980570a68060",
+    ".venv/lib/python3.13/site-packages/irksome/__init__.py": "3b8b7574dc3fe56664a69db4fccd075909ead6a13fa69335628049f737dc02ae",
+    ".venv/lib/python3.13/site-packages/irksome/base_time_stepper.py": "96c0f8b0babfbe09e425ddac07a6d57780e14e65badfbc783f5c9ddf2fde4c1f",
+    ".venv/lib/python3.13/site-packages/irksome/stage_derivative.py": "d42e0a9564ab871704699718c443db98b936f6bf604bf2159959bdc5780fe85d",
+    ".venv/lib/python3.13/site-packages/firedrake/preconditioners/assembled.py": "21a04d5991d7f35cae988a56c102c915d38dae62cdacf9592c21c5fc3e6f97ff",
+    ".venv/lib/python3.13/site-packages/firedrake/preconditioners/base.py": "d1c3956b9b70cda8121610d39cee3c599c05362ceacd7d853b61b69185f1702a"
+  },
+  "source_notes": [
+    "RanaLD replaces A by L@D from its no-pivot LDU factorization.",
+    "IRKAuxiliaryOperatorPC gets the original stepper from the application context and differentiates a form using the auxiliary tableau.",
+    "AuxiliaryOperatorPC uses the aux_ options prefix and stores the assembled auxiliary operator as context.P and its internal PC as context.pc.",
+    "Those inspected context attributes are implementation details pinned by these hashes; no numerical import or execution was used for this inspection."
+  ],
+  "official_sources": [
+    "https://www.firedrakeproject.org/Irksome/demos/demo_heat_rana.py.html",
+    "https://arxiv.org/abs/2010.11377"
+  ]
+}

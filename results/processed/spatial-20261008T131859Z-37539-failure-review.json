@@ -1,0 +1,305 @@
+{
+  "reviewed_utc": "2026-10-08T13:26:44.598201+00:00",
+  "status": "failed spatial checkpoint reviewed; larger iteration allowance retry prepared",
+  "checkpoint_exit_status": 1,
+  "run_manifest": "results/raw/spatial-20261008T131859Z-37539-manifest.json",
+  "run_manifest_sha256": "e0e1a3406e619ff8706ac84ef3734567177d76885c197fcf161f5e80ec89f64c",
+  "run_transcript": "results/raw/spatial-20261008T131859Z-37539.txt",
+  "run_transcript_sha256": "b2b8a8c8e7cd8aa9eb6e3e55bf7f714df8da63cc76da5f3f800c113d2e06da8b",
+  "measurement_record": {
+    "path": "results/raw/spatial-20261008T131859Z-37539-serial.json",
+    "sha256": "1172c6a535fa511e8cc25839c724db4600b860c7cf7450eb8e31e042f4272bf5"
+  },
+  "original_config_path": "configs/phase1_spatial.json",
+  "original_config_sha256": "5b855285c78d6c3cd888ece4fe8d12abfc1b56fab899ff3ee900709495fd8784",
+  "archived_original_config": "configs/archive/phase1_spatial-max200.json",
+  "archived_original_config_sha256": "5b855285c78d6c3cd888ece4fe8d12abfc1b56fab899ff3ee900709495fd8784",
+  "code_commit": "c9b5ef91a25c8e5dba3558a962e335dfde9590d3",
+  "working_tree_status_before_run": "",
+  "historical_script_sha256": {
+    "src/phase1_spatial.py": "9721c5593f66aec11073d21fd8bf3246209b00e2a4b3f30e8cc7aaef5a40a0f5",
+    "src/phase0_be_smoke.py": "382567d3a9a2d51b09f3e42f4e5ed8f4db2e5273148e917f390609538b0c0480",
+    "src/phase0_irksome_be.py": "ec4f69af4e0ff160e1fc74ec965952d4aaf1f6853d9d3a3affc82ec099de3c68",
+    "src/phase0_radau_smoke.py": "0d93682d3f5d002cf98524fa1e67dd2a09f1f7aec7bd0c1db9454492f9c70b9a",
+    "src/phase1_interpolation.py": "c9b17b5701ccc3724e66a734628cf62b5c7eef0b67803a46e0a63ae39b982e69",
+    "environment/check_spatial.py": "f88e2644a14eadf00f28999fd5f0baf1d7dd5dbc85fb274416cdbf020a9c5ceb",
+    "environment/check_interpolation.py": "6240abded7ef6902746b42f55542c94c8dfbdf07312bcd9fc7b33fa84077d759",
+    "environment/check_radau_smoke.py": "23df1fff453736a8e06dc345f533d61a106a754f02de62c6359a7be741d38ace",
+    "environment/check_irksome_be.py": "75cfad87a8c2c81cd8a025224acdb8ca3d7b9e270c17d13efa021c2bd554fcca",
+    "environment/check_be_smoke.py": "cf3e869775b23818f26aab3ff37051cdbb7154f168af3400001fc79f261070d8",
+    "environment/check_python_runtime.py": "d0784d5ba3fc156f7c78321a4772b638bf38689cfc46bc69aae4f6f93bcb73b3",
+    "environment/configure_petsc.py": "da97e917ff176d5a1d577b986622b36304441728180a5d57277a78e58698af02"
+  },
+  "verified_environment": "environment/verified_environment.json",
+  "verified_environment_sha256": "c2441b3e78aa5f1f5cd5c1d50ba2160148991da35988eaa31ef4bd02d796fa36",
+  "interpolation_review": "results/processed/interpolation_review.json",
+  "interpolation_review_sha256": "b0ac09e0d8f47144d17ac0b4362b0fd73300ab7bdbc4395be21c86b25107acfa",
+  "audited_completed_cases": [
+    "P1-n8",
+    "P1-n16",
+    "P1-n32",
+    "P2-n8",
+    "P2-n16"
+  ],
+  "audited_completed_trajectories": 10,
+  "audited_completed_steps": 3000,
+  "completed_case_observations": [
+    {
+      "case_id": "P1-n8",
+      "h": 0.1767766952966369,
+      "half_dt_continuum_errors": {
+        "domain_area": 1.0000000000000002,
+        "l2_error": 0.008044241914515693,
+        "h1_seminorm_error": 0.15887428302696693,
+        "solution_l2_norm": 0.17673977278898842,
+        "exact_l2_norm": 0.1839397205857212,
+        "exact_h1_seminorm": 0.8172226462399178,
+        "boundary_trace_l2": 0.0
+      },
+      "time_control": {
+        "status": "passed",
+        "norms": {
+          "l2_error": {
+            "actual_field_difference": 3.647078268286624e-10,
+            "reference_continuum_error": 0.008044241914515693,
+            "fraction_of_error": 4.5337749747499953e-08,
+            "allowed_difference": 0.00040221209672578465,
+            "status": "passed"
+          },
+          "h1_seminorm_error": {
+            "actual_field_difference": 1.6515702593430195e-09,
+            "reference_continuum_error": 0.15887428302696693,
+            "fraction_of_error": 1.03954537378632e-08,
+            "allowed_difference": 0.007943714152348347,
+            "status": "passed"
+          }
+        }
+      },
+      "maximum_primary_iterations": 22,
+      "maximum_half_dt_iterations": 19
+    },
+    {
+      "case_id": "P1-n16",
+      "h": 0.08838834764831845,
+      "half_dt_continuum_errors": {
+        "domain_area": 1.0000000000000002,
+        "l2_error": 0.002049683211117842,
+        "h1_seminorm_error": 0.08003041655655425,
+        "solution_l2_norm": 0.1821034735799485,
+        "exact_l2_norm": 0.1839397205857213,
+        "exact_h1_seminorm": 0.8172226462399185,
+        "boundary_trace_l2": 0.0
+      },
+      "time_control": {
+        "status": "passed",
+        "norms": {
+          "l2_error": {
+            "actual_field_difference": 3.763676312849805e-10,
+            "reference_continuum_error": 0.002049683211117842,
+            "fraction_of_error": 1.8362234185433942e-07,
+            "allowed_difference": 0.00010248416155589211,
+            "status": "passed"
+          },
+          "h1_seminorm_error": {
+            "actual_field_difference": 1.6802820493911365e-09,
+            "reference_continuum_error": 0.08003041655655425,
+            "fraction_of_error": 2.099554296588909e-08,
+            "allowed_difference": 0.004001520828827714,
+            "status": "passed"
+          }
+        }
+      },
+      "maximum_primary_iterations": 42,
+      "maximum_half_dt_iterations": 29
+    },
+    {
+      "case_id": "P1-n32",
+      "h": 0.04419417382415922,
+      "half_dt_continuum_errors": {
+        "domain_area": 1.0000000000000002,
+        "l2_error": 0.0005149166194505094,
+        "h1_seminorm_error": 0.04009023317000552,
+        "solution_l2_norm": 0.18347833946681116,
+        "exact_l2_norm": 0.18393972058572114,
+        "exact_h1_seminorm": 0.8172226462399172,
+        "boundary_trace_l2": 0.0
+      },
+      "time_control": {
+        "status": "passed",
+        "norms": {
+          "l2_error": {
+            "actual_field_difference": 3.793524338170563e-10,
+            "reference_continuum_error": 0.0005149166194505094,
+            "fraction_of_error": 7.367259464685376e-07,
+            "allowed_difference": 2.5745831972525467e-05,
+            "status": "passed"
+          },
+          "h1_seminorm_error": {
+            "actual_field_difference": 1.6875302846968007e-09,
+            "reference_continuum_error": 0.04009023317000552,
+            "fraction_of_error": 4.2093301815948716e-08,
+            "allowed_difference": 0.002004511659500276,
+            "status": "passed"
+          }
+        }
+      },
+      "maximum_primary_iterations": 94,
+      "maximum_half_dt_iterations": 62
+    },
+    {
+      "case_id": "P2-n8",
+      "h": 0.1767766952966369,
+      "half_dt_continuum_errors": {
+        "domain_area": 1.0000000000000002,
+        "l2_error": 0.00020202288023129437,
+        "h1_seminorm_error": 0.012283337140539355,
+        "solution_l2_norm": 0.18389683984283084,
+        "exact_l2_norm": 0.1839397205857212,
+        "exact_h1_seminorm": 0.8172226462399178,
+        "boundary_trace_l2": 0.0
+      },
+      "time_control": {
+        "status": "passed",
+        "norms": {
+          "l2_error": {
+            "actual_field_difference": 3.8027076434046596e-10,
+            "reference_continuum_error": 0.00020202288023129437,
+            "fraction_of_error": 1.8823153293582242e-06,
+            "allowed_difference": 1.0101145011564719e-05,
+            "status": "passed"
+          },
+          "h1_seminorm_error": {
+            "actual_field_difference": 1.6897678725417327e-09,
+            "reference_continuum_error": 0.012283337140539355,
+            "fraction_of_error": 1.3756586286025657e-07,
+            "allowed_difference": 0.0006141668580269678,
+            "status": "passed"
+          }
+        }
+      },
+      "maximum_primary_iterations": 50,
+      "maximum_half_dt_iterations": 37
+    },
+    {
+      "case_id": "P2-n16",
+      "h": 0.08838834764831845,
+      "half_dt_continuum_errors": {
+        "domain_area": 1.0000000000000002,
+        "l2_error": 2.53009692740984e-05,
+        "h1_seminorm_error": 0.003097296017210146,
+        "solution_l2_norm": 0.1839369889987255,
+        "exact_l2_norm": 0.1839397205857213,
+        "exact_h1_seminorm": 0.8172226462399185,
+        "boundary_trace_l2": 0.0
+      },
+      "time_control": {
+        "status": "passed",
+        "norms": {
+          "l2_error": {
+            "actual_field_difference": 3.8041587100542415e-10,
+            "reference_continuum_error": 2.53009692740984e-05,
+            "fraction_of_error": 1.5035624401744596e-05,
+            "allowed_difference": 1.2650494637049202e-06,
+            "status": "passed"
+          },
+          "h1_seminorm_error": {
+            "actual_field_difference": 1.6902399807696128e-09,
+            "reference_continuum_error": 0.003097296017210146,
+            "fraction_of_error": 5.457147044963682e-07,
+            "allowed_difference": 0.0001548648018605073,
+            "status": "passed"
+          }
+        }
+      },
+      "maximum_primary_iterations": 120,
+      "maximum_half_dt_iterations": 77
+    }
+  ],
+  "partial_rates": [
+    {
+      "element_degree": 1,
+      "coarse_case": "P1-n8",
+      "fine_case": "P1-n16",
+      "metric": "l2_error",
+      "observed_order": 1.9725555173066145,
+      "status": "partial diagnostic from completed cases, not full spatial acceptance"
+    },
+    {
+      "element_degree": 1,
+      "coarse_case": "P1-n8",
+      "fine_case": "P1-n16",
+      "metric": "h1_seminorm_error",
+      "observed_order": 0.9892652910495483,
+      "status": "partial diagnostic from completed cases, not full spatial acceptance"
+    },
+    {
+      "element_degree": 1,
+      "coarse_case": "P1-n16",
+      "fine_case": "P1-n32",
+      "metric": "l2_error",
+      "observed_order": 1.9929902107327497,
+      "status": "partial diagnostic from completed cases, not full spatial acceptance"
+    },
+    {
+      "element_degree": 1,
+      "coarse_case": "P1-n16",
+      "fine_case": "P1-n32",
+      "metric": "h1_seminorm_error",
+      "observed_order": 0.9972976100267142,
+      "status": "partial diagnostic from completed cases, not full spatial acceptance"
+    },
+    {
+      "element_degree": 2,
+      "coarse_case": "P2-n8",
+      "fine_case": "P2-n16",
+      "metric": "l2_error",
+      "observed_order": 2.997254135191703,
+      "status": "partial diagnostic from completed cases, not full spatial acceptance"
+    },
+    {
+      "element_degree": 2,
+      "coarse_case": "P2-n8",
+      "fine_case": "P2-n16",
+      "metric": "h1_seminorm_error",
+      "observed_order": 1.9876213886616294,
+      "status": "partial diagnostic from completed cases, not full spatial acceptance"
+    }
+  ],
+  "maximum_completed_step_true_residual_over_nominal_target": 0.9994126004257179,
+  "maximum_completed_trajectory_quadrature_norm_change": 3.714422432826714e-15,
+  "failure": {
+    "case_id": "P2-n32",
+    "trajectory": "primary",
+    "dt": 0.005,
+    "stage_total_dofs": 8450,
+    "completed_steps": 0,
+    "failed_step": 1,
+    "reported_reason": "DIVERGED_ITS",
+    "configured_max_iterations": 200,
+    "actual_failed_iteration_counter_recorded": false,
+    "failed_solve_residual_history_recorded": false,
+    "interpretation": "The iteration allowance was exhausted before meeting convergence criteria; residual decrease/stagnation at failure was not captured."
+  },
+  "next_action": {
+    "config": "configs/phase1_spatial.json",
+    "change": "ksp_max_it 200 -> 1000 only",
+    "diagnostics": "Record reported residual history and KSP correction residual on a failed solve",
+    "execution": "Researcher reruns the complete fixed study to obtain a single complete run with uniform iteration allowance",
+    "tolerance_or_acceptance_threshold_relaxed": false,
+    "preconditioner_changed": false,
+    "retry_success_claimed": false
+  },
+  "independent_audit": [
+    "Saved/current/historical source and input hashes match the failed run",
+    "All 3000 completed-step convergence reasons, independent residual allowances and update identities verified",
+    "Completed final norms, quadrature and time controls checked; partial rates recomputed",
+    "First finest-P2 primary solve failed before a time step was committed; half-step/tolerance controls were not executed"
+  ],
+  "transient_spatial_checkpoint_accepted": false,
+  "temporal_order_verified": false,
+  "performance_measurement": false,
+  "documentation_sources": [
+    "https://petsc.org/release/manualpages/KSP/KSP_DIVERGED_ITS/",
+    "https://petsc.org/release/manualpages/KSP/KSPSetTolerances/"
+  ]
+}

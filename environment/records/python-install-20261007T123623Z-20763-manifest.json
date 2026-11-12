@@ -1,0 +1,82 @@
+{
+  "started_utc": "2026-10-07T12:36:23.692946+00:00",
+  "status": "installation and metadata check passed; functional verification pending",
+  "python_plan_sha256": "5b41418c22b872fe7cddaeb55918cf52747c6d7c77dab77e02d0ed9ca7f7d173",
+  "requirements_sha256": "9125d30e943a33e10d29d77d44a00eb75aa953fe70ca91d54798603233a0f9d4",
+  "build_constraints_sha256": "15ed703a4c990550bb53e25b7d932a8aea607c98e12b96edb26ac12532e4781d",
+  "petsc_build_review": "environment/petsc_build_review.json",
+  "petsc_build_review_sha256": "e684f4769f64baed6cc2225a5450e1083a82a47cab7af6ecd657cdaa975d6ab7",
+  "selected_native_tools": {
+    "python": "/opt/homebrew/opt/python@3.13/bin/python3.13",
+    "mpicc": "/opt/homebrew/opt/open-mpi/bin/mpicc",
+    "mpicxx": "/opt/homebrew/opt/open-mpi/bin/mpicxx",
+    "mpif90": "/opt/homebrew/opt/open-mpi/bin/mpif90",
+    "mpiexec": "/opt/homebrew/opt/open-mpi/bin/mpiexec"
+  },
+  "venv": "/Users/faiq/Projects/fem-advection-diffusion/.venv",
+  "commands": {
+    "create_venv_if_absent": [
+      "/opt/homebrew/opt/python@3.13/bin/python3.13",
+      "-m",
+      "venv",
+      "--prompt",
+      "fem-advection-diffusion",
+      "/Users/faiq/Projects/fem-advection-diffusion/.venv"
+    ],
+    "install": [
+      "/Users/faiq/Projects/fem-advection-diffusion/.venv/bin/python",
+      "-m",
+      "pip",
+      "install",
+      "--no-cache-dir",
+      "--no-binary",
+      "h5py,mpi4py,petsc4py",
+      "--build-constraint",
+      "/Users/faiq/Projects/fem-advection-diffusion/environment/constraints-phase0-build.txt",
+      "-r",
+      "/Users/faiq/Projects/fem-advection-diffusion/environment/requirements-phase0.in",
+      "--report",
+      "/Users/faiq/Projects/fem-advection-diffusion/environment/records/python-install-20261007T123623Z-20763-pip-report.json"
+    ],
+    "metadata_check": [
+      "/Users/faiq/Projects/fem-advection-diffusion/.venv/bin/python",
+      "-m",
+      "pip",
+      "check"
+    ]
+  },
+  "selected_environment": {
+    "PETSC_DIR": "/Users/faiq/Projects/fem-advection-diffusion/environment/build/petsc",
+    "PETSC_ARCH": "arch-firedrake-default",
+    "HDF5_DIR": "/Users/faiq/Projects/fem-advection-diffusion/environment/build/petsc/arch-firedrake-default",
+    "HDF5_MPI": "ON",
+    "CC": "/opt/homebrew/opt/open-mpi/bin/mpicc",
+    "MPI4PY_BUILD_MPICC": "/opt/homebrew/opt/open-mpi/bin/mpicc",
+    "OPENBLAS_NUM_THREADS": "1",
+    "OMP_NUM_THREADS": "1",
+    "CMAKE_BUILD_PARALLEL_LEVEL": "4",
+    "TMPDIR": "/Users/faiq/Projects/fem-advection-diffusion/environment/build/python-tmp",
+    "PIP_CACHE_DIR": "/Users/faiq/Projects/fem-advection-diffusion/environment/build/pip-cache"
+  },
+  "functional_import_or_fem_checks_run": false,
+  "pip_check_exit_status": 0,
+  "installed_metadata": {
+    "executable": "/Users/faiq/Projects/fem-advection-diffusion/.venv/bin/python",
+    "prefix": "/Users/faiq/Projects/fem-advection-diffusion/.venv",
+    "base_prefix": "/opt/homebrew/opt/python@3.13/Frameworks/Python.framework/Versions/3.13",
+    "architecture": "arm64",
+    "versions": {
+      "firedrake": "2026.10.0",
+      "irksome": "2026.0.0",
+      "petsc4py": "3.26.0",
+      "mpi4py": "4.1.2",
+      "h5py": "3.16.0"
+    }
+  },
+  "candidate_inventory": "environment/records/python-install-20261007T123623Z-20763-packages.txt",
+  "candidate_inventory_sha256": "1efc25d3b0c190be29997ba521f32211b732d12235cfe91820ffead157f0bcde",
+  "pip_report": "environment/records/python-install-20261007T123623Z-20763-pip-report.json",
+  "pip_report_sha256": "9b41e45a2685b157089d61a5c92a6e9fac90660fc45382160155a3fc2afc7db0",
+  "finished_utc": "2026-10-07T12:46:01.747312+00:00",
+  "checkpoint_exit_status": 0
+}

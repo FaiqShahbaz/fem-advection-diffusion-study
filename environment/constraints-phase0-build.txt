@@ -1,0 +1,7 @@
+# Build dependencies can differ from the versions installed at runtime.
+# h5py 3.16.0 requests mpi4py 4.0.1 for its Python 3.13 isolated build.
+# Permit upstream's build version, capped at the selected runtime version.
+# Runtime mpi4py remains exactly 4.1.2 in requirements-phase0.in.
+# Requires pip >=25.3; the selected interpreter bundles pip 26.2.1.
+mpi4py<=4.1.2
+petsc4py==3.26.0

@@ -1,0 +1,2 @@
+# Separate plotting environment; never install into the frozen numerical .venv.
+matplotlib==3.10.7

@@ -1,0 +1,35 @@
+{
+  "purpose": "One-step manual backward Euler teaching/setup check; not a convergence or timing experiment",
+  "mesh_subdivisions": 8,
+  "mesh_diagonal": "left",
+  "element_family": "CG",
+  "element_degree": 1,
+  "velocity": [
+    1.0,
+    1.0
+  ],
+  "diffusion": 1.0,
+  "dt": 0.01,
+  "steps": 1,
+  "quadrature_degree": 10,
+  "solver_parameters": {
+    "snes_type": "ksponly",
+    "ksp_type": "gmres",
+    "pc_type": "jacobi",
+    "ksp_pc_side": "right",
+    "ksp_norm_type": "unpreconditioned",
+    "ksp_rtol": 1e-11,
+    "ksp_atol": 1e-13,
+    "ksp_max_it": 200,
+    "ksp_gmres_restart": 50,
+    "ksp_error_if_not_converged": true,
+    "ksp_initial_guess_nonzero": false
+  },
+  "checks": {
+    "source_residual_l2_max": 1e-10,
+    "boundary_trace_l2_max": 1e-12,
+    "residual_tolerance_factor": 10.0,
+    "serial_mpi_comparison_rtol": 1e-09,
+    "serial_mpi_comparison_atol": 1e-12
+  }
+}

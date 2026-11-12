@@ -1,0 +1,122 @@
+
+Working directory: /Users/faiq/Projects/fem-advection-diffusion
+Running: /Users/faiq/Projects/fem-advection-diffusion/.venv/bin/python /Users/faiq/Projects/fem-advection-diffusion/environment/runtime_probe.py --expected-size 1 --output /Users/faiq/Projects/fem-advection-diffusion/environment/records/python-runtime-20261008T094000Z-29664-serial.json
+/Users/faiq/Projects/fem-advection-diffusion/.venv/lib/python3.13/site-packages/firedrake/__init__.py:20: UserWarning: Calling petsctools.init but PETSc has already been initialised, any command line options will be ignored.
+  petsctools.init(sys.argv, version_spec=PETSC_SUPPORTED_VERSIONS)
+Rank 0/1: imports, bindings, MPI sum 1, and BE/Radau coefficients passed.
+Exit status: 0
+
+Working directory: /Users/faiq/Projects/fem-advection-diffusion
+Running: /opt/homebrew/opt/open-mpi/bin/mpiexec -n 2 /Users/faiq/Projects/fem-advection-diffusion/.venv/bin/python /Users/faiq/Projects/fem-advection-diffusion/environment/runtime_probe.py --expected-size 2 --output /Users/faiq/Projects/fem-advection-diffusion/environment/records/python-runtime-20261008T094000Z-29664-two-rank.json
+/Users/faiq/Projects/fem-advection-diffusion/.venv/lib/python3.13/site-packages/firedrake/__init__.py:20: UserWarning: Calling petsctools.init but PETSc has already been initialised, any command line options will be ignored.
+  petsctools.init(sys.argv, version_spec=PETSC_SUPPORTED_VERSIONS)
+/Users/faiq/Projects/fem-advection-diffusion/.venv/lib/python3.13/site-packages/firedrake/__init__.py:20: UserWarning: Calling petsctools.init but PETSc has already been initialised, any command line options will be ignored.
+  petsctools.init(sys.argv, version_spec=PETSC_SUPPORTED_VERSIONS)
+Rank 1/2: imports, bindings, MPI sum 3, and BE/Radau coefficients passed.
+Rank 0/2: imports, bindings, MPI sum 3, and BE/Radau coefficients passed.
+Exit status: 0
+
+Working directory: /Users/faiq/Projects/fem-advection-diffusion
+Running: /Users/faiq/Projects/fem-advection-diffusion/.venv/bin/python /Users/faiq/Projects/fem-advection-diffusion/.venv/bin/firedrake-check --mpiexec '/opt/homebrew/opt/open-mpi/bin/mpiexec -n'
+    Running serial smoke tests
+============================= test session starts ==============================
+platform darwin -- Python 3.13.16, pytest-9.1.1, pluggy-1.6.0 -- /Users/faiq/Projects/fem-advection-diffusion/.venv/bin/python
+rootdir: /Users/faiq/Projects/fem-advection-diffusion/.venv/lib/python3.13/site-packages/firedrake/_check
+plugins: platformdirs-4.12.3, mpi-pytest-2026.0
+collecting ... collected 36 items / 3 deselected / 33 selected
+
+tests/firedrake/regression/test_stokes_mini.py::test_stokes_mini[aij] PASSED [  3%]
+tests/firedrake/regression/test_stokes_mini.py::test_stokes_mini[nest] PASSED [  6%]
+tests/firedrake/regression/test_locate_cell.py::test_locate_cell[False-point0-1] PASSED [  9%]
+tests/firedrake/regression/test_locate_cell.py::test_locate_cell[False-point1-2] PASSED [ 12%]
+tests/firedrake/regression/test_locate_cell.py::test_locate_cell[False-point2-3] PASSED [ 15%]
+tests/firedrake/regression/test_locate_cell.py::test_locate_cell[False-point3-4] PASSED [ 18%]
+tests/firedrake/regression/test_locate_cell.py::test_locate_cell[False-point4-5] PASSED [ 21%]
+tests/firedrake/regression/test_locate_cell.py::test_locate_cell[False-point5-6] PASSED [ 24%]
+tests/firedrake/regression/test_locate_cell.py::test_locate_cell[False-point6-7] PASSED [ 27%]
+tests/firedrake/regression/test_locate_cell.py::test_locate_cell[False-point7-8] PASSED [ 30%]
+tests/firedrake/regression/test_locate_cell.py::test_locate_cell[False-point8-9] PASSED [ 33%]
+tests/firedrake/regression/test_locate_cell.py::test_locate_cell_not_found[False] PASSED [ 36%]
+tests/firedrake/regression/test_locate_cell.py::test_locate_cells_ref_coords_and_dists[False] PASSED [ 39%]
+tests/firedrake/regression/test_locate_cell.py::test_locate_cell[True-point0-1] PASSED [ 42%]
+tests/firedrake/regression/test_locate_cell.py::test_locate_cell[True-point1-2] PASSED [ 45%]
+tests/firedrake/regression/test_locate_cell.py::test_locate_cell[True-point2-3] PASSED [ 48%]
+tests/firedrake/regression/test_locate_cell.py::test_locate_cell[True-point3-4] PASSED [ 51%]
+tests/firedrake/regression/test_locate_cell.py::test_locate_cell[True-point4-5] PASSED [ 54%]
+tests/firedrake/regression/test_locate_cell.py::test_locate_cell[True-point5-6] PASSED [ 57%]
+tests/firedrake/regression/test_locate_cell.py::test_locate_cell[True-point6-7] PASSED [ 60%]
+tests/firedrake/regression/test_locate_cell.py::test_locate_cell[True-point7-8] PASSED [ 63%]
+tests/firedrake/regression/test_locate_cell.py::test_locate_cell[True-point8-9] PASSED [ 66%]
+tests/firedrake/regression/test_locate_cell.py::test_locate_cell_not_found[True] PASSED [ 69%]
+tests/firedrake/regression/test_locate_cell.py::test_locate_cells_ref_coords_and_dists[True] PASSED [ 72%]
+tests/firedrake/regression/test_locate_cell.py::test_high_order_location PASSED [ 75%]
+tests/firedrake/regression/test_locate_cell.py::test_high_order_location_warped_interior_facet PASSED [ 78%]
+tests/firedrake/regression/test_locate_cell.py::test_parallel_high_order_location[nprocs=1] PASSED [ 81%]
+tests/firedrake/regression/test_locate_cell.py::test_high_order_location_quad[nprocs=1] PASSED [ 84%]
+tests/firedrake/regression/test_locate_cell.py::test_high_order_location_extruded[nprocs=1] PASSED [ 87%]
+tests/firedrake/supermesh/test_assemble_mixed_mass_matrix.py::test_assemble_mixed_mass_matrix[2-CG-CG-0-0] PASSED [ 90%]
+tests/firedrake/regression/test_matrix_free.py::test_fieldsplitting[parameters3-cofunc_rhs-variational] PASSED [ 93%]
+tests/firedrake/regression/test_nullspace.py::test_near_nullspace PASSED [ 96%]
+tests/firedrake/offload/test_poisson_offloading_pc.py::test_poisson_offload[cg-gamg-True] SKIPPED [100%]
+
+================= 32 passed, 1 skipped, 3 deselected in 31.97s =================
+    Tests passed
+    Running parallel smoke tests (nprocs=2)
+[1m============================= test session starts ==============================[0m
+[1m============================= test session starts ==============================[0m
+platform darwin -- Python 3.13.16, pytest-9.1.1, pluggy-1.6.0 -- /Users/faiq/Projects/fem-advection-diffusion/.venv/bin/python
+platform darwin -- Python 3.13.16, pytest-9.1.1, pluggy-1.6.0 -- /Users/faiq/Projects/fem-advection-diffusion/.venv/bin/python
+rootdir: /Users/faiq/Projects/fem-advection-diffusion/.venv/lib/python3.13/site-packages/firedrake/_check
+plugins: platformdirs-4.12.3, mpi-pytest-2026.0
+rootdir: /Users/faiq/Projects/fem-advection-diffusion/.venv/lib/python3.13/site-packages/firedrake/_check
+plugins: platformdirs-4.12.3, mpi-pytest-2026.0
+[1mcollecting ... [0m[1mcollecting ... [0m[1m
+collected 1 item                                                               [0m
+[1m
+collected 1 item                                                               [0m
+
+tests/firedrake/output/test_io_function.py::test_io_function_base[triangle_small-DP-0] 
+tests/firedrake/output/test_io_function.py::test_io_function_base[triangle_small-DP-0] [32mPASSED[0m[32m [100%][0m[32mPASSED[0m[32m [100%][0m
+
+
+[32m============================== [32m[1m1 passed[0m[32m in 1.44s[0m[32m ===============================[0m
+
+[32m============================== [32m[1m1 passed[0m[32m in 1.44s[0m[32m ===============================[0m
+    Tests passed
+    Running parallel smoke tests (nprocs=3)
+[1m============================= test session starts ==============================[0m
+[1m============================= test session starts ==============================[0m
+[1m============================= test session starts ==============================[0m
+platform darwin -- Python 3.13.16, pytest-9.1.1, pluggy-1.6.0 -- /Users/faiq/Projects/fem-advection-diffusion/.venv/bin/python
+platform darwin -- Python 3.13.16, pytest-9.1.1, pluggy-1.6.0 -- /Users/faiq/Projects/fem-advection-diffusion/.venv/bin/python
+platform darwin -- Python 3.13.16, pytest-9.1.1, pluggy-1.6.0 -- /Users/faiq/Projects/fem-advection-diffusion/.venv/bin/python
+rootdir: /Users/faiq/Projects/fem-advection-diffusion/.venv/lib/python3.13/site-packages/firedrake/_check
+plugins: platformdirs-4.12.3, mpi-pytest-2026.0
+rootdir: /Users/faiq/Projects/fem-advection-diffusion/.venv/lib/python3.13/site-packages/firedrake/_check
+plugins: platformdirs-4.12.3, mpi-pytest-2026.0
+[1mcollecting ... [0m[1mcollecting ... [0mrootdir: /Users/faiq/Projects/fem-advection-diffusion/.venv/lib/python3.13/site-packages/firedrake/_check
+plugins: platformdirs-4.12.3, mpi-pytest-2026.0
+[1mcollecting ... [0m[1m
+collected 2 items                                                              [0m
+
+tests/firedrake/regression/test_dg_advection.py::test_dg_advection_icosahedral_sphere[nprocs=3] [1m
+collected 2 items                                                              [0m
+[1m
+collected 2 items                                                              [0m
+
+tests/firedrake/regression/test_dg_advection.py::test_dg_advection_icosahedral_sphere[nprocs=3] 
+tests/firedrake/regression/test_dg_advection.py::test_dg_advection_icosahedral_sphere[nprocs=3] [32mPASSED[0m[32m [ 50%][0m[32mPASSED[0m[32m [ 50%][0m[32mPASSED[0m[32m [ 50%][0m
+tests/firedrake/regression/test_interpolate_cross_mesh.py::test_interpolate_cross_mesh[extrudedcube-nprocs=3-interpolate_function-0] 
+tests/firedrake/regression/test_interpolate_cross_mesh.py::test_interpolate_cross_mesh[extrudedcube-nprocs=3-interpolate_function-0] 
+tests/firedrake/regression/test_interpolate_cross_mesh.py::test_interpolate_cross_mesh[extrudedcube-nprocs=3-interpolate_function-0] [32mPASSED[0m[32m [100%][0m[32mPASSED[0m[32m [100%][0m[32mPASSED[0m[32m [100%][0m
+
+
+[32m============================== [32m[1m2 passed[0m[32m in 11.44s[0m[32m ==============================[0m
+
+[32m============================== [32m[1m2 passed[0m[32m in 11.44s[0m[32m ==============================[0m
+
+
+[32m============================== [32m[1m2 passed[0m[32m in 11.44s[0m[32m ==============================[0m
+    Tests passed
+Exit status: 0
+PYTHON RUNTIME CHECKPOINT PASSED. Explained project FEM/Irksome time-step checks remain pending.

@@ -1,0 +1,136 @@
+{
+  "mesh_subdivisions": 16,
+  "element_degree": 2,
+  "element_family": "CG",
+  "mesh_diagonal": "left",
+  "velocity": [
+    1.0,
+    1.0
+  ],
+  "diffusion": 1.0,
+  "final_time": 1.0,
+  "quadrature_degree": 10,
+  "quadrature_control_degree": 14,
+  "solver_parameters": {
+    "ksp_type": "gmres",
+    "pc_type": "jacobi",
+    "ksp_pc_side": "right",
+    "ksp_norm_type": "unpreconditioned",
+    "ksp_rtol": 1e-11,
+    "ksp_atol": 1e-13,
+    "ksp_max_it": 1000,
+    "ksp_gmres_restart": 50,
+    "ksp_error_if_not_converged": true,
+    "ksp_initial_guess_nonzero": false
+  },
+  "radau_formulation": {
+    "time_method": "RadauIIA",
+    "num_stages": 2,
+    "stage_type": "deriv",
+    "splitting": "AI",
+    "bc_type": "DAE",
+    "tableau_rational": {
+      "A": [
+        [
+          "5/12",
+          "-1/12"
+        ],
+        [
+          "3/4",
+          "1/4"
+        ]
+      ],
+      "b": [
+        "3/4",
+        "1/4"
+      ],
+      "c": [
+        "1/3",
+        "1"
+      ]
+    }
+  },
+  "checks": {
+    "source_residual_l2_max": 1e-10,
+    "boundary_trace_l2_max": 1e-12,
+    "residual_tolerance_factor": 10.0,
+    "tableau_coefficient_atol": 1e-14,
+    "update_identity_l2_max": 1e-12,
+    "stiff_accuracy_l2_max": 1e-12,
+    "stage_boundary_trace_l2_max": 1e-12,
+    "domain_area_atol": 1e-12,
+    "analytic_norm_rtol": 1e-10,
+    "analytic_norm_atol": 1e-12,
+    "quadrature_comparison_rtol": 1e-06,
+    "quadrature_comparison_atol": 1e-13,
+    "field_control_atol": 1e-12,
+    "initial_baseline_rtol": 1e-09,
+    "initial_baseline_atol": 1e-12,
+    "reference_fraction": 0.01,
+    "solver_control_fraction": 0.01,
+    "observed_order_atol": 0.4,
+    "equivalence_atol": 1e-12,
+    "equivalence_rtol": 1e-10,
+    "time_error_transfer_fraction": 0.01,
+    "pc_field_comparison_atol": 1e-11,
+    "pc_field_comparison_rtol": 1e-08,
+    "additive_action_atol": 1e-12,
+    "additive_action_rtol": 1e-11
+  },
+  "purpose": "Matched manual Radau Jacobi versus standard ASM/local ILU(0) warm core timing on the accepted fixed problem",
+  "dt": 0.1,
+  "matrix_block_size_expected": 1,
+  "performance_measurement": true,
+  "asm_solver_parameters": {
+    "ksp_type": "gmres",
+    "pc_type": "asm",
+    "ksp_pc_side": "right",
+    "ksp_norm_type": "unpreconditioned",
+    "ksp_rtol": 1e-11,
+    "ksp_atol": 1e-13,
+    "ksp_max_it": 1000,
+    "ksp_gmres_restart": 50,
+    "ksp_error_if_not_converged": true,
+    "ksp_initial_guess_nonzero": false,
+    "pc_asm_blocks": 4,
+    "pc_asm_overlap": 1,
+    "pc_asm_type": "basic",
+    "pc_asm_local_type": "additive",
+    "pc_asm_dm_subdomains": false,
+    "mat_partitioning_type": "ptscotch",
+    "sub_ksp_type": "preonly",
+    "sub_pc_type": "ilu",
+    "sub_pc_factor_levels": 0,
+    "sub_pc_factor_mat_ordering_type": "rcm",
+    "sub_pc_factor_mat_solver_type": "petsc",
+    "sub_pc_factor_shift_type": "none"
+  },
+  "cases": [
+    {
+      "case_id": "Jacobi",
+      "accepted_role": "manual_jacobi"
+    },
+    {
+      "case_id": "ASM",
+      "accepted_role": "manual_asm"
+    }
+  ],
+  "warmups_per_case": 1,
+  "repetitions_per_case": 3,
+  "measured_case_order": [
+    [
+      "Jacobi",
+      "ASM"
+    ],
+    [
+      "ASM",
+      "Jacobi"
+    ],
+    [
+      "Jacobi",
+      "ASM"
+    ]
+  ],
+  "required_power_source": "AC Power",
+  "local_work_counting": "Derived from top-level PCApply count and fixed four-domain additive action; checked callback counts verified outside timing"
+}

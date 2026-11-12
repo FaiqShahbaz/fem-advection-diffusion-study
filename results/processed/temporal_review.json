@@ -1,0 +1,1025 @@
+{
+  "reviewed_utc": "2026-10-18T11:45:30.278749+00:00",
+  "status": "accepted controlled same-mesh temporal verification",
+  "checkpoint_exit_status": 0,
+  "temporal_manifest": "results/raw/temporal-20261018T113908Z-75912-manifest.json",
+  "temporal_manifest_sha256": "ba678ff43848203f2f8c59965dca99680f1b4ffb9b120ed9dfbcf53f12f51fe8",
+  "temporal_transcript": "results/raw/temporal-20261018T113908Z-75912.txt",
+  "temporal_transcript_sha256": "8e33a5377b3e4a144e0fa67e9ddf12b506fc4655dd42d183793e1904f2a09a8e",
+  "config": "configs/phase2_temporal.json",
+  "config_sha256": "eec4117c9e21d3452dfcfc938d27dc4009f27025c171987a6796d1f49f4c5ca9",
+  "spatial_review": "results/processed/spatial_review.json",
+  "spatial_review_sha256": "df1e6fe813aa2db0e5667217f17ab8cd03cc02620021e95ec044336d3c752cdf",
+  "verified_environment": "environment/verified_environment.json",
+  "verified_environment_sha256": "c2441b3e78aa5f1f5cd5c1d50ba2160148991da35988eaa31ef4bd02d796fa36",
+  "code_commit": "4d53639bf9d4533436cf3ef789e129dbe53106ca",
+  "working_tree_status_before_run": "",
+  "run_script_sha256": {
+    "src/phase2_temporal.py": "f54ca4d047b133c38ba321e5d1a4e74edd6b8ddc21c4263fe7f8726362728464",
+    "src/phase0_be_smoke.py": "382567d3a9a2d51b09f3e42f4e5ed8f4db2e5273148e917f390609538b0c0480",
+    "src/phase0_irksome_be.py": "ec4f69af4e0ff160e1fc74ec965952d4aaf1f6853d9d3a3affc82ec099de3c68",
+    "src/phase0_radau_smoke.py": "0d93682d3f5d002cf98524fa1e67dd2a09f1f7aec7bd0c1db9454492f9c70b9a",
+    "src/phase1_interpolation.py": "c9b17b5701ccc3724e66a734628cf62b5c7eef0b67803a46e0a63ae39b982e69",
+    "src/phase1_spatial.py": "297617e318cb0d339ae2c9ddf94407abec7273b075dddec641fc5bda2498d391",
+    "environment/check_temporal.py": "01384464231e023efe2158eb7deb834723abc237042123e0e64293bdaf7ed26b",
+    "environment/check_spatial.py": "f88e2644a14eadf00f28999fd5f0baf1d7dd5dbc85fb274416cdbf020a9c5ceb",
+    "environment/check_interpolation.py": "6240abded7ef6902746b42f55542c94c8dfbdf07312bcd9fc7b33fa84077d759",
+    "environment/check_radau_smoke.py": "23df1fff453736a8e06dc345f533d61a106a754f02de62c6359a7be741d38ace",
+    "environment/check_irksome_be.py": "75cfad87a8c2c81cd8a025224acdb8ca3d7b9e270c17d13efa021c2bd554fcca",
+    "environment/check_be_smoke.py": "cf3e869775b23818f26aab3ff37051cdbb7154f168af3400001fc79f261070d8",
+    "environment/check_python_runtime.py": "d0784d5ba3fc156f7c78321a4772b638bf38689cfc46bc69aae4f6f93bcb73b3",
+    "environment/configure_petsc.py": "da97e917ff176d5a1d577b986622b36304441728180a5d57277a78e58698af02"
+  },
+  "measurement_records": {
+    "serial": {
+      "path": "results/raw/temporal-20261018T113908Z-75912-serial.json",
+      "sha256": "7e82f6f9e577b7c169ec31450522de6c49007fce3ff5dbc79dce53fe2b56405f"
+    }
+  },
+  "study_validation": {
+    "status": "passed",
+    "curve_cases": 8,
+    "trajectories": 13,
+    "validated_steps": 3660,
+    "interpretation": "Finite-step temporal trends conditional on recorded reference and solver sensitivity controls; mentor review pending",
+    "performance_measurement": false
+  },
+  "independent_audit": [
+    "Current and historical source/configuration hashes, accepted evidence chain and numerical snapshot matched",
+    "All 3660 clocks, endpoint/stage source times, positive convergence reasons, actual solver options, iteration sums and independent equation residual allowances audited",
+    "Radau weighted updates/stiff accuracy, source and boundary checks, analytic norms and quadrature controls passed",
+    "Twelve temporal rates independently recomputed from actual same-mesh field-difference norms",
+    "Reference refinement plus tolerance sensitivity and both finest-curve accumulated-solver controls independently audited",
+    "Shared P2/n16 initialization matched accepted interpolation; raw records preserved unchanged"
+  ],
+  "study": {
+    "space": "CG P2",
+    "mesh_subdivisions": 16,
+    "total_dofs": 1089,
+    "expected_free_dofs": 961,
+    "h": 0.08838834764831845,
+    "h_definition": "Maximum triangle diameter",
+    "diffusion": 1.0,
+    "velocity": [
+      1.0,
+      1.0
+    ],
+    "final_time": 1.0,
+    "curve_step_sizes": [
+      0.1,
+      0.05,
+      0.025,
+      0.0125
+    ],
+    "reference": {
+      "method": "RadauIIA",
+      "coarse_dt": 0.0015625,
+      "fine_dt": 0.00078125
+    },
+    "error_norm_quadrature_degree": 14,
+    "temporal_error_definition": "Same-mesh final-field difference from baseline fine Radau reference",
+    "continuum_errors_role": "Diagnostic only; not the temporal-order curve"
+  },
+  "curve": [
+    {
+      "method": "manual_backward_euler",
+      "dt": 0.1,
+      "trajectory": "manual_backward_euler_dt0",
+      "time_errors": {
+        "l2_error": 0.0005021576265980673,
+        "h1_seminorm_error": 0.0022420085071591447
+      },
+      "reference_trajectory": "reference_fine",
+      "difference_measurement": {
+        "metrics": {
+          "l2_error": 0.0005021576265980673,
+          "h1_seminorm_error": 0.0022420085071591447
+        },
+        "primary_metrics": {
+          "l2_error": 0.0005021576265980672,
+          "h1_seminorm_error": 0.0022420085071591343
+        },
+        "quadrature_comparison": {
+          "l2_error": {
+            "absolute_difference": 1.0842021724855044e-19,
+            "allowed_difference": 5.022576265980673e-10,
+            "status": "passed"
+          },
+          "h1_seminorm_error": {
+            "absolute_difference": 1.0408340855860843e-17,
+            "allowed_difference": 2.2421085071591446e-09,
+            "status": "passed"
+          }
+        },
+        "status": "passed"
+      },
+      "status": "passed"
+    },
+    {
+      "method": "manual_backward_euler",
+      "dt": 0.05,
+      "trajectory": "manual_backward_euler_dt1",
+      "time_errors": {
+        "l2_error": 0.00024654726954079383,
+        "h1_seminorm_error": 0.0011007668959776352
+      },
+      "reference_trajectory": "reference_fine",
+      "difference_measurement": {
+        "metrics": {
+          "l2_error": 0.00024654726954079383,
+          "h1_seminorm_error": 0.0011007668959776352
+        },
+        "primary_metrics": {
+          "l2_error": 0.0002465472695407938,
+          "h1_seminorm_error": 0.0011007668959776196
+        },
+        "quadrature_comparison": {
+          "l2_error": {
+            "absolute_difference": 5.421010862427522e-20,
+            "allowed_difference": 2.466472695407938e-10,
+            "status": "passed"
+          },
+          "h1_seminorm_error": {
+            "absolute_difference": 1.5612511283791264e-17,
+            "allowed_difference": 1.1008668959776351e-09,
+            "status": "passed"
+          }
+        },
+        "status": "passed"
+      },
+      "status": "passed"
+    },
+    {
+      "method": "manual_backward_euler",
+      "dt": 0.025,
+      "trajectory": "manual_backward_euler_dt2",
+      "time_errors": {
+        "l2_error": 0.00012216249722879618,
+        "h1_seminorm_error": 0.0005454212207760263
+      },
+      "reference_trajectory": "reference_fine",
+      "difference_measurement": {
+        "metrics": {
+          "l2_error": 0.00012216249722879618,
+          "h1_seminorm_error": 0.0005454212207760263
+        },
+        "primary_metrics": {
+          "l2_error": 0.00012216249722879572,
+          "h1_seminorm_error": 0.0005454212207760106
+        },
+        "quadrature_comparison": {
+          "l2_error": {
+            "absolute_difference": 4.607859233063394e-19,
+            "allowed_difference": 1.2226249722879618e-10,
+            "status": "passed"
+          },
+          "h1_seminorm_error": {
+            "absolute_difference": 1.5720931501039814e-17,
+            "allowed_difference": 5.455212207760263e-10,
+            "status": "passed"
+          }
+        },
+        "status": "passed"
+      },
+      "status": "passed"
+    },
+    {
+      "method": "manual_backward_euler",
+      "dt": 0.0125,
+      "trajectory": "manual_backward_euler_dt3",
+      "time_errors": {
+        "l2_error": 6.080634437804757e-05,
+        "h1_seminorm_error": 0.00027148292110795665
+      },
+      "reference_trajectory": "reference_fine",
+      "difference_measurement": {
+        "metrics": {
+          "l2_error": 6.080634437804757e-05,
+          "h1_seminorm_error": 0.00027148292110795665
+        },
+        "primary_metrics": {
+          "l2_error": 6.080634437804697e-05,
+          "h1_seminorm_error": 0.0002714829211079415
+        },
+        "quadrature_comparison": {
+          "l2_error": {
+            "absolute_difference": 6.030874584450618e-19,
+            "allowed_difference": 6.090634437804757e-11,
+            "status": "passed"
+          },
+          "h1_seminorm_error": {
+            "absolute_difference": 1.5124620306172787e-17,
+            "allowed_difference": 2.715829211079566e-10,
+            "status": "passed"
+          }
+        },
+        "status": "passed"
+      },
+      "status": "passed"
+    },
+    {
+      "method": "RadauIIA",
+      "dt": 0.1,
+      "trajectory": "RadauIIA_dt0",
+      "time_errors": {
+        "l2_error": 2.6705645653924393e-06,
+        "h1_seminorm_error": 1.1879314906408024e-05
+      },
+      "reference_trajectory": "reference_fine",
+      "difference_measurement": {
+        "metrics": {
+          "l2_error": 2.6705645653924393e-06,
+          "h1_seminorm_error": 1.1879314906408024e-05
+        },
+        "primary_metrics": {
+          "l2_error": 2.67056456539254e-06,
+          "h1_seminorm_error": 1.1879314906416177e-05
+        },
+        "quadrature_comparison": {
+          "l2_error": {
+            "absolute_difference": 1.0079692072326174e-19,
+            "allowed_difference": 2.770564565392439e-12,
+            "status": "passed"
+          },
+          "h1_seminorm_error": {
+            "absolute_difference": 8.153539150269895e-18,
+            "allowed_difference": 1.1979314906408023e-11,
+            "status": "passed"
+          }
+        },
+        "status": "passed"
+      },
+      "status": "passed"
+    },
+    {
+      "method": "RadauIIA",
+      "dt": 0.05,
+      "trajectory": "RadauIIA_dt1",
+      "time_errors": {
+        "l2_error": 3.7958916319920294e-07,
+        "h1_seminorm_error": 1.6875200742090108e-06
+      },
+      "reference_trajectory": "reference_fine",
+      "difference_measurement": {
+        "metrics": {
+          "l2_error": 3.7958916319920294e-07,
+          "h1_seminorm_error": 1.6875200742090108e-06
+        },
+        "primary_metrics": {
+          "l2_error": 3.7958916320057836e-07,
+          "h1_seminorm_error": 1.6875200742195663e-06
+        },
+        "quadrature_comparison": {
+          "l2_error": {
+            "absolute_difference": 1.3754226876633736e-18,
+            "allowed_difference": 4.795891631992029e-13,
+            "status": "passed"
+          },
+          "h1_seminorm_error": {
+            "absolute_difference": 1.0555512830446277e-17,
+            "allowed_difference": 1.7875200742090106e-12,
+            "status": "passed"
+          }
+        },
+        "status": "passed"
+      },
+      "status": "passed"
+    },
+    {
+      "method": "RadauIIA",
+      "dt": 0.025,
+      "trajectory": "RadauIIA_dt2",
+      "time_errors": {
+        "l2_error": 5.10461828536225e-08,
+        "h1_seminorm_error": 2.2685851927993182e-07
+      },
+      "reference_trajectory": "reference_fine",
+      "difference_measurement": {
+        "metrics": {
+          "l2_error": 5.10461828536225e-08,
+          "h1_seminorm_error": 2.2685851927993182e-07
+        },
+        "primary_metrics": {
+          "l2_error": 5.104618285390202e-08,
+          "h1_seminorm_error": 2.2685851929390623e-07
+        },
+        "quadrature_comparison": {
+          "l2_error": {
+            "absolute_difference": 2.795208725939191e-19,
+            "allowed_difference": 1.510461828536225e-13,
+            "status": "passed"
+          },
+          "h1_seminorm_error": {
+            "absolute_difference": 1.397440250336065e-17,
+            "allowed_difference": 3.268585192799318e-13,
+            "status": "passed"
+          }
+        },
+        "status": "passed"
+      },
+      "status": "passed"
+    },
+    {
+      "method": "RadauIIA",
+      "dt": 0.0125,
+      "trajectory": "RadauIIA_dt3",
+      "time_errors": {
+        "l2_error": 6.634418465647985e-09,
+        "h1_seminorm_error": 2.9479917395361002e-08
+      },
+      "reference_trajectory": "reference_fine",
+      "difference_measurement": {
+        "metrics": {
+          "l2_error": 6.634418465647985e-09,
+          "h1_seminorm_error": 2.9479917395361002e-08
+        },
+        "primary_metrics": {
+          "l2_error": 6.634418465620521e-09,
+          "h1_seminorm_error": 2.947991741522446e-08
+        },
+        "quadrature_comparison": {
+          "l2_error": {
+            "absolute_difference": 2.7464050697985625e-20,
+            "allowed_difference": 1.0663441846564799e-13,
+            "status": "passed"
+          },
+          "h1_seminorm_error": {
+            "absolute_difference": 1.9863458626150277e-17,
+            "allowed_difference": 1.29479917395361e-13,
+            "status": "passed"
+          }
+        },
+        "status": "passed"
+      },
+      "status": "passed"
+    }
+  ],
+  "rates": [
+    {
+      "method": "manual_backward_euler",
+      "metric": "l2_error",
+      "coarse_dt": 0.1,
+      "fine_dt": 0.05,
+      "observed_order": 1.0262760199009857,
+      "expected_order": 1.0,
+      "allowed_order_difference": 0.4,
+      "status": "passed"
+    },
+    {
+      "method": "manual_backward_euler",
+      "metric": "h1_seminorm_error",
+      "coarse_dt": 0.1,
+      "fine_dt": 0.05,
+      "observed_order": 1.0262827635958847,
+      "expected_order": 1.0,
+      "allowed_order_difference": 0.4,
+      "status": "passed"
+    },
+    {
+      "method": "manual_backward_euler",
+      "metric": "l2_error",
+      "coarse_dt": 0.05,
+      "fine_dt": 0.025,
+      "observed_order": 1.0130628164626374,
+      "expected_order": 1.0,
+      "allowed_order_difference": 0.4,
+      "status": "passed"
+    },
+    {
+      "method": "manual_backward_euler",
+      "metric": "h1_seminorm_error",
+      "coarse_dt": 0.05,
+      "fine_dt": 0.025,
+      "observed_order": 1.013066251186956,
+      "expected_order": 1.0,
+      "allowed_order_difference": 0.4,
+      "status": "passed"
+    },
+    {
+      "method": "manual_backward_euler",
+      "metric": "l2_error",
+      "coarse_dt": 0.025,
+      "fine_dt": 0.0125,
+      "observed_order": 1.0065076951844913,
+      "expected_order": 1.0,
+      "allowed_order_difference": 0.4,
+      "status": "passed"
+    },
+    {
+      "method": "manual_backward_euler",
+      "metric": "h1_seminorm_error",
+      "coarse_dt": 0.025,
+      "fine_dt": 0.0125,
+      "observed_order": 1.0065093910102352,
+      "expected_order": 1.0,
+      "allowed_order_difference": 0.4,
+      "status": "passed"
+    },
+    {
+      "method": "RadauIIA",
+      "metric": "l2_error",
+      "coarse_dt": 0.1,
+      "fine_dt": 0.05,
+      "observed_order": 2.814634053330339,
+      "expected_order": 3.0,
+      "allowed_order_difference": 0.4,
+      "status": "passed"
+    },
+    {
+      "method": "RadauIIA",
+      "metric": "h1_seminorm_error",
+      "coarse_dt": 0.1,
+      "fine_dt": 0.05,
+      "observed_order": 2.8154750674496105,
+      "expected_order": 3.0,
+      "allowed_order_difference": 0.4,
+      "status": "passed"
+    },
+    {
+      "method": "RadauIIA",
+      "metric": "l2_error",
+      "coarse_dt": 0.05,
+      "fine_dt": 0.025,
+      "observed_order": 2.894563817811313,
+      "expected_order": 3.0,
+      "allowed_order_difference": 0.4,
+      "status": "passed"
+    },
+    {
+      "method": "RadauIIA",
+      "metric": "h1_seminorm_error",
+      "coarse_dt": 0.05,
+      "fine_dt": 0.025,
+      "observed_order": 2.8950399203733377,
+      "expected_order": 3.0,
+      "allowed_order_difference": 0.4,
+      "status": "passed"
+    },
+    {
+      "method": "RadauIIA",
+      "metric": "l2_error",
+      "coarse_dt": 0.025,
+      "fine_dt": 0.0125,
+      "observed_order": 2.943761164831453,
+      "expected_order": 3.0,
+      "allowed_order_difference": 0.4,
+      "status": "passed"
+    },
+    {
+      "method": "RadauIIA",
+      "metric": "h1_seminorm_error",
+      "coarse_dt": 0.025,
+      "fine_dt": 0.0125,
+      "observed_order": 2.943988451600562,
+      "expected_order": 3.0,
+      "allowed_order_difference": 0.4,
+      "status": "passed"
+    }
+  ],
+  "reference_gap": {
+    "metrics": {
+      "l2_error": 1.1750004005737847e-11,
+      "h1_seminorm_error": 5.2205270465699567e-11
+    },
+    "primary_metrics": {
+      "l2_error": 1.1750003434522976e-11,
+      "h1_seminorm_error": 5.2205289735938185e-11
+    },
+    "quadrature_comparison": {
+      "l2_error": {
+        "absolute_difference": 5.712148711242924e-19,
+        "allowed_difference": 1.0001175000400574e-13,
+        "status": "passed"
+      },
+      "h1_seminorm_error": {
+        "absolute_difference": 1.9270238618157058e-17,
+        "allowed_difference": 1.0005220527046571e-13,
+        "status": "passed"
+      }
+    },
+    "status": "passed"
+  },
+  "reference_solver_difference": {
+    "metrics": {
+      "l2_error": 2.423393580758801e-15,
+      "h1_seminorm_error": 2.867985382474166e-14
+    },
+    "primary_metrics": {
+      "l2_error": 2.42375597907794e-15,
+      "h1_seminorm_error": 2.865321157011636e-14
+    },
+    "quadrature_comparison": {
+      "l2_error": {
+        "absolute_difference": 3.6239831913919344e-19,
+        "allowed_difference": 1.0000000242339358e-13,
+        "status": "passed"
+      },
+      "h1_seminorm_error": {
+        "absolute_difference": 2.664225462530405e-17,
+        "allowed_difference": 1.0000002867985383e-13,
+        "status": "passed"
+      }
+    },
+    "status": "passed"
+  },
+  "reference_resolution": {
+    "status": "passed",
+    "minimum_curve_errors": {
+      "l2_error": 6.634418465647985e-09,
+      "h1_seminorm_error": 2.9479917395361002e-08
+    },
+    "norms": {
+      "l2_error": {
+        "refinement_gap": 1.1750004005737847e-11,
+        "tolerance_change": 2.423393580758801e-15,
+        "combined_sensitivity": 1.1752427399318605e-11,
+        "allowed_combined_sensitivity": 6.734418465647986e-11,
+        "status": "passed"
+      },
+      "h1_seminorm_error": {
+        "refinement_gap": 5.2205270465699567e-11,
+        "tolerance_change": 2.867985382474166e-14,
+        "combined_sensitivity": 5.2233950319524305e-11,
+        "allowed_combined_sensitivity": 2.9579917395361e-10,
+        "status": "passed"
+      }
+    },
+    "interpretation": "Combined refinement/tolerance sensitivity; not a certified absolute reference error bound"
+  },
+  "curve_solver_controls": {
+    "manual_backward_euler": {
+      "status": "passed",
+      "norms": {
+        "l2_error": {
+          "actual_field_difference": 6.541267252766601e-12,
+          "temporal_error_scale": 6.080634437804757e-05,
+          "allowed_difference": 6.080644437804758e-07,
+          "status": "passed"
+        },
+        "h1_seminorm_error": {
+          "actual_field_difference": 3.2571557815704403e-11,
+          "temporal_error_scale": 0.00027148292110795665,
+          "allowed_difference": 2.7148302110795663e-06,
+          "status": "passed"
+        }
+      },
+      "measured_difference": {
+        "metrics": {
+          "l2_error": 6.541267252766601e-12,
+          "h1_seminorm_error": 3.2571557815704403e-11
+        },
+        "primary_metrics": {
+          "l2_error": 6.5412678799154045e-12,
+          "h1_seminorm_error": 3.2571554041137116e-11
+        },
+        "quadrature_comparison": {
+          "l2_error": {
+            "absolute_difference": 6.271488031424954e-19,
+            "allowed_difference": 1.0000654126725276e-13,
+            "status": "passed"
+          },
+          "h1_seminorm_error": {
+            "absolute_difference": 3.774567287360202e-18,
+            "allowed_difference": 1.000325715578157e-13,
+            "status": "passed"
+          }
+        },
+        "status": "passed"
+      }
+    },
+    "RadauIIA": {
+      "status": "passed",
+      "norms": {
+        "l2_error": {
+          "actual_field_difference": 5.338236921956976e-14,
+          "temporal_error_scale": 6.634418465647985e-09,
+          "allowed_difference": 6.734418465647986e-11,
+          "status": "passed"
+        },
+        "h1_seminorm_error": {
+          "actual_field_difference": 2.532470564451753e-13,
+          "temporal_error_scale": 2.9479917395361002e-08,
+          "allowed_difference": 2.9579917395361e-10,
+          "status": "passed"
+        }
+      },
+      "measured_difference": {
+        "metrics": {
+          "l2_error": 5.338236921956976e-14,
+          "h1_seminorm_error": 2.532470564451753e-13
+        },
+        "primary_metrics": {
+          "l2_error": 5.338192529920416e-14,
+          "h1_seminorm_error": 2.532637906090602e-13
+        },
+        "quadrature_comparison": {
+          "l2_error": {
+            "absolute_difference": 4.439203656044373e-19,
+            "allowed_difference": 1.0000005338236922e-13,
+            "status": "passed"
+          },
+          "h1_seminorm_error": {
+            "absolute_difference": 1.6734163884884977e-17,
+            "allowed_difference": 1.0000025324705644e-13,
+            "status": "passed"
+          }
+        },
+        "status": "passed"
+      }
+    }
+  },
+  "initial_metrics": {
+    "domain_area": 1.0000000000000002,
+    "l2_error": 6.871217523754571e-05,
+    "h1_seminorm_error": 0.008431481021589107,
+    "solution_l2_norm": 0.49999614542750326,
+    "exact_l2_norm": 0.5,
+    "exact_h1_seminorm": 2.221441469079183,
+    "boundary_trace_l2": 0.0
+  },
+  "initial_baseline_comparison": {
+    "l2_error": true,
+    "h1_seminorm_error": true
+  },
+  "trajectory_summaries": {
+    "reference_coarse": {
+      "method": "RadauIIA",
+      "dt": 0.0015625,
+      "completed_steps": 640,
+      "total_iterations": 36482,
+      "maximum_step_iterations": 59,
+      "actual_solver": {
+        "ksp_type": "gmres",
+        "pc_type": "jacobi",
+        "side": "right",
+        "norm": "unpreconditioned",
+        "rtol": 1e-11,
+        "atol": 1e-13,
+        "divtol": 10000.0,
+        "max_it": 1000,
+        "requested_restart": 50,
+        "actual_restart_evidence": "KSP view in transcript"
+      },
+      "control_metrics": {
+        "domain_area": 1.0000000000000002,
+        "l2_error": 2.530096480359501e-05,
+        "h1_seminorm_error": 0.003097296017184466,
+        "solution_l2_norm": 0.18393698904014363,
+        "exact_l2_norm": 0.1839397205857213,
+        "exact_h1_seminorm": 0.8172226462399185,
+        "boundary_trace_l2": 0.0
+      }
+    },
+    "reference_fine": {
+      "method": "RadauIIA",
+      "dt": 0.00078125,
+      "completed_steps": 1280,
+      "total_iterations": 49921,
+      "maximum_step_iterations": 40,
+      "actual_solver": {
+        "ksp_type": "gmres",
+        "pc_type": "jacobi",
+        "side": "right",
+        "norm": "unpreconditioned",
+        "rtol": 1e-11,
+        "atol": 1e-13,
+        "divtol": 10000.0,
+        "max_it": 1000,
+        "requested_restart": 50,
+        "actual_restart_evidence": "KSP view in transcript"
+      },
+      "control_metrics": {
+        "domain_area": 1.0000000000000002,
+        "l2_error": 2.5300963535593975e-05,
+        "h1_seminorm_error": 0.003097296017177259,
+        "solution_l2_norm": 0.18393698905189348,
+        "exact_l2_norm": 0.1839397205857213,
+        "exact_h1_seminorm": 0.8172226462399185,
+        "boundary_trace_l2": 0.0
+      }
+    },
+    "reference_fine_tighter": {
+      "method": "RadauIIA",
+      "dt": 0.00078125,
+      "completed_steps": 1280,
+      "total_iterations": 55042,
+      "maximum_step_iterations": 45,
+      "actual_solver": {
+        "ksp_type": "gmres",
+        "pc_type": "jacobi",
+        "side": "right",
+        "norm": "unpreconditioned",
+        "rtol": 1e-12,
+        "atol": 1.0000000000000002e-14,
+        "divtol": 10000.0,
+        "max_it": 1000,
+        "requested_restart": 50,
+        "actual_restart_evidence": "KSP view in transcript"
+      },
+      "control_metrics": {
+        "domain_area": 1.0000000000000002,
+        "l2_error": 2.5300963535680633e-05,
+        "h1_seminorm_error": 0.0030972960171772607,
+        "solution_l2_norm": 0.1839369890518937,
+        "exact_l2_norm": 0.1839397205857213,
+        "exact_h1_seminorm": 0.8172226462399185,
+        "boundary_trace_l2": 0.0
+      }
+    },
+    "manual_backward_euler_dt0": {
+      "method": "manual_backward_euler",
+      "dt": 0.1,
+      "completed_steps": 10,
+      "total_iterations": 1700,
+      "maximum_step_iterations": 170,
+      "actual_solver": {
+        "ksp_type": "gmres",
+        "pc_type": "jacobi",
+        "side": "right",
+        "norm": "unpreconditioned",
+        "rtol": 1e-11,
+        "atol": 1e-13,
+        "divtol": 10000.0,
+        "max_it": 1000,
+        "requested_restart": 50,
+        "actual_restart_evidence": "KSP view in transcript"
+      },
+      "control_metrics": {
+        "domain_area": 1.0000000000000002,
+        "l2_error": 0.000500048465504567,
+        "h1_seminorm_error": 0.003823230320454376,
+        "solution_l2_norm": 0.18443762325144208,
+        "exact_l2_norm": 0.1839397205857213,
+        "exact_h1_seminorm": 0.8172226462399185,
+        "boundary_trace_l2": 0.0
+      }
+    },
+    "manual_backward_euler_dt1": {
+      "method": "manual_backward_euler",
+      "dt": 0.05,
+      "completed_steps": 20,
+      "total_iterations": 3140,
+      "maximum_step_iterations": 157,
+      "actual_solver": {
+        "ksp_type": "gmres",
+        "pc_type": "jacobi",
+        "side": "right",
+        "norm": "unpreconditioned",
+        "rtol": 1e-11,
+        "atol": 1e-13,
+        "divtol": 10000.0,
+        "max_it": 1000,
+        "requested_restart": 50,
+        "actual_restart_evidence": "KSP view in transcript"
+      },
+      "control_metrics": {
+        "domain_area": 1.0000000000000002,
+        "l2_error": 0.00024509910713397094,
+        "h1_seminorm_error": 0.0032868796858287887,
+        "solution_l2_norm": 0.18418278807442878,
+        "exact_l2_norm": 0.1839397205857213,
+        "exact_h1_seminorm": 0.8172226462399185,
+        "boundary_trace_l2": 0.0
+      }
+    },
+    "manual_backward_euler_dt2": {
+      "method": "manual_backward_euler",
+      "dt": 0.025,
+      "completed_steps": 40,
+      "total_iterations": 5360,
+      "maximum_step_iterations": 134,
+      "actual_solver": {
+        "ksp_type": "gmres",
+        "pc_type": "jacobi",
+        "side": "right",
+        "norm": "unpreconditioned",
+        "rtol": 1e-11,
+        "atol": 1e-13,
+        "divtol": 10000.0,
+        "max_it": 1000,
+        "requested_restart": 50,
+        "actual_restart_evidence": "KSP view in transcript"
+      },
+      "control_metrics": {
+        "domain_area": 1.0000000000000002,
+        "l2_error": 0.0001220403515204535,
+        "h1_seminorm_error": 0.003144846086914806,
+        "solution_l2_norm": 0.18405878073843607,
+        "exact_l2_norm": 0.1839397205857213,
+        "exact_h1_seminorm": 0.8172226462399185,
+        "boundary_trace_l2": 0.0
+      }
+    },
+    "manual_backward_euler_dt3": {
+      "method": "manual_backward_euler",
+      "dt": 0.0125,
+      "completed_steps": 80,
+      "total_iterations": 8221,
+      "maximum_step_iterations": 103,
+      "actual_solver": {
+        "ksp_type": "gmres",
+        "pc_type": "jacobi",
+        "side": "right",
+        "norm": "unpreconditioned",
+        "rtol": 1e-11,
+        "atol": 1e-13,
+        "divtol": 10000.0,
+        "max_it": 1000,
+        "requested_restart": 50,
+        "actual_restart_evidence": "KSP view in transcript"
+      },
+      "control_metrics": {
+        "domain_area": 1.0000000000000002,
+        "l2_error": 6.327775660939018e-05,
+        "h1_seminorm_error": 0.0031091175766030884,
+        "solution_l2_norm": 0.18399761081081545,
+        "exact_l2_norm": 0.1839397205857213,
+        "exact_h1_seminorm": 0.8172226462399185,
+        "boundary_trace_l2": 0.0
+      }
+    },
+    "RadauIIA_dt0": {
+      "method": "RadauIIA",
+      "dt": 0.1,
+      "completed_steps": 10,
+      "total_iterations": 7258,
+      "maximum_step_iterations": 734,
+      "actual_solver": {
+        "ksp_type": "gmres",
+        "pc_type": "jacobi",
+        "side": "right",
+        "norm": "unpreconditioned",
+        "rtol": 1e-11,
+        "atol": 1e-13,
+        "divtol": 10000.0,
+        "max_it": 1000,
+        "requested_restart": 50,
+        "actual_restart_evidence": "KSP view in transcript"
+      },
+      "control_metrics": {
+        "domain_area": 1.0000000000000002,
+        "l2_error": 2.5727175612191706e-05,
+        "h1_seminorm_error": 0.0030973208240315502,
+        "solution_l2_norm": 0.1839343202503933,
+        "exact_l2_norm": 0.1839397205857213,
+        "exact_h1_seminorm": 0.8172226462399185,
+        "boundary_trace_l2": 0.0
+      }
+    },
+    "RadauIIA_dt1": {
+      "method": "RadauIIA",
+      "dt": 0.05,
+      "completed_steps": 20,
+      "total_iterations": 9648,
+      "maximum_step_iterations": 489,
+      "actual_solver": {
+        "ksp_type": "gmres",
+        "pc_type": "jacobi",
+        "side": "right",
+        "norm": "unpreconditioned",
+        "rtol": 1e-11,
+        "atol": 1e-13,
+        "divtol": 10000.0,
+        "max_it": 1000,
+        "requested_restart": 50,
+        "actual_restart_evidence": "KSP view in transcript"
+      },
+      "control_metrics": {
+        "domain_area": 1.0000000000000002,
+        "l2_error": 2.534480196565983e-05,
+        "h1_seminorm_error": 0.003097296749919705,
+        "solution_l2_norm": 0.1839366095810924,
+        "exact_l2_norm": 0.1839397205857213,
+        "exact_h1_seminorm": 0.8172226462399185,
+        "boundary_trace_l2": 0.0
+      }
+    },
+    "RadauIIA_dt2": {
+      "method": "RadauIIA",
+      "dt": 0.025,
+      "completed_steps": 40,
+      "total_iterations": 13243,
+      "maximum_step_iterations": 334,
+      "actual_solver": {
+        "ksp_type": "gmres",
+        "pc_type": "jacobi",
+        "side": "right",
+        "norm": "unpreconditioned",
+        "rtol": 1e-11,
+        "atol": 1e-13,
+        "divtol": 10000.0,
+        "max_it": 1000,
+        "requested_restart": 50,
+        "actual_restart_evidence": "KSP view in transcript"
+      },
+      "control_metrics": {
+        "domain_area": 1.0000000000000002,
+        "l2_error": 2.5306528643518275e-05,
+        "h1_seminorm_error": 0.0030972960604236915,
+        "solution_l2_norm": 0.1839369380123463,
+        "exact_l2_norm": 0.1839397205857213,
+        "exact_h1_seminorm": 0.8172226462399185,
+        "boundary_trace_l2": 0.0
+      }
+    },
+    "RadauIIA_dt3": {
+      "method": "RadauIIA",
+      "dt": 0.0125,
+      "completed_steps": 80,
+      "total_iterations": 16883,
+      "maximum_step_iterations": 213,
+      "actual_solver": {
+        "ksp_type": "gmres",
+        "pc_type": "jacobi",
+        "side": "right",
+        "norm": "unpreconditioned",
+        "rtol": 1e-11,
+        "atol": 1e-13,
+        "divtol": 10000.0,
+        "max_it": 1000,
+        "requested_restart": 50,
+        "actual_restart_evidence": "KSP view in transcript"
+      },
+      "control_metrics": {
+        "domain_area": 1.0000000000000002,
+        "l2_error": 2.5301680786748847e-05,
+        "h1_seminorm_error": 0.0030972960216760436,
+        "solution_l2_norm": 0.18393698241782638,
+        "exact_l2_norm": 0.1839397205857213,
+        "exact_h1_seminorm": 0.8172226462399185,
+        "boundary_trace_l2": 0.0
+      }
+    },
+    "manual_backward_euler_finest_tighter": {
+      "method": "manual_backward_euler",
+      "dt": 0.0125,
+      "completed_steps": 80,
+      "total_iterations": 9280,
+      "maximum_step_iterations": 116,
+      "actual_solver": {
+        "ksp_type": "gmres",
+        "pc_type": "jacobi",
+        "side": "right",
+        "norm": "unpreconditioned",
+        "rtol": 1e-12,
+        "atol": 1.0000000000000002e-14,
+        "divtol": 10000.0,
+        "max_it": 1000,
+        "requested_restart": 50,
+        "actual_restart_evidence": "KSP view in transcript"
+      },
+      "control_metrics": {
+        "domain_area": 1.0000000000000002,
+        "l2_error": 6.32777623773912e-05,
+        "h1_seminorm_error": 0.003109117578999307,
+        "solution_l2_norm": 0.18399761081718732,
+        "exact_l2_norm": 0.1839397205857213,
+        "exact_h1_seminorm": 0.8172226462399185,
+        "boundary_trace_l2": 0.0
+      }
+    },
+    "RadauIIA_finest_tighter": {
+      "method": "RadauIIA",
+      "dt": 0.0125,
+      "completed_steps": 80,
+      "total_iterations": 18802,
+      "maximum_step_iterations": 237,
+      "actual_solver": {
+        "ksp_type": "gmres",
+        "pc_type": "jacobi",
+        "side": "right",
+        "norm": "unpreconditioned",
+        "rtol": 1e-12,
+        "atol": 1.0000000000000002e-14,
+        "divtol": 10000.0,
+        "max_it": 1000,
+        "requested_restart": 50,
+        "actual_restart_evidence": "KSP view in transcript"
+      },
+      "control_metrics": {
+        "domain_area": 1.0000000000000002,
+        "l2_error": 2.5301680781057453e-05,
+        "h1_seminorm_error": 0.003097296021676031,
+        "solution_l2_norm": 0.18393698241787917,
+        "exact_l2_norm": 0.1839397205857213,
+        "exact_h1_seminorm": 0.8172226462399185,
+        "boundary_trace_l2": 0.0
+      }
+    }
+  },
+  "maximum_step_true_residual_over_nominal_target": 0.997385988984528,
+  "maximum_update_identity_l2": 7.078389513111455e-17,
+  "maximum_stiff_accuracy_l2": 7.078389513111455e-17,
+  "maximum_continuum_error_quadrature_change": 1.8214596497756474e-17,
+  "reference_combined_sensitivity_fraction": {
+    "l2_error": 0.001771432938722647,
+    "h1_seminorm_error": 0.0017718485984544823
+  },
+  "limits": [
+    "Finite-range trends for one smooth benchmark at kappa=1,T=1 on one fixed P2/n16 mesh",
+    "Fine same-mesh numerical reference with measured sensitivity controls; no certified absolute reference error bound",
+    "No accuracy-cost ranking, general preconditioner robustness or novelty established; verification overhead is not benchmark timing"
+  ],
+  "temporal_order_verified": true,
+  "performance_measurement": false
+}

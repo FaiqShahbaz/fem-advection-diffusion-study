@@ -1,0 +1,345 @@
+
+Working directory: /Users/faiq/Projects/fem-advection-diffusion
+Running: /Users/faiq/Projects/fem-advection-diffusion/.venv/bin/python /Users/faiq/Projects/fem-advection-diffusion/src/phase3_asm_cost.py --config /Users/faiq/Projects/fem-advection-diffusion/configs/phase3_asm_cost.json --output /Users/faiq/Projects/fem-advection-diffusion/results/raw/asm-cost-20261021T102000Z-16397-serial.json
+KSP Object: (phase3_trajectory_asm_cost_Jacobi_verified_) 1 MPI process
+  type: gmres
+    restart=50, using classical (unmodified) Gram-Schmidt orthogonalization with no iterative refinement
+    happy breakdown tolerance=1e-30
+  maximum iterations=1000, initial guess is zero
+  tolerances: relative=1e-11, absolute=1e-13, divergence=10000.
+  right preconditioning
+  using UNPRECONDITIONED norm type for convergence test
+PC Object: (phase3_trajectory_asm_cost_Jacobi_verified_) 1 MPI process
+  type: jacobi
+    type DIAGONAL
+  linear system matrix, which is also used to construct the preconditioner:
+  Mat Object: (phase3_trajectory_asm_cost_Jacobi_verified_) 1 MPI process
+    type: seqaij
+    rows=2178, cols=2178
+    total: nonzeros=48132, allocated nonzeros=48132
+    total number of mallocs used during MatSetValues calls=0
+      not using I-node routines
+  asm_cost_Jacobi_verified: 10 steps passed; total GMRES iterations=7258
+KSP Object: (phase3_trajectory_asm_cost_ASM_verified_) 1 MPI process
+  type: gmres
+    restart=50, using classical (unmodified) Gram-Schmidt orthogonalization with no iterative refinement
+    happy breakdown tolerance=1e-30
+  maximum iterations=1000, initial guess is zero
+  tolerances: relative=1e-11, absolute=1e-13, divergence=10000.
+  right preconditioning
+  using UNPRECONDITIONED norm type for convergence test
+PC Object: (phase3_trajectory_asm_cost_ASM_verified_) 1 MPI process
+  type: asm
+    total subdomain blocks = 4, amount of overlap = 1
+    restriction/interpolation type - BASIC
+    Local solver information for first block is in the following KSP and PC objects on rank 0:
+    Use -phase3_trajectory_asm_cost_ASM_verified_ksp_view ::ascii_info_detail to display information for all blocks
+    KSP Object: (phase3_trajectory_asm_cost_ASM_verified_sub_) 1 MPI process
+      type: preonly
+      maximum iterations=10000, initial guess is zero
+      tolerances: relative=1e-05, absolute=1e-50, divergence=10000.
+      left preconditioning
+      not checking for convergence
+    PC Object: (phase3_trajectory_asm_cost_ASM_verified_sub_) 1 MPI process
+      type: ilu
+        out-of-place factorization
+        0 levels of fill
+        tolerance for zero pivot 2.22045e-14
+        matrix ordering: rcm
+        factor fill ratio given 1., needed 1.
+          Factored matrix:
+            Mat Object: (phase3_trajectory_asm_cost_ASM_verified_sub_) 1 MPI process
+              type: seqaij
+              rows=1248, cols=1248
+              package used to perform factorization: petsc
+              total: nonzeros=27192, allocated nonzeros=27192
+                not using I-node routines
+      linear system matrix, which is also used to construct the preconditioner:
+      Mat Object: (phase3_trajectory_asm_cost_ASM_verified_sub_) 1 MPI process
+        type: seqaij
+        rows=1248, cols=1248
+        total: nonzeros=27192, allocated nonzeros=27192
+        total number of mallocs used during MatSetValues calls=0
+          not using I-node routines
+  linear system matrix, which is also used to construct the preconditioner:
+  Mat Object: (phase3_trajectory_asm_cost_ASM_verified_) 1 MPI process
+    type: seqaij
+    rows=2178, cols=2178
+    total: nonzeros=48132, allocated nonzeros=48132
+    total number of mallocs used during MatSetValues calls=0
+      not using I-node routines
+  asm_cost_ASM_verified: 10 steps passed; total GMRES iterations=600
+KSP Object: (phase3_asm_cost_Jacobi_warmup0_) 1 MPI process
+  type: gmres
+    restart=50, using classical (unmodified) Gram-Schmidt orthogonalization with no iterative refinement
+    happy breakdown tolerance=1e-30
+  maximum iterations=1000, initial guess is zero
+  tolerances: relative=1e-11, absolute=1e-13, divergence=10000.
+  right preconditioning
+  using UNPRECONDITIONED norm type for convergence test
+PC Object: (phase3_asm_cost_Jacobi_warmup0_) 1 MPI process
+  type: jacobi
+    type DIAGONAL
+  linear system matrix, which is also used to construct the preconditioner:
+  Mat Object: (phase3_asm_cost_Jacobi_warmup0_) 1 MPI process
+    type: seqaij
+    rows=2178, cols=2178
+    total: nonzeros=48132, allocated nonzeros=48132
+    total number of mallocs used during MatSetValues calls=0
+      not using I-node routines
+  Jacobi_warmup0: checked core wall=0.236483 s; GMRES total=7258
+KSP Object: (phase3_asm_cost_ASM_warmup0_) 1 MPI process
+  type: gmres
+    restart=50, using classical (unmodified) Gram-Schmidt orthogonalization with no iterative refinement
+    happy breakdown tolerance=1e-30
+  maximum iterations=1000, initial guess is zero
+  tolerances: relative=1e-11, absolute=1e-13, divergence=10000.
+  right preconditioning
+  using UNPRECONDITIONED norm type for convergence test
+PC Object: (phase3_asm_cost_ASM_warmup0_) 1 MPI process
+  type: asm
+    total subdomain blocks = 4, amount of overlap = 1
+    restriction/interpolation type - BASIC
+    Local solver information for first block is in the following KSP and PC objects on rank 0:
+    Use -phase3_asm_cost_ASM_warmup0_ksp_view ::ascii_info_detail to display information for all blocks
+    KSP Object: (phase3_asm_cost_ASM_warmup0_sub_) 1 MPI process
+      type: preonly
+      maximum iterations=10000, initial guess is zero
+      tolerances: relative=1e-05, absolute=1e-50, divergence=10000.
+      left preconditioning
+      not checking for convergence
+    PC Object: (phase3_asm_cost_ASM_warmup0_sub_) 1 MPI process
+      type: ilu
+        out-of-place factorization
+        0 levels of fill
+        tolerance for zero pivot 2.22045e-14
+        matrix ordering: rcm
+        factor fill ratio given 1., needed 1.
+          Factored matrix:
+            Mat Object: (phase3_asm_cost_ASM_warmup0_sub_) 1 MPI process
+              type: seqaij
+              rows=1248, cols=1248
+              package used to perform factorization: petsc
+              total: nonzeros=27192, allocated nonzeros=27192
+                not using I-node routines
+      linear system matrix, which is also used to construct the preconditioner:
+      Mat Object: (phase3_asm_cost_ASM_warmup0_sub_) 1 MPI process
+        type: seqaij
+        rows=1248, cols=1248
+        total: nonzeros=27192, allocated nonzeros=27192
+        total number of mallocs used during MatSetValues calls=0
+          not using I-node routines
+  linear system matrix, which is also used to construct the preconditioner:
+  Mat Object: (phase3_asm_cost_ASM_warmup0_) 1 MPI process
+    type: seqaij
+    rows=2178, cols=2178
+    total: nonzeros=48132, allocated nonzeros=48132
+    total number of mallocs used during MatSetValues calls=0
+      not using I-node routines
+  ASM_warmup0: checked core wall=0.101749 s; GMRES total=600
+KSP Object: (phase3_asm_cost_Jacobi_measured1_) 1 MPI process
+  type: gmres
+    restart=50, using classical (unmodified) Gram-Schmidt orthogonalization with no iterative refinement
+    happy breakdown tolerance=1e-30
+  maximum iterations=1000, initial guess is zero
+  tolerances: relative=1e-11, absolute=1e-13, divergence=10000.
+  right preconditioning
+  using UNPRECONDITIONED norm type for convergence test
+PC Object: (phase3_asm_cost_Jacobi_measured1_) 1 MPI process
+  type: jacobi
+    type DIAGONAL
+  linear system matrix, which is also used to construct the preconditioner:
+  Mat Object: (phase3_asm_cost_Jacobi_measured1_) 1 MPI process
+    type: seqaij
+    rows=2178, cols=2178
+    total: nonzeros=48132, allocated nonzeros=48132
+    total number of mallocs used during MatSetValues calls=0
+      not using I-node routines
+  Jacobi_measured1: checked core wall=0.230527 s; GMRES total=7258
+KSP Object: (phase3_asm_cost_ASM_measured1_) 1 MPI process
+  type: gmres
+    restart=50, using classical (unmodified) Gram-Schmidt orthogonalization with no iterative refinement
+    happy breakdown tolerance=1e-30
+  maximum iterations=1000, initial guess is zero
+  tolerances: relative=1e-11, absolute=1e-13, divergence=10000.
+  right preconditioning
+  using UNPRECONDITIONED norm type for convergence test
+PC Object: (phase3_asm_cost_ASM_measured1_) 1 MPI process
+  type: asm
+    total subdomain blocks = 4, amount of overlap = 1
+    restriction/interpolation type - BASIC
+    Local solver information for first block is in the following KSP and PC objects on rank 0:
+    Use -phase3_asm_cost_ASM_measured1_ksp_view ::ascii_info_detail to display information for all blocks
+    KSP Object: (phase3_asm_cost_ASM_measured1_sub_) 1 MPI process
+      type: preonly
+      maximum iterations=10000, initial guess is zero
+      tolerances: relative=1e-05, absolute=1e-50, divergence=10000.
+      left preconditioning
+      not checking for convergence
+    PC Object: (phase3_asm_cost_ASM_measured1_sub_) 1 MPI process
+      type: ilu
+        out-of-place factorization
+        0 levels of fill
+        tolerance for zero pivot 2.22045e-14
+        matrix ordering: rcm
+        factor fill ratio given 1., needed 1.
+          Factored matrix:
+            Mat Object: (phase3_asm_cost_ASM_measured1_sub_) 1 MPI process
+              type: seqaij
+              rows=1248, cols=1248
+              package used to perform factorization: petsc
+              total: nonzeros=27192, allocated nonzeros=27192
+                not using I-node routines
+      linear system matrix, which is also used to construct the preconditioner:
+      Mat Object: (phase3_asm_cost_ASM_measured1_sub_) 1 MPI process
+        type: seqaij
+        rows=1248, cols=1248
+        total: nonzeros=27192, allocated nonzeros=27192
+        total number of mallocs used during MatSetValues calls=0
+          not using I-node routines
+  linear system matrix, which is also used to construct the preconditioner:
+  Mat Object: (phase3_asm_cost_ASM_measured1_) 1 MPI process
+    type: seqaij
+    rows=2178, cols=2178
+    total: nonzeros=48132, allocated nonzeros=48132
+    total number of mallocs used during MatSetValues calls=0
+      not using I-node routines
+  ASM_measured1: checked core wall=0.087728 s; GMRES total=600
+KSP Object: (phase3_asm_cost_ASM_measured2_) 1 MPI process
+  type: gmres
+    restart=50, using classical (unmodified) Gram-Schmidt orthogonalization with no iterative refinement
+    happy breakdown tolerance=1e-30
+  maximum iterations=1000, initial guess is zero
+  tolerances: relative=1e-11, absolute=1e-13, divergence=10000.
+  right preconditioning
+  using UNPRECONDITIONED norm type for convergence test
+PC Object: (phase3_asm_cost_ASM_measured2_) 1 MPI process
+  type: asm
+    total subdomain blocks = 4, amount of overlap = 1
+    restriction/interpolation type - BASIC
+    Local solver information for first block is in the following KSP and PC objects on rank 0:
+    Use -phase3_asm_cost_ASM_measured2_ksp_view ::ascii_info_detail to display information for all blocks
+    KSP Object: (phase3_asm_cost_ASM_measured2_sub_) 1 MPI process
+      type: preonly
+      maximum iterations=10000, initial guess is zero
+      tolerances: relative=1e-05, absolute=1e-50, divergence=10000.
+      left preconditioning
+      not checking for convergence
+    PC Object: (phase3_asm_cost_ASM_measured2_sub_) 1 MPI process
+      type: ilu
+        out-of-place factorization
+        0 levels of fill
+        tolerance for zero pivot 2.22045e-14
+        matrix ordering: rcm
+        factor fill ratio given 1., needed 1.
+          Factored matrix:
+            Mat Object: (phase3_asm_cost_ASM_measured2_sub_) 1 MPI process
+              type: seqaij
+              rows=1248, cols=1248
+              package used to perform factorization: petsc
+              total: nonzeros=27192, allocated nonzeros=27192
+                not using I-node routines
+      linear system matrix, which is also used to construct the preconditioner:
+      Mat Object: (phase3_asm_cost_ASM_measured2_sub_) 1 MPI process
+        type: seqaij
+        rows=1248, cols=1248
+        total: nonzeros=27192, allocated nonzeros=27192
+        total number of mallocs used during MatSetValues calls=0
+          not using I-node routines
+  linear system matrix, which is also used to construct the preconditioner:
+  Mat Object: (phase3_asm_cost_ASM_measured2_) 1 MPI process
+    type: seqaij
+    rows=2178, cols=2178
+    total: nonzeros=48132, allocated nonzeros=48132
+    total number of mallocs used during MatSetValues calls=0
+      not using I-node routines
+  ASM_measured2: checked core wall=0.087675 s; GMRES total=600
+KSP Object: (phase3_asm_cost_Jacobi_measured2_) 1 MPI process
+  type: gmres
+    restart=50, using classical (unmodified) Gram-Schmidt orthogonalization with no iterative refinement
+    happy breakdown tolerance=1e-30
+  maximum iterations=1000, initial guess is zero
+  tolerances: relative=1e-11, absolute=1e-13, divergence=10000.
+  right preconditioning
+  using UNPRECONDITIONED norm type for convergence test
+PC Object: (phase3_asm_cost_Jacobi_measured2_) 1 MPI process
+  type: jacobi
+    type DIAGONAL
+  linear system matrix, which is also used to construct the preconditioner:
+  Mat Object: (phase3_asm_cost_Jacobi_measured2_) 1 MPI process
+    type: seqaij
+    rows=2178, cols=2178
+    total: nonzeros=48132, allocated nonzeros=48132
+    total number of mallocs used during MatSetValues calls=0
+      not using I-node routines
+  Jacobi_measured2: checked core wall=0.228652 s; GMRES total=7258
+KSP Object: (phase3_asm_cost_Jacobi_measured3_) 1 MPI process
+  type: gmres
+    restart=50, using classical (unmodified) Gram-Schmidt orthogonalization with no iterative refinement
+    happy breakdown tolerance=1e-30
+  maximum iterations=1000, initial guess is zero
+  tolerances: relative=1e-11, absolute=1e-13, divergence=10000.
+  right preconditioning
+  using UNPRECONDITIONED norm type for convergence test
+PC Object: (phase3_asm_cost_Jacobi_measured3_) 1 MPI process
+  type: jacobi
+    type DIAGONAL
+  linear system matrix, which is also used to construct the preconditioner:
+  Mat Object: (phase3_asm_cost_Jacobi_measured3_) 1 MPI process
+    type: seqaij
+    rows=2178, cols=2178
+    total: nonzeros=48132, allocated nonzeros=48132
+    total number of mallocs used during MatSetValues calls=0
+      not using I-node routines
+  Jacobi_measured3: checked core wall=0.227861 s; GMRES total=7258
+KSP Object: (phase3_asm_cost_ASM_measured3_) 1 MPI process
+  type: gmres
+    restart=50, using classical (unmodified) Gram-Schmidt orthogonalization with no iterative refinement
+    happy breakdown tolerance=1e-30
+  maximum iterations=1000, initial guess is zero
+  tolerances: relative=1e-11, absolute=1e-13, divergence=10000.
+  right preconditioning
+  using UNPRECONDITIONED norm type for convergence test
+PC Object: (phase3_asm_cost_ASM_measured3_) 1 MPI process
+  type: asm
+    total subdomain blocks = 4, amount of overlap = 1
+    restriction/interpolation type - BASIC
+    Local solver information for first block is in the following KSP and PC objects on rank 0:
+    Use -phase3_asm_cost_ASM_measured3_ksp_view ::ascii_info_detail to display information for all blocks
+    KSP Object: (phase3_asm_cost_ASM_measured3_sub_) 1 MPI process
+      type: preonly
+      maximum iterations=10000, initial guess is zero
+      tolerances: relative=1e-05, absolute=1e-50, divergence=10000.
+      left preconditioning
+      not checking for convergence
+    PC Object: (phase3_asm_cost_ASM_measured3_sub_) 1 MPI process
+      type: ilu
+        out-of-place factorization
+        0 levels of fill
+        tolerance for zero pivot 2.22045e-14
+        matrix ordering: rcm
+        factor fill ratio given 1., needed 1.
+          Factored matrix:
+            Mat Object: (phase3_asm_cost_ASM_measured3_sub_) 1 MPI process
+              type: seqaij
+              rows=1248, cols=1248
+              package used to perform factorization: petsc
+              total: nonzeros=27192, allocated nonzeros=27192
+                not using I-node routines
+      linear system matrix, which is also used to construct the preconditioner:
+      Mat Object: (phase3_asm_cost_ASM_measured3_sub_) 1 MPI process
+        type: seqaij
+        rows=1248, cols=1248
+        total: nonzeros=27192, allocated nonzeros=27192
+        total number of mallocs used during MatSetValues calls=0
+          not using I-node routines
+  linear system matrix, which is also used to construct the preconditioner:
+  Mat Object: (phase3_asm_cost_ASM_measured3_) 1 MPI process
+    type: seqaij
+    rows=2178, cols=2178
+    total: nonzeros=48132, allocated nonzeros=48132
+    total number of mallocs used during MatSetValues calls=0
+      not using I-node routines
+  ASM_measured3: checked core wall=0.109308 s; GMRES total=600
+Exit status: 0
+ASM COST CHECKPOINT PASSED. Review matched-path timings before further parameter changes.

@@ -1,0 +1,24 @@
+
+Working directory: /Users/faiq/Projects/fem-advection-diffusion
+Running: /Users/faiq/Projects/fem-advection-diffusion/.venv/bin/python /Users/faiq/Projects/fem-advection-diffusion/src/phase1_interpolation.py --config /Users/faiq/Projects/fem-advection-diffusion/configs/phase1_interpolation.json --group all --expected-size 1 --output /Users/faiq/Projects/fem-advection-diffusion/results/raw/interpolation-20261008T124802Z-35838-serial.json
+P1-n8: 81 DOFs, L2=1.555346831e-02, H1 seminorm=4.328319497e-01, checks=passed.
+P1-n16: 289 DOFs, L2=3.923151886e-03, H1 seminorm=2.176696101e-01, checks=passed.
+P1-n32: 1089 DOFs, L2=9.829737581e-04, H1 seminorm=1.089922187e-01, checks=passed.
+P2-n8: 289 DOFs, L2=5.469140992e-04, H1 seminorm=3.356942168e-02, checks=passed.
+P2-n16: 1089 DOFs, L2=6.871217524e-05, H1 seminorm=8.431481022e-03, checks=passed.
+P2-n32: 4225 DOFs, L2=8.599931904e-06, H1 seminorm=2.110323498e-03, checks=passed.
+P1 l2_error, n=8->16: observed order=1.9871512306615609, expected=2.0, checks=passed.
+P1 h1_seminorm_error, n=8->16: observed order=0.9916669964367139, expected=1.0, checks=passed.
+P1 l2_error, n=16->32: observed order=1.996788383522632, expected=2.0, checks=passed.
+P1 h1_seminorm_error, n=16->32: observed order=0.9979148598559966, expected=1.0, checks=passed.
+P2 l2_error, n=8->16: observed order=2.9926765938654167, expected=3.0, checks=passed.
+P2 h1_seminorm_error, n=8->16: observed order=1.993289709843601, expected=2.0, checks=passed.
+P2 l2_error, n=16->32: observed order=2.9981686140400754, expected=3.0, checks=passed.
+P2 h1_seminorm_error, n=16->32: observed order=1.9983218969460557, expected=2.0, checks=passed.
+Exit status: 0
+
+Working directory: /Users/faiq/Projects/fem-advection-diffusion
+Running: /opt/homebrew/opt/open-mpi/bin/mpiexec -n 2 /Users/faiq/Projects/fem-advection-diffusion/.venv/bin/python /Users/faiq/Projects/fem-advection-diffusion/src/phase1_interpolation.py --config /Users/faiq/Projects/fem-advection-diffusion/configs/phase1_interpolation.json --group mpi_probe --expected-size 2 --output /Users/faiq/Projects/fem-advection-diffusion/results/raw/interpolation-20261008T124802Z-35838-two-rank.json
+P2-n32: 4225 DOFs, L2=8.599931904e-06, H1 seminorm=2.110323498e-03, checks=passed.
+Exit status: 0
+INITIAL INTERPOLATION CHECKPOINT PASSED. Review before transient spatial or temporal experiments.

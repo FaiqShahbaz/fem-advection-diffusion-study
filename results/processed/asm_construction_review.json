@@ -1,0 +1,184 @@
+{
+  "status": "accepted standard ASM local ILU one-step construction",
+  "asm_construction_verified": true,
+  "performance_measurement": false,
+  "full_trajectory_verified": false,
+  "code_commit": "b78f7379deb51e9675f58927802175594ca00f7e",
+  "checkpoint_exit_status": 0,
+  "measurement_records": {
+    "serial": {
+      "path": "results/raw/asm-construction-20261019T111303Z-86965-serial.json",
+      "sha256": "c4d18bb64ec894fa4a900772cdc689fa0122ec7c48bc8be8e8e2e230fa4c1970"
+    }
+  },
+  "run_script_sha256": {
+    "src/phase3_asm_construction.py": "a1a22df2a45b8a9b5e6eab21fddd90f8015a499e60c951bf0be6b32ed2d5f41b",
+    "src/phase3_accuracy_cost.py": "16e2dee7c150e101120c0f1f3fc601f8646849fc6162539b339e78b00944633f",
+    "environment/check_accuracy_cost.py": "fa44a01260232ba0dc796dfea0c789ccdaea9693d8d426e79d49cc8b9507c3e9",
+    "src/phase3_cost_pilot.py": "458bd6db1b81d2c1bfaf729fca511f01efec51e9141de2d14046bdad3fefba7c",
+    "environment/check_cost_pilot.py": "a2ab9e3d8e5e0333af9e49c44a649ac34750bbb59e4ca22c04e3766d75219dfa",
+    "src/phase2_temporal.py": "f54ca4d047b133c38ba321e5d1a4e74edd6b8ddc21c4263fe7f8726362728464",
+    "environment/check_temporal.py": "01384464231e023efe2158eb7deb834723abc237042123e0e64293bdaf7ed26b",
+    "src/phase0_be_smoke.py": "382567d3a9a2d51b09f3e42f4e5ed8f4db2e5273148e917f390609538b0c0480",
+    "src/phase0_irksome_be.py": "ec4f69af4e0ff160e1fc74ec965952d4aaf1f6853d9d3a3affc82ec099de3c68",
+    "src/phase0_radau_smoke.py": "0d93682d3f5d002cf98524fa1e67dd2a09f1f7aec7bd0c1db9454492f9c70b9a",
+    "src/phase1_interpolation.py": "c9b17b5701ccc3724e66a734628cf62b5c7eef0b67803a46e0a63ae39b982e69",
+    "src/phase1_spatial.py": "297617e318cb0d339ae2c9ddf94407abec7273b075dddec641fc5bda2498d391",
+    "environment/check_asm_construction.py": "21ffb46ecac6cd18724cc8be86f1d4425ffcf06d2577dfe749e4f4666120fa4f",
+    "environment/check_spatial.py": "f88e2644a14eadf00f28999fd5f0baf1d7dd5dbc85fb274416cdbf020a9c5ceb",
+    "environment/check_interpolation.py": "6240abded7ef6902746b42f55542c94c8dfbdf07312bcd9fc7b33fa84077d759",
+    "environment/check_radau_smoke.py": "23df1fff453736a8e06dc345f533d61a106a754f02de62c6359a7be741d38ace",
+    "environment/check_irksome_be.py": "75cfad87a8c2c81cd8a025224acdb8ca3d7b9e270c17d13efa021c2bd554fcca",
+    "environment/check_be_smoke.py": "cf3e869775b23818f26aab3ff37051cdbb7154f168af3400001fc79f261070d8",
+    "environment/check_python_runtime.py": "d0784d5ba3fc156f7c78321a4772b638bf38689cfc46bc69aae4f6f93bcb73b3",
+    "environment/configure_petsc.py": "da97e917ff176d5a1d577b986622b36304441728180a5d57277a78e58698af02"
+  },
+  "study_validation": {
+    "status": "passed",
+    "independent_operator_solves": 3,
+    "subdomains": 4,
+    "performance_measurement": false,
+    "interpretation": "One-step standard ASM/local ILU construction and field equivalence; mentor review pending"
+  },
+  "independent_audit": {
+    "status": "passed",
+    "independent_operator_solves": 3,
+    "physical_steps_per_realization": 1,
+    "solve_summary": {
+      "irksome_jacobi": {
+        "iterations": 734,
+        "converged_reason": 2,
+        "true_block_residual": {
+          "norm": 5.806515505434022e-13,
+          "rhs_norm": 0.05911796878920447,
+          "relative_norm": 9.821913073735966e-12
+        },
+        "nominal_target": 5.911796878920447e-13
+      },
+      "manual_jacobi_reference": {
+        "iterations": 800,
+        "converged_reason": 2,
+        "true_block_residual": {
+          "norm": 5.796705363107841e-14,
+          "rhs_norm": 0.05911796878920447,
+          "relative_norm": 9.805318893443405e-13
+        },
+        "nominal_target": 5.911796878920447e-14
+      },
+      "manual_asm": {
+        "iterations": 60,
+        "converged_reason": 2,
+        "true_block_residual": {
+          "norm": 4.905229427778452e-13,
+          "rhs_norm": 0.05911796878920447,
+          "relative_norm": 8.29735785623642e-12
+        },
+        "nominal_target": 5.911796878920447e-13
+      }
+    },
+    "field_comparisons": {
+      "manual_reference_update_vs_irksome": {
+        "l2_error": {
+          "difference": 1.6026954931326892e-13,
+          "allowed": 4.534066065813741e-09
+        },
+        "h1_seminorm_error": {
+          "difference": 8.136380332859842e-13,
+          "allowed": 2.0110040109004414e-08
+        }
+      },
+      "asm_update_vs_manual_reference": {
+        "l2_error": {
+          "difference": 2.379619898271969e-13,
+          "allowed": 4.534066065812222e-09
+        },
+        "h1_seminorm_error": {
+          "difference": 1.1230571987042426e-12,
+          "allowed": 2.0110040108997688e-08
+        }
+      },
+      "asm_slope1_vs_manual_reference": {
+        "l2_error": {
+          "difference": 1.961658229855323e-12,
+          "allowed": 4.847586993519467e-09
+        },
+        "h1_seminorm_error": {
+          "difference": 9.34256321891504e-12,
+          "allowed": 2.150318216398953e-08
+        }
+      },
+      "asm_slope2_vs_manual_reference": {
+        "l2_error": {
+          "difference": 3.74309776347956e-12,
+          "allowed": 4.5330548710595205e-09
+        },
+        "h1_seminorm_error": {
+          "difference": 1.9303010367417705e-11,
+          "allowed": 2.0105754906330044e-08
+        }
+      }
+    },
+    "domain_sizes": [
+      {
+        "core": 545,
+        "overlap": 1248
+      },
+      {
+        "core": 545,
+        "overlap": 1224
+      },
+      {
+        "core": 544,
+        "overlap": 1248
+      },
+      {
+        "core": 544,
+        "overlap": 1206
+      }
+    ],
+    "outer_local_calls_per_domain": [
+      62,
+      62,
+      62,
+      62
+    ],
+    "outer_local_calls_total": 248,
+    "additive_action_check": {
+      "status": "passed",
+      "input_definition": "sin((i+1)*0.123)+0.2*cos((i+1)*0.059)",
+      "defect_norm": 0.0,
+      "reference_action_norm": 2188.4271623019927,
+      "relative_defect": 0.0,
+      "allowed_defect": 2.1885271623019928e-08,
+      "actual_global_PC_applications": 1,
+      "independent_direct_local_PC_applications": 4
+    },
+    "extrema": {
+      "max_true_residual_over_nominal_target": 0.9821913073735966,
+      "max_field_difference": 1.9303010367417705e-11,
+      "max_quadrature_change": 2.781283347536008e-17
+    },
+    "performance_measurement": false,
+    "audit_limit": "Raw arithmetic and index consistency rechecked; matrix adjacency and numerical PC/field operations were checked at researcher runtime, not rerun by this auditor."
+  },
+  "limits": [
+    "One first Radau interval [0,0.1] only; no trajectory or timing ranking.",
+    "Four graph subdomains on one MPI rank, not four cores.",
+    "The manual Jacobi reference uses ten-times-tighter tolerances; its 800 iterations are not a same-tolerance comparison.",
+    "One deterministic additive-action probe; numerical matrix/field operations are runtime evidence, not independently rerun by the mentor."
+  ],
+  "asm_manifest": "results/raw/asm-construction-20261019T111303Z-86965-manifest.json",
+  "asm_manifest_sha256": "c1ad2269fb7b7353be0a5793f1e17f414c98ff32e54c20e81a8a247291e54437",
+  "asm_transcript": "results/raw/asm-construction-20261019T111303Z-86965.txt",
+  "asm_transcript_sha256": "8c19fbd1d9df21f5fb0eb0fafd9fae3f0c3cc3b33957f225fbebdd14b8f87b53",
+  "config": "configs/phase3_asm_construction.json",
+  "config_sha256": "73df0e6f8101dc2aed5e672164e2c3eb698c09996f794b7e4f674b0099753ff9",
+  "accuracy_cost_review": "results/processed/accuracy_cost_review.json",
+  "accuracy_cost_review_sha256": "40a97db2b4823a2f3dae0ff1559984578be942079a973955f2dd28489936e9db",
+  "verified_environment": "environment/verified_environment.json",
+  "verified_environment_sha256": "c2441b3e78aa5f1f5cd5c1d50ba2160148991da35988eaa31ef4bd02d796fa36",
+  "audit_source": {
+    "path": "scripts/audit_asm_construction.py",
+    "sha256": "e8be7b2308e7733dca7fb3dd778a40137d198d4e872ed2d6d390fb7d5b68b223"
+  }
+}

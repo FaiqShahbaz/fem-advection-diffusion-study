@@ -1,0 +1,243 @@
+{
+  "raw_source": {
+    "path": "results/raw/temporal-20261018T113908Z-75912-serial.json",
+    "sha256": "7e82f6f9e577b7c169ec31450522de6c49007fce3ff5dbc79dce53fe2b56405f"
+  },
+  "accepted_review": "results/processed/temporal_review.json",
+  "quantity": "Actual final-field difference from fine same-mesh Radau reference at T=1; CG P2/n16; q=14",
+  "reference": {
+    "method": "RadauIIA",
+    "coarse_dt": 0.0015625,
+    "fine_dt": 0.00078125
+  },
+  "rows": [
+    {
+      "method": "manual_backward_euler",
+      "dt": 0.1,
+      "time_errors": {
+        "l2_error": 0.0005021576265980673,
+        "h1_seminorm_error": 0.0022420085071591447
+      },
+      "trajectory": "manual_backward_euler_dt0",
+      "steps": 10,
+      "total_iterations": 1700,
+      "l2_error_observed_order": null,
+      "h1_seminorm_error_observed_order": null
+    },
+    {
+      "method": "manual_backward_euler",
+      "dt": 0.05,
+      "time_errors": {
+        "l2_error": 0.00024654726954079383,
+        "h1_seminorm_error": 0.0011007668959776352
+      },
+      "trajectory": "manual_backward_euler_dt1",
+      "steps": 20,
+      "total_iterations": 3140,
+      "l2_error_observed_order": 1.0262760199009857,
+      "h1_seminorm_error_observed_order": 1.0262827635958847
+    },
+    {
+      "method": "manual_backward_euler",
+      "dt": 0.025,
+      "time_errors": {
+        "l2_error": 0.00012216249722879618,
+        "h1_seminorm_error": 0.0005454212207760263
+      },
+      "trajectory": "manual_backward_euler_dt2",
+      "steps": 40,
+      "total_iterations": 5360,
+      "l2_error_observed_order": 1.0130628164626374,
+      "h1_seminorm_error_observed_order": 1.013066251186956
+    },
+    {
+      "method": "manual_backward_euler",
+      "dt": 0.0125,
+      "time_errors": {
+        "l2_error": 6.080634437804757e-05,
+        "h1_seminorm_error": 0.00027148292110795665
+      },
+      "trajectory": "manual_backward_euler_dt3",
+      "steps": 80,
+      "total_iterations": 8221,
+      "l2_error_observed_order": 1.0065076951844913,
+      "h1_seminorm_error_observed_order": 1.0065093910102352
+    },
+    {
+      "method": "RadauIIA",
+      "dt": 0.1,
+      "time_errors": {
+        "l2_error": 2.6705645653924393e-06,
+        "h1_seminorm_error": 1.1879314906408024e-05
+      },
+      "trajectory": "RadauIIA_dt0",
+      "steps": 10,
+      "total_iterations": 7258,
+      "l2_error_observed_order": null,
+      "h1_seminorm_error_observed_order": null
+    },
+    {
+      "method": "RadauIIA",
+      "dt": 0.05,
+      "time_errors": {
+        "l2_error": 3.7958916319920294e-07,
+        "h1_seminorm_error": 1.6875200742090108e-06
+      },
+      "trajectory": "RadauIIA_dt1",
+      "steps": 20,
+      "total_iterations": 9648,
+      "l2_error_observed_order": 2.814634053330339,
+      "h1_seminorm_error_observed_order": 2.8154750674496105
+    },
+    {
+      "method": "RadauIIA",
+      "dt": 0.025,
+      "time_errors": {
+        "l2_error": 5.10461828536225e-08,
+        "h1_seminorm_error": 2.2685851927993182e-07
+      },
+      "trajectory": "RadauIIA_dt2",
+      "steps": 40,
+      "total_iterations": 13243,
+      "l2_error_observed_order": 2.894563817811313,
+      "h1_seminorm_error_observed_order": 2.8950399203733377
+    },
+    {
+      "method": "RadauIIA",
+      "dt": 0.0125,
+      "time_errors": {
+        "l2_error": 6.634418465647985e-09,
+        "h1_seminorm_error": 2.9479917395361002e-08
+      },
+      "trajectory": "RadauIIA_dt3",
+      "steps": 80,
+      "total_iterations": 16883,
+      "l2_error_observed_order": 2.943761164831453,
+      "h1_seminorm_error_observed_order": 2.943988451600562
+    }
+  ],
+  "rates": [
+    {
+      "method": "manual_backward_euler",
+      "metric": "l2_error",
+      "coarse_dt": 0.1,
+      "fine_dt": 0.05,
+      "observed_order": 1.0262760199009857,
+      "expected_order": 1.0,
+      "allowed_order_difference": 0.4,
+      "status": "passed"
+    },
+    {
+      "method": "manual_backward_euler",
+      "metric": "h1_seminorm_error",
+      "coarse_dt": 0.1,
+      "fine_dt": 0.05,
+      "observed_order": 1.0262827635958847,
+      "expected_order": 1.0,
+      "allowed_order_difference": 0.4,
+      "status": "passed"
+    },
+    {
+      "method": "manual_backward_euler",
+      "metric": "l2_error",
+      "coarse_dt": 0.05,
+      "fine_dt": 0.025,
+      "observed_order": 1.0130628164626374,
+      "expected_order": 1.0,
+      "allowed_order_difference": 0.4,
+      "status": "passed"
+    },
+    {
+      "method": "manual_backward_euler",
+      "metric": "h1_seminorm_error",
+      "coarse_dt": 0.05,
+      "fine_dt": 0.025,
+      "observed_order": 1.013066251186956,
+      "expected_order": 1.0,
+      "allowed_order_difference": 0.4,
+      "status": "passed"
+    },
+    {
+      "method": "manual_backward_euler",
+      "metric": "l2_error",
+      "coarse_dt": 0.025,
+      "fine_dt": 0.0125,
+      "observed_order": 1.0065076951844913,
+      "expected_order": 1.0,
+      "allowed_order_difference": 0.4,
+      "status": "passed"
+    },
+    {
+      "method": "manual_backward_euler",
+      "metric": "h1_seminorm_error",
+      "coarse_dt": 0.025,
+      "fine_dt": 0.0125,
+      "observed_order": 1.0065093910102352,
+      "expected_order": 1.0,
+      "allowed_order_difference": 0.4,
+      "status": "passed"
+    },
+    {
+      "method": "RadauIIA",
+      "metric": "l2_error",
+      "coarse_dt": 0.1,
+      "fine_dt": 0.05,
+      "observed_order": 2.814634053330339,
+      "expected_order": 3.0,
+      "allowed_order_difference": 0.4,
+      "status": "passed"
+    },
+    {
+      "method": "RadauIIA",
+      "metric": "h1_seminorm_error",
+      "coarse_dt": 0.1,
+      "fine_dt": 0.05,
+      "observed_order": 2.8154750674496105,
+      "expected_order": 3.0,
+      "allowed_order_difference": 0.4,
+      "status": "passed"
+    },
+    {
+      "method": "RadauIIA",
+      "metric": "l2_error",
+      "coarse_dt": 0.05,
+      "fine_dt": 0.025,
+      "observed_order": 2.894563817811313,
+      "expected_order": 3.0,
+      "allowed_order_difference": 0.4,
+      "status": "passed"
+    },
+    {
+      "method": "RadauIIA",
+      "metric": "h1_seminorm_error",
+      "coarse_dt": 0.05,
+      "fine_dt": 0.025,
+      "observed_order": 2.8950399203733377,
+      "expected_order": 3.0,
+      "allowed_order_difference": 0.4,
+      "status": "passed"
+    },
+    {
+      "method": "RadauIIA",
+      "metric": "l2_error",
+      "coarse_dt": 0.025,
+      "fine_dt": 0.0125,
+      "observed_order": 2.943761164831453,
+      "expected_order": 3.0,
+      "allowed_order_difference": 0.4,
+      "status": "passed"
+    },
+    {
+      "method": "RadauIIA",
+      "metric": "h1_seminorm_error",
+      "coarse_dt": 0.025,
+      "fine_dt": 0.0125,
+      "observed_order": 2.943988451600562,
+      "expected_order": 3.0,
+      "allowed_order_difference": 0.4,
+      "status": "passed"
+    }
+  ],
+  "temporal_checkpoint_accepted": true,
+  "performance_measurement": false
+}

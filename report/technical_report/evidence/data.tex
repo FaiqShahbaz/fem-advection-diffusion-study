@@ -1,0 +1,25 @@
+\newcommand{\SpatialRateRows}{P1 & 2 / 1 & 1.992990 & 0.997298 \\
+P2 & 3 / 2 & 2.999197 & 1.996778 \\}
+\newcommand{\TemporalRateRows}{Backward Euler & 1.006508 & 1.006509 \\
+Radau IIA(2) & 2.943761 & 2.943988 \\}
+\newcommand{\AccuracyCostRows}{BE\_loose & 0.0125 & $6.081\times10^{-5}$ & 0.172750 \\
+Radau\_coarse & 0.1 & $2.671\times10^{-6}$ & 0.239614 \\
+BE\_fine & 0.0005 & $2.422\times10^{-6}$ & 2.346190 \\
+Radau\_fine & 0.05 & $3.796\times10^{-7}$ & 0.318708 \\}
+\newcommand{\TightAccuracyRatio}{9.792}
+\newcommand{\BaselineIterationRows}{Jacobi & 7258 \\
+ASM/ILU(0) & 600 \\
+RanaLD/auxiliary LU & 70 \\}
+\newcommand{\BaselineJacobiRanaRatio}{5.410}
+\newcommand{\SelectedCostRows}{16, 1 & Jacobi & 0.238133 & 0.237651--0.239727 & 0.87\% \\
+16, 1 & ASM & 0.088277 & 0.088224--0.088430 & 0.23\% \\
+16, 1 & RanaLD & 0.044019 & 0.043033--0.044327 & 2.94\% \\
+32, 1 & Jacobi & excluded & --- & --- \\
+32, 1 & ASM & 0.653688 & 0.652339--0.658022 & 0.87\% \\
+32, 1 & RanaLD & 0.140929 & 0.140922--0.154305 & 9.50\% \\
+16, 0.1 & Jacobi & 0.088201 & 0.087312--0.088461 & 1.30\% \\
+16, 0.1 & ASM & 0.060777 & 0.060700--0.060948 & 0.41\% \\
+16, 0.1 & RanaLD & 0.045448 & 0.044927--0.045684 & 1.67\% \\}
+\newcommand{\BaselineAsmRanaRatio}{2.005}
+\newcommand{\RefinedAsmRanaRatio}{4.638}
+\newcommand{\LowerAsmRanaRatio}{1.337}

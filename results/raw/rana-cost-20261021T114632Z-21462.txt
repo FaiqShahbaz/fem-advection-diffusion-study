@@ -1,0 +1,354 @@
+
+Working directory: /Users/faiq/Projects/fem-advection-diffusion
+Running: /Users/faiq/Projects/fem-advection-diffusion/.venv/bin/python /Users/faiq/Projects/fem-advection-diffusion/src/phase3_rana_cost.py --config /Users/faiq/Projects/fem-advection-diffusion/configs/phase3_rana_cost.json --output /Users/faiq/Projects/fem-advection-diffusion/results/raw/rana-cost-20261021T114632Z-21462-serial.json
+KSP Object: (phase3_trajectory_rana_cost_reference_) 1 MPI process
+  type: gmres
+    restart=50, using classical (unmodified) Gram-Schmidt orthogonalization with no iterative refinement
+    happy breakdown tolerance=1e-30
+  maximum iterations=1000, initial guess is zero
+  tolerances: relative=1e-12, absolute=1e-14, divergence=10000.
+  right preconditioning
+  using UNPRECONDITIONED norm type for convergence test
+PC Object: (phase3_trajectory_rana_cost_reference_) 1 MPI process
+  type: jacobi
+    type DIAGONAL
+  linear system matrix, which is also used to construct the preconditioner:
+  Mat Object: (phase3_trajectory_rana_cost_reference_) 1 MPI process
+    type: seqaij
+    rows=2178, cols=2178
+    total: nonzeros=48132, allocated nonzeros=48132
+    total number of mallocs used during MatSetValues calls=0
+      not using I-node routines
+  rana_cost_reference: 10 steps passed; total GMRES iterations=7973
+KSP Object: (phase3_rana_trajectory_residual_jacobi_) 1 MPI process
+  type: gmres
+    restart=50, using classical (unmodified) Gram-Schmidt orthogonalization with no iterative refinement
+    happy breakdown tolerance=1e-30
+  maximum iterations=1000, initial guess is zero
+  tolerances: relative=1e-11, absolute=1e-13, divergence=10000.
+  right preconditioning
+  using UNPRECONDITIONED norm type for convergence test
+PC Object: (phase3_rana_trajectory_residual_jacobi_) 1 MPI process
+  type: jacobi
+    type DIAGONAL
+  linear system matrix, which is also used to construct the preconditioner:
+  Mat Object: (phase3_rana_trajectory_residual_jacobi_) 1 MPI process
+    type: seqaij
+    rows=2178, cols=2178
+    total: nonzeros=48132, allocated nonzeros=48132
+    total number of mallocs used during MatSetValues calls=0
+      not using I-node routines
+  residual_jacobi: 10 steps checked; total outer GMRES iterations=7258
+KSP Object: (phase3_rana_trajectory_rana_ld_) 1 MPI process
+  type: gmres
+    restart=50, using classical (unmodified) Gram-Schmidt orthogonalization with no iterative refinement
+    happy breakdown tolerance=1e-30
+  maximum iterations=1000, initial guess is zero
+  tolerances: relative=1e-11, absolute=1e-13, divergence=10000.
+  right preconditioning
+  using UNPRECONDITIONED norm type for convergence test
+PC Object: (phase3_rana_trajectory_rana_ld_) 1 MPI process
+  type: python
+    Python: irksome.RanaLD
+  Firedrake custom preconditioner RanaLD
+  PC to apply inverse
+  PC Object: (phase3_rana_trajectory_rana_ld_aux_) 1 MPI process
+    type: lu
+      out-of-place factorization
+      tolerance for zero pivot 2.22045e-14
+      matrix ordering: rcm
+      factor fill ratio given 5., needed 4.63813
+        Factored matrix:
+          Mat Object: (phase3_rana_trajectory_rana_ld_aux_) 1 MPI process
+            type: seqaij
+            rows=2178, cols=2178
+            package used to perform factorization: petsc
+            total: nonzeros=167432, allocated nonzeros=167432
+              not using I-node routines
+    linear system matrix, followed by the matrix used to construct the preconditioner:
+    Mat Object: (phase3_rana_trajectory_rana_ld_) 1 MPI process
+      type: seqaij
+      rows=2178, cols=2178
+      total: nonzeros=48132, allocated nonzeros=48132
+      total number of mallocs used during MatSetValues calls=0
+        not using I-node routines
+    Mat Object: (phase3_rana_trajectory_rana_ld_aux_) 1 MPI process
+      type: seqaij
+      rows=2178, cols=2178
+      total: nonzeros=36099, allocated nonzeros=36099
+      total number of mallocs used during MatSetValues calls=0
+        not using I-node routines
+  linear system matrix, which is also used to construct the preconditioner:
+  Mat Object: (phase3_rana_trajectory_rana_ld_) 1 MPI process
+    type: seqaij
+    rows=2178, cols=2178
+    total: nonzeros=48132, allocated nonzeros=48132
+    total number of mallocs used during MatSetValues calls=0
+      not using I-node routines
+  rana_ld: 10 steps checked; total outer GMRES iterations=70
+KSP Object: (phase3_rana_cost_Jacobi_warmup0_) 1 MPI process
+  type: gmres
+    restart=50, using classical (unmodified) Gram-Schmidt orthogonalization with no iterative refinement
+    happy breakdown tolerance=1e-30
+  maximum iterations=1000, initial guess is zero
+  tolerances: relative=1e-11, absolute=1e-13, divergence=10000.
+  right preconditioning
+  using UNPRECONDITIONED norm type for convergence test
+PC Object: (phase3_rana_cost_Jacobi_warmup0_) 1 MPI process
+  type: jacobi
+    type DIAGONAL
+  linear system matrix, which is also used to construct the preconditioner:
+  Mat Object: (phase3_rana_cost_Jacobi_warmup0_) 1 MPI process
+    type: seqaij
+    rows=2178, cols=2178
+    total: nonzeros=48132, allocated nonzeros=48132
+    total number of mallocs used during MatSetValues calls=0
+      not using I-node routines
+  Jacobi_warmup0: checked core wall=0.231215 s; GMRES total=7258
+KSP Object: (phase3_rana_cost_RanaLD_warmup0_) 1 MPI process
+  type: gmres
+    restart=50, using classical (unmodified) Gram-Schmidt orthogonalization with no iterative refinement
+    happy breakdown tolerance=1e-30
+  maximum iterations=1000, initial guess is zero
+  tolerances: relative=1e-11, absolute=1e-13, divergence=10000.
+  right preconditioning
+  using UNPRECONDITIONED norm type for convergence test
+PC Object: (phase3_rana_cost_RanaLD_warmup0_) 1 MPI process
+  type: python
+    Python: irksome.RanaLD
+  Firedrake custom preconditioner RanaLD
+  PC to apply inverse
+  PC Object: (phase3_rana_cost_RanaLD_warmup0_aux_) 1 MPI process
+    type: lu
+      out-of-place factorization
+      tolerance for zero pivot 2.22045e-14
+      matrix ordering: rcm
+      factor fill ratio given 5., needed 4.63813
+        Factored matrix:
+          Mat Object: (phase3_rana_cost_RanaLD_warmup0_aux_) 1 MPI process
+            type: seqaij
+            rows=2178, cols=2178
+            package used to perform factorization: petsc
+            total: nonzeros=167432, allocated nonzeros=167432
+              not using I-node routines
+    linear system matrix, followed by the matrix used to construct the preconditioner:
+    Mat Object: (phase3_rana_cost_RanaLD_warmup0_) 1 MPI process
+      type: seqaij
+      rows=2178, cols=2178
+      total: nonzeros=48132, allocated nonzeros=48132
+      total number of mallocs used during MatSetValues calls=0
+        not using I-node routines
+    Mat Object: (phase3_rana_cost_RanaLD_warmup0_aux_) 1 MPI process
+      type: seqaij
+      rows=2178, cols=2178
+      total: nonzeros=36099, allocated nonzeros=36099
+      total number of mallocs used during MatSetValues calls=0
+        not using I-node routines
+  linear system matrix, which is also used to construct the preconditioner:
+  Mat Object: (phase3_rana_cost_RanaLD_warmup0_) 1 MPI process
+    type: seqaij
+    rows=2178, cols=2178
+    total: nonzeros=48132, allocated nonzeros=48132
+    total number of mallocs used during MatSetValues calls=0
+      not using I-node routines
+  RanaLD_warmup0: checked core wall=0.042610 s; GMRES total=70
+KSP Object: (phase3_rana_cost_Jacobi_measured1_) 1 MPI process
+  type: gmres
+    restart=50, using classical (unmodified) Gram-Schmidt orthogonalization with no iterative refinement
+    happy breakdown tolerance=1e-30
+  maximum iterations=1000, initial guess is zero
+  tolerances: relative=1e-11, absolute=1e-13, divergence=10000.
+  right preconditioning
+  using UNPRECONDITIONED norm type for convergence test
+PC Object: (phase3_rana_cost_Jacobi_measured1_) 1 MPI process
+  type: jacobi
+    type DIAGONAL
+  linear system matrix, which is also used to construct the preconditioner:
+  Mat Object: (phase3_rana_cost_Jacobi_measured1_) 1 MPI process
+    type: seqaij
+    rows=2178, cols=2178
+    total: nonzeros=48132, allocated nonzeros=48132
+    total number of mallocs used during MatSetValues calls=0
+      not using I-node routines
+  Jacobi_measured1: checked core wall=0.231428 s; GMRES total=7258
+KSP Object: (phase3_rana_cost_RanaLD_measured1_) 1 MPI process
+  type: gmres
+    restart=50, using classical (unmodified) Gram-Schmidt orthogonalization with no iterative refinement
+    happy breakdown tolerance=1e-30
+  maximum iterations=1000, initial guess is zero
+  tolerances: relative=1e-11, absolute=1e-13, divergence=10000.
+  right preconditioning
+  using UNPRECONDITIONED norm type for convergence test
+PC Object: (phase3_rana_cost_RanaLD_measured1_) 1 MPI process
+  type: python
+    Python: irksome.RanaLD
+  Firedrake custom preconditioner RanaLD
+  PC to apply inverse
+  PC Object: (phase3_rana_cost_RanaLD_measured1_aux_) 1 MPI process
+    type: lu
+      out-of-place factorization
+      tolerance for zero pivot 2.22045e-14
+      matrix ordering: rcm
+      factor fill ratio given 5., needed 4.63813
+        Factored matrix:
+          Mat Object: (phase3_rana_cost_RanaLD_measured1_aux_) 1 MPI process
+            type: seqaij
+            rows=2178, cols=2178
+            package used to perform factorization: petsc
+            total: nonzeros=167432, allocated nonzeros=167432
+              not using I-node routines
+    linear system matrix, followed by the matrix used to construct the preconditioner:
+    Mat Object: (phase3_rana_cost_RanaLD_measured1_) 1 MPI process
+      type: seqaij
+      rows=2178, cols=2178
+      total: nonzeros=48132, allocated nonzeros=48132
+      total number of mallocs used during MatSetValues calls=0
+        not using I-node routines
+    Mat Object: (phase3_rana_cost_RanaLD_measured1_aux_) 1 MPI process
+      type: seqaij
+      rows=2178, cols=2178
+      total: nonzeros=36099, allocated nonzeros=36099
+      total number of mallocs used during MatSetValues calls=0
+        not using I-node routines
+  linear system matrix, which is also used to construct the preconditioner:
+  Mat Object: (phase3_rana_cost_RanaLD_measured1_) 1 MPI process
+    type: seqaij
+    rows=2178, cols=2178
+    total: nonzeros=48132, allocated nonzeros=48132
+    total number of mallocs used during MatSetValues calls=0
+      not using I-node routines
+  RanaLD_measured1: checked core wall=0.042659 s; GMRES total=70
+KSP Object: (phase3_rana_cost_RanaLD_measured2_) 1 MPI process
+  type: gmres
+    restart=50, using classical (unmodified) Gram-Schmidt orthogonalization with no iterative refinement
+    happy breakdown tolerance=1e-30
+  maximum iterations=1000, initial guess is zero
+  tolerances: relative=1e-11, absolute=1e-13, divergence=10000.
+  right preconditioning
+  using UNPRECONDITIONED norm type for convergence test
+PC Object: (phase3_rana_cost_RanaLD_measured2_) 1 MPI process
+  type: python
+    Python: irksome.RanaLD
+  Firedrake custom preconditioner RanaLD
+  PC to apply inverse
+  PC Object: (phase3_rana_cost_RanaLD_measured2_aux_) 1 MPI process
+    type: lu
+      out-of-place factorization
+      tolerance for zero pivot 2.22045e-14
+      matrix ordering: rcm
+      factor fill ratio given 5., needed 4.63813
+        Factored matrix:
+          Mat Object: (phase3_rana_cost_RanaLD_measured2_aux_) 1 MPI process
+            type: seqaij
+            rows=2178, cols=2178
+            package used to perform factorization: petsc
+            total: nonzeros=167432, allocated nonzeros=167432
+              not using I-node routines
+    linear system matrix, followed by the matrix used to construct the preconditioner:
+    Mat Object: (phase3_rana_cost_RanaLD_measured2_) 1 MPI process
+      type: seqaij
+      rows=2178, cols=2178
+      total: nonzeros=48132, allocated nonzeros=48132
+      total number of mallocs used during MatSetValues calls=0
+        not using I-node routines
+    Mat Object: (phase3_rana_cost_RanaLD_measured2_aux_) 1 MPI process
+      type: seqaij
+      rows=2178, cols=2178
+      total: nonzeros=36099, allocated nonzeros=36099
+      total number of mallocs used during MatSetValues calls=0
+        not using I-node routines
+  linear system matrix, which is also used to construct the preconditioner:
+  Mat Object: (phase3_rana_cost_RanaLD_measured2_) 1 MPI process
+    type: seqaij
+    rows=2178, cols=2178
+    total: nonzeros=48132, allocated nonzeros=48132
+    total number of mallocs used during MatSetValues calls=0
+      not using I-node routines
+  RanaLD_measured2: checked core wall=0.043466 s; GMRES total=70
+KSP Object: (phase3_rana_cost_Jacobi_measured2_) 1 MPI process
+  type: gmres
+    restart=50, using classical (unmodified) Gram-Schmidt orthogonalization with no iterative refinement
+    happy breakdown tolerance=1e-30
+  maximum iterations=1000, initial guess is zero
+  tolerances: relative=1e-11, absolute=1e-13, divergence=10000.
+  right preconditioning
+  using UNPRECONDITIONED norm type for convergence test
+PC Object: (phase3_rana_cost_Jacobi_measured2_) 1 MPI process
+  type: jacobi
+    type DIAGONAL
+  linear system matrix, which is also used to construct the preconditioner:
+  Mat Object: (phase3_rana_cost_Jacobi_measured2_) 1 MPI process
+    type: seqaij
+    rows=2178, cols=2178
+    total: nonzeros=48132, allocated nonzeros=48132
+    total number of mallocs used during MatSetValues calls=0
+      not using I-node routines
+  Jacobi_measured2: checked core wall=0.231824 s; GMRES total=7258
+KSP Object: (phase3_rana_cost_Jacobi_measured3_) 1 MPI process
+  type: gmres
+    restart=50, using classical (unmodified) Gram-Schmidt orthogonalization with no iterative refinement
+    happy breakdown tolerance=1e-30
+  maximum iterations=1000, initial guess is zero
+  tolerances: relative=1e-11, absolute=1e-13, divergence=10000.
+  right preconditioning
+  using UNPRECONDITIONED norm type for convergence test
+PC Object: (phase3_rana_cost_Jacobi_measured3_) 1 MPI process
+  type: jacobi
+    type DIAGONAL
+  linear system matrix, which is also used to construct the preconditioner:
+  Mat Object: (phase3_rana_cost_Jacobi_measured3_) 1 MPI process
+    type: seqaij
+    rows=2178, cols=2178
+    total: nonzeros=48132, allocated nonzeros=48132
+    total number of mallocs used during MatSetValues calls=0
+      not using I-node routines
+  Jacobi_measured3: checked core wall=0.233846 s; GMRES total=7258
+KSP Object: (phase3_rana_cost_RanaLD_measured3_) 1 MPI process
+  type: gmres
+    restart=50, using classical (unmodified) Gram-Schmidt orthogonalization with no iterative refinement
+    happy breakdown tolerance=1e-30
+  maximum iterations=1000, initial guess is zero
+  tolerances: relative=1e-11, absolute=1e-13, divergence=10000.
+  right preconditioning
+  using UNPRECONDITIONED norm type for convergence test
+PC Object: (phase3_rana_cost_RanaLD_measured3_) 1 MPI process
+  type: python
+    Python: irksome.RanaLD
+  Firedrake custom preconditioner RanaLD
+  PC to apply inverse
+  PC Object: (phase3_rana_cost_RanaLD_measured3_aux_) 1 MPI process
+    type: lu
+      out-of-place factorization
+      tolerance for zero pivot 2.22045e-14
+      matrix ordering: rcm
+      factor fill ratio given 5., needed 4.63813
+        Factored matrix:
+          Mat Object: (phase3_rana_cost_RanaLD_measured3_aux_) 1 MPI process
+            type: seqaij
+            rows=2178, cols=2178
+            package used to perform factorization: petsc
+            total: nonzeros=167432, allocated nonzeros=167432
+              not using I-node routines
+    linear system matrix, followed by the matrix used to construct the preconditioner:
+    Mat Object: (phase3_rana_cost_RanaLD_measured3_) 1 MPI process
+      type: seqaij
+      rows=2178, cols=2178
+      total: nonzeros=48132, allocated nonzeros=48132
+      total number of mallocs used during MatSetValues calls=0
+        not using I-node routines
+    Mat Object: (phase3_rana_cost_RanaLD_measured3_aux_) 1 MPI process
+      type: seqaij
+      rows=2178, cols=2178
+      total: nonzeros=36099, allocated nonzeros=36099
+      total number of mallocs used during MatSetValues calls=0
+        not using I-node routines
+  linear system matrix, which is also used to construct the preconditioner:
+  Mat Object: (phase3_rana_cost_RanaLD_measured3_) 1 MPI process
+    type: seqaij
+    rows=2178, cols=2178
+    total: nonzeros=48132, allocated nonzeros=48132
+    total number of mallocs used during MatSetValues calls=0
+      not using I-node routines
+  RanaLD_measured3: checked core wall=0.042827 s; GMRES total=70
+Exit status: 0
+RANA COST CHECKPOINT PASSED. Review matched-path timings before further parameter changes.

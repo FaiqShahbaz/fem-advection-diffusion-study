@@ -1,0 +1,337 @@
+{
+  "raw_source": {
+    "path": "results/raw/accuracy-cost-20261019T102618Z-70377-serial.json",
+    "sha256": "dbd87752e63e7029d030c49b406d8ec9c8b03b854441dcdb1077f784c28bfdaf"
+  },
+  "accepted_review": "results/processed/accuracy_cost_review.json",
+  "power": "AC before/after run",
+  "quantity": "Time error about finite same-mesh reference, paired with warm construction/advance core wall time",
+  "rows": [
+    {
+      "case_id": "BE_loose",
+      "method": "manual_backward_euler",
+      "dt": 0.0125,
+      "time_errors": {
+        "l2_error": 6.080634437804757e-05,
+        "h1_seminorm_error": 0.00027148292110795665
+      },
+      "timing_summary": {
+        "repetitions": 3,
+        "construction_seconds": {
+          "values": [
+            0.003711249999469146,
+            0.0033038339897757396,
+            0.003307499995571561
+          ],
+          "minimum": 0.0033038339897757396,
+          "median": 0.003307499995571561,
+          "maximum": 0.003711249999469146
+        },
+        "first_step_seconds": {
+          "values": [
+            0.0028125410026405007,
+            0.0027469170017866418,
+            0.0026727499935077503
+          ],
+          "minimum": 0.0026727499935077503,
+          "median": 0.0027469170017866418,
+          "maximum": 0.0028125410026405007
+        },
+        "remaining_steps_seconds": {
+          "values": [
+            0.17044979300408158,
+            0.1648192920256406,
+            0.16673450206872076
+          ],
+          "minimum": 0.1648192920256406,
+          "median": 0.16673450206872076,
+          "maximum": 0.17044979300408158
+        },
+        "trajectory_wall_seconds": {
+          "values": [
+            0.17701279200264253,
+            0.17090462498890702,
+            0.1727498749969527
+          ],
+          "minimum": 0.17090462498890702,
+          "median": 0.1727498749969527,
+          "maximum": 0.17701279200264253
+        }
+      },
+      "timed_error_envelope": {
+        "l2_error": {
+          "lower": 6.080634437804757e-05,
+          "upper": 6.080634437804757e-05
+        },
+        "h1_seminorm_error": {
+          "lower": 0.00027148292110795665,
+          "upper": 0.00027148292110795665
+        }
+      },
+      "measured_trajectories": [
+        "BE_loose_measured1",
+        "BE_loose_measured2",
+        "BE_loose_measured3"
+      ],
+      "steps": 80,
+      "total_iterations": 8221,
+      "maximum_step_iterations": 103
+    },
+    {
+      "case_id": "Radau_coarse",
+      "method": "RadauIIA",
+      "dt": 0.1,
+      "time_errors": {
+        "l2_error": 2.6705645653924393e-06,
+        "h1_seminorm_error": 1.1879314906408024e-05
+      },
+      "timing_summary": {
+        "repetitions": 3,
+        "construction_seconds": {
+          "values": [
+            0.013033415991230868,
+            0.012554666987853125,
+            0.012619624991202727
+          ],
+          "minimum": 0.012554666987853125,
+          "median": 0.012619624991202727,
+          "maximum": 0.013033415991230868
+        },
+        "first_step_seconds": {
+          "values": [
+            0.026164084003539756,
+            0.025558958004694432,
+            0.025586874995497055
+          ],
+          "minimum": 0.025558958004694432,
+          "median": 0.025586874995497055,
+          "maximum": 0.026164084003539756
+        },
+        "remaining_steps_seconds": {
+          "values": [
+            0.20284516699030064,
+            0.20149366497935262,
+            0.20001729200885165
+          ],
+          "minimum": 0.20001729200885165,
+          "median": 0.20149366497935262,
+          "maximum": 0.20284516699030064
+        },
+        "trajectory_wall_seconds": {
+          "values": [
+            0.2420494160032831,
+            0.2396143329970073,
+            0.23823000000265893
+          ],
+          "minimum": 0.23823000000265893,
+          "median": 0.2396143329970073,
+          "maximum": 0.2420494160032831
+        }
+      },
+      "timed_error_envelope": {
+        "l2_error": {
+          "lower": 2.6705645653924393e-06,
+          "upper": 2.6705645653924393e-06
+        },
+        "h1_seminorm_error": {
+          "lower": 1.1879314906408024e-05,
+          "upper": 1.1879314906408024e-05
+        }
+      },
+      "measured_trajectories": [
+        "Radau_coarse_measured1",
+        "Radau_coarse_measured2",
+        "Radau_coarse_measured3"
+      ],
+      "steps": 10,
+      "total_iterations": 7258,
+      "maximum_step_iterations": 734
+    },
+    {
+      "case_id": "BE_fine",
+      "method": "manual_backward_euler",
+      "dt": 0.0005,
+      "time_errors": {
+        "l2_error": 2.4217726926874535e-06,
+        "h1_seminorm_error": 1.0812505410293365e-05
+      },
+      "timing_summary": {
+        "repetitions": 3,
+        "construction_seconds": {
+          "values": [
+            0.0033663749927654862,
+            0.0035205830063205212,
+            0.003291667002486065
+          ],
+          "minimum": 0.003291667002486065,
+          "median": 0.0033663749927654862,
+          "maximum": 0.0035205830063205212
+        },
+        "first_step_seconds": {
+          "values": [
+            0.0018423330038785934,
+            0.001794250012608245,
+            0.0017968750034924597
+          ],
+          "minimum": 0.001794250012608245,
+          "median": 0.0017968750034924597,
+          "maximum": 0.0018423330038785934
+        },
+        "remaining_steps_seconds": {
+          "values": [
+            2.438256878842367,
+            2.3400329417490866,
+            2.322559084786917
+          ],
+          "minimum": 2.322559084786917,
+          "median": 2.3400329417490866,
+          "maximum": 2.438256878842367
+        },
+        "trajectory_wall_seconds": {
+          "values": [
+            2.4445216250023805,
+            2.3461903749994235,
+            2.3285038330068346
+          ],
+          "minimum": 2.3285038330068346,
+          "median": 2.3461903749994235,
+          "maximum": 2.4445216250023805
+        }
+      },
+      "timed_error_envelope": {
+        "l2_error": {
+          "lower": 2.4217726926874535e-06,
+          "upper": 2.4217726926874535e-06
+        },
+        "h1_seminorm_error": {
+          "lower": 1.0812505410293365e-05,
+          "upper": 1.0812505410293365e-05
+        }
+      },
+      "measured_trajectories": [
+        "BE_fine_measured1",
+        "BE_fine_measured2",
+        "BE_fine_measured3"
+      ],
+      "steps": 2000,
+      "total_iterations": 50000,
+      "maximum_step_iterations": 25
+    },
+    {
+      "case_id": "Radau_fine",
+      "method": "RadauIIA",
+      "dt": 0.05,
+      "time_errors": {
+        "l2_error": 3.7958916319920294e-07,
+        "h1_seminorm_error": 1.6875200742090108e-06
+      },
+      "timing_summary": {
+        "repetitions": 3,
+        "construction_seconds": {
+          "values": [
+            0.014509957996779121,
+            0.012530790991149843,
+            0.012638334010262042
+          ],
+          "minimum": 0.012530790991149843,
+          "median": 0.012638334010262042,
+          "maximum": 0.014509957996779121
+        },
+        "first_step_seconds": {
+          "values": [
+            0.019196834007743746,
+            0.018353749997913837,
+            0.018358166998950765
+          ],
+          "minimum": 0.018353749997913837,
+          "median": 0.018358166998950765,
+          "maximum": 0.019196834007743746
+        },
+        "remaining_steps_seconds": {
+          "values": [
+            0.29724178700416815,
+            0.28646175398898777,
+            0.28770070799509995
+          ],
+          "minimum": 0.28646175398898777,
+          "median": 0.28770070799509995,
+          "maximum": 0.29724178700416815
+        },
+        "trajectory_wall_seconds": {
+          "values": [
+            0.3309697920049075,
+            0.3173581659939373,
+            0.3187076670001261
+          ],
+          "minimum": 0.3173581659939373,
+          "median": 0.3187076670001261,
+          "maximum": 0.3309697920049075
+        }
+      },
+      "timed_error_envelope": {
+        "l2_error": {
+          "lower": 3.7958916319920294e-07,
+          "upper": 3.7958916319920294e-07
+        },
+        "h1_seminorm_error": {
+          "lower": 1.6875200742090108e-06,
+          "upper": 1.6875200742090108e-06
+        }
+      },
+      "measured_trajectories": [
+        "Radau_fine_measured1",
+        "Radau_fine_measured2",
+        "Radau_fine_measured3"
+      ],
+      "steps": 20,
+      "total_iterations": 9648,
+      "maximum_step_iterations": 489
+    }
+  ],
+  "candidate_selections": [
+    {
+      "target_l2_time_error": 0.0001,
+      "method": "manual_backward_euler",
+      "eligible_cases": [
+        "BE_loose",
+        "BE_fine"
+      ],
+      "selected_case": "BE_loose",
+      "status": "candidate available",
+      "interpretation": "Least measured median among the declared candidates only; no continuous optimum or total-PDE error claim"
+    },
+    {
+      "target_l2_time_error": 0.0001,
+      "method": "RadauIIA",
+      "eligible_cases": [
+        "Radau_coarse",
+        "Radau_fine"
+      ],
+      "selected_case": "Radau_coarse",
+      "status": "candidate available",
+      "interpretation": "Least measured median among the declared candidates only; no continuous optimum or total-PDE error claim"
+    },
+    {
+      "target_l2_time_error": 3e-06,
+      "method": "manual_backward_euler",
+      "eligible_cases": [
+        "BE_fine"
+      ],
+      "selected_case": "BE_fine",
+      "status": "candidate available",
+      "interpretation": "Least measured median among the declared candidates only; no continuous optimum or total-PDE error claim"
+    },
+    {
+      "target_l2_time_error": 3e-06,
+      "method": "RadauIIA",
+      "eligible_cases": [
+        "Radau_coarse",
+        "Radau_fine"
+      ],
+      "selected_case": "Radau_coarse",
+      "status": "candidate available",
+      "interpretation": "Least measured median among the declared candidates only; no continuous optimum or total-PDE error claim"
+    }
+  ],
+  "ranking_scope": "Declared candidates and finite-reference time-error targets only"
+}

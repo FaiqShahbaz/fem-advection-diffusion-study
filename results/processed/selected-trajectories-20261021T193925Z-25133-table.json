@@ -1,0 +1,404 @@
+{
+  "raw_source": {
+    "path": "results/raw/selected-trajectories-20261021T193925Z-25133-serial.json",
+    "sha256": "9a3d613ab41192467a8cda55a5947caf7e037b3f4d080ba63ef5ec75183413f8"
+  },
+  "accepted_review": "results/processed/selected_trajectories_review.json",
+  "points": {
+    "baseline": {
+      "metadata": {
+        "mesh_subdivisions": 16,
+        "diffusion": 1.0,
+        "cells": 512,
+        "total_dofs": 1089,
+        "free_dofs": 961,
+        "stage_total_dofs": 2178,
+        "h_max": 0.08838834764831845,
+        "cell_peclet": 0.06250000000000001,
+        "advective_step_ratio": 1.6,
+        "diffusive_step_ratio": 12.799999999999997,
+        "checkpoint_end_time": 1.0,
+        "research_final_time": 1.0
+      },
+      "reference_factor_nonzeros": 223288.0,
+      "reference_mms_errors": {
+        "l2_error": 2.572717563978409e-05,
+        "h1_seminorm_error": 0.0030973208240340105
+      },
+      "candidates": {
+        "Jacobi": {
+          "status": "passed",
+          "completed_steps": 10,
+          "total_iterations": 7258,
+          "step_iterations": [
+            734,
+            725,
+            724,
+            725,
+            725,
+            725,
+            725,
+            725,
+            725,
+            725
+          ],
+          "physical_event_counts": {
+            "KSPSolve": 10,
+            "KSPSetUp": 10,
+            "PCSetUp": 1,
+            "PCApply": 7408,
+            "MatSolve": 0,
+            "MatLUFactorSym": 0,
+            "MatLUFactorNum": 0
+          },
+          "final_mms_errors": {
+            "l2_error": 2.5727175612191706e-05,
+            "h1_seminorm_error": 0.0030973208240315502
+          },
+          "final_reference_distances": {
+            "l2_error": 1.346085940516259e-13,
+            "h1_seminorm_error": 6.466714545340191e-13
+          },
+          "reuse_verified": true
+        },
+        "ASM": {
+          "status": "passed",
+          "completed_steps": 10,
+          "total_iterations": 600,
+          "step_iterations": [
+            60,
+            60,
+            60,
+            60,
+            60,
+            60,
+            60,
+            60,
+            60,
+            60
+          ],
+          "physical_event_counts": {
+            "KSPSolve": 10,
+            "KSPSetUp": 10,
+            "PCSetUp": 1,
+            "PCApply": 620,
+            "MatSolve": 2480,
+            "MatLUFactorSym": 0,
+            "MatLUFactorNum": 4
+          },
+          "final_mms_errors": {
+            "l2_error": 2.5727175619503294e-05,
+            "h1_seminorm_error": 0.003097320824032308
+          },
+          "final_reference_distances": {
+            "l2_error": 9.898038843742552e-14,
+            "h1_seminorm_error": 4.630976205009603e-13
+          },
+          "reuse_verified": true,
+          "local_factor_nonzeros": [
+            27192.0,
+            26504.0,
+            27192.0,
+            26252.0
+          ]
+        },
+        "RanaLD": {
+          "status": "passed",
+          "completed_steps": 10,
+          "total_iterations": 70,
+          "step_iterations": [
+            7,
+            7,
+            7,
+            7,
+            7,
+            7,
+            7,
+            7,
+            7,
+            7
+          ],
+          "physical_event_counts": {
+            "KSPSolve": 10,
+            "KSPSetUp": 10,
+            "PCSetUp": 2,
+            "PCApply": 80,
+            "MatSolve": 80,
+            "MatLUFactorSym": 1,
+            "MatLUFactorNum": 1
+          },
+          "final_mms_errors": {
+            "l2_error": 2.5727175639376842e-05,
+            "h1_seminorm_error": 0.003097320824034023
+          },
+          "final_reference_distances": {
+            "l2_error": 7.629875181981704e-15,
+            "h1_seminorm_error": 8.798316929112735e-14
+          },
+          "reuse_verified": true,
+          "auxiliary_factor_nonzeros": 167432.0
+        }
+      }
+    },
+    "mesh_refined": {
+      "metadata": {
+        "mesh_subdivisions": 32,
+        "diffusion": 1.0,
+        "cells": 2048,
+        "total_dofs": 4225,
+        "free_dofs": 3969,
+        "stage_total_dofs": 8450,
+        "h_max": 0.04419417382415922,
+        "cell_peclet": 0.03125000000000001,
+        "advective_step_ratio": 3.2,
+        "diffusive_step_ratio": 51.19999999999999,
+        "checkpoint_end_time": 1.0,
+        "research_final_time": 1.0
+      },
+      "reference_factor_nonzeros": 1593336.0,
+      "reference_mms_errors": {
+        "l2_error": 4.250177594847738e-06,
+        "h1_seminorm_error": 0.0007761465361197771
+      },
+      "candidates": {
+        "Jacobi": {
+          "status": "not_attempted",
+          "reason": "Accepted first-step iteration limit; no full trajectory or timing accepted",
+          "pilot_iterations": 1000,
+          "pilot_reason": -3,
+          "accepted_final_solution": false
+        },
+        "ASM": {
+          "status": "passed",
+          "completed_steps": 10,
+          "total_iterations": 1500,
+          "step_iterations": [
+            150,
+            150,
+            150,
+            150,
+            150,
+            150,
+            150,
+            150,
+            150,
+            150
+          ],
+          "physical_event_counts": {
+            "KSPSolve": 10,
+            "KSPSetUp": 10,
+            "PCSetUp": 1,
+            "PCApply": 1530,
+            "MatSolve": 6120,
+            "MatLUFactorSym": 0,
+            "MatLUFactorNum": 4
+          },
+          "final_mms_errors": {
+            "l2_error": 4.2501776000565535e-06,
+            "h1_seminorm_error": 0.0007761465361202658
+          },
+          "final_reference_distances": {
+            "l2_error": 3.224238806396227e-14,
+            "h1_seminorm_error": 2.5620397258712433e-13
+          },
+          "reuse_verified": true,
+          "local_factor_nonzeros": [
+            101560.0,
+            100168.0,
+            101560.0,
+            99916.0
+          ]
+        },
+        "RanaLD": {
+          "status": "passed",
+          "completed_steps": 10,
+          "total_iterations": 70,
+          "step_iterations": [
+            7,
+            7,
+            7,
+            7,
+            7,
+            7,
+            7,
+            7,
+            7,
+            7
+          ],
+          "physical_event_counts": {
+            "KSPSolve": 10,
+            "KSPSetUp": 10,
+            "PCSetUp": 2,
+            "PCApply": 80,
+            "MatSolve": 80,
+            "MatLUFactorSym": 1,
+            "MatLUFactorNum": 1
+          },
+          "final_mms_errors": {
+            "l2_error": 4.250177594316403e-06,
+            "h1_seminorm_error": 0.000776146536119746
+          },
+          "final_reference_distances": {
+            "l2_error": 9.827527483933867e-15,
+            "h1_seminorm_error": 1.087829389205986e-13
+          },
+          "reuse_verified": true,
+          "auxiliary_factor_nonzeros": 1194936.0
+        }
+      }
+    },
+    "lower_diffusion": {
+      "metadata": {
+        "mesh_subdivisions": 16,
+        "diffusion": 0.1,
+        "cells": 512,
+        "total_dofs": 1089,
+        "free_dofs": 961,
+        "stage_total_dofs": 2178,
+        "h_max": 0.08838834764831845,
+        "cell_peclet": 0.6250000000000001,
+        "advective_step_ratio": 1.6,
+        "diffusive_step_ratio": 1.28,
+        "checkpoint_end_time": 1.0,
+        "research_final_time": 1.0
+      },
+      "reference_factor_nonzeros": 223288.0,
+      "reference_mms_errors": {
+        "l2_error": 2.5761925541949152e-05,
+        "h1_seminorm_error": 0.003104124091023395
+      },
+      "candidates": {
+        "Jacobi": {
+          "status": "passed",
+          "completed_steps": 10,
+          "total_iterations": 2280,
+          "step_iterations": [
+            228,
+            228,
+            228,
+            228,
+            228,
+            228,
+            228,
+            228,
+            228,
+            228
+          ],
+          "physical_event_counts": {
+            "KSPSolve": 10,
+            "KSPSetUp": 10,
+            "PCSetUp": 1,
+            "PCApply": 2330,
+            "MatSolve": 0,
+            "MatLUFactorSym": 0,
+            "MatLUFactorNum": 0
+          },
+          "final_mms_errors": {
+            "l2_error": 2.576192556334824e-05,
+            "h1_seminorm_error": 0.003104124091026904
+          },
+          "final_reference_distances": {
+            "l2_error": 1.4297799141654196e-13,
+            "h1_seminorm_error": 1.2142670456772892e-12
+          },
+          "reuse_verified": true
+        },
+        "ASM": {
+          "status": "passed",
+          "completed_steps": 10,
+          "total_iterations": 350,
+          "step_iterations": [
+            35,
+            35,
+            35,
+            35,
+            35,
+            35,
+            35,
+            35,
+            35,
+            35
+          ],
+          "physical_event_counts": {
+            "KSPSolve": 10,
+            "KSPSetUp": 10,
+            "PCSetUp": 1,
+            "PCApply": 360,
+            "MatSolve": 1440,
+            "MatLUFactorSym": 0,
+            "MatLUFactorNum": 4
+          },
+          "final_mms_errors": {
+            "l2_error": 2.5761925542183438e-05,
+            "h1_seminorm_error": 0.0031041240910239837
+          },
+          "final_reference_distances": {
+            "l2_error": 6.363107324940579e-14,
+            "h1_seminorm_error": 6.212242743381517e-13
+          },
+          "reuse_verified": true,
+          "local_factor_nonzeros": [
+            27192.0,
+            26504.0,
+            27192.0,
+            26252.0
+          ]
+        },
+        "RanaLD": {
+          "status": "passed",
+          "completed_steps": 10,
+          "total_iterations": 80,
+          "step_iterations": [
+            8,
+            8,
+            8,
+            8,
+            8,
+            8,
+            8,
+            8,
+            8,
+            8
+          ],
+          "physical_event_counts": {
+            "KSPSolve": 10,
+            "KSPSetUp": 10,
+            "PCSetUp": 2,
+            "PCApply": 90,
+            "MatSolve": 90,
+            "MatLUFactorSym": 1,
+            "MatLUFactorNum": 1
+          },
+          "final_mms_errors": {
+            "l2_error": 2.5761925541881034e-05,
+            "h1_seminorm_error": 0.003104124091023117
+          },
+          "final_reference_distances": {
+            "l2_error": 2.3811621171637286e-15,
+            "h1_seminorm_error": 3.842774506511235e-14
+          },
+          "reuse_verified": true,
+          "auxiliary_factor_nonzeros": 167432.0
+        }
+      }
+    }
+  },
+  "predeclared_exclusions": [
+    {
+      "point_id": "mesh_refined",
+      "solver": "Jacobi",
+      "status": "not_attempted",
+      "reason": "Accepted first-step iteration limit; no full trajectory or timing accepted",
+      "pilot_iterations": 1000,
+      "pilot_reason": -3,
+      "accepted_final_solution": false
+    }
+  ],
+  "limits": [
+    "Three selected points and dt=0.1, T=1; no broad mesh/diffusion robustness proof.",
+    "The earlier finer-mesh Jacobi cap remains a negative result; no full trajectory or cost accepted for that case.",
+    "Rana full auxiliary sparse LU factor storage grows with mesh; low iterations do not establish scalable subsolves.",
+    "MMS errors combine spatial, temporal and algebraic effects here; no new order or accuracy/cost claim.",
+    "Saved hashes/arithmetic checked without numerical imports; field/matrix/PC operations are researcher runtime evidence."
+  ]
+}

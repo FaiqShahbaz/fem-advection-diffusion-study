@@ -1,0 +1,252 @@
+
+Working directory: /Users/faiq/Projects/fem-advection-diffusion
+Running: /Users/faiq/Projects/fem-advection-diffusion/.venv/bin/python -m pip --version
+pip 26.2.1 from /Users/faiq/Projects/fem-advection-diffusion/.venv/lib/python3.13/site-packages/pip (python 3.13)
+Exit status: 0
+
+Working directory: /Users/faiq/Projects/fem-advection-diffusion
+Running: /Users/faiq/Projects/fem-advection-diffusion/.venv/bin/python -m pip install --no-cache-dir --no-binary h5py,mpi4py,petsc4py --build-constraint /Users/faiq/Projects/fem-advection-diffusion/environment/constraints-phase0-build.txt -r /Users/faiq/Projects/fem-advection-diffusion/environment/requirements-phase0.in --report /Users/faiq/Projects/fem-advection-diffusion/environment/records/python-install-20261007T123623Z-20763-pip-report.json
+Collecting firedrake==2026.10.0 (from firedrake[check]==2026.10.0->-r /Users/faiq/Projects/fem-advection-diffusion/environment/requirements-phase0.in (line 3))
+  Downloading firedrake-2026.10.0.tar.gz (2.3 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.3/2.3 MB 3.0 MB/s  0:00:01
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Collecting irksome==2026.0.0 (from -r /Users/faiq/Projects/fem-advection-diffusion/environment/requirements-phase0.in (line 4))
+  Downloading irksome-2026.0.0-py3-none-any.whl.metadata (3.0 kB)
+Collecting petsc4py==3.26.0 (from -r /Users/faiq/Projects/fem-advection-diffusion/environment/requirements-phase0.in (line 5))
+  Downloading petsc4py-3.26.0.tar.gz (524 kB)
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Collecting mpi4py==4.1.2 (from -r /Users/faiq/Projects/fem-advection-diffusion/environment/requirements-phase0.in (line 6))
+  Downloading mpi4py-4.1.2.tar.gz (501 kB)
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Installing backend dependencies: started
+  Installing backend dependencies: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Collecting h5py==3.16.0 (from -r /Users/faiq/Projects/fem-advection-diffusion/environment/requirements-phase0.in (line 7))
+  Downloading h5py-3.16.0.tar.gz (446 kB)
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Installing backend dependencies: started
+  Installing backend dependencies: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Collecting cachetools (from firedrake==2026.10.0->firedrake[check]==2026.10.0->-r /Users/faiq/Projects/fem-advection-diffusion/environment/requirements-phase0.in (line 3))
+  Downloading cachetools-7.2.1-py3-none-any.whl.metadata (5.5 kB)
+Collecting decorator<=4.4.2 (from firedrake==2026.10.0->firedrake[check]==2026.10.0->-r /Users/faiq/Projects/fem-advection-diffusion/environment/requirements-phase0.in (line 3))
+  Downloading decorator-4.4.2-py2.py3-none-any.whl.metadata (4.2 kB)
+Collecting fenics-ufl==2026.2 (from firedrake==2026.10.0->firedrake[check]==2026.10.0->-r /Users/faiq/Projects/fem-advection-diffusion/environment/requirements-phase0.in (line 3))
+  Downloading fenics_ufl-2026.2.0-py3-none-any.whl.metadata (3.0 kB)
+Collecting firedrake-fiat==2026.10 (from firedrake==2026.10.0->firedrake[check]==2026.10.0->-r /Users/faiq/Projects/fem-advection-diffusion/environment/requirements-phase0.in (line 3))
+  Downloading firedrake_fiat-2026.10.0-py3-none-any.whl.metadata (2.8 kB)
+Collecting firedrake-rtree>=2026.3.0 (from firedrake==2026.10.0->firedrake[check]==2026.10.0->-r /Users/faiq/Projects/fem-advection-diffusion/environment/requirements-phase0.in (line 3))
+  Downloading firedrake_rtree-2026.3.0-py3-none-macosx_11_0_arm64.whl.metadata (855 bytes)
+Collecting immutabledict (from firedrake==2026.10.0->firedrake[check]==2026.10.0->-r /Users/faiq/Projects/fem-advection-diffusion/environment/requirements-phase0.in (line 3))
+  Downloading immutabledict-4.3.1-py3-none-any.whl.metadata (3.5 kB)
+Collecting libsupermesh>=2026.1 (from firedrake==2026.10.0->firedrake[check]==2026.10.0->-r /Users/faiq/Projects/fem-advection-diffusion/environment/requirements-phase0.in (line 3))
+  Downloading libsupermesh-2026.3.tar.gz (4.6 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.6/4.6 MB 4.3 MB/s  0:00:01
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Collecting loopy>2024.1 (from firedrake==2026.10.0->firedrake[check]==2026.10.0->-r /Users/faiq/Projects/fem-advection-diffusion/environment/requirements-phase0.in (line 3))
+  Downloading loopy-2025.2-py3-none-any.whl.metadata (4.1 kB)
+Collecting numpy (from firedrake==2026.10.0->firedrake[check]==2026.10.0->-r /Users/faiq/Projects/fem-advection-diffusion/environment/requirements-phase0.in (line 3))
+  Downloading numpy-2.5.3-cp313-cp313-macosx_14_0_arm64.whl.metadata (6.6 kB)
+Collecting packaging (from firedrake==2026.10.0->firedrake[check]==2026.10.0->-r /Users/faiq/Projects/fem-advection-diffusion/environment/requirements-phase0.in (line 3))
+  Downloading packaging-26.3-py3-none-any.whl.metadata (3.5 kB)
+Collecting petsctools>=2026.1 (from firedrake==2026.10.0->firedrake[check]==2026.10.0->-r /Users/faiq/Projects/fem-advection-diffusion/environment/requirements-phase0.in (line 3))
+  Downloading petsctools-2026.1-py3-none-any.whl.metadata (1.5 kB)
+Collecting pkgconfig (from firedrake==2026.10.0->firedrake[check]==2026.10.0->-r /Users/faiq/Projects/fem-advection-diffusion/environment/requirements-phase0.in (line 3))
+  Downloading pkgconfig-1.6.0-py3-none-any.whl.metadata (4.9 kB)
+Collecting progress (from firedrake==2026.10.0->firedrake[check]==2026.10.0->-r /Users/faiq/Projects/fem-advection-diffusion/environment/requirements-phase0.in (line 3))
+  Downloading progress-1.6.1-py3-none-any.whl.metadata (4.3 kB)
+Collecting pyadjoint-ad>=2026.10 (from firedrake==2026.10.0->firedrake[check]==2026.10.0->-r /Users/faiq/Projects/fem-advection-diffusion/environment/requirements-phase0.in (line 3))
+  Downloading pyadjoint_ad-2026.10.0-py3-none-any.whl.metadata (3.1 kB)
+Collecting pycparser (from firedrake==2026.10.0->firedrake[check]==2026.10.0->-r /Users/faiq/Projects/fem-advection-diffusion/environment/requirements-phase0.in (line 3))
+  Downloading pycparser-3.0-py3-none-any.whl.metadata (8.2 kB)
+Collecting pytools[siphash] (from firedrake==2026.10.0->firedrake[check]==2026.10.0->-r /Users/faiq/Projects/fem-advection-diffusion/environment/requirements-phase0.in (line 3))
+  Downloading pytools-2026.1.1-py3-none-any.whl.metadata (2.9 kB)
+Collecting requests (from firedrake==2026.10.0->firedrake[check]==2026.10.0->-r /Users/faiq/Projects/fem-advection-diffusion/environment/requirements-phase0.in (line 3))
+  Downloading requests-2.34.2-py3-none-any.whl.metadata (4.8 kB)
+Collecting rtree>=1.2 (from firedrake==2026.10.0->firedrake[check]==2026.10.0->-r /Users/faiq/Projects/fem-advection-diffusion/environment/requirements-phase0.in (line 3))
+  Downloading rtree-1.4.1-py3-none-macosx_11_0_arm64.whl.metadata (2.1 kB)
+Collecting scipy (from firedrake==2026.10.0->firedrake[check]==2026.10.0->-r /Users/faiq/Projects/fem-advection-diffusion/environment/requirements-phase0.in (line 3))
+  Downloading scipy-1.18.1-cp313-cp313-macosx_14_0_arm64.whl.metadata (62 kB)
+Collecting sympy (from firedrake==2026.10.0->firedrake[check]==2026.10.0->-r /Users/faiq/Projects/fem-advection-diffusion/environment/requirements-phase0.in (line 3))
+  Downloading sympy-1.14.0-py3-none-any.whl.metadata (12 kB)
+Collecting islpy<2026.2 (from firedrake==2026.10.0->firedrake[check]==2026.10.0->-r /Users/faiq/Projects/fem-advection-diffusion/environment/requirements-phase0.in (line 3))
+  Downloading islpy-2026.1-cp313-cp313-macosx_11_0_arm64.whl.metadata (3.5 kB)
+Collecting recursivenodes (from firedrake-fiat==2026.10->firedrake==2026.10.0->firedrake[check]==2026.10.0->-r /Users/faiq/Projects/fem-advection-diffusion/environment/requirements-phase0.in (line 3))
+  Downloading recursivenodes-0.2.0-py3-none-any.whl.metadata (2.8 kB)
+Collecting symengine (from firedrake-fiat==2026.10->firedrake==2026.10.0->firedrake[check]==2026.10.0->-r /Users/faiq/Projects/fem-advection-diffusion/environment/requirements-phase0.in (line 3))
+  Downloading symengine-0.14.1-cp313-cp313-macosx_11_0_arm64.whl.metadata (1.3 kB)
+Collecting mpi-pytest>=2026.0 (from firedrake[check]==2026.10.0->-r /Users/faiq/Projects/fem-advection-diffusion/environment/requirements-phase0.in (line 3))
+  Downloading mpi_pytest-2026.0-py3-none-any.whl.metadata (6.1 kB)
+Collecting pytest (from firedrake[check]==2026.10.0->-r /Users/faiq/Projects/fem-advection-diffusion/environment/requirements-phase0.in (line 3))
+  Downloading pytest-9.1.1-py3-none-any.whl.metadata (7.6 kB)
+Collecting cffi (from firedrake-rtree>=2026.3.0->firedrake==2026.10.0->firedrake[check]==2026.10.0->-r /Users/faiq/Projects/fem-advection-diffusion/environment/requirements-phase0.in (line 3))
+  Downloading cffi-2.1.1-cp313-cp313-macosx_11_0_arm64.whl.metadata (2.5 kB)
+Collecting cgen>=2025.1 (from loopy>2024.1->firedrake==2026.10.0->firedrake[check]==2026.10.0->-r /Users/faiq/Projects/fem-advection-diffusion/environment/requirements-phase0.in (line 3))
+  Downloading cgen-2025.1.tar.gz (19 kB)
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Collecting codepy>=2017.1 (from loopy>2024.1->firedrake==2026.10.0->firedrake[check]==2026.10.0->-r /Users/faiq/Projects/fem-advection-diffusion/environment/requirements-phase0.in (line 3))
+  Downloading codepy-2025.1-py3-none-any.whl.metadata (2.0 kB)
+Collecting colorama (from loopy>2024.1->firedrake==2026.10.0->firedrake[check]==2026.10.0->-r /Users/faiq/Projects/fem-advection-diffusion/environment/requirements-phase0.in (line 3))
+  Downloading colorama-0.4.6-py2.py3-none-any.whl.metadata (17 kB)
+Collecting constantdict (from loopy>2024.1->firedrake==2026.10.0->firedrake[check]==2026.10.0->-r /Users/faiq/Projects/fem-advection-diffusion/environment/requirements-phase0.in (line 3))
+  Downloading constantdict-2025.3-py3-none-any.whl.metadata (4.5 kB)
+Collecting genpy>=2016.1.2 (from loopy>2024.1->firedrake==2026.10.0->firedrake[check]==2026.10.0->-r /Users/faiq/Projects/fem-advection-diffusion/environment/requirements-phase0.in (line 3))
+  Downloading genpy-2022.1.tar.gz (6.7 kB)
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Collecting mako (from loopy>2024.1->firedrake==2026.10.0->firedrake[check]==2026.10.0->-r /Users/faiq/Projects/fem-advection-diffusion/environment/requirements-phase0.in (line 3))
+  Downloading mako-1.4.3-py3-none-any.whl.metadata (2.9 kB)
+Collecting pymbolic>=2024.2.2 (from loopy>2024.1->firedrake==2026.10.0->firedrake[check]==2026.10.0->-r /Users/faiq/Projects/fem-advection-diffusion/environment/requirements-phase0.in (line 3))
+  Downloading pymbolic-2025.1-py3-none-any.whl.metadata (3.1 kB)
+Collecting typing-extensions>=4 (from loopy>2024.1->firedrake==2026.10.0->firedrake[check]==2026.10.0->-r /Users/faiq/Projects/fem-advection-diffusion/environment/requirements-phase0.in (line 3))
+  Downloading typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)
+Collecting platformdirs>=2.2.0 (from codepy>=2017.1->loopy>2024.1->firedrake==2026.10.0->firedrake[check]==2026.10.0->-r /Users/faiq/Projects/fem-advection-diffusion/environment/requirements-phase0.in (line 3))
+  Downloading platformdirs-4.12.3-py3-none-any.whl.metadata (5.5 kB)
+Collecting checkpoint_schedules (from pyadjoint-ad>=2026.10->firedrake==2026.10.0->firedrake[check]==2026.10.0->-r /Users/faiq/Projects/fem-advection-diffusion/environment/requirements-phase0.in (line 3))
+  Downloading checkpoint_schedules-1.0.4-py3-none-any.whl.metadata (3.3 kB)
+Collecting siphash24>=1.6 (from pytools[siphash]->firedrake==2026.10.0->firedrake[check]==2026.10.0->-r /Users/faiq/Projects/fem-advection-diffusion/environment/requirements-phase0.in (line 3))
+  Downloading siphash24-1.9-cp313-cp313-macosx_11_0_arm64.whl.metadata (3.3 kB)
+Collecting MarkupSafe>=2.0 (from mako->loopy>2024.1->firedrake==2026.10.0->firedrake[check]==2026.10.0->-r /Users/faiq/Projects/fem-advection-diffusion/environment/requirements-phase0.in (line 3))
+  Downloading markupsafe-3.0.4-cp313-cp313-macosx_11_0_arm64.whl.metadata (2.7 kB)
+Collecting iniconfig>=1.0.1 (from pytest->firedrake[check]==2026.10.0->-r /Users/faiq/Projects/fem-advection-diffusion/environment/requirements-phase0.in (line 3))
+  Downloading iniconfig-2.3.1-py3-none-any.whl.metadata (2.8 kB)
+Collecting pluggy<2,>=1.5 (from pytest->firedrake[check]==2026.10.0->-r /Users/faiq/Projects/fem-advection-diffusion/environment/requirements-phase0.in (line 3))
+  Downloading pluggy-1.6.0-py3-none-any.whl.metadata (4.8 kB)
+Collecting pygments>=2.7.2 (from pytest->firedrake[check]==2026.10.0->-r /Users/faiq/Projects/fem-advection-diffusion/environment/requirements-phase0.in (line 3))
+  Downloading pygments-2.21.0-py3-none-any.whl.metadata (2.5 kB)
+WARNING: pytools 2026.1.1 does not provide the extra 'siphash'
+Collecting charset_normalizer<4,>=2 (from requests->firedrake==2026.10.0->firedrake[check]==2026.10.0->-r /Users/faiq/Projects/fem-advection-diffusion/environment/requirements-phase0.in (line 3))
+  Downloading charset_normalizer-3.5.2-cp313-cp313-macosx_10_13_universal2.whl.metadata (46 kB)
+Collecting idna<4,>=2.5 (from requests->firedrake==2026.10.0->firedrake[check]==2026.10.0->-r /Users/faiq/Projects/fem-advection-diffusion/environment/requirements-phase0.in (line 3))
+  Downloading idna-3.20-py3-none-any.whl.metadata (7.2 kB)
+Collecting urllib3<3,>=1.26 (from requests->firedrake==2026.10.0->firedrake[check]==2026.10.0->-r /Users/faiq/Projects/fem-advection-diffusion/environment/requirements-phase0.in (line 3))
+  Downloading urllib3-2.8.0-py3-none-any.whl.metadata (7.4 kB)
+Collecting certifi>=2023.5.7 (from requests->firedrake==2026.10.0->firedrake[check]==2026.10.0->-r /Users/faiq/Projects/fem-advection-diffusion/environment/requirements-phase0.in (line 3))
+  Downloading certifi-2026.7.22-py3-none-any.whl.metadata (2.5 kB)
+Collecting mpmath<1.4,>=1.1.0 (from sympy->firedrake==2026.10.0->firedrake[check]==2026.10.0->-r /Users/faiq/Projects/fem-advection-diffusion/environment/requirements-phase0.in (line 3))
+  Downloading mpmath-1.3.0-py3-none-any.whl.metadata (8.6 kB)
+Downloading irksome-2026.0.0-py3-none-any.whl (85 kB)
+Downloading fenics_ufl-2026.2.0-py3-none-any.whl (280 kB)
+Downloading firedrake_fiat-2026.10.0-py3-none-any.whl (499 kB)
+Downloading decorator-4.4.2-py2.py3-none-any.whl (9.2 kB)
+Downloading islpy-2026.1-cp313-cp313-macosx_11_0_arm64.whl (2.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.3/2.3 MB 1.1 MB/s  0:00:02
+Downloading firedrake_rtree-2026.3.0-py3-none-macosx_11_0_arm64.whl (229 kB)
+Downloading loopy-2025.2-py3-none-any.whl (552 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 552.4/552.4 kB 248.3 kB/s  0:00:01
+Downloading codepy-2025.1-py3-none-any.whl (22 kB)
+Downloading mpi_pytest-2026.0-py3-none-any.whl (11 kB)
+Downloading numpy-2.5.3-cp313-cp313-macosx_14_0_arm64.whl (5.4 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 5.4/5.4 MB 551.0 kB/s  0:00:09
+Downloading petsctools-2026.1-py3-none-any.whl (22 kB)
+Downloading platformdirs-4.12.3-py3-none-any.whl (32 kB)
+Downloading pyadjoint_ad-2026.10.0-py3-none-any.whl (65 kB)
+Downloading pymbolic-2025.1-py3-none-any.whl (138 kB)
+Downloading pytools-2026.1.1-py3-none-any.whl (99 kB)
+Downloading rtree-1.4.1-py3-none-macosx_11_0_arm64.whl (436 kB)
+Downloading scipy-1.18.1-cp313-cp313-macosx_14_0_arm64.whl (20.5 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 20.5/20.5 MB 183.9 kB/s  0:01:49
+Downloading siphash24-1.9-cp313-cp313-macosx_11_0_arm64.whl (70 kB)
+Downloading typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+Downloading cachetools-7.2.1-py3-none-any.whl (17 kB)
+Downloading cffi-2.1.1-cp313-cp313-macosx_11_0_arm64.whl (184 kB)
+Downloading checkpoint_schedules-1.0.4-py3-none-any.whl (41 kB)
+Downloading colorama-0.4.6-py2.py3-none-any.whl (25 kB)
+Downloading constantdict-2025.3-py3-none-any.whl (7.7 kB)
+Downloading immutabledict-4.3.1-py3-none-any.whl (5.0 kB)
+Downloading mako-1.4.3-py3-none-any.whl (80 kB)
+Downloading markupsafe-3.0.4-cp313-cp313-macosx_11_0_arm64.whl (12 kB)
+Downloading packaging-26.3-py3-none-any.whl (129 kB)
+Downloading pkgconfig-1.6.0-py3-none-any.whl (7.1 kB)
+Downloading progress-1.6.1-py3-none-any.whl (9.8 kB)
+Downloading pycparser-3.0-py3-none-any.whl (48 kB)
+Downloading pytest-9.1.1-py3-none-any.whl (386 kB)
+Downloading pluggy-1.6.0-py3-none-any.whl (20 kB)
+Downloading iniconfig-2.3.1-py3-none-any.whl (7.6 kB)
+Downloading pygments-2.21.0-py3-none-any.whl (1.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.3/1.3 MB 188.2 kB/s  0:00:06
+Downloading recursivenodes-0.2.0-py3-none-any.whl (42 kB)
+Downloading requests-2.34.2-py3-none-any.whl (73 kB)
+Downloading charset_normalizer-3.5.2-cp313-cp313-macosx_10_13_universal2.whl (366 kB)
+Downloading idna-3.20-py3-none-any.whl (69 kB)
+Downloading urllib3-2.8.0-py3-none-any.whl (135 kB)
+Downloading certifi-2026.7.22-py3-none-any.whl (136 kB)
+Downloading symengine-0.14.1-cp313-cp313-macosx_11_0_arm64.whl (23.0 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 23.0/23.0 MB 257.7 kB/s  0:01:46
+Downloading sympy-1.14.0-py3-none-any.whl (6.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.3/6.3 MB 557.1 kB/s  0:00:11
+Downloading mpmath-1.3.0-py3-none-any.whl (536 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 536.2/536.2 kB 103.7 kB/s  0:00:03
+Building wheels for collected packages: firedrake, petsc4py, mpi4py, h5py, libsupermesh, cgen, genpy
+  Building wheel for firedrake (pyproject.toml): started
+  Building wheel for firedrake (pyproject.toml): finished with status 'done'
+  Created wheel for firedrake: filename=firedrake-2026.10.0-cp313-cp313-macosx_27_0_arm64.whl size=3367780 sha256=a256336aff0d49e5622e6629cb6a9ddba1d1ee79aed5976e65abe1e9d5f889f6
+  Stored in directory: /Users/faiq/Projects/fem-advection-diffusion/environment/build/python-tmp/pip-ephem-wheel-cache-egtl8o70/wheels/58/32/03/8ac29d7aaa5147b196b71a88888f93dd1e9a89fe6833caa22d
+  Building wheel for petsc4py (pyproject.toml): started
+  Building wheel for petsc4py (pyproject.toml): still running...
+  Building wheel for petsc4py (pyproject.toml): finished with status 'done'
+  Created wheel for petsc4py: filename=petsc4py-3.26.0-cp313-cp313-macosx_27_0_arm64.whl size=1981257 sha256=ebe59b0b12fa2f34fa5f319f1ad6b6cf8e35d179b677565dc82a1f6c559892dc
+  Stored in directory: /Users/faiq/Projects/fem-advection-diffusion/environment/build/python-tmp/pip-ephem-wheel-cache-egtl8o70/wheels/ab/b1/91/23f7a5ac6241ea0fc22036e39c5ccdbf1b81059031fc6d3e08
+  Building wheel for mpi4py (pyproject.toml): started
+  Building wheel for mpi4py (pyproject.toml): finished with status 'done'
+  Created wheel for mpi4py: filename=mpi4py-4.1.2-cp313-cp313-macosx_27_0_arm64.whl size=866253 sha256=28ef5f5c9ede81c21913bbe96d4eb36a2c5d79e2800dbf1d0596acdf29088020
+  Stored in directory: /Users/faiq/Projects/fem-advection-diffusion/environment/build/python-tmp/pip-ephem-wheel-cache-egtl8o70/wheels/64/18/2b/672c904baeadaf97a4e8c850f4c3b59f44216fd44263094e7c
+  Building wheel for h5py (pyproject.toml): started
+  Building wheel for h5py (pyproject.toml): finished with status 'done'
+  Created wheel for h5py: filename=h5py-3.16.0-cp313-cp313-macosx_27_0_arm64.whl size=1739100 sha256=8e463c85ae684e5d412c6fe355d9a997ad35147e7a87838580485e7deae0c932
+  Stored in directory: /Users/faiq/Projects/fem-advection-diffusion/environment/build/python-tmp/pip-ephem-wheel-cache-egtl8o70/wheels/ff/aa/63/c86f01adb4713398492dd138b233275bf80cdc6349502b63dc
+  Building wheel for libsupermesh (pyproject.toml): started
+  Building wheel for libsupermesh (pyproject.toml): finished with status 'done'
+  Created wheel for libsupermesh: filename=libsupermesh-2026.3-cp313-cp313-macosx_27_0_arm64.whl size=312151 sha256=3824f64eb3be0e769920d51dfdd398e2bf740416d435ef8a8c0822792f43879f
+  Stored in directory: /Users/faiq/Projects/fem-advection-diffusion/environment/build/python-tmp/pip-ephem-wheel-cache-egtl8o70/wheels/73/4a/68/dd4e131477b0e83922687809b5cfea395481a14535f0dcd8c5
+  Building wheel for cgen (pyproject.toml): started
+  Building wheel for cgen (pyproject.toml): finished with status 'done'
+  Created wheel for cgen: filename=cgen-2025.1-py3-none-any.whl size=19881 sha256=900662cc208a30be925962dda8cf9e990c0e77c4bb70a636b0006bceeffdc4c1
+  Stored in directory: /Users/faiq/Projects/fem-advection-diffusion/environment/build/python-tmp/pip-ephem-wheel-cache-egtl8o70/wheels/0a/89/c3/ddc3bbe5c34a56e173f65c25c711a04341e6c7440d90969746
+  Building wheel for genpy (pyproject.toml): started
+  Building wheel for genpy (pyproject.toml): finished with status 'done'
+  Created wheel for genpy: filename=genpy-2022.1-py3-none-any.whl size=5818 sha256=6b5fda94abc1bbd28fdf42213856e43039a7d1cf7886437d6c6b5f7806995304
+  Stored in directory: /Users/faiq/Projects/fem-advection-diffusion/environment/build/python-tmp/pip-ephem-wheel-cache-egtl8o70/wheels/8c/29/b7/7308ec4aa0f6eedb85f3260b203914fb73093c5cec7c218fc2
+Successfully built firedrake petsc4py mpi4py h5py libsupermesh cgen genpy
+Installing collected packages: mpmath, irksome, urllib3, typing-extensions, sympy, symengine, siphash24, rtree, pygments, pycparser, progress, pluggy, platformdirs, pkgconfig, packaging, numpy, mpi4py, MarkupSafe, islpy, iniconfig, immutabledict, idna, decorator, constantdict, colorama, charset_normalizer, certifi, cachetools, scipy, requests, recursivenodes, pytools, pytest, petsctools, petsc4py, mako, libsupermesh, h5py, fenics-ufl, checkpoint_schedules, cffi, pymbolic, pyadjoint-ad, mpi-pytest, genpy, firedrake-rtree, firedrake-fiat, cgen, codepy, loopy, firedrake
+
+Successfully installed MarkupSafe-3.0.4 cachetools-7.2.1 certifi-2026.7.22 cffi-2.1.1 cgen-2025.1 charset_normalizer-3.5.2 checkpoint_schedules-1.0.4 codepy-2025.1 colorama-0.4.6 constantdict-2025.3 decorator-4.4.2 fenics-ufl-2026.2.0 firedrake-2026.10.0 firedrake-fiat-2026.10.0 firedrake-rtree-2026.3.0 genpy-2022.1 h5py-3.16.0 idna-3.20 immutabledict-4.3.1 iniconfig-2.3.1 irksome-2026.0.0 islpy-2026.1 libsupermesh-2026.3 loopy-2025.2 mako-1.4.3 mpi-pytest-2026.0 mpi4py-4.1.2 mpmath-1.3.0 numpy-2.5.3 packaging-26.3 petsc4py-3.26.0 petsctools-2026.1 pkgconfig-1.6.0 platformdirs-4.12.3 pluggy-1.6.0 progress-1.6.1 pyadjoint-ad-2026.10.0 pycparser-3.0 pygments-2.21.0 pymbolic-2025.1 pytest-9.1.1 pytools-2026.1.1 recursivenodes-0.2.0 requests-2.34.2 rtree-1.4.1 scipy-1.18.1 siphash24-1.9 symengine-0.14.1 sympy-1.14.0 typing-extensions-4.16.0 urllib3-2.8.0
+Exit status: 0
+
+Working directory: /Users/faiq/Projects/fem-advection-diffusion
+Running: /Users/faiq/Projects/fem-advection-diffusion/.venv/bin/python -m pip check
+No broken requirements found.
+Exit status: 0
+PYTHON PACKAGE INSTALLATION CHECKPOINT PASSED. Imports and FEM/MPI checks remain pending.

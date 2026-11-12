@@ -1,0 +1,67 @@
+{
+  "status": "passed",
+  "ranks": [
+    {
+      "rank": 0,
+      "size": 1,
+      "collective_sum": 1,
+      "python": "/Users/faiq/Projects/fem-advection-diffusion/.venv/bin/python",
+      "architecture": "arm64",
+      "versions": {
+        "firedrake": "2026.10.0",
+        "irksome": "2026.0.0",
+        "petsc4py": "3.26.0",
+        "mpi4py": "4.1.2",
+        "h5py": "3.16.0"
+      },
+      "module_paths": {
+        "mpi4py": "/Users/faiq/Projects/fem-advection-diffusion/.venv/lib/python3.13/site-packages/mpi4py/__init__.py",
+        "petsc4py": "/Users/faiq/Projects/fem-advection-diffusion/.venv/lib/python3.13/site-packages/petsc4py/__init__.py",
+        "PETSc": "/Users/faiq/Projects/fem-advection-diffusion/.venv/lib/python3.13/site-packages/petsc4py/lib/arch-firedrake-default/PETSc.cpython-313-darwin.so",
+        "h5py": "/Users/faiq/Projects/fem-advection-diffusion/.venv/lib/python3.13/site-packages/h5py/__init__.py",
+        "firedrake": "/Users/faiq/Projects/fem-advection-diffusion/.venv/lib/python3.13/site-packages/firedrake/__init__.py",
+        "irksome": "/Users/faiq/Projects/fem-advection-diffusion/.venv/lib/python3.13/site-packages/irksome/__init__.py"
+      },
+      "petsc_build_config": {
+        "PETSC_DIR": "/Users/faiq/Projects/fem-advection-diffusion/environment/build/petsc",
+        "PETSC_ARCH": "arch-firedrake-default"
+      },
+      "petsc_version": [
+        3,
+        26,
+        0
+      ],
+      "petsc_scalar_dtype": "float64",
+      "petsc_index_dtype": "int32",
+      "mpi_vendor": "Open MPI",
+      "mpi_vendor_version": [
+        5,
+        0,
+        11
+      ],
+      "mpi_library_version": "Open MPI v5.0.11, package: Open MPI brew@Golden-Gate-arm64.local Distribution, ident: 5.0.11, repo rev: v5.0.11rc1, Sep 16, 2026\u0000",
+      "hdf5_mpi_enabled": true,
+      "hdf5_runtime_version": "2.2.0",
+      "radau_A": [
+        [
+          0.41666666666666674,
+          -0.08333333333333334
+        ],
+        [
+          0.7500000000000001,
+          0.24999999999999992
+        ]
+      ],
+      "radau_b": [
+        0.7500000000000001,
+        0.24999999999999992
+      ],
+      "radau_c": [
+        0.33333333333333337,
+        1.0
+      ],
+      "radau_order_conditions_passed": true,
+      "project_fem_assembly_or_solve_run": false
+    }
+  ]
+}

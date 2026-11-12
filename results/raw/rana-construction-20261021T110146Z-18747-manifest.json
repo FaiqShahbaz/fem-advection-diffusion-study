@@ -1,0 +1,102 @@
+{
+  "started_utc": "2026-10-21T11:01:46.856579+00:00",
+  "status": "RanaLD construction checks passed; mentor review pending",
+  "measurement_kind": "One-step installed RanaLD/exact auxiliary LU construction; no timing ranking",
+  "asm_cost_review": "results/processed/asm_cost_review.json",
+  "asm_cost_review_sha256": "645c9f79637cb43dc06ae4406c8e9ba7cf4cd6c77e9030d43e5b0b2f59d842fe",
+  "verified_environment": "environment/verified_environment.json",
+  "verified_environment_sha256": "c2441b3e78aa5f1f5cd5c1d50ba2160148991da35988eaa31ef4bd02d796fa36",
+  "config": "configs/phase3_rana_construction.json",
+  "config_sha256": "33d3cd2e24c7a663f8d00f8bb1ca6f4f1ff49a75f61c96bb50adedc9cd8114f2",
+  "installed_source_inspection": "environment/rana_source_inspection.json",
+  "installed_source_inspection_sha256": "483e1f2a1b9bac52b5f75a51964c68c05fb1bd91c2cbcacafc82024548e01caa",
+  "inspected_installed_source_sha256": {
+    ".venv/lib/python3.13/site-packages/irksome/pc.py": "bb6ff87009f7017f1839b9a3fe031f4dfb04fbce7f5de4331470980570a68060",
+    ".venv/lib/python3.13/site-packages/irksome/__init__.py": "3b8b7574dc3fe56664a69db4fccd075909ead6a13fa69335628049f737dc02ae",
+    ".venv/lib/python3.13/site-packages/irksome/base_time_stepper.py": "96c0f8b0babfbe09e425ddac07a6d57780e14e65badfbc783f5c9ddf2fde4c1f",
+    ".venv/lib/python3.13/site-packages/irksome/stage_derivative.py": "d42e0a9564ab871704699718c443db98b936f6bf604bf2159959bdc5780fe85d",
+    ".venv/lib/python3.13/site-packages/firedrake/preconditioners/assembled.py": "21a04d5991d7f35cae988a56c102c915d38dae62cdacf9592c21c5fc3e6f97ff",
+    ".venv/lib/python3.13/site-packages/firedrake/preconditioners/base.py": "d1c3956b9b70cda8121610d39cee3c599c05362ceacd7d853b61b69185f1702a"
+  },
+  "script_sha256": {
+    "src/phase3_rana_construction.py": "2fc4db50340c87b980b2bff1f60e8e89f78b19f930497b352825b5a700478bc8",
+    "src/phase3_asm_construction.py": "a1a22df2a45b8a9b5e6eab21fddd90f8015a499e60c951bf0be6b32ed2d5f41b",
+    "environment/check_asm_construction.py": "21ffb46ecac6cd18724cc8be86f1d4425ffcf06d2577dfe749e4f4666120fa4f",
+    "src/phase3_asm_trajectory.py": "c6444e1e83a2eec9093d293801207c91b784ce0e5d8ab5f50ee67aeb375bc008",
+    "environment/check_asm_trajectory.py": "065329dd97c7b4c2f0db2e81dec4362a9a89dae5a0a779203381ae35c0b74130",
+    "src/phase3_asm_cost.py": "5874b190e6094fda1b8d978253b2d88462339ab11f65b48268ad275dacbc5c35",
+    "environment/check_asm_cost.py": "5c10a35f36a805620e77077bbd4935b53b93a7b736ce57d4143bdee426237909",
+    "src/phase3_accuracy_cost.py": "16e2dee7c150e101120c0f1f3fc601f8646849fc6162539b339e78b00944633f",
+    "environment/check_accuracy_cost.py": "fa44a01260232ba0dc796dfea0c789ccdaea9693d8d426e79d49cc8b9507c3e9",
+    "src/phase3_cost_pilot.py": "458bd6db1b81d2c1bfaf729fca511f01efec51e9141de2d14046bdad3fefba7c",
+    "environment/check_cost_pilot.py": "a2ab9e3d8e5e0333af9e49c44a649ac34750bbb59e4ca22c04e3766d75219dfa",
+    "src/phase2_temporal.py": "f54ca4d047b133c38ba321e5d1a4e74edd6b8ddc21c4263fe7f8726362728464",
+    "environment/check_temporal.py": "01384464231e023efe2158eb7deb834723abc237042123e0e64293bdaf7ed26b",
+    "src/phase0_be_smoke.py": "382567d3a9a2d51b09f3e42f4e5ed8f4db2e5273148e917f390609538b0c0480",
+    "src/phase0_irksome_be.py": "ec4f69af4e0ff160e1fc74ec965952d4aaf1f6853d9d3a3affc82ec099de3c68",
+    "src/phase0_radau_smoke.py": "0d93682d3f5d002cf98524fa1e67dd2a09f1f7aec7bd0c1db9454492f9c70b9a",
+    "src/phase1_interpolation.py": "c9b17b5701ccc3724e66a734628cf62b5c7eef0b67803a46e0a63ae39b982e69",
+    "src/phase1_spatial.py": "297617e318cb0d339ae2c9ddf94407abec7273b075dddec641fc5bda2498d391",
+    "environment/check_rana_construction.py": "a69fb15f91f0aea407e355baab681ddf7e7731536e5492734562d2a9401ab57e",
+    "environment/check_spatial.py": "f88e2644a14eadf00f28999fd5f0baf1d7dd5dbc85fb274416cdbf020a9c5ceb",
+    "environment/check_interpolation.py": "6240abded7ef6902746b42f55542c94c8dfbdf07312bcd9fc7b33fa84077d759",
+    "environment/check_radau_smoke.py": "23df1fff453736a8e06dc345f533d61a106a754f02de62c6359a7be741d38ace",
+    "environment/check_irksome_be.py": "75cfad87a8c2c81cd8a025224acdb8ca3d7b9e270c17d13efa021c2bd554fcca",
+    "environment/check_be_smoke.py": "cf3e869775b23818f26aab3ff37051cdbb7154f168af3400001fc79f261070d8",
+    "environment/check_python_runtime.py": "d0784d5ba3fc156f7c78321a4772b638bf38689cfc46bc69aae4f6f93bcb73b3",
+    "environment/configure_petsc.py": "da97e917ff176d5a1d577b986622b36304441728180a5d57277a78e58698af02"
+  },
+  "code_commit": "8be3837c35405bb5642f68799628749a65beaf42",
+  "working_tree_status_before_run": "",
+  "selected_tools": {
+    "python": "/opt/homebrew/opt/python@3.13/bin/python3.13",
+    "mpicc": "/opt/homebrew/opt/open-mpi/bin/mpicc",
+    "mpicxx": "/opt/homebrew/opt/open-mpi/bin/mpicxx",
+    "mpif90": "/opt/homebrew/opt/open-mpi/bin/mpif90",
+    "mpiexec": "/opt/homebrew/opt/open-mpi/bin/mpiexec"
+  },
+  "selected_environment": {
+    "PETSC_DIR": "/Users/faiq/Projects/fem-advection-diffusion/environment/build/petsc",
+    "PETSC_ARCH": "arch-firedrake-default",
+    "OPENBLAS_NUM_THREADS": "1",
+    "OMP_NUM_THREADS": "1",
+    "FIREDRAKE_CACHE_DIR": "/Users/faiq/Projects/fem-advection-diffusion/environment/build/runtime-cache",
+    "PYOP2_CACHE_DIR": "/Users/faiq/Projects/fem-advection-diffusion/environment/build/runtime-cache/pyop2",
+    "FIREDRAKE_TSFC_KERNEL_CACHE_DIR": "/Users/faiq/Projects/fem-advection-diffusion/environment/build/runtime-cache/tsfc",
+    "XDG_CACHE_HOME": "/Users/faiq/Projects/fem-advection-diffusion/environment/build/runtime-cache",
+    "TMPDIR": "/Users/faiq/Projects/fem-advection-diffusion/environment/build/runtime-tmp",
+    "PYTHONNOUSERSITE": "1",
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "inherited_options_or_library_settings": {},
+  "commands": {
+    "serial": [
+      "/Users/faiq/Projects/fem-advection-diffusion/.venv/bin/python",
+      "/Users/faiq/Projects/fem-advection-diffusion/src/phase3_rana_construction.py",
+      "--config",
+      "/Users/faiq/Projects/fem-advection-diffusion/configs/phase3_rana_construction.json",
+      "--output",
+      "/Users/faiq/Projects/fem-advection-diffusion/results/raw/rana-construction-20261021T110146Z-18747-serial.json"
+    ]
+  },
+  "completed_steps": [
+    "serial"
+  ],
+  "rana_construction_review_pending": true,
+  "performance_measurement": false,
+  "accuracy_cost_ranking_established": false,
+  "study_validation": {
+    "status": "passed",
+    "independent_physical_stage_solves": 3,
+    "performance_measurement": false,
+    "interpretation": "Installed RanaLD matrix/action construction and first-step field agreement; mentor review pending"
+  },
+  "measurement_records": {
+    "serial": {
+      "path": "results/raw/rana-construction-20261021T110146Z-18747-serial.json",
+      "sha256": "c01be14c72114874f57efadc9ab5fdeeaf8d72428496e4c87613a2e6d868fe6b"
+    }
+  },
+  "finished_utc": "2026-10-21T11:01:59.923771+00:00",
+  "checkpoint_exit_status": 0
+}

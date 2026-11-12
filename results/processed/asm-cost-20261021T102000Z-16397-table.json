@@ -1,0 +1,403 @@
+{
+  "raw_source": {
+    "path": "results/raw/asm-cost-20261021T102000Z-16397-serial.json",
+    "sha256": "0a00b80efab3339faae0eb0538ac139bd445d58ab165701182be178fcdb4bfa3"
+  },
+  "accepted_review": "results/processed/asm_cost_review.json",
+  "rows": [
+    {
+      "trajectory": "Jacobi_measured1",
+      "case_id": "Jacobi",
+      "total_iterations": 7258,
+      "timing": {
+        "construction_seconds": 0.004830124991713092,
+        "first_step_seconds": 0.023149707994889468,
+        "remaining_steps_seconds": 0.2025327510200441,
+        "trajectory_wall_seconds": 0.23052691700286232,
+        "loop_bookkeeping_seconds": 1.4332996215671301e-05,
+        "petsc_event_deltas": {
+          "KSPSolve": {
+            "count": 10,
+            "time": 0.20508799999999994,
+            "flops": 2378511929.0
+          },
+          "KSPSetUp": {
+            "count": 1,
+            "time": 9.000000000369823e-06,
+            "flops": 0.0
+          },
+          "PCSetUp": {
+            "count": 1,
+            "time": 0.0,
+            "flops": 0.0
+          },
+          "PCApply": {
+            "count": 7408,
+            "time": 0.0028220000000125367,
+            "flops": 16134624.0
+          }
+        },
+        "interpretation": "Inclusive nested event times; do not add event times to each other or to wall time"
+      },
+      "equivalence": {
+        "l2_error": {
+          "actual_field_difference": 0.0,
+          "baseline_field_norm": 0.1839343202503934,
+          "allowed_difference": 1.9393432025039343e-11
+        },
+        "h1_seminorm_error": {
+          "actual_field_difference": 0.0,
+          "baseline_field_norm": 0.8172045148516989,
+          "allowed_difference": 8.272045148516988e-11
+        }
+      },
+      "local_work_derived": null
+    },
+    {
+      "trajectory": "ASM_measured1",
+      "case_id": "ASM",
+      "total_iterations": 600,
+      "timing": {
+        "construction_seconds": 0.005358292022719979,
+        "first_step_seconds": 0.010470792010892183,
+        "remaining_steps_seconds": 0.07188933197176084,
+        "trajectory_wall_seconds": 0.08772766700712964,
+        "loop_bookkeeping_seconds": 9.251001756638288e-06,
+        "petsc_event_deltas": {
+          "KSPSolve": {
+            "count": 10,
+            "time": 0.0621760000000009,
+            "flops": 309821200.0
+          },
+          "KSPSetUp": {
+            "count": 1,
+            "time": 8.000000000230045e-06,
+            "flops": 0.0
+          },
+          "PCSetUp": {
+            "count": 1,
+            "time": 0.0007239999999999469,
+            "flops": 0.0
+          },
+          "PCApply": {
+            "count": 620,
+            "time": 0.04655400000000132,
+            "flops": 129799480.0
+          }
+        },
+        "interpretation": "Inclusive nested event times; do not add event times to each other or to wall time"
+      },
+      "equivalence": {
+        "l2_error": {
+          "actual_field_difference": 0.0,
+          "baseline_field_norm": 0.1839343202503611,
+          "allowed_difference": 1.9393432025036112e-11
+        },
+        "h1_seminorm_error": {
+          "actual_field_difference": 0.0,
+          "baseline_field_norm": 0.8172045148515555,
+          "allowed_difference": 8.272045148515555e-11
+        }
+      },
+      "local_work_derived": {
+        "basis": "Top-level PCApply count times fixed four-domain additive PREONLY/ILU composition; no timed Python callbacks",
+        "applications_per_domain": 620,
+        "total_local_applications": 2480,
+        "domains": 4
+      }
+    },
+    {
+      "trajectory": "ASM_measured2",
+      "case_id": "ASM",
+      "total_iterations": 600,
+      "timing": {
+        "construction_seconds": 0.0055191669962368906,
+        "first_step_seconds": 0.010338249994674698,
+        "remaining_steps_seconds": 0.07180783298099414,
+        "trajectory_wall_seconds": 0.08767462498508394,
+        "loop_bookkeeping_seconds": 9.37501317821443e-06,
+        "petsc_event_deltas": {
+          "KSPSolve": {
+            "count": 10,
+            "time": 0.062204999999998734,
+            "flops": 309821200.0
+          },
+          "KSPSetUp": {
+            "count": 1,
+            "time": 8.000000000230045e-06,
+            "flops": 0.0
+          },
+          "PCSetUp": {
+            "count": 1,
+            "time": 0.0006940000000001945,
+            "flops": 0.0
+          },
+          "PCApply": {
+            "count": 620,
+            "time": 0.046613999999989275,
+            "flops": 129799480.0
+          }
+        },
+        "interpretation": "Inclusive nested event times; do not add event times to each other or to wall time"
+      },
+      "equivalence": {
+        "l2_error": {
+          "actual_field_difference": 0.0,
+          "baseline_field_norm": 0.1839343202503611,
+          "allowed_difference": 1.9393432025036112e-11
+        },
+        "h1_seminorm_error": {
+          "actual_field_difference": 0.0,
+          "baseline_field_norm": 0.8172045148515555,
+          "allowed_difference": 8.272045148515555e-11
+        }
+      },
+      "local_work_derived": {
+        "basis": "Top-level PCApply count times fixed four-domain additive PREONLY/ILU composition; no timed Python callbacks",
+        "applications_per_domain": 620,
+        "total_local_applications": 2480,
+        "domains": 4
+      }
+    },
+    {
+      "trajectory": "Jacobi_measured2",
+      "case_id": "Jacobi",
+      "total_iterations": 7258,
+      "timing": {
+        "construction_seconds": 0.004739291995065287,
+        "first_step_seconds": 0.023291457997402176,
+        "remaining_steps_seconds": 0.2006098749989178,
+        "trajectory_wall_seconds": 0.22865220898529515,
+        "loop_bookkeeping_seconds": 1.1583993909880519e-05,
+        "petsc_event_deltas": {
+          "KSPSolve": {
+            "count": 10,
+            "time": 0.204588000000002,
+            "flops": 2378511929.0
+          },
+          "KSPSetUp": {
+            "count": 1,
+            "time": 8.999999999481645e-06,
+            "flops": 0.0
+          },
+          "PCSetUp": {
+            "count": 1,
+            "time": 1.000000000139778e-06,
+            "flops": 0.0
+          },
+          "PCApply": {
+            "count": 7408,
+            "time": 0.0028940000000208244,
+            "flops": 16134624.0
+          }
+        },
+        "interpretation": "Inclusive nested event times; do not add event times to each other or to wall time"
+      },
+      "equivalence": {
+        "l2_error": {
+          "actual_field_difference": 0.0,
+          "baseline_field_norm": 0.1839343202503934,
+          "allowed_difference": 1.9393432025039343e-11
+        },
+        "h1_seminorm_error": {
+          "actual_field_difference": 0.0,
+          "baseline_field_norm": 0.8172045148516989,
+          "allowed_difference": 8.272045148516988e-11
+        }
+      },
+      "local_work_derived": null
+    },
+    {
+      "trajectory": "Jacobi_measured3",
+      "case_id": "Jacobi",
+      "total_iterations": 7258,
+      "timing": {
+        "construction_seconds": 0.004591375007294118,
+        "first_step_seconds": 0.02305466600228101,
+        "remaining_steps_seconds": 0.2002042929525487,
+        "trajectory_wall_seconds": 0.2278608750202693,
+        "loop_bookkeeping_seconds": 1.0541058145463467e-05,
+        "petsc_event_deltas": {
+          "KSPSolve": {
+            "count": 10,
+            "time": 0.20422299999999893,
+            "flops": 2378511929.0
+          },
+          "KSPSetUp": {
+            "count": 1,
+            "time": 7.000000000090267e-06,
+            "flops": 0.0
+          },
+          "PCSetUp": {
+            "count": 1,
+            "time": 1.000000000139778e-06,
+            "flops": 0.0
+          },
+          "PCApply": {
+            "count": 7408,
+            "time": 0.0028589999999688587,
+            "flops": 16134624.0
+          }
+        },
+        "interpretation": "Inclusive nested event times; do not add event times to each other or to wall time"
+      },
+      "equivalence": {
+        "l2_error": {
+          "actual_field_difference": 0.0,
+          "baseline_field_norm": 0.1839343202503934,
+          "allowed_difference": 1.9393432025039343e-11
+        },
+        "h1_seminorm_error": {
+          "actual_field_difference": 0.0,
+          "baseline_field_norm": 0.8172045148516989,
+          "allowed_difference": 8.272045148516988e-11
+        }
+      },
+      "local_work_derived": null
+    },
+    {
+      "trajectory": "ASM_measured3",
+      "case_id": "ASM",
+      "total_iterations": 600,
+      "timing": {
+        "construction_seconds": 0.005293291003908962,
+        "first_step_seconds": 0.010608707991195843,
+        "remaining_steps_seconds": 0.09338758199010044,
+        "trajectory_wall_seconds": 0.10930787498364225,
+        "loop_bookkeeping_seconds": 1.82939984370023e-05,
+        "petsc_event_deltas": {
+          "KSPSolve": {
+            "count": 10,
+            "time": 0.07689200000000085,
+            "flops": 309821200.0
+          },
+          "KSPSetUp": {
+            "count": 1,
+            "time": 7.000000000090267e-06,
+            "flops": 0.0
+          },
+          "PCSetUp": {
+            "count": 1,
+            "time": 0.0007159999999997169,
+            "flops": 0.0
+          },
+          "PCApply": {
+            "count": 620,
+            "time": 0.05737499999998974,
+            "flops": 129799480.0
+          }
+        },
+        "interpretation": "Inclusive nested event times; do not add event times to each other or to wall time"
+      },
+      "equivalence": {
+        "l2_error": {
+          "actual_field_difference": 0.0,
+          "baseline_field_norm": 0.1839343202503611,
+          "allowed_difference": 1.9393432025036112e-11
+        },
+        "h1_seminorm_error": {
+          "actual_field_difference": 0.0,
+          "baseline_field_norm": 0.8172045148515555,
+          "allowed_difference": 8.272045148515555e-11
+        }
+      },
+      "local_work_derived": {
+        "basis": "Top-level PCApply count times fixed four-domain additive PREONLY/ILU composition; no timed Python callbacks",
+        "applications_per_domain": 620,
+        "total_local_applications": 2480,
+        "domains": 4
+      }
+    }
+  ],
+  "summary": {
+    "Jacobi": {
+      "construction_seconds": {
+        "values": [
+          0.004830124991713092,
+          0.004739291995065287,
+          0.004591375007294118
+        ],
+        "minimum": 0.004591375007294118,
+        "median": 0.004739291995065287,
+        "maximum": 0.004830124991713092
+      },
+      "first_step_seconds": {
+        "values": [
+          0.023149707994889468,
+          0.023291457997402176,
+          0.02305466600228101
+        ],
+        "minimum": 0.02305466600228101,
+        "median": 0.023149707994889468,
+        "maximum": 0.023291457997402176
+      },
+      "remaining_steps_seconds": {
+        "values": [
+          0.2025327510200441,
+          0.2006098749989178,
+          0.2002042929525487
+        ],
+        "minimum": 0.2002042929525487,
+        "median": 0.2006098749989178,
+        "maximum": 0.2025327510200441
+      },
+      "trajectory_wall_seconds": {
+        "values": [
+          0.23052691700286232,
+          0.22865220898529515,
+          0.2278608750202693
+        ],
+        "minimum": 0.2278608750202693,
+        "median": 0.22865220898529515,
+        "maximum": 0.23052691700286232
+      }
+    },
+    "ASM": {
+      "construction_seconds": {
+        "values": [
+          0.005358292022719979,
+          0.0055191669962368906,
+          0.005293291003908962
+        ],
+        "minimum": 0.005293291003908962,
+        "median": 0.005358292022719979,
+        "maximum": 0.0055191669962368906
+      },
+      "first_step_seconds": {
+        "values": [
+          0.010470792010892183,
+          0.010338249994674698,
+          0.010608707991195843
+        ],
+        "minimum": 0.010338249994674698,
+        "median": 0.010470792010892183,
+        "maximum": 0.010608707991195843
+      },
+      "remaining_steps_seconds": {
+        "values": [
+          0.07188933197176084,
+          0.07180783298099414,
+          0.09338758199010044
+        ],
+        "minimum": 0.07180783298099414,
+        "median": 0.07188933197176084,
+        "maximum": 0.09338758199010044
+      },
+      "trajectory_wall_seconds": {
+        "values": [
+          0.08772766700712964,
+          0.08767462498508394,
+          0.10930787498364225
+        ],
+        "minimum": 0.08767462498508394,
+        "median": 0.08772766700712964,
+        "maximum": 0.10930787498364225
+      }
+    }
+  },
+  "jacobi_over_asm_median_core_ratio": 2.606386523041956,
+  "power": "AC confirmed before/after",
+  "timing_scope": "Warm fresh manual coupled-stage function/form/matrix/KSP/PC construction plus ten RHS/solve/update advances; setup and within-trajectory reuse included",
+  "timing_exclusions": "Imports, shared mesh/initial construction, deliberate pre-run GC, verification, printing/I-O, options cleanup, destruction and postprocessing",
+  "ranking_scope": "One fixed P2/n16 kappa=1 dt=0.1 T=1 Radau problem and the declared manual driver; one process/thread on one laptop"
+}

@@ -1,0 +1,180 @@
+{
+  "started_utc": "2026-10-08T12:48:02.689594+00:00",
+  "status": "Initial P1/P2 interpolation, analytic norms, quadrature controls, trends, and one MPI probe passed; mentor review pending",
+  "measurement_kind": "initial nodal interpolation refinement",
+  "radau_review": "environment/radau_smoke_review.json",
+  "radau_review_sha256": "633a969a9017ade6f10181b9484cb869fb48413a85dd0af48125c16b53a551e6",
+  "verified_environment": "environment/verified_environment.json",
+  "verified_environment_sha256": "c2441b3e78aa5f1f5cd5c1d50ba2160148991da35988eaa31ef4bd02d796fa36",
+  "config": "configs/phase1_interpolation.json",
+  "config_sha256": "a7ae987b114f951c943685b2b2058ce196d1c0bde5998de4da1d917a99cd7511",
+  "script_sha256": {
+    "src/phase1_interpolation.py": "c9b17b5701ccc3724e66a734628cf62b5c7eef0b67803a46e0a63ae39b982e69",
+    "src/phase0_be_smoke.py": "382567d3a9a2d51b09f3e42f4e5ed8f4db2e5273148e917f390609538b0c0480",
+    "environment/check_interpolation.py": "6240abded7ef6902746b42f55542c94c8dfbdf07312bcd9fc7b33fa84077d759",
+    "environment/check_radau_smoke.py": "23df1fff453736a8e06dc345f533d61a106a754f02de62c6359a7be741d38ace",
+    "environment/check_irksome_be.py": "75cfad87a8c2c81cd8a025224acdb8ca3d7b9e270c17d13efa021c2bd554fcca",
+    "environment/check_be_smoke.py": "cf3e869775b23818f26aab3ff37051cdbb7154f168af3400001fc79f261070d8",
+    "environment/check_python_runtime.py": "d0784d5ba3fc156f7c78321a4772b638bf38689cfc46bc69aae4f6f93bcb73b3",
+    "environment/configure_petsc.py": "da97e917ff176d5a1d577b986622b36304441728180a5d57277a78e58698af02"
+  },
+  "code_commit": "7f700eb8c522f16b8d068feca92ee5c5824264dc",
+  "working_tree_status_before_run": "",
+  "selected_tools": {
+    "python": "/opt/homebrew/opt/python@3.13/bin/python3.13",
+    "mpicc": "/opt/homebrew/opt/open-mpi/bin/mpicc",
+    "mpicxx": "/opt/homebrew/opt/open-mpi/bin/mpicxx",
+    "mpif90": "/opt/homebrew/opt/open-mpi/bin/mpif90",
+    "mpiexec": "/opt/homebrew/opt/open-mpi/bin/mpiexec"
+  },
+  "selected_environment": {
+    "PETSC_DIR": "/Users/faiq/Projects/fem-advection-diffusion/environment/build/petsc",
+    "PETSC_ARCH": "arch-firedrake-default",
+    "OPENBLAS_NUM_THREADS": "1",
+    "OMP_NUM_THREADS": "1",
+    "FIREDRAKE_CACHE_DIR": "/Users/faiq/Projects/fem-advection-diffusion/environment/build/runtime-cache",
+    "PYOP2_CACHE_DIR": "/Users/faiq/Projects/fem-advection-diffusion/environment/build/runtime-cache/pyop2",
+    "FIREDRAKE_TSFC_KERNEL_CACHE_DIR": "/Users/faiq/Projects/fem-advection-diffusion/environment/build/runtime-cache/tsfc",
+    "XDG_CACHE_HOME": "/Users/faiq/Projects/fem-advection-diffusion/environment/build/runtime-cache",
+    "TMPDIR": "/Users/faiq/Projects/fem-advection-diffusion/environment/build/runtime-tmp",
+    "PYTHONNOUSERSITE": "1",
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "inherited_options_or_library_settings": {},
+  "commands": {
+    "serial": [
+      "/Users/faiq/Projects/fem-advection-diffusion/.venv/bin/python",
+      "/Users/faiq/Projects/fem-advection-diffusion/src/phase1_interpolation.py",
+      "--config",
+      "/Users/faiq/Projects/fem-advection-diffusion/configs/phase1_interpolation.json",
+      "--group",
+      "all",
+      "--expected-size",
+      "1",
+      "--output",
+      "/Users/faiq/Projects/fem-advection-diffusion/results/raw/interpolation-20261008T124802Z-35838-serial.json"
+    ],
+    "two_rank_P2_probe": [
+      "/opt/homebrew/opt/open-mpi/bin/mpiexec",
+      "-n",
+      "2",
+      "/Users/faiq/Projects/fem-advection-diffusion/.venv/bin/python",
+      "/Users/faiq/Projects/fem-advection-diffusion/src/phase1_interpolation.py",
+      "--config",
+      "/Users/faiq/Projects/fem-advection-diffusion/configs/phase1_interpolation.json",
+      "--group",
+      "mpi_probe",
+      "--expected-size",
+      "2",
+      "--output",
+      "/Users/faiq/Projects/fem-advection-diffusion/results/raw/interpolation-20261008T124802Z-35838-two-rank.json"
+    ]
+  },
+  "completed_steps": [
+    "serial",
+    "two_rank_P2_probe"
+  ],
+  "time_integration_run": false,
+  "project_linear_solve_run": false,
+  "transient_fem_convergence_verified": false,
+  "performance_measurement": false,
+  "initial_baseline_comparison": {
+    "status": "passed",
+    "case_id": "P1-n8",
+    "accepted_initial_l2_error": 0.0155534683098119,
+    "measured_initial_l2_error": 0.0155534683098119,
+    "absolute_difference": 0.0,
+    "reference_review": "environment/be_smoke_review.json"
+  },
+  "serial_mpi_comparison": {
+    "status": "passed",
+    "case_id": "P2-n32",
+    "compared_global_quantities": {
+      "metrics/domain_area": {
+        "serial": 1.0000000000000002,
+        "two_rank": 1.0000000000000002,
+        "absolute_difference": 0.0
+      },
+      "metrics/l2_error": {
+        "serial": 8.59993190422603e-06,
+        "two_rank": 8.599931904226582e-06,
+        "absolute_difference": 5.522654816098038e-19
+      },
+      "metrics/h1_seminorm_error": {
+        "serial": 0.002110323498397932,
+        "two_rank": 0.002110323498398434,
+        "absolute_difference": 5.017687654262915e-16
+      },
+      "metrics/boundary_trace_l2": {
+        "serial": 0.0,
+        "two_rank": 0.0,
+        "absolute_difference": 0.0
+      },
+      "metrics/exact_l2_norm": {
+        "serial": 0.5000000000000006,
+        "two_rank": 0.5000000000000002,
+        "absolute_difference": 3.3306690738754696e-16
+      },
+      "metrics/exact_h1_seminorm": {
+        "serial": 2.2214414690791804,
+        "two_rank": 2.2214414690791835,
+        "absolute_difference": 3.1086244689504383e-15
+      },
+      "metrics/interpolant_l2_norm": {
+        "serial": 0.4999997583343107,
+        "two_rank": 0.4999997583343107,
+        "absolute_difference": 0.0
+      },
+      "control_metrics/domain_area": {
+        "serial": 1.0000000000000002,
+        "two_rank": 1.0000000000000002,
+        "absolute_difference": 0.0
+      },
+      "control_metrics/l2_error": {
+        "serial": 8.599931904225403e-06,
+        "two_rank": 8.599931904226122e-06,
+        "absolute_difference": 7.182839392716467e-19
+      },
+      "control_metrics/h1_seminorm_error": {
+        "serial": 0.0021103234983979066,
+        "two_rank": 0.0021103234983980107,
+        "absolute_difference": 1.0408340855860843e-16
+      },
+      "control_metrics/boundary_trace_l2": {
+        "serial": 0.0,
+        "two_rank": 0.0,
+        "absolute_difference": 0.0
+      },
+      "control_metrics/exact_l2_norm": {
+        "serial": 0.5000000000000006,
+        "two_rank": 0.5000000000000002,
+        "absolute_difference": 3.3306690738754696e-16
+      },
+      "control_metrics/exact_h1_seminorm": {
+        "serial": 2.221441469079181,
+        "two_rank": 2.2214414690791835,
+        "absolute_difference": 2.6645352591003757e-15
+      },
+      "control_metrics/interpolant_l2_norm": {
+        "serial": 0.49999975833431076,
+        "two_rank": 0.49999975833431076,
+        "absolute_difference": 0.0
+      }
+    },
+    "relative_tolerance": 1e-09,
+    "absolute_tolerance": 1e-12,
+    "limit": "One selected P2 case; agreement of integrated quantities, not all coefficients or MPI scaling"
+  },
+  "measurement_records": {
+    "serial": {
+      "path": "results/raw/interpolation-20261008T124802Z-35838-serial.json",
+      "sha256": "6d35516e17d20d699c3e0edf8e4886bfaf9beae80df47758f18823bad160a515"
+    },
+    "two-rank": {
+      "path": "results/raw/interpolation-20261008T124802Z-35838-two-rank.json",
+      "sha256": "7105f13ea419937579ed5aafe17420685062ca04dfddab1469811bd05773d55e"
+    }
+  },
+  "finished_utc": "2026-10-08T12:48:19.104796+00:00",
+  "checkpoint_exit_status": 0
+}

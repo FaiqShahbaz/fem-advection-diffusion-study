@@ -1,0 +1,63 @@
+{
+  "review_date": "2026-10-08",
+  "status": "Runtime bindings, MPI collectives, RK tableaux, and supplied Firedrake checks accepted; explained project BE and Irksome time-step verification pending",
+  "runtime_manifest": "environment/records/python-runtime-20261008T094000Z-29664-manifest.json",
+  "runtime_manifest_sha256": "e2207ba5cc0df2cf425262179873d568740fdb701a436ad5012e5988f6d18db1",
+  "runtime_transcript": "environment/records/python-runtime-20261008T094000Z-29664.txt",
+  "runtime_transcript_sha256": "ac4f736e2b875d31728af545296d365e04b8ed6eb607f27dca1aefa614a40073",
+  "run_code_commit": "3a8732bbd082b8cf1fc13f1dd5e8616619826dd7",
+  "run_script_sha256": {
+    "check_python_runtime.py": "d0784d5ba3fc156f7c78321a4772b638bf38689cfc46bc69aae4f6f93bcb73b3",
+    "runtime_probe.py": "3e9e21a9803d04b5742c16d39406c640a6557be6b69193b3126ab36745cd0e8d",
+    "configure_petsc.py": "da97e917ff176d5a1d577b986622b36304441728180a5d57277a78e58698af02"
+  },
+  "installation_review": "environment/python_installation_review.json",
+  "installation_review_sha256": "28ed047c6f1c393d76edfabe9fa62dd16a9a3bdb047fdac377d2af7988baf730",
+  "probe_records": {
+    "serial": {
+      "path": "environment/records/python-runtime-20261008T094000Z-29664-serial.json",
+      "sha256": "4653a415aaae453e69f9d3174bc1e7c7ee8e6ecddb6847ebeb642f304517ad6b"
+    },
+    "two-rank": {
+      "path": "environment/records/python-runtime-20261008T094000Z-29664-two-rank.json",
+      "sha256": "707eee78ed0512e8e4c2733ad61d432cca20acab5d70b423571b42d4d7cf32d5"
+    }
+  },
+  "checkpoint_exit_status": 0,
+  "observed_bindings": {
+    "architecture": "arm64",
+    "petsc_version": "3.26.0",
+    "scalar_dtype": "float64",
+    "index_dtype": "int32",
+    "mpi_vendor": "Open MPI",
+    "mpi_vendor_version": "5.0.11",
+    "hdf5_runtime_version": "2.2.0",
+    "hdf5_mpi_enabled": true
+  },
+  "vendor_outcomes": {
+    "serial": {
+      "passed": 32,
+      "skipped": 1,
+      "deselected": 3
+    },
+    "two_process": {
+      "unique_tests_passed": 1,
+      "note": "Each MPI rank prints a copy of the pytest summary; count the distributed test once"
+    },
+    "three_process": {
+      "unique_tests_passed": 2,
+      "note": "Each MPI rank prints a copy of the pytest summary; count distributed tests once"
+    },
+    "skipped_test": "test_poisson_offload[cg-gamg-True]",
+    "skip_source_explanation": "Installed test is marked skipnogpu; installed conftest skips it when no PETSc device matrix type is available. CPU-only configuration was intentional."
+  },
+  "warning": {
+    "text": "Calling petsctools.init but PETSc has already been initialised, any command line options will be ignored.",
+    "cause": "The mentor probe imported petsc4py.PETSc before firedrake. Installed Firedrake initializes PETSc through petsctools on import.",
+    "impact_on_this_run": "The probe performs binding/tableau checks and uses no PETSc solver command-line options; its checks and the separately launched vendor suite passed.",
+    "correction": "Let Firedrake initialize PETSc first in future probes and project scripts. Parse/remove application-only arguments before that initialization; record solver options explicitly.",
+    "repeat_policy": "No repeat of the completed suite solely to remove this warning. Future project checks exercise the corrected import order."
+  },
+  "research_results_produced": false,
+  "verified_environment_lock_created": false
+}

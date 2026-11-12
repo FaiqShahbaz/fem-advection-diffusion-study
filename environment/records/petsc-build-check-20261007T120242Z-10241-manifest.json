@@ -1,0 +1,100 @@
+{
+  "started_utc": "2026-10-07T12:02:42.588264+00:00",
+  "status": "build/check checkpoint passed; Python stack remains unverified",
+  "build_status": "passed",
+  "vendor_check_status": "passed; mentor log review pending",
+  "source_commit": "1136c0bd63ce5f2898c194cf902c865c0c60698c",
+  "cwd": "/Users/faiq/Projects/fem-advection-diffusion/environment/build/petsc",
+  "commands": {
+    "build": [
+      "/opt/homebrew/bin/gmake",
+      "PETSC_DIR=/Users/faiq/Projects/fem-advection-diffusion/environment/build/petsc",
+      "PETSC_ARCH=arch-firedrake-default",
+      "-j4",
+      "all"
+    ],
+    "check": [
+      "/opt/homebrew/bin/gmake",
+      "PETSC_DIR=/Users/faiq/Projects/fem-advection-diffusion/environment/build/petsc",
+      "PETSC_ARCH=arch-firedrake-default",
+      "-j1",
+      "check"
+    ]
+  },
+  "configuration_manifest": "environment/records/petsc-configure-20261007T113607Z-11330-manifest.json",
+  "configuration_manifest_sha256": "f29af509d11007db3a92ba58e018d799b0593ee0ae89be928e0c75dda63bab8d",
+  "configuration_review_sha256": "f07d6a4cb9358c530ba7b41ecf1768f641cd22f8fd89fbd420f55cd8b259d75a",
+  "selected_tools": {
+    "python": "/opt/homebrew/opt/python@3.13/bin/python3.13",
+    "mpicc": "/opt/homebrew/opt/open-mpi/bin/mpicc",
+    "mpicxx": "/opt/homebrew/opt/open-mpi/bin/mpicxx",
+    "mpif90": "/opt/homebrew/opt/open-mpi/bin/mpif90",
+    "mpiexec": "/opt/homebrew/opt/open-mpi/bin/mpiexec"
+  },
+  "selected_environment": {
+    "PETSC_DIR": "/Users/faiq/Projects/fem-advection-diffusion/environment/build/petsc",
+    "PETSC_ARCH": "arch-firedrake-default",
+    "OPENBLAS_NUM_THREADS": "1",
+    "OMP_NUM_THREADS": "1"
+  },
+  "inherited_check_settings": {},
+  "log_archives": {
+    "make": {
+      "path": "environment/records/petsc-build-check-20261007T120242Z-10241-make.log.gz",
+      "sha256": "afd5dad6822e1ed631961139f1949d35d021d719a6781445b151db923ecc2a6b",
+      "uncompressed_sha256": "f9b30cbfebe18d947f2f99e12ad1e5cac06f3f98dcd3f0069cbda2e4327f8678",
+      "uncompressed_bytes": 88449
+    },
+    "check": {
+      "path": "environment/records/petsc-build-check-20261007T120242Z-10241-check.log.gz",
+      "sha256": "65b310cfc593295ddff497be2808646d5001e139057e40b13fa6eafd40466e47",
+      "uncompressed_sha256": "03866316c6477858c6006580e0a847c47f0ac19a84be1433d6ade71aa12a0e5a",
+      "uncompressed_bytes": 522
+    }
+  },
+  "library_inspection": "/Users/faiq/Projects/fem-advection-diffusion/environment/build/petsc/arch-firedrake-default/lib/libpetsc.dylib: Mach-O 64-bit dynamically linked shared library arm64",
+  "library_linkage": [
+    "/Users/faiq/Projects/fem-advection-diffusion/environment/build/petsc/arch-firedrake-default/lib/libpetsc.dylib:",
+    "\t/Users/faiq/Projects/fem-advection-diffusion/environment/build/petsc/arch-firedrake-default/lib/libpetsc.3.26.dylib (compatibility version 3.26.0, current version 3.26.0)",
+    "\t@rpath/libHYPRE-3.2.0.dylib (compatibility version 0.0.0, current version 0.0.0)",
+    "\t/opt/homebrew/opt/suite-sparse/lib/libspqr.4.dylib (compatibility version 4.0.0, current version 4.3.6)",
+    "\t/opt/homebrew/opt/suite-sparse/lib/libumfpack.6.dylib (compatibility version 6.0.0, current version 6.3.8)",
+    "\t/opt/homebrew/opt/suite-sparse/lib/libklu.2.dylib (compatibility version 2.0.0, current version 2.3.6)",
+    "\t/opt/homebrew/opt/suite-sparse/lib/libcholmod.5.dylib (compatibility version 5.0.0, current version 5.3.5)",
+    "\t/opt/homebrew/opt/suite-sparse/lib/libamd.3.dylib (compatibility version 3.0.0, current version 3.3.4)",
+    "\t/opt/homebrew/opt/fftw/lib/libfftw3_mpi.3.dylib (compatibility version 11.0.0, current version 11.11.0)",
+    "\t/opt/homebrew/opt/fftw/lib/libfftw3.3.dylib (compatibility version 11.0.0, current version 11.11.0)",
+    "\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1359.0.0)",
+    "\t/opt/homebrew/opt/scalapack/lib/libscalapack.2.2.dylib (compatibility version 2.2.0, current version 2.2.3)",
+    "\t/Users/faiq/Projects/fem-advection-diffusion/environment/build/petsc/arch-firedrake-default/lib/libsuperlu_dist.9.dylib (compatibility version 9.0.0, current version 9.2.1)",
+    "\t/opt/homebrew/opt/openblas/lib/libopenblas.0.dylib (compatibility version 0.0.0, current version 0.0.0)",
+    "\t/Users/faiq/Projects/fem-advection-diffusion/environment/build/petsc/arch-firedrake-default/lib/libptesmumps.7.0.dylib (compatibility version 7.0.0, current version 7.0.15)",
+    "\t/Users/faiq/Projects/fem-advection-diffusion/environment/build/petsc/arch-firedrake-default/lib/libptscotchparmetisv3.7.0.dylib (compatibility version 7.0.0, current version 7.0.15)",
+    "\t/Users/faiq/Projects/fem-advection-diffusion/environment/build/petsc/arch-firedrake-default/lib/libptscotch.7.0.dylib (compatibility version 7.0.0, current version 7.0.15)",
+    "\t/Users/faiq/Projects/fem-advection-diffusion/environment/build/petsc/arch-firedrake-default/lib/libptscotcherr.7.0.dylib (compatibility version 7.0.0, current version 7.0.15)",
+    "\t/Users/faiq/Projects/fem-advection-diffusion/environment/build/petsc/arch-firedrake-default/lib/libesmumps.7.0.dylib (compatibility version 7.0.0, current version 7.0.15)",
+    "\t/Users/faiq/Projects/fem-advection-diffusion/environment/build/petsc/arch-firedrake-default/lib/libscotch.7.0.dylib (compatibility version 7.0.0, current version 7.0.15)",
+    "\t/Users/faiq/Projects/fem-advection-diffusion/environment/build/petsc/arch-firedrake-default/lib/libscotcherr.7.0.dylib (compatibility version 7.0.0, current version 7.0.15)",
+    "\t/Users/faiq/Projects/fem-advection-diffusion/environment/build/petsc/arch-firedrake-default/lib/libnetcdf.22.dylib (compatibility version 26.0.0, current version 26.0.0)",
+    "\t/Users/faiq/Projects/fem-advection-diffusion/environment/build/petsc/arch-firedrake-default/lib/libhdf5_hl.320.dylib (compatibility version 320.0.0, current version 320.0.3)",
+    "\t/Users/faiq/Projects/fem-advection-diffusion/environment/build/petsc/arch-firedrake-default/lib/libhdf5.320.dylib (compatibility version 320.0.0, current version 320.2.0)",
+    "\t/opt/homebrew/opt/metis/lib/libmetis.dylib (compatibility version 0.0.0, current version 0.0.0)",
+    "\t/Users/faiq/Projects/fem-advection-diffusion/environment/build/petsc/arch-firedrake-default/lib/libpnetcdf.7.dylib (compatibility version 8.0.0, current version 8.0.0)",
+    "\t/opt/homebrew/opt/zlib/lib/libz.1.dylib (compatibility version 1.0.0, current version 1.3.2)",
+    "\t/opt/homebrew/opt/hwloc/lib/libhwloc.15.dylib (compatibility version 26.0.0, current version 26.4.0)",
+    "\t/opt/homebrew/opt/open-mpi/lib/libmpi_usempif08.40.dylib (compatibility version 81.0.0, current version 81.3.0)",
+    "\t/opt/homebrew/opt/open-mpi/lib/libmpi_usempi_ignore_tkr.40.dylib (compatibility version 81.0.0, current version 81.1.0)",
+    "\t/opt/homebrew/opt/open-mpi/lib/libmpi_mpifh.40.dylib (compatibility version 81.0.0, current version 81.2.0)",
+    "\t/opt/homebrew/opt/open-mpi/lib/libmpi.40.dylib (compatibility version 81.0.0, current version 81.8.0)",
+    "\t/opt/homebrew/opt/gcc/lib/gcc/current/libgfortran.5.dylib (compatibility version 6.0.0, current version 6.0.0)",
+    "\t/opt/homebrew/opt/gcc/lib/gcc/current/libquadmath.0.dylib (compatibility version 1.0.0, current version 1.0.0)",
+    "\t/usr/lib/libc++.1.dylib (compatibility version 1.0.0, current version 2200.27.0)"
+  ],
+  "vendor_check_command_exit_status": 0,
+  "required_example_success_lines": [
+    "C/C++ example src/snes/tutorials/ex19 run successfully with 1 MPI process",
+    "C/C++ example src/snes/tutorials/ex19 run successfully with 2 MPI processes"
+  ],
+  "finished_utc": "2026-10-07T12:03:31.975911+00:00",
+  "checkpoint_exit_status": 0
+}

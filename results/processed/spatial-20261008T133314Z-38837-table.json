@@ -1,0 +1,190 @@
+{
+  "raw_source": {
+    "path": "results/raw/spatial-20261008T133314Z-38837-serial.json",
+    "sha256": "be6b25c4c2481451c06fd2f945d81f20ae27ce78790623e109c462742aa7dcdc"
+  },
+  "accepted_review": "results/processed/spatial_review.json",
+  "quantity": "Transient continuum error at T=1; Radau dt=0.0025; quadrature degree 14",
+  "rows": [
+    {
+      "case_id": "P1-n8",
+      "element_degree": 1,
+      "mesh_subdivisions": 8,
+      "h": 0.1767766952966369,
+      "total_dofs": 81,
+      "domain_area": 1.0000000000000002,
+      "l2_error": 0.008044241914515693,
+      "h1_seminorm_error": 0.15887428302696693,
+      "solution_l2_norm": 0.17673977278898842,
+      "exact_l2_norm": 0.1839397205857212,
+      "exact_h1_seminorm": 0.8172226462399178,
+      "boundary_trace_l2": 0.0,
+      "l2_error_observed_order": null,
+      "h1_seminorm_error_observed_order": null
+    },
+    {
+      "case_id": "P1-n16",
+      "element_degree": 1,
+      "mesh_subdivisions": 16,
+      "h": 0.08838834764831845,
+      "total_dofs": 289,
+      "domain_area": 1.0000000000000002,
+      "l2_error": 0.002049683211117842,
+      "h1_seminorm_error": 0.08003041655655425,
+      "solution_l2_norm": 0.1821034735799485,
+      "exact_l2_norm": 0.1839397205857213,
+      "exact_h1_seminorm": 0.8172226462399185,
+      "boundary_trace_l2": 0.0,
+      "l2_error_observed_order": 1.9725555173066145,
+      "h1_seminorm_error_observed_order": 0.9892652910495483
+    },
+    {
+      "case_id": "P1-n32",
+      "element_degree": 1,
+      "mesh_subdivisions": 32,
+      "h": 0.04419417382415922,
+      "total_dofs": 1089,
+      "domain_area": 1.0000000000000002,
+      "l2_error": 0.0005149166194505094,
+      "h1_seminorm_error": 0.04009023317000552,
+      "solution_l2_norm": 0.18347833946681116,
+      "exact_l2_norm": 0.18393972058572114,
+      "exact_h1_seminorm": 0.8172226462399172,
+      "boundary_trace_l2": 0.0,
+      "l2_error_observed_order": 1.9929902107327497,
+      "h1_seminorm_error_observed_order": 0.9972976100267142
+    },
+    {
+      "case_id": "P2-n8",
+      "element_degree": 2,
+      "mesh_subdivisions": 8,
+      "h": 0.1767766952966369,
+      "total_dofs": 289,
+      "domain_area": 1.0000000000000002,
+      "l2_error": 0.00020202288023129437,
+      "h1_seminorm_error": 0.012283337140539355,
+      "solution_l2_norm": 0.18389683984283084,
+      "exact_l2_norm": 0.1839397205857212,
+      "exact_h1_seminorm": 0.8172226462399178,
+      "boundary_trace_l2": 0.0,
+      "l2_error_observed_order": null,
+      "h1_seminorm_error_observed_order": null
+    },
+    {
+      "case_id": "P2-n16",
+      "element_degree": 2,
+      "mesh_subdivisions": 16,
+      "h": 0.08838834764831845,
+      "total_dofs": 1089,
+      "domain_area": 1.0000000000000002,
+      "l2_error": 2.53009692740984e-05,
+      "h1_seminorm_error": 0.003097296017210146,
+      "solution_l2_norm": 0.1839369889987255,
+      "exact_l2_norm": 0.1839397205857213,
+      "exact_h1_seminorm": 0.8172226462399185,
+      "boundary_trace_l2": 0.0,
+      "l2_error_observed_order": 2.997254135191703,
+      "h1_seminorm_error_observed_order": 1.9876213886616294
+    },
+    {
+      "case_id": "P2-n32",
+      "element_degree": 2,
+      "mesh_subdivisions": 32,
+      "h": 0.04419417382415922,
+      "total_dofs": 4225,
+      "domain_area": 1.0000000000000002,
+      "l2_error": 3.1643826053826535e-06,
+      "h1_seminorm_error": 0.0007760551106484706,
+      "solution_l2_norm": 0.1839395489630284,
+      "exact_l2_norm": 0.18393972058572114,
+      "exact_h1_seminorm": 0.8172226462399172,
+      "boundary_trace_l2": 0.0,
+      "l2_error_observed_order": 2.99919670360796,
+      "h1_seminorm_error_observed_order": 1.9967782595181642
+    }
+  ],
+  "rates": [
+    {
+      "element_degree": 1,
+      "metric": "l2_error",
+      "coarse_case": "P1-n8",
+      "fine_case": "P1-n16",
+      "observed_order": 1.9725555173066145,
+      "expected_order": 2.0,
+      "allowed_order_difference": 0.4,
+      "status": "passed"
+    },
+    {
+      "element_degree": 1,
+      "metric": "h1_seminorm_error",
+      "coarse_case": "P1-n8",
+      "fine_case": "P1-n16",
+      "observed_order": 0.9892652910495483,
+      "expected_order": 1.0,
+      "allowed_order_difference": 0.4,
+      "status": "passed"
+    },
+    {
+      "element_degree": 1,
+      "metric": "l2_error",
+      "coarse_case": "P1-n16",
+      "fine_case": "P1-n32",
+      "observed_order": 1.9929902107327497,
+      "expected_order": 2.0,
+      "allowed_order_difference": 0.4,
+      "status": "passed"
+    },
+    {
+      "element_degree": 1,
+      "metric": "h1_seminorm_error",
+      "coarse_case": "P1-n16",
+      "fine_case": "P1-n32",
+      "observed_order": 0.9972976100267142,
+      "expected_order": 1.0,
+      "allowed_order_difference": 0.4,
+      "status": "passed"
+    },
+    {
+      "element_degree": 2,
+      "metric": "l2_error",
+      "coarse_case": "P2-n8",
+      "fine_case": "P2-n16",
+      "observed_order": 2.997254135191703,
+      "expected_order": 3.0,
+      "allowed_order_difference": 0.4,
+      "status": "passed"
+    },
+    {
+      "element_degree": 2,
+      "metric": "h1_seminorm_error",
+      "coarse_case": "P2-n8",
+      "fine_case": "P2-n16",
+      "observed_order": 1.9876213886616294,
+      "expected_order": 2.0,
+      "allowed_order_difference": 0.4,
+      "status": "passed"
+    },
+    {
+      "element_degree": 2,
+      "metric": "l2_error",
+      "coarse_case": "P2-n16",
+      "fine_case": "P2-n32",
+      "observed_order": 2.99919670360796,
+      "expected_order": 3.0,
+      "allowed_order_difference": 0.4,
+      "status": "passed"
+    },
+    {
+      "element_degree": 2,
+      "metric": "h1_seminorm_error",
+      "coarse_case": "P2-n16",
+      "fine_case": "P2-n32",
+      "observed_order": 1.9967782595181642,
+      "expected_order": 2.0,
+      "allowed_order_difference": 0.4,
+      "status": "passed"
+    }
+  ],
+  "transient_spatial_checkpoint_accepted": true,
+  "temporal_order_verified": false
+}

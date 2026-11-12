@@ -1,0 +1,91 @@
+
+Working directory: /Users/faiq/Projects/fem-advection-diffusion
+Running: /Users/faiq/Projects/fem-advection-diffusion/.venv/bin/python /Users/faiq/Projects/fem-advection-diffusion/src/phase3_rana_construction.py --config /Users/faiq/Projects/fem-advection-diffusion/configs/phase3_rana_construction.json --output /Users/faiq/Projects/fem-advection-diffusion/results/raw/rana-construction-20261021T104551Z-17748-serial.json
+  rana_irksome_jacobi: dt=0.1, steps=1, rtol=1.0e-11
+    rana_irksome_jacobi: 1/1 steps checked, t=0.100000
+KSP Object: (phase1_spatial_rana_irksome_jacobi_) 1 MPI process
+  type: gmres
+    restart=50, using classical (unmodified) Gram-Schmidt orthogonalization with no iterative refinement
+    happy breakdown tolerance=1e-30
+  maximum iterations=1000, initial guess is zero
+  tolerances: relative=1e-11, absolute=1e-13, divergence=10000.
+  right preconditioning
+  using UNPRECONDITIONED norm type for convergence test
+PC Object: (phase1_spatial_rana_irksome_jacobi_) 1 MPI process
+  type: jacobi
+    type DIAGONAL
+  linear system matrix, which is also used to construct the preconditioner:
+  Mat Object: (phase1_spatial_rana_irksome_jacobi_) 1 MPI process
+    type: seqaij
+    rows=2178, cols=2178
+    total: nonzeros=48132, allocated nonzeros=48132
+    total number of mallocs used during MatSetValues calls=0
+      not using I-node routines
+  rana_irksome_jacobi: final L2=6.305752796e-05, H1 seminorm=7.618161443e-03, checks=passed
+KSP Object: (phase3_rana_manual_reference_) 1 MPI process
+  type: gmres
+    restart=50, using classical (unmodified) Gram-Schmidt orthogonalization with no iterative refinement
+    happy breakdown tolerance=1e-30
+  maximum iterations=1000, initial guess is zero
+  tolerances: relative=1e-12, absolute=1e-14, divergence=10000.
+  right preconditioning
+  using UNPRECONDITIONED norm type for convergence test
+PC Object: (phase3_rana_manual_reference_) 1 MPI process
+  type: jacobi
+    type DIAGONAL
+  linear system matrix, which is also used to construct the preconditioner:
+  Mat Object: (phase3_rana_manual_reference_) 1 MPI process
+    type: seqaij
+    rows=2178, cols=2178
+    total: nonzeros=48132, allocated nonzeros=48132
+    total number of mallocs used during MatSetValues calls=0
+      not using I-node routines
+  FAILED step 1: GMRES iterations=0, reason=0, reported residual=0.000000e+00
+Traceback (most recent call last):
+  File "petsc4py/PETSc/libpetsc4py.pyx", line 1558, in petsc4py.PETSc.PCSetUp_Python
+  File "/Users/faiq/Projects/fem-advection-diffusion/.venv/lib/python3.13/site-packages/firedrake/preconditioners/base.py", line 214, in setUp
+    super().setUp(pc)
+    ~~~~~~~~~~~~~^^^^
+  File "/Users/faiq/Projects/fem-advection-diffusion/.venv/lib/python3.13/site-packages/firedrake/preconditioners/base.py", line 54, in setUp
+    self.initialize(pc)
+    ~~~~~~~~~~~~~~~^^^^
+  File "/Users/faiq/Projects/fem-advection-diffusion/.venv/lib/python3.13/site-packages/firedrake/preconditioners/assembled.py", line 45, in initialize
+    (a, bcs) = self.form(pc, test, trial)
+               ~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/faiq/Projects/fem-advection-diffusion/.venv/lib/python3.13/site-packages/irksome/pc.py", line 58, in form
+    v0, = F.arguments()
+    ^^^
+ValueError: too many values to unpack (expected 1)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/faiq/Projects/fem-advection-diffusion/src/phase3_rana_construction.py", line 194, in main
+    PETSc.Log.begin();study(config,result,fd,PETSc,irk,AI,MPI.COMM_WORLD)
+                      ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/faiq/Projects/fem-advection-diffusion/src/phase3_rana_construction.py", line 174, in study
+    state,slopes=rana_step(config,context,rana,fd,PETSc,irk,AI)
+                 ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/faiq/Projects/fem-advection-diffusion/src/phase3_rana_construction.py", line 95, in rana_step
+    try:stepper.advance()
+        ~~~~~~~~~~~~~~~^^
+  File "/Users/faiq/Projects/fem-advection-diffusion/.venv/lib/python3.13/site-packages/irksome/base_time_stepper.py", line 166, in advance
+    self.solver.solve(bounds=self.stage_bounds)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "petsc4py/PETSc/Log.pyx", line 227, in petsc4py.PETSc.Log.EventDecorator.decorator.wrapped_func
+  File "petsc4py/PETSc/Log.pyx", line 228, in petsc4py.PETSc.Log.EventDecorator.decorator.wrapped_func
+  File "/Users/faiq/Projects/fem-advection-diffusion/.venv/lib/python3.13/site-packages/firedrake/adjoint_utils/variational_solver.py", line 108, in wrapper
+    out = solve(self, **kwargs)
+  File "/Users/faiq/Projects/fem-advection-diffusion/.venv/lib/python3.13/site-packages/firedrake/variational_solver.py", line 572, in solve
+    self.snes.solve(None, work)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "petsc4py/PETSc/SNES.pyx", line 1765, in petsc4py.PETSc.SNES.solve
+petsc4py.PETSc.Error: error code 101
+[0] SNESSolve() at /Users/faiq/Projects/fem-advection-diffusion/environment/build/petsc/src/snes/interface/snes.c:5016
+[0] SNESSolve_KSPONLY() at /Users/faiq/Projects/fem-advection-diffusion/environment/build/petsc/src/snes/impls/ksponly/ksponly.c:49
+[0] KSPSolve() at /Users/faiq/Projects/fem-advection-diffusion/environment/build/petsc/src/ksp/ksp/interface/itfunc.c:1047
+[0] KSPSolve_Private() at /Users/faiq/Projects/fem-advection-diffusion/environment/build/petsc/src/ksp/ksp/interface/itfunc.c:848
+[0] KSPSetUp() at /Users/faiq/Projects/fem-advection-diffusion/environment/build/petsc/src/ksp/ksp/interface/itfunc.c:432
+[0] PCSetUp() at /Users/faiq/Projects/fem-advection-diffusion/environment/build/petsc/src/ksp/pc/interface/precon.c:1041
+Exit status: 1
+STOP: Command failed with exit status 1; review the saved log.

@@ -1,0 +1,140 @@
+{
+  "schema_version": 1,
+  "recorded_utc": "2026-10-08T10:37:55.309586+00:00",
+  "status": "Tested environment recorded after researcher-run runtime/vendor, manual BE, and Irksome BE checks",
+  "project_root": "/Users/faiq/Projects/fem-advection-diffusion",
+  "tested_code_commit": "a0c0445c6a5385031f108e824ec86547623f1e3f",
+  "operating_system": {
+    "product": "macOS",
+    "version": "27.0",
+    "build": "26A428"
+  },
+  "hardware": {
+    "cpu_model": "Apple M4 Pro",
+    "memory_bytes": 25769803776,
+    "physical_cores": 12,
+    "logical_cores": 12
+  },
+  "python": {
+    "executable": "/Users/faiq/Projects/fem-advection-diffusion/.venv/bin/python",
+    "python_version": "3.13.16",
+    "architecture": "arm64",
+    "versions": {
+      "firedrake": "2026.10.0",
+      "irksome": "2026.0.0",
+      "petsc4py": "3.26.0",
+      "mpi4py": "4.1.2",
+      "h5py": "3.16.0"
+    }
+  },
+  "resolved_python_inventory": "environment/requirements-verified.txt",
+  "resolved_python_inventory_sha256": "1efc25d3b0c190be29997ba521f32211b732d12235cfe91820ffead157f0bcde",
+  "inventory_matches_accepted_installation": true,
+  "petsc": {
+    "source_tag": "v3.26.0",
+    "source_commit": "1136c0bd63ce5f2898c194cf902c865c0c60698c",
+    "arch": "arch-firedrake-default",
+    "scalar_dtype": "float64",
+    "index_dtype": "int32",
+    "library_path": "environment/build/petsc/arch-firedrake-default/lib/libpetsc.dylib",
+    "library_sha256": "3fc99f702f0f23632373db22b06c2494088d0f179f291fc6201d56418723e657",
+    "configure_argv": [
+      "/opt/homebrew/opt/python@3.13/bin/python3.13",
+      "/Users/faiq/Projects/fem-advection-diffusion/environment/build/petsc/configure",
+      "PETSC_ARCH=arch-firedrake-default",
+      "--CFLAGS+= ",
+      "--CXXFLAGS+= ",
+      "--FFLAGS+= ",
+      "--COPTFLAGS=-O3 -march=native -mtune=native",
+      "--CXXOPTFLAGS=-O3 -march=native -mtune=native",
+      "--FOPTFLAGS=-O3",
+      "--with-c2html=0",
+      "--with-debugging=0",
+      "--with-fortran-bindings=0",
+      "--with-shared-libraries=1",
+      "--with-strict-petscerrorcode",
+      "--with-fftw-dir=/opt/homebrew",
+      "--with-hwloc-dir=/opt/homebrew",
+      "--with-metis-dir=/opt/homebrew",
+      "--with-scalapack-dir=/opt/homebrew",
+      "--with-suitesparse-dir=/opt/homebrew",
+      "--download-bison",
+      "--download-hdf5",
+      "--download-hypre",
+      "--download-mumps",
+      "--download-netcdf",
+      "--download-pnetcdf",
+      "--download-ptscotch",
+      "--download-superlu_dist",
+      "-download-mumps-avoid-mpi-in-place",
+      "--with-mpi-dir=/opt/homebrew/opt/open-mpi",
+      "--with-blaslapack-lib=/opt/homebrew/opt/openblas/lib/libopenblas.dylib",
+      "--with-zlib-dir=/opt/homebrew/opt/zlib",
+      "--with-make-exec=/opt/homebrew/bin/gmake",
+      "--with-make-np=4",
+      "--with-scalar-type=real",
+      "--with-precision=double",
+      "--with-64-bit-indices=0"
+    ]
+  },
+  "runtime_bindings": {
+    "architecture": "arm64",
+    "petsc_version": "3.26.0",
+    "scalar_dtype": "float64",
+    "index_dtype": "int32",
+    "mpi_vendor": "Open MPI",
+    "mpi_vendor_version": "5.0.11",
+    "hdf5_runtime_version": "2.2.0",
+    "hdf5_mpi_enabled": true
+  },
+  "selected_tools": {
+    "python": "/opt/homebrew/opt/python@3.13/bin/python3.13",
+    "mpicc": "/opt/homebrew/opt/open-mpi/bin/mpicc",
+    "mpicxx": "/opt/homebrew/opt/open-mpi/bin/mpicxx",
+    "mpif90": "/opt/homebrew/opt/open-mpi/bin/mpif90",
+    "mpiexec": "/opt/homebrew/opt/open-mpi/bin/mpiexec"
+  },
+  "selected_environment": {
+    "PETSC_DIR": "/Users/faiq/Projects/fem-advection-diffusion/environment/build/petsc",
+    "PETSC_ARCH": "arch-firedrake-default",
+    "OPENBLAS_NUM_THREADS": "1",
+    "OMP_NUM_THREADS": "1",
+    "FIREDRAKE_CACHE_DIR": "/Users/faiq/Projects/fem-advection-diffusion/environment/build/runtime-cache",
+    "PYOP2_CACHE_DIR": "/Users/faiq/Projects/fem-advection-diffusion/environment/build/runtime-cache/pyop2",
+    "FIREDRAKE_TSFC_KERNEL_CACHE_DIR": "/Users/faiq/Projects/fem-advection-diffusion/environment/build/runtime-cache/tsfc",
+    "XDG_CACHE_HOME": "/Users/faiq/Projects/fem-advection-diffusion/environment/build/runtime-cache",
+    "TMPDIR": "/Users/faiq/Projects/fem-advection-diffusion/environment/build/runtime-tmp",
+    "PYTHONNOUSERSITE": "1",
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "inherited_options_or_library_settings": {},
+  "evidence_sha256": {
+    "environment/petsc_plan.json": "2736943b2ff8772c55db4673c0bef41c1ecd876ddf7eebfdd4f3b7695b4de107",
+    "environment/petsc_build_review.json": "e684f4769f64baed6cc2225a5450e1083a82a47cab7af6ecd657cdaa975d6ab7",
+    "environment/records/petsc-configure-20261007T113607Z-11330-manifest.json": "f29af509d11007db3a92ba58e018d799b0593ee0ae89be928e0c75dda63bab8d",
+    "environment/python_installation_review.json": "28ed047c6f1c393d76edfabe9fa62dd16a9a3bdb047fdac377d2af7988baf730",
+    "environment/python_runtime_review.json": "b030dec7c76d1f2a2c1b073db3d1442d2c3ee977b81013ccead7db8278d31573",
+    "environment/be_smoke_review.json": "a3c5e7546bb94c94ff3c0f510726db05997608d674273cd66e3333927e07d3d3",
+    "environment/irksome_be_review.json": "07d2118e3ba908aa81a9ff775ba4bc4e8dbdaa4560aa3b4fdd1d48ba1952218e",
+    "environment/requirements-phase0.in": "9125d30e943a33e10d29d77d44a00eb75aa953fe70ca91d54798603233a0f9d4",
+    "environment/constraints-phase0-build.txt": "15ed703a4c990550bb53e25b7d932a8aea607c98e12b96edb26ac12532e4781d",
+    "environment/records/preflight-20261007T105048Z-4594.txt": "b23fb7bebb29ebd5730c3b7dda2906d51cb850aa755f7be3cac731b2f2b9651d",
+    "environment/records/build-prerequisites-20261007T112133Z-10514.txt": "aac4d85ab1c847bb57d5a2cef2b8077dedb24d17f3d7e3d7798157a291703a9a",
+    "environment/records/python-install-20261007T123623Z-20763-packages.txt": "1efc25d3b0c190be29997ba521f32211b732d12235cfe91820ffead157f0bcde",
+    "environment/records/python-install-20261007T123623Z-20763-pip-report.json": "9b41e45a2685b157089d61a5c92a6e9fac90660fc45382160155a3fc2afc7db0"
+  },
+  "checks_accepted": [
+    "native prerequisites and C MPI",
+    "PETSc build/supplied checks",
+    "Python installation/pip check",
+    "runtime bindings/MPI/tableaux/Firedrake vendor checks",
+    "manual BE assembly/solve/serial-MPI",
+    "manual/Irksome BE fields/stage/update/common equation/serial-MPI"
+  ],
+  "limitations": [
+    "This records one tested macOS arm64 environment, not a portable binary image or a complete artifact-hash lock.",
+    "Python pins alone do not rebuild native PETSc/MPI/BLAS dependencies; use saved build inputs and logs.",
+    "No Radau advance, convergence study, or performance study has passed yet."
+  ],
+  "change_policy": "Retain this snapshot unchanged. If numerical dependencies change, create a new snapshot, repeat relevant checks, and identify the new environment in later experiment records."
+}

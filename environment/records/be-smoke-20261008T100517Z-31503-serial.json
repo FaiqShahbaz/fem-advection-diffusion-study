@@ -1,0 +1,157 @@
+{
+  "status": "passed",
+  "ranks": 1,
+  "config": {
+    "purpose": "One-step manual backward Euler teaching/setup check; not a convergence or timing experiment",
+    "mesh_subdivisions": 8,
+    "mesh_diagonal": "left",
+    "element_family": "CG",
+    "element_degree": 1,
+    "velocity": [
+      1.0,
+      1.0
+    ],
+    "diffusion": 1.0,
+    "dt": 0.01,
+    "steps": 1,
+    "quadrature_degree": 10,
+    "solver_parameters": {
+      "snes_type": "ksponly",
+      "ksp_type": "gmres",
+      "pc_type": "jacobi",
+      "ksp_pc_side": "right",
+      "ksp_norm_type": "unpreconditioned",
+      "ksp_rtol": 1e-11,
+      "ksp_atol": 1e-13,
+      "ksp_max_it": 200,
+      "ksp_gmres_restart": 50,
+      "ksp_error_if_not_converged": true,
+      "ksp_initial_guess_nonzero": false
+    },
+    "checks": {
+      "source_residual_l2_max": 1e-10,
+      "boundary_trace_l2_max": 1e-12,
+      "residual_tolerance_factor": 10.0,
+      "serial_mpi_comparison_rtol": 1e-09,
+      "serial_mpi_comparison_atol": 1e-12
+    }
+  },
+  "total_dofs": 81,
+  "expected_free_dofs": 49,
+  "expected_cells": 128,
+  "h": 0.1767766952966369,
+  "h_definition": "Maximum diameter of the right triangles in the stated structured mesh",
+  "final_time": 0.01,
+  "method": "manual backward Euler, one step",
+  "metrics": {
+    "domain_area": 1.0000000000000002,
+    "source_residual_l2": 0.0,
+    "initial_l2_error": 0.0155534683098119,
+    "final_l2_error": 0.01649059017582105,
+    "final_h1_seminorm_error": 0.42813306420877706,
+    "solution_l2_norm": 0.48142428868243325,
+    "boundary_trace_l2": 0.0,
+    "true_residual_norm": 1.0734172349906043e-13,
+    "rhs_norm": 0.0707400847537251,
+    "true_relative_residual": 1.5174101624667324e-12
+  },
+  "actual_solver": {
+    "ksp_type": "gmres",
+    "pc_type": "jacobi",
+    "preconditioning_side": "right",
+    "stopping_norm": "unpreconditioned",
+    "rtol": 1e-11,
+    "atol": 1e-13,
+    "divtol": 10000.0,
+    "max_it": 200,
+    "iterations": 19,
+    "converged_reason": 2,
+    "reported_residual_norm": 1.0734330640557687e-13,
+    "residual_history": [
+      [
+        0,
+        0.0707400847537251
+      ],
+      [
+        1,
+        0.0035148611956287773
+      ],
+      [
+        2,
+        0.0009302195503773196
+      ],
+      [
+        3,
+        0.00026127194851235296
+      ],
+      [
+        4,
+        7.970318061208678e-05
+      ],
+      [
+        5,
+        2.1292216334235318e-05
+      ],
+      [
+        6,
+        6.456180817226984e-06
+      ],
+      [
+        7,
+        2.39746594123574e-06
+      ],
+      [
+        8,
+        7.975262839452751e-07
+      ],
+      [
+        9,
+        2.1496821303994274e-07
+      ],
+      [
+        10,
+        6.090057427799617e-08
+      ],
+      [
+        11,
+        1.308841021490154e-08
+      ],
+      [
+        12,
+        3.4174680624075566e-09
+      ],
+      [
+        13,
+        1.0141982256199672e-09
+      ],
+      [
+        14,
+        1.87351263732268e-10
+      ],
+      [
+        15,
+        4.131005786426704e-11
+      ],
+      [
+        16,
+        1.2293714122190282e-11
+      ],
+      [
+        17,
+        3.303969825263727e-12
+      ],
+      [
+        18,
+        7.806935534758357e-13
+      ],
+      [
+        19,
+        1.0734330640557687e-13
+      ]
+    ],
+    "true_residual_target": 7.07400847537251e-13,
+    "true_residual_allowance_factor": 10.0
+  },
+  "accuracy_order_or_cost_claim": false,
+  "irksome_time_step_run": false
+}

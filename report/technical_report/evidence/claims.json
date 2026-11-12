@@ -1,0 +1,109 @@
+{
+  "status": "completed serial study; report revised 12 November 2026",
+  "generated_from_accepted_evidence_only": true,
+  "new_numerical_experiment_run": false,
+  "evidence_reviews": {
+    "spatial": {
+      "path": "results/processed/spatial_review.json",
+      "sha256": "df1e6fe813aa2db0e5667217f17ab8cd03cc02620021e95ec044336d3c752cdf"
+    },
+    "temporal": {
+      "path": "results/processed/temporal_review.json",
+      "sha256": "ff2bbef3cd1cd8b55f595f12e4adfb0794e009948650208a74c89ce7afa16bb9"
+    },
+    "accuracy_cost": {
+      "path": "results/processed/accuracy_cost_review.json",
+      "sha256": "40a97db2b4823a2f3dae0ff1559984578be942079a973955f2dd28489936e9db"
+    },
+    "solver_sensitivity": {
+      "path": "results/processed/solver_sensitivity_review.json",
+      "sha256": "74f6970d9d83b91a7f575e5138899eaeac25b4a0180fc9b19a9419ba97e959c1"
+    },
+    "selected_trajectories": {
+      "path": "results/processed/selected_trajectories_review.json",
+      "sha256": "2188980fb48797633f01c1cb904feecbb3a7c551a84748d524c2867d6097e97e"
+    },
+    "selected_cost": {
+      "path": "results/processed/selected_cost_review.json",
+      "sha256": "c53e4b7d9502d5f6d98a93ed1344e2d16672da1fc3ccc44c3b7406606d6d7c3a"
+    }
+  },
+  "verified_environment": {
+    "path": "environment/verified_environment.json",
+    "sha256": "c2441b3e78aa5f1f5cd5c1d50ba2160148991da35988eaa31ef4bd02d796fa36"
+  },
+  "figures": {
+    "spatial.png": {
+      "path": "results/figures/spatial-20261008T133314Z-38837.png",
+      "sha256": "9bf838e7f14228e6f9e1ff80f57722c5d5dae4e2a5354d94834110c4c1c96e2a"
+    },
+    "temporal.png": {
+      "path": "results/figures/temporal-20261018T113908Z-75912.png",
+      "sha256": "229b796031cc94b8117b8994f6a0a2ca2c4f747405a56fc8f7f4f0669a45d0bc"
+    },
+    "accuracy_cost.png": {
+      "path": "results/figures/accuracy-cost-20261019T102618Z-70377.png",
+      "sha256": "d20d8f84fa4c5e1599920a8ef93e65b81346e0942e510cc7bcc0f05b16b34660"
+    },
+    "solver_work.png": {
+      "path": "results/figures/selected-trajectories-20261021T193925Z-25133.png",
+      "sha256": "2762a8ee40498e0bdb1813eeb4622693bb0a563ace1df2d048b36278b5e756db"
+    },
+    "selected_cost.png": {
+      "path": "results/figures/selected-cost-20261022T095152Z-28440.png",
+      "sha256": "b7ae923e820a1f9c037f8b66ff341c6a21e9ebd19d3606930daf2b38513c3877"
+    }
+  },
+  "claims": {
+    "SpatialRateRows": {
+      "rendered_value": "P1 & 2 / 1 & 1.992990 & 0.997298 \\\\\nP2 & 3 / 2 & 2.999197 & 1.996778 \\\\",
+      "review": "spatial",
+      "source_selector": "/rates (finest n16-to-n32 pairs)"
+    },
+    "TemporalRateRows": {
+      "rendered_value": "Backward Euler & 1.006508 & 1.006509 \\\\\nRadau IIA(2) & 2.943761 & 2.943988 \\\\",
+      "review": "temporal",
+      "source_selector": "/rates (finest dt pair)"
+    },
+    "AccuracyCostRows": {
+      "rendered_value": "BE\\_loose & 0.0125 & $6.081\\times10^{-5}$ & 0.172750 \\\\\nRadau\\_coarse & 0.1 & $2.671\\times10^{-6}$ & 0.239614 \\\\\nBE\\_fine & 0.0005 & $2.422\\times10^{-6}$ & 2.346190 \\\\\nRadau\\_fine & 0.05 & $3.796\\times10^{-7}$ & 0.318708 \\\\",
+      "review": "accuracy_cost",
+      "source_selector": "/independent_audit/candidate_summary; config/cases"
+    },
+    "TightAccuracyRatio": {
+      "rendered_value": "9.792",
+      "review": "accuracy_cost",
+      "source_selector": "/independent_audit/target_median_ratios/3e-06/BE_over_Radau_median"
+    },
+    "BaselineIterationRows": {
+      "rendered_value": "Jacobi & 7258 \\\\\nASM/ILU(0) & 600 \\\\\nRanaLD/auxiliary LU & 70 \\\\",
+      "review": "selected_cost",
+      "source_selector": "/independent_audit/checked_study/point_summary/baseline/candidates/*/total_iterations"
+    },
+    "BaselineJacobiRanaRatio": {
+      "rendered_value": "5.410",
+      "review": "selected_cost",
+      "source_selector": "/independent_audit/within_point_ratios/baseline/jacobi_over_rana_median_core_ratio"
+    },
+    "SelectedCostRows": {
+      "rendered_value": "16, 1 & Jacobi & 0.238133 & 0.237651--0.239727 & 0.87\\% \\\\\n16, 1 & ASM & 0.088277 & 0.088224--0.088430 & 0.23\\% \\\\\n16, 1 & RanaLD & 0.044019 & 0.043033--0.044327 & 2.94\\% \\\\\n32, 1 & Jacobi & excluded & --- & --- \\\\\n32, 1 & ASM & 0.653688 & 0.652339--0.658022 & 0.87\\% \\\\\n32, 1 & RanaLD & 0.140929 & 0.140922--0.154305 & 9.50\\% \\\\\n16, 0.1 & Jacobi & 0.088201 & 0.087312--0.088461 & 1.30\\% \\\\\n16, 0.1 & ASM & 0.060777 & 0.060700--0.060948 & 0.41\\% \\\\\n16, 0.1 & RanaLD & 0.045448 & 0.044927--0.045684 & 1.67\\% \\\\",
+      "review": "selected_cost",
+      "source_selector": "/independent_audit/case_summary"
+    },
+    "BaselineAsmRanaRatio": {
+      "rendered_value": "2.005",
+      "review": "selected_cost",
+      "source_selector": "/independent_audit/within_point_ratios/baseline/asm_over_rana_median_core_ratio"
+    },
+    "RefinedAsmRanaRatio": {
+      "rendered_value": "4.638",
+      "review": "selected_cost",
+      "source_selector": "/independent_audit/within_point_ratios/mesh_refined/asm_over_rana_median_core_ratio"
+    },
+    "LowerAsmRanaRatio": {
+      "rendered_value": "1.337",
+      "review": "selected_cost",
+      "source_selector": "/independent_audit/within_point_ratios/lower_diffusion/asm_over_rana_median_core_ratio"
+    }
+  }
+}

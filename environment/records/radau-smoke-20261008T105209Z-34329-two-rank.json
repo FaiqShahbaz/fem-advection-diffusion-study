@@ -1,0 +1,308 @@
+{
+  "status": "passed",
+  "ranks": 2,
+  "config": {
+    "purpose": "One-step two-stage Radau IIA coupled-equation/update teaching check; not a convergence or timing study",
+    "mesh_subdivisions": 8,
+    "mesh_diagonal": "left",
+    "element_family": "CG",
+    "element_degree": 1,
+    "velocity": [
+      1.0,
+      1.0
+    ],
+    "diffusion": 1.0,
+    "dt": 0.01,
+    "steps": 1,
+    "quadrature_degree": 10,
+    "solver_parameters": {
+      "snes_type": "ksponly",
+      "ksp_type": "gmres",
+      "pc_type": "jacobi",
+      "ksp_pc_side": "right",
+      "ksp_norm_type": "unpreconditioned",
+      "ksp_rtol": 1e-11,
+      "ksp_atol": 1e-13,
+      "ksp_max_it": 200,
+      "ksp_gmres_restart": 50,
+      "ksp_error_if_not_converged": true,
+      "ksp_initial_guess_nonzero": false
+    },
+    "checks": {
+      "source_residual_l2_max": 1e-10,
+      "boundary_trace_l2_max": 1e-12,
+      "residual_tolerance_factor": 10.0,
+      "serial_mpi_comparison_rtol": 1e-09,
+      "serial_mpi_comparison_atol": 1e-12,
+      "tableau_coefficient_atol": 1e-14,
+      "update_identity_l2_max": 1e-12,
+      "stiff_accuracy_l2_max": 1e-12,
+      "stage_boundary_trace_l2_max": 1e-12
+    },
+    "time_method": "RadauIIA",
+    "num_stages": 2,
+    "stage_type": "deriv",
+    "bc_type": "DAE",
+    "splitting": "AI",
+    "tableau_rational": {
+      "A": [
+        [
+          "5/12",
+          "-1/12"
+        ],
+        [
+          "3/4",
+          "1/4"
+        ]
+      ],
+      "b": [
+        "3/4",
+        "1/4"
+      ],
+      "c": [
+        "1/3",
+        "1"
+      ]
+    }
+  },
+  "total_dofs": 81,
+  "expected_free_dofs": 49,
+  "expected_cells": 128,
+  "stage_total_dofs": 162,
+  "stage_expected_free_dofs": 98,
+  "h": 0.1767766952966369,
+  "h_definition": "Maximum diameter of the right triangles in the stated structured mesh",
+  "final_time": 0.01,
+  "method": "Irksome two-stage Radau IIA, one step, derivative stages/AI/DAE",
+  "metrics": {
+    "domain_area": 1.0000000000000002,
+    "source_residual_l2": 0.0,
+    "initial_l2_error": 0.0155534683098119,
+    "final_l2_error": 0.016649136276671393,
+    "final_h1_seminorm_error": 0.42808961099421766,
+    "solution_l2_norm": 0.48129310225185595,
+    "boundary_trace_l2": 0.0,
+    "true_residual_norm": 1.1315390424718243e-12,
+    "rhs_norm": 0.11998139572826425,
+    "true_relative_residual": 9.43095415421364e-12
+  },
+  "independent_block_residual": {
+    "norm": 1.1315390424718243e-12,
+    "rhs_norm": 0.11998139572826425,
+    "relative_norm": 9.43095415421364e-12
+  },
+  "update_identity_l2": 1.7657344434592402e-17,
+  "stiff_accuracy_l2": 1.7657344434592402e-17,
+  "stages": [
+    {
+      "index": 1,
+      "time": 0.003333333333333333,
+      "slope_l2_norm": 0.6209197383839394,
+      "stage_value_l2_norm": 0.4853259411849817,
+      "slope_boundary_trace_l2": 0.0,
+      "source_residual_l2": 0.0
+    },
+    {
+      "index": 2,
+      "time": 0.01,
+      "slope_l2_norm": 0.5957829041298844,
+      "stage_value_l2_norm": 0.48129310225185595,
+      "slope_boundary_trace_l2": 0.0,
+      "source_residual_l2": 0.0
+    }
+  ],
+  "tableau": {
+    "rational": {
+      "A": [
+        [
+          "5/12",
+          "-1/12"
+        ],
+        [
+          "3/4",
+          "1/4"
+        ]
+      ],
+      "b": [
+        "3/4",
+        "1/4"
+      ],
+      "c": [
+        "1/3",
+        "1"
+      ]
+    },
+    "installed_A": [
+      [
+        0.41666666666666674,
+        -0.08333333333333334
+      ],
+      [
+        0.7500000000000001,
+        0.24999999999999992
+      ]
+    ],
+    "installed_b": [
+      0.7500000000000001,
+      0.24999999999999992
+    ],
+    "installed_c": [
+      0.33333333333333337,
+      1.0
+    ]
+  },
+  "solver_parameters": {
+    "snes_type": "ksponly",
+    "ksp_type": "gmres",
+    "pc_type": "jacobi",
+    "ksp_pc_side": "right",
+    "ksp_norm_type": "unpreconditioned",
+    "ksp_rtol": 1e-11,
+    "ksp_atol": 1e-13,
+    "ksp_max_it": 200,
+    "ksp_gmres_restart": 50,
+    "ksp_error_if_not_converged": true,
+    "ksp_initial_guess_nonzero": false,
+    "mat_type": "aij"
+  },
+  "solver_stats": [
+    1,
+    1,
+    28
+  ],
+  "actual_solver": {
+    "ksp_type": "gmres",
+    "pc_type": "jacobi",
+    "preconditioning_side": "right",
+    "stopping_norm": "unpreconditioned",
+    "rtol": 1e-11,
+    "atol": 1e-13,
+    "divtol": 10000.0,
+    "max_it": 200,
+    "iterations": 28,
+    "converged_reason": 2,
+    "reported_residual_norm": 1.131522684893136e-12,
+    "residual_history": [
+      [
+        0,
+        0.11998139572826427
+      ],
+      [
+        1,
+        0.02379594632059968
+      ],
+      [
+        2,
+        0.0022336765222609294
+      ],
+      [
+        3,
+        0.0014729095464560335
+      ],
+      [
+        4,
+        0.0005405001299062361
+      ],
+      [
+        5,
+        0.00023754240703779722
+      ],
+      [
+        6,
+        0.00010176593776461586
+      ],
+      [
+        7,
+        5.149762006184651e-05
+      ],
+      [
+        8,
+        2.5913091961362134e-05
+      ],
+      [
+        9,
+        8.294893161630835e-06
+      ],
+      [
+        10,
+        4.172589045594501e-06
+      ],
+      [
+        11,
+        2.1059664711923877e-06
+      ],
+      [
+        12,
+        1.0214934034707165e-06
+      ],
+      [
+        13,
+        5.06097308204782e-07
+      ],
+      [
+        14,
+        2.0757630073276763e-07
+      ],
+      [
+        15,
+        9.599178443462349e-08
+      ],
+      [
+        16,
+        3.775723765339974e-08
+      ],
+      [
+        17,
+        1.5955523134371226e-08
+      ],
+      [
+        18,
+        7.663980330349093e-09
+      ],
+      [
+        19,
+        3.6539246666232697e-09
+      ],
+      [
+        20,
+        1.4708802270486156e-09
+      ],
+      [
+        21,
+        6.136013897134743e-10
+      ],
+      [
+        22,
+        2.1411288382852216e-10
+      ],
+      [
+        23,
+        8.735197424089827e-11
+      ],
+      [
+        24,
+        3.8055033137766535e-11
+      ],
+      [
+        25,
+        1.575006658455876e-11
+      ],
+      [
+        26,
+        7.1311188135199e-12
+      ],
+      [
+        27,
+        2.323234255776852e-12
+      ],
+      [
+        28,
+        1.131522684893136e-12
+      ]
+    ],
+    "true_residual_target": 1.1998139572826425e-12,
+    "true_residual_allowance_factor": 10.0
+  },
+  "accuracy_order_or_cost_claim": false,
+  "irksome_time_step_run": true
+}

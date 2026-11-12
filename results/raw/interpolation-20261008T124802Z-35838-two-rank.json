@@ -1,0 +1,118 @@
+{
+  "status": "passed",
+  "ranks": 2,
+  "group": "mpi_probe",
+  "config": {
+    "purpose": "Initial P1/P2 nodal interpolation refinement for the agreed MMS; temporal/transient FEM convergence is separate",
+    "mesh_subdivisions": [
+      8,
+      16,
+      32
+    ],
+    "mesh_diagonal": "left",
+    "element_family": "CG",
+    "element_degrees": [
+      1,
+      2
+    ],
+    "evaluation_time": 0.0,
+    "exact_solution": "sin(pi*x)*sin(pi*y)",
+    "boundary_values": "zero",
+    "quadrature_degree": 10,
+    "quadrature_control_degree": 14,
+    "mpi_probe": {
+      "element_degree": 2,
+      "mesh_subdivisions": 32
+    },
+    "expected_orders": {
+      "1": {
+        "l2_error": 2.0,
+        "h1_seminorm_error": 1.0
+      },
+      "2": {
+        "l2_error": 3.0,
+        "h1_seminorm_error": 2.0
+      }
+    },
+    "checks": {
+      "domain_area_atol": 1e-12,
+      "boundary_trace_l2_max": 1e-12,
+      "analytic_norm_rtol": 1e-10,
+      "analytic_norm_atol": 1e-12,
+      "quadrature_comparison_rtol": 1e-06,
+      "quadrature_comparison_atol": 1e-13,
+      "observed_order_atol": 0.35,
+      "serial_mpi_comparison_rtol": 1e-09,
+      "serial_mpi_comparison_atol": 1e-12
+    }
+  },
+  "measurements": [
+    {
+      "case_id": "P2-n32",
+      "element_degree": 2,
+      "mesh_subdivisions": 32,
+      "total_dofs": 4225,
+      "expected_total_dofs": 4225,
+      "expected_free_dofs": 3969,
+      "expected_cells": 2048,
+      "h": 0.04419417382415922,
+      "h_definition": "Maximum diameter of the right triangles in the stated structured mesh",
+      "metrics": {
+        "domain_area": 1.0000000000000002,
+        "l2_error": 8.599931904226582e-06,
+        "h1_seminorm_error": 0.002110323498398434,
+        "boundary_trace_l2": 0.0,
+        "exact_l2_norm": 0.5000000000000002,
+        "exact_h1_seminorm": 2.2214414690791835,
+        "interpolant_l2_norm": 0.4999997583343107
+      },
+      "control_metrics": {
+        "domain_area": 1.0000000000000002,
+        "l2_error": 8.599931904226122e-06,
+        "h1_seminorm_error": 0.0021103234983980107,
+        "boundary_trace_l2": 0.0,
+        "exact_l2_norm": 0.5000000000000002,
+        "exact_h1_seminorm": 2.2214414690791835,
+        "interpolant_l2_norm": 0.49999975833431076
+      },
+      "quadrature_comparison": {
+        "l2_error": {
+          "absolute_difference": 4.607859233063394e-19,
+          "allowed_difference": 8.699931904226121e-12
+        },
+        "h1_seminorm_error": {
+          "absolute_difference": 4.2327252813834093e-16,
+          "allowed_difference": 2.1104234983980106e-09
+        }
+      },
+      "checks": {
+        "dimension": true,
+        "positive_errors": true,
+        "primary_finite": true,
+        "primary_area": true,
+        "primary_boundary": true,
+        "primary_exact_l2": true,
+        "primary_exact_h1": true,
+        "control_finite": true,
+        "control_area": true,
+        "control_boundary": true,
+        "control_exact_l2": true,
+        "control_exact_h1": true,
+        "l2_error_quadrature": true,
+        "h1_seminorm_error_quadrature": true
+      },
+      "status": "passed"
+    }
+  ],
+  "rates": [],
+  "interpolation_trends_checked": false,
+  "evaluation_time": 0.0,
+  "analytic_exact_norms": {
+    "l2": 0.5,
+    "h1_seminorm": 2.221441469079183
+  },
+  "project_linear_solve_run": false,
+  "time_integration_run": false,
+  "transient_fem_convergence_verified": false,
+  "performance_measurement": false
+}

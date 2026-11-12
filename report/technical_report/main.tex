@@ -1,0 +1,324 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=22mm,headheight=14pt]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,booktabs,array,graphicx,microtype,enumitem,fancyhdr,xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!45!black,urlcolor=blue!45!black,citecolor=blue!45!black]{hyperref}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+\setlength{\emergencystretch}{2em}
+\setlist{nosep,leftmargin=*}
+\pagestyle{fancy}\fancyhf{}
+\fancyhead[L]{\small Finite-element advection--diffusion}
+\fancyhead[R]{\small Technical report | November 2026}
+\fancyfoot[L]{\small Faiq Shahbaz}\fancyfoot[R]{\thepage}
+\hypersetup{pdftitle={Solving Advection-Diffusion: Accuracy, Time Steps and Linear Solvers},pdfauthor={Faiq Shahbaz}}
+\newcommand{\ip}[2]{\left(#1,#2\right)}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\code}[1]{\texttt{#1}}
+\newcommand{\fig}[3]{\begin{center}\includegraphics[width=\linewidth,height=#2,keepaspectratio]{images/#1}\par\small #3\end{center}}
+\input{evidence/data.tex}
+\begin{document}
+\begin{center}
+{\LARGE\bfseries Solving Advection--Diffusion:\\Accuracy, Time Steps and Linear Solvers\par}
+\vspace{5mm}
+{\large Faiq Shahbaz}\par
+Independent computational study\par
+Results collected in October 2026; report revised 12 November 2026
+\end{center}
+\vspace{2mm}
+\textbf{Abstract.} This study solves a simple transport equation and asks how accurately and quickly different numerical choices solve it. A known exact solution provides a way to measure error. Finite elements approximate the solution in space; backward Euler and two-stage Radau IIA advance it in time. The measured errors decrease at the expected rates when the mesh and time step are refined. Among the four time-step choices tested, backward Euler costs less at a loose time-error target, while Radau costs less at a tighter target. A second comparison examines three ways to help GMRES solve the linear equations. RanaLD with full auxiliary sparse LU needs fewer outer iterations and has lower measured runtime in the three selected serial cases. Its factor storage grows substantially on the finer mesh. The code, inputs and measurements accompany the report.
+
+\section*{1\quad Problem and approach}
+Advection carries a quantity with a flow. Diffusion spreads it out. Together they describe processes such as the transport of heat or a dissolved substance. Here the quantity is a smooth mathematical test function. It lets us check the numerical method without uncertainty about the exact answer.
+
+A computation has three main parts:
+\begin{enumerate}
+\item Divide the region into small triangles and approximate the solution on them.
+\item Advance the solution through time using a chosen time step.
+\item Solve the equations produced by each implicit time step.
+\end{enumerate}
+The study asks how these choices affect error and runtime. A smaller time step can improve accuracy, but it also requires more steps. A more accurate time method can use larger steps, but each step has more equations to solve.
+
+\textbf{Software.} Firedrake builds the finite-element equations~\cite{firedrake}. Irksome constructs the Runge--Kutta stage equations~\cite{irksome,extending}. PETSc solves the resulting sparse linear systems~\cite{petscgmres,petscasm}. These packages work together. The time methods and preconditioners used here are established methods.
+
+Sections 2--5 explain the mathematics and terminology. Sections 6--10 explain the five figures and results. Section 11 describes reproduction, and Section 12 states what the study establishes and where it stops.
+
+\newpage
+\section*{2\quad The equation and its exact solution}
+The spatial region is the unit square, $\Omega=(0,1)^2$. The unknown $u(x,y,t)$ is the transported quantity. A partial differential equation (PDE) relates its change in time to its variation in space:
+\begin{equation}
+\partial_tu+\boldsymbol\beta\cdot\nabla u-\kappa\Delta u=f,
+\qquad 0<t\leq T,\qquad T=1.
+\end{equation}
+\begin{center}\begin{tabular}{ll}\toprule
+Term & Meaning\\\midrule
+$\partial_tu$ & Change in $u$ with time\\
+$\boldsymbol\beta\cdot\nabla u$ & Transport with velocity $\boldsymbol\beta=(1,1)$\\
+$-\kappa\Delta u$ & Diffusion, with strength $\kappa>0$\\
+$f$ & A source chosen to give the exact test solution\\\bottomrule
+\end{tabular}\end{center}
+The gradient $\nabla u$ describes spatial slopes. The Laplacian $\Delta u$ is the sum of the second derivatives in $x$ and $y$. The solution is zero on the square's boundary. Its initial value is
+\begin{equation}
+u(x,y,0)=\sin(\pi x)\sin(\pi y).
+\end{equation}
+
+\textbf{Why choose an exact solution first?} In many applications the answer is unknown. For verification, we instead choose an answer and work out the source that makes it satisfy the equation. This is called the \emph{method of manufactured solutions}. We use
+\begin{equation}
+u_\star(x,y,t)=e^{-t}\sin(\pi x)\sin(\pi y).
+\end{equation}
+This function is smooth, starts from the prescribed initial value and vanishes on every boundary edge. Its amplitude decays with time. Differentiating gives
+\begin{align}
+\partial_tu_\star&=-u_\star,& \Delta u_\star&=-2\pi^2u_\star,\\
+\partial_xu_\star&=\pi e^{-t}\cos(\pi x)\sin(\pi y),&
+\partial_yu_\star&=\pi e^{-t}\sin(\pi x)\cos(\pi y).
+\end{align}
+Substituting these derivatives into the equation gives the source
+\begin{align}
+f(x,y,t)=e^{-t}\big[&(2\kappa\pi^2-1)\sin(\pi x)\sin(\pi y)\nonumber\\
+&+\pi\cos(\pi x)\sin(\pi y)+\pi\sin(\pi x)\cos(\pi y)\big].
+\end{align}
+Whenever $\kappa$ changes, this source changes too. The exact solution stays the same, which allows a controlled comparison between diffusion settings.
+
+The test is intended to verify a smooth problem. It does not test sharp fronts or boundary layers that can appear when advection dominates diffusion.
+
+\newpage
+\section*{3\quad From the equation to finite elements}
+A finite-element method represents the solution using simple functions on a mesh. The mesh consists of triangles. \emph{P1} uses linear functions within each triangle; \emph{P2} uses quadratic functions and has more unknowns on the same mesh. The approximation is continuous across shared triangle edges.
+
+\textbf{Weak formulation.} Rather than requiring the differential equation to hold point by point, multiply it by a test function $v$ and integrate over the square. The notation $(w,v)$ means $\int_\Omega wv\,dx$. Integration by parts moves one derivative from the diffusion term onto $v$. Both the solution and test functions vanish on the boundary, so the boundary term is zero:
+\begin{equation}
+(\partial_tu,v)+(\boldsymbol\beta\cdot\nabla u,v)
+       +\kappa(\nabla u,\nabla v)=(f,v).
+\end{equation}
+Formally, $v\in H_0^1(\Omega)$: it has square-integrable first derivatives and zero boundary values. The advection term is left in the form shown. No additional stabilization is used for this smooth test.
+
+Choose basis functions $\phi_j$ for the finite-element space and write
+\begin{equation}
+u_h(x,y,t)=\sum_j U_j(t)\phi_j(x,y).
+\end{equation}
+The subscript $h$ identifies a mesh approximation. The vector $U(t)$ contains its coefficients. Testing with each basis function gives
+\begin{equation}
+\boxed{M\dot U+LU=F(t)},
+\end{equation}
+where
+\begin{align}
+M_{ij}&=(\phi_j,\phi_i),\nonumber\\
+L_{ij}&=(\boldsymbol\beta\cdot\nabla\phi_j,\phi_i)
+                  +\kappa(\nabla\phi_j,\nabla\phi_i),& F_i&=(f,\phi_i).
+\end{align}
+The \emph{mass matrix} $M$ multiplies the time derivative. The matrix $L$ represents advection and diffusion. The vector $F$ represents the source. Space has now been discretized, but time is still continuous; this is the \emph{semi-discrete system}.
+
+\textbf{Mesh and unknowns.} Each square edge has $n$ subdivisions. There are $2n^2$ triangles, and the largest triangle diameter is $h=\sqrt2/n$. For P2, $n=16$ gives 1089 coefficients, of which 961 are free after applying boundary values. Two Radau stages give 2178 coefficients including boundary slots. At $n=32$, these counts are 4225, 3969 and 8450.
+
+\textbf{Measuring error.} The $L^2$ norm measures the overall size of the error in solution values. The $H^1$ seminorm measures error in their gradients. We initialize by nodal interpolation: the finite-element function matches the exact initial function at its nodes. Comparisons on the same mesh start from that same initial vector.
+
+\newpage
+\section*{4\quad Time integration}
+\textbf{Backward Euler (BE).} Replace the time derivative by a difference between consecutive solution vectors. Let $k$ label the time level and $\Delta t$ the time step:
+\begin{equation}
+(M+\Delta t L)U^{k+1}=MU^k+\Delta t F(t_{k+1}).
+\end{equation}
+An implicit method places the new unknown on the left and requires a solve at each step. Backward Euler is first order: in its convergence range, halving the time step approximately halves the time error. A manual implementation was checked against Irksome's backward Euler implementation.
+
+\textbf{Two-stage Radau IIA.} Radau uses two coupled stage calculations within each step. Their derivative vectors are $Z_1$ and $Z_2$, evaluated through the equation at $t_k+\Delta t/3$ and $t_k+\Delta t$. The coefficients are collected in the \emph{Butcher tableau}:
+\begin{equation}
+\begin{array}{c|rr}
+1/3&5/12&-1/12\\
+1&3/4&1/4\\\hline
+&3/4&1/4
+\end{array}
+\quad\Longleftrightarrow\quad
+A=\begin{pmatrix}5/12&-1/12\\3/4&1/4\end{pmatrix},\quad
+b=\begin{pmatrix}3/4\\1/4\end{pmatrix}.
+\end{equation}
+The stage equations are
+\begin{equation}
+MZ_i+L\left(U^k+\Delta t\sum_{j=1}^2a_{ij}Z_j\right)
+      =F(t_k+c_i\Delta t),\qquad i=1,2.
+\end{equation}
+They form one larger linear system:
+\begin{equation}
+\underbrace{\begin{pmatrix}
+M+\frac5{12}\Delta t L&-\frac1{12}\Delta t L\\
+\frac34\Delta t L&M+\frac14\Delta t L
+\end{pmatrix}}_{B}
+\begin{pmatrix}Z_1\\Z_2\end{pmatrix}
+=\underbrace{\begin{pmatrix}F(t_k+\Delta t/3)-LU^k\\F(t_k+\Delta t)-LU^k\end{pmatrix}}_{g^k}.
+\end{equation}
+After solving it, update the solution:
+\begin{equation}
+U^{k+1}=U^k+\Delta t(3Z_1/4+Z_2/4).
+\end{equation}
+The last row of $A$ equals the weights $b$. Therefore the second stage state is also the final updated state. This property is called \emph{stiff accuracy}.
+
+Radau is third order: halving the step should eventually reduce time error by about eight. It is also suited to stiff problems, where rapid decay can force explicit methods to take very small steps~\cite{hairer}. Its scalar stability function is $R(z)=(1+z/3)/(1-2z/3+z^2/6)$, which tends to zero for large negative $z$, damping rapidly decaying modes.
+
+Irksome uses derivative stages with \code{stage\_type=deriv}, \code{splitting=AI} and \code{bc\_type=DAE}. Within a run, the mesh, diffusion and time step are fixed. Hence $B$ stays fixed while $g^k$ changes. This permits matrix and factor reuse. Each compared run forms its right-hand side from its own previous solution.
+
+\newpage
+\section*{5\quad Linear solvers and preconditioners}
+\textbf{GMRES.} The implicit steps produce large sparse systems: most matrix entries are zero. Advection makes these systems nonsymmetric. GMRES is an iterative method that improves an approximate solution until the residual, the mismatch in the equations, is small enough~\cite{petscgmres}.
+
+A \emph{preconditioner} helps GMRES by applying an easier auxiliary solve. With right preconditioning, the stage system is written as
+\begin{equation}
+BP^{-1}y=g,\qquad Z=P^{-1}y.
+\end{equation}
+Here $P^{-1}$ means an applied operation; no dense inverse is formed. The original equation remains $BZ=g$. Three existing preconditioners are compared:
+\begin{description}
+\item[Jacobi:] Scale using the diagonal of $B$. Each application is cheap, but it ignores interactions between different unknowns.
+\item[ASM/ILU(0):] Additive Schwarz splits the matrix into four overlapping blocks and adds their local corrections~\cite{petscasm}. The overlap includes one layer of neighbouring unknowns in the matrix graph. Each block uses incomplete LU with no additional fill, ILU(0). This is an approximate factorization that limits storage. The four blocks are handled within one process; they are not four CPU cores.
+\item[RanaLD with auxiliary LU:] Use the Runge--Kutta stage structure to build an easier coupled system~\cite{rana,ranademo}. Factor the small tableau as $A=L_A D_A U_A$, and replace it in the preconditioner by its lower-triangular part $\widetilde A=L_A D_A$:
+\end{description}
+\begin{equation}
+L_A=\begin{pmatrix}1&0\\9/5&1\end{pmatrix},\quad
+D_A=\begin{pmatrix}5/12&0\\0&2/5\end{pmatrix},\quad
+U_A=\begin{pmatrix}1&-1/5\\0&1\end{pmatrix},
+\end{equation}
+\begin{equation}
+\widetilde A=\begin{pmatrix}5/12&0\\3/4&2/5\end{pmatrix},\qquad
+P=I_2\otimes M+\Delta t\widetilde A\otimes L.
+\end{equation}
+The symbol $\otimes$ builds a block matrix by multiplying each small-matrix entry by the spatial matrix. In this study, the full auxiliary matrix $P$ is factored by sparse LU. LU stores lower- and upper-triangular factors for subsequent solves. This action is stronger and more expensive than Jacobi. It differs from the multigrid stage subsolves used in scalable Rana implementations.
+
+All actions are fixed and linear during a solve, so ordinary GMRES is appropriate. We use restart 50, at most 1000 iterations per solve, relative tolerance $10^{-11}$ and absolute tolerance $10^{-13}$. Independently checked physical residuals must satisfy
+\begin{equation}
+\norm{g-BZ}_2\leq10\max(10^{-13},10^{-11}\norm g_2).
+\end{equation}
+The factor ten is a fixed verification allowance. Direct-LU reference trajectories have separate residual budgets with relative tolerance $10^{-12}$ and absolute tolerance $10^{-14}$. We also compare the actual computed fields; a small residual alone does not establish a small PDE error.
+
+\newpage
+\section*{6\quad Mesh refinement and accuracy}
+Figure 1 compares numerical solutions with the exact function at $T=1$. Both axes use logarithmic scales, so equal distances represent equal ratios. Moving left means smaller triangles; moving down means smaller error.
+
+\fig{spatial.png}{7.4cm}{Figure 1. Spatial error for P1 and P2 on meshes with $n=8,16,32$. The left panel measures solution error; the right measures gradient error.}
+
+P2 produces smaller errors on the same mesh, while using more coefficients per triangle. The \emph{convergence rate} describes how quickly error decreases as $h$ decreases. For example, an error proportional to $h^3$ falls by a factor of eight when $h$ is halved.
+
+\begin{center}\begin{tabular}{lccc}\toprule
+Space & Expected solution/gradient rates & Measured solution & Measured gradient\\\midrule
+\SpatialRateRows
+\bottomrule\end{tabular}\end{center}
+The table uses the last refinement, from $n=16$ to $n=32$. The measured rates closely match the expected smooth-solution behavior. This supports the spatial implementation and motivates using P2 for the later time and cost comparisons.
+
+\textbf{Separating the errors.} A mesh study can be misleading if time error is too large. Each mesh was therefore run with Radau steps $0.005$ and $0.0025$, with an additional tighter-solver run on the finest P2 mesh. The plot uses the $0.0025$ results. Thirteen trajectories, meaning complete runs from initial to final time, contained 4000 steps in total.
+
+Errors are computed by numerical integration, also called \emph{quadrature}. Degrees 10 and 14 were compared to check that integration accuracy did not change the conclusions. The source, boundary values, updates and residuals were checked as well. Initial interpolation was tested separately before these transient runs.
+
+\newpage
+\section*{7\quad Time-step refinement and accuracy}
+Figure 2 fixes the mesh at P2/$n=16$ and changes only the time step. The reference is a Radau solution with the much smaller step $1/1280$ on that same mesh. This comparison isolates time-discretization differences for the fixed spatial system:
+\begin{equation}
+E_t(\Delta t)=\norm{u_h^{\Delta t}(T)-u_{h,\mathrm{ref}}(T)},\qquad
+p=\frac{\log(E_t(\Delta t)/E_t(\Delta t/2))}{\log2}.
+\end{equation}
+Here $E_t$ is the measured time error and $p$ is its observed order.
+
+\fig{temporal.png}{7.2cm}{Figure 2. Time errors in solution values and gradients for steps $0.1,0.05,0.025,0.0125$. Smaller steps lie to the left.}
+
+\begin{center}\begin{tabular}{lcc}\toprule
+Method & Last solution-error rate & Last gradient-error rate\\\midrule
+\TemporalRateRows
+\bottomrule\end{tabular}\end{center}
+Backward Euler approaches first order and Radau approaches third order. Thus the observed time behavior agrees with the methods' expected orders over this range. Radau is more accurate at the same step, although accuracy alone does not determine its runtime.
+
+\textbf{How reliable is the reference?} The fine reference was compared with step $1/640$ and with a ten-times-tighter linear solve. Their combined sensitivity was about 0.177\% of the smallest measured time error in either norm. Tighter solves were also used for the finest points on the curves. All thirteen trajectories and 3660 steps passed their checks. These comparisons support the reference resolution; they do not give a rigorous bound on its remaining error.
+
+The reference still uses a finite mesh. Consequently the very small values in this plot are time errors, not errors against the exact PDE solution. Mesh error would eventually limit accuracy even if the time step were made arbitrarily small.
+
+\newpage
+\section*{8\quad Accuracy and runtime}
+Four time-step choices were timed on P2/$n=16$, with $\kappa=1$ and Jacobi preconditioning. Each had one warmup and three measured repetitions while the laptop was connected to AC power. A warmup fills compilation and code caches before measurement. The median is the middle of the three measured runtimes.
+
+\begin{center}\begin{tabular}{lrrr}\toprule
+Candidate & $\Delta t$ & $L^2$ time error & Median runtime (s)\\\midrule
+\AccuracyCostRows
+\bottomrule\end{tabular}\end{center}
+
+\fig{accuracy_cost.png}{7.2cm}{Figure 3. Time error versus measured solver runtime. Lower is more accurate; farther left is faster. Horizontal bars show the range of three measured runtimes.}
+
+The dashed lines are allowable time-error targets. Among the tested choices meeting $E_t\leq10^{-4}$, BE costs less: 0.172750~s versus 0.239614~s for Radau. At $E_t\leq3\times10^{-6}$, BE needs the tested step $0.0005$ and costs 2.346190~s; Radau with step $0.1$ costs 0.239614~s. The ratio is \TightAccuracyRatio. Radau's greater accuracy per step compensates for its more expensive steps at this tighter target.
+
+These are comparisons among four choices, not a search for the optimal time step. Reference and solver sensitivity were checked, and timed final fields were compared with checked runs. The reference sensitivity was about 0.00310\% of the smallest time error in this set.
+
+The fixed-mesh solution error against the exact PDE is about $2.53\times10^{-5}$. A temporal target of $3\times10^{-6}$ therefore does not imply that total PDE accuracy. Runtime here covers fresh solver construction and advances with warm caches; it excludes imports, the shared mesh, verification and output. Section 11 gives the full timing boundary.
+
+\newpage
+\section*{9\quad Preconditioner work and storage}
+The solver comparison uses Radau with $\Delta t=0.1$ and ten steps to $T=1$. The three points change one parameter at a time: baseline $(n,\kappa)=(16,1)$, finer mesh $(32,1)$ and lower diffusion $(16,0.1)$. Here $n$ counts subdivisions along each edge, and $\kappa$ controls spreading.
+
+\fig{solver_work.png}{7.0cm}{Figure 4. Total outer GMRES iterations over ten steps (left) and stored entries in Rana's auxiliary LU factors (right). Factor entries indicate storage, not memory bytes.}
+
+The baseline totals, also labelled in the figure, are:
+\begin{center}\begin{tabular}{lr}\toprule
+Preconditioner & Total outer GMRES iterations\\\midrule
+\BaselineIterationRows
+\bottomrule\end{tabular}\end{center}
+Rana needs seven iterations per step, or 70 over ten steps, compared with 7258 for Jacobi. The physical equations and stopping parameters are the same. \emph{Outer} distinguishes these GMRES iterations from work performed inside each preconditioner application. A Rana application includes an auxiliary LU solve, so these totals alone do not measure total cost.
+
+Finer-mesh Jacobi reached the 1000-iteration limit in its first-step pilot. No updated solution was accepted, so no full-run total or runtime is assigned to it. The other eight candidates completed their ten-step trajectories. Independent direct-LU references and physical-residual checks supported agreement of the computed fields.
+
+Rana's count stays at seven per step on the two meshes, but its auxiliary factor entries grow from 167432 to 1194936, about 7.14 times. Low iteration counts therefore do not establish low storage growth. Each trajectory used one auxiliary LU factorization; the fixed matrix allowed reuse after the first step. ASM likewise retained its four local ILU factors.
+
+\newpage
+\section*{10\quad Measured solver runtime}
+Figure 5 times all converged preconditioners through the same residual-form implementation at each selected point. Every case has one warmup and three measured repetitions. Point and method order change between rounds to reduce ordering bias. All samples are retained, including slower ones.
+
+\begin{center}\small\begin{tabular}{llrrr}\toprule
+$(n,\kappa)$ & Preconditioner & Median (s) & Minimum--maximum (s) & Range/median\\\midrule
+\SelectedCostRows
+\bottomrule\end{tabular}\end{center}
+
+\fig{selected_cost.png}{6.7cm}{Figure 5. Measured runtime at each selected point. Dots are the three repetitions, horizontal lines are medians, and labels give median seconds. The failed finer-mesh Jacobi case has no timing.}
+
+Rana has the lowest median among the tested converged cases. Dividing ASM's median by Rana's gives \BaselineAsmRanaRatio\ at the baseline, \RefinedAsmRanaRatio\ on the finer mesh and \LowerAsmRanaRatio\ at lower diffusion. These are speedups of approximately 1.34--4.64 times across the three cases. The baseline Jacobi/Rana ratio is \BaselineJacobiRanaRatio, much smaller than the roughly 104-fold difference in outer iteration counts.
+
+Fresh construction, lazy assembly, factorization and ten advances are inside the common timer. Verification is outside it. All 32 warmup and measured final fields matched their corresponding checked fields at recorded precision. The complete study contained 43 trajectories and 430 steps, including references and checked runs.
+
+The slower finer-mesh Rana sample remains included; its range is 9.50\% of its median. Three repetitions show observed variability, not a confidence interval. These are warm-cache serial measurements on one laptop. Absolute times from earlier different-driver comparisons are kept separate.
+
+\newpage
+\section*{11\quad Reproducing the study}
+\textbf{Recorded numerical environment.} The original measurements used the following setup. Builds and virtual environments are local files, excluded from Git.
+\begin{center}\small\begin{tabular}{lp{11.1cm}}\toprule
+Item & Recorded setup\\\midrule
+Hardware & Apple M4 Pro, 24 GiB RAM, 12 physical cores; macOS 27.0, arm64\\
+Process settings & One MPI process; OpenMP and OpenBLAS threads both set to 1\\
+Python / MPI & Homebrew Python 3.13.16; Open MPI 5.0.11\\
+PETSc & 3.26.0, optimized real double precision, 32-bit indices; source commit and build options recorded\\
+Python packages & Firedrake 2026.10.0, Irksome 2026.0.0, petsc4py 3.26.0, mpi4py 4.1.2, h5py 3.16.0\\
+Plotting & Separate environment with Matplotlib 3.10.7 and a saved package list\\\bottomrule
+\end{tabular}\end{center}
+The installation record contains 52 resolved Python packages and the native PETSc configuration. The original binary hashes identify that installation; a rebuild elsewhere will need its own checks. The setup is documented, rather than supplied as a portable binary image.
+
+\textbf{Inspecting saved results.} From the repository root, ordinary Python can check saved-data hashes, recompute the reported rates and timing ratios, and check the report tables and figures:
+\begin{quote}\small\ttfamily
+python3 scripts/check\_saved\_results.py\par
+python3 scripts/build\_report.py
+\end{quote}
+Building the report also needs \code{pdflatex} and \code{pdfinfo}. These commands run no PDE simulation. The original-installation audit remains available as \code{scripts/check\_report\_evidence.py}; it additionally verifies the native installation and the detailed historical validation chain. The repository README and reproduction guide give the numerical run sequence and plotting commands.
+
+\textbf{What is timed?} The term ``core wall time'' in the plots means elapsed time for the timed solver work; it does not mean CPU core count. For the matched preconditioner study it includes fresh solution functions, forms, TimeStepper/SNES/KSP/PC construction, lazy matrix assembly and factor setup, and ten advances with common loop bookkeeping. Factors are reused within a trajectory.
+
+Imports, the shared mesh/space/initial function, preliminary tableau calculations, deliberate pre-run garbage collection, independent verification, solver views, output and object destruction are outside the timer. Code caches are warm. Optional Python monitors and local callbacks are absent from timed loops. Rana's required Python preconditioner action remains part of its runtime. PETSc event times can contain nested events and must not be added as separate elapsed costs.
+
+The raw records retain configurations, code versions, residuals, field comparisons, factor work, power state and every measured repeat. Hashes connect these files to generated tables, figures and the PDF. They help detect accidental changes; they do not replace numerical verification.
+
+\newpage
+\section*{12\quad Conclusions and limits}
+The implementation reproduces the expected P1/P2 spatial convergence and first-/third-order temporal trends for this smooth problem. In the four-choice method comparison, selected BE costs less at the loose temporal target and selected Radau costs less at the tighter one. At the three selected solver points, RanaLD with full auxiliary sparse LU has the lowest observed median runtime among converged candidates. The failed finer-mesh Jacobi case and growth in Rana's factors are part of the result.
+
+These conclusions apply to the recorded problem, choices and timing boundary. Only two mesh sizes and two diffusion values enter the selected solver comparison. The study does not establish robustness for sharp transport fronts, optimal step sizes or a universal preconditioner ranking. All performance measurements use one process and one thread. Early two-process correctness checks do not measure parallel speedup.
+
+The present work provides a reproducible verification and performance study of existing methods. A useful extension would test approximate stage-block solves on larger problems, or measure parallel performance after verifying a suitable parallel solver configuration. A journal study would also need a distinct question and comparison with the existing literature; more runs alone would not establish that contribution.
+
+\begin{thebibliography}{9}\small
+\bibitem{firedrake} F. Rathgeber et al. Firedrake: Automating the finite element method by composing abstractions. \emph{ACM TOMS} 43(3), 24:1--24:27, 2016. \href{https://doi.org/10.1145/2998441}{doi:10.1145/2998441}.
+\bibitem{irksome} P. E. Farrell, R. C. Kirby and J. Marchena-Menendez. Irksome: Automating Runge--Kutta time-stepping for finite element methods. \emph{ACM TOMS} 47(4), 2021. \href{https://arxiv.org/abs/2006.16282}{arXiv:2006.16282}.
+\bibitem{extending} R. C. Kirby and S. P. MacLachlan. Extending Irksome: improvements in automated Runge--Kutta time stepping for finite element methods. \href{https://arxiv.org/abs/2403.08084v2}{arXiv:2403.08084v2}, 2025.
+\bibitem{rana} M. M. Rana, V. E. Howle, K. Long, A. Meek and W. Milestone. A new block preconditioner for implicit Runge--Kutta methods for parabolic PDE problems. \href{https://arxiv.org/abs/2010.11377v2}{arXiv:2010.11377v2}, 2021.
+\bibitem{ranademo} Irksome developers. Rana/Howle/et al preconditioning. \href{https://www.firedrakeproject.org/Irksome/demos/demo_heat_rana.py.html}{Official demonstration}, consulted 12 November 2026. Installed implementation sources are recorded separately.
+\bibitem{hairer} E. Hairer and G. Wanner. \emph{Solving Ordinary Differential Equations II: Stiff and Differential-Algebraic Problems}. 2nd ed., Springer, 1996. \href{https://doi.org/10.1007/978-3-642-05221-7}{doi:10.1007/978-3-642-05221-7}.
+\bibitem{petscgmres} PETSc developers. \href{https://petsc.org/release/manualpages/KSP/KSPGMRES/}{KSPGMRES documentation}, consulted 22 October 2026.
+\bibitem{petscasm} PETSc developers. \href{https://petsc.org/release/manualpages/PC/PCASM/}{PCASM documentation}, consulted 22 October 2026.
+\end{thebibliography}
+\end{document}

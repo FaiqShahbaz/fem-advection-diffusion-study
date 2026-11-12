@@ -1,0 +1,34 @@
+{
+  "raw_source": {
+    "path": "results/raw/spatial-20261008T133314Z-38837-serial.json",
+    "sha256": "be6b25c4c2481451c06fd2f945d81f20ae27ce78790623e109c462742aa7dcdc"
+  },
+  "review": {
+    "path": "results/processed/spatial_review.json",
+    "sha256": "df1e6fe813aa2db0e5667217f17ab8cd03cc02620021e95ec044336d3c752cdf"
+  },
+  "processor": {
+    "path": "scripts/process_spatial.py",
+    "sha256": "29c0fc14e843e8f10663095ccc6563340e6275eddcb6029e60060f1988b27278"
+  },
+  "python": "/Users/faiq/Projects/fem-advection-diffusion/environment/build/postprocessing-venv/bin/python",
+  "python_version": "3.13.16",
+  "matplotlib_version": "3.10.7",
+  "plotting_inventory": {
+    "path": "environment/requirements-postprocessing-resolved.txt",
+    "sha256": "e7845de9d2dd08c397109b9cee73dd1caef3eaa7ed9f164dd9a64a2472582fbe"
+  },
+  "regeneration_argv": [
+    "/Users/faiq/Projects/fem-advection-diffusion/environment/build/postprocessing-venv/bin/python",
+    "/Users/faiq/Projects/fem-advection-diffusion/scripts/process_spatial.py"
+  ],
+  "regeneration_command": "/Users/faiq/Projects/fem-advection-diffusion/environment/build/postprocessing-venv/bin/python /Users/faiq/Projects/fem-advection-diffusion/scripts/process_spatial.py",
+  "output_sha256": {
+    "results/processed/spatial-20261008T133314Z-38837-table.json": "374b1989c4790415b9c9eefb43b639b8166e7f4d8978d14cf42a24f299f52cf1",
+    "results/processed/spatial-20261008T133314Z-38837-table.md": "3cacb0e80f37ba6e1e10774bb3aced0c6cbbee943d380a397c5c52328e236ee2",
+    "results/figures/spatial-20261008T133314Z-38837.png": "9bf838e7f14228e6f9e1ff80f57722c5d5dae4e2a5354d94834110c4c1c96e2a",
+    "results/figures/spatial-20261008T133314Z-38837.svg": "15630719a117e80cd6d8c2a79af201c8b7f27ea5f14bd87d7f895d9d4f163e83"
+  },
+  "processing_only": true,
+  "new_fem_experiment_run": false
+}

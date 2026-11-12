@@ -1,0 +1,38 @@
+# Local environments and dependency builds
+.venv/
+venv/
+venv-firedrake/
+environment/build/
+environment/install/
+
+# Python and numerical compilation caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.cache/
+.firedrake_cache/
+.tsfc_cache/
+.ruff_cache/
+
+# Local credentials and machine-only settings
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Editors and macOS
+.DS_Store
+.idea/
+.vscode/
+*~
+
+# Scratch files and large optional visualization data
+work/
+results/fields/
+release/
+
+# Small measurement tables, configurations, and environment records are tracked.
+
+# Full configure diagnostics remain locally; exact gzip archives and hashes are tracked.
+environment/records/*-configure.log

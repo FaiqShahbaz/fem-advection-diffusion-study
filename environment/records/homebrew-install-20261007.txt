@@ -1,0 +1,454 @@
+(main) faiq@Faiqs-MacBook-Pro ~ % cd /Users/faiq/Projects/fem-advection-diffusion
+bash environment/preflight.sh
+Phase 0 prerequisite diagnostic
+UTC: 2026-10-07T10:50:48Z
+Status: tool selection only; numerical stack NOT functionally verified
+
+Architecture and OS
+arm64
+ProductName:		macOS
+ProductVersion:		27.0
+BuildVersion:		26A428
+/Library/Developer/CommandLineTools
+
+Selected programs
+python3: /Users/faiq/miniforge3/envs/main/bin/python3
+brew: /opt/homebrew/bin/brew
+mpicc: NOT FOUND
+mpiexec: /Applications/ParaView-6.0.1.app/Contents/bin/mpiexec
+git: /opt/homebrew/bin/git
+gh: /opt/homebrew/bin/gh
+
+Selected Python metadata and package discovery
+Executable: /Users/faiq/miniforge3/envs/main/bin/python3
+Version: 3.11.14
+Process architecture: arm64
+Inside virtual environment: False
+firedrake: not discoverable
+petsc4py: not discoverable
+mpi4py: not discoverable
+irksome: not discoverable
+
+Relevant installed Homebrew formulae (local listing only)
+None of the listed numerical prerequisites found.
+
+Git version
+git version 2.51.1
+
+Next: review this report with your mentor before installation.
+No MPI launcher was executed. No numerical package was imported.
+
+Saved diagnostic: /Users/faiq/Projects/fem-advection-diffusion/environment/records/preflight-20261007T105048Z-4594.txt
+(main) faiq@Faiqs-MacBook-Pro fem-advection-diffusion % conda deactivate
+echo "${CONDA_SHLVL:-0}"
+0
+faiq@Faiqs-MacBook-Pro fem-advection-diffusion % /opt/homebrew/bin/brew install python@3.13 open-mpi
+==> Auto-updating Homebrew...
+Adjust how often this is run with `$HOMEBREW_AUTO_UPDATE_SECS` or disable with
+`$HOMEBREW_NO_AUTO_UPDATE=1`. Hide these hints with `$HOMEBREW_NO_ENV_HINTS=1` (see `man brew`).
+==> Auto-updated Homebrew!
+Updated 3 taps (anomalyco/tap, homebrew/core and homebrew/cask).
+==> New Formulae
+all-smi: GPU monitoring tool for NVIDIA/Jetson/Apple Silicon/Tenstorrent
+apkid: Android application identifier for compilers, packers, and obfuscators
+arcane-cli: Command-line client for the Arcane Docker management platform
+baysor: Bayesian segmentation of imaging-based spatial transcriptomics data
+chisel-ubuntu: Carve and cut Debian packages into slices
+ctcache: Cache for clang-tidy static analysis results
+ddns-updater: Lightweight universal DDNS Updater program
+deja: Predictive ghost-text autosuggestions for zsh
+doltlite: SQLite fork with Git-style version control via prolly trees
+goleft: Tools for coverage and QC of BAM/CRAM files, including indexcov
+licensee: Detect under what license a project is distributed
+mailtrap-local: Local email sandbox with SMTP server, web UI, and JSON API
+maki: Efficient AI coding agent extendable by neovim-like Lua plugins
+mariadb@12.3: Drop-in replacement for MySQL
+modflow6: USGS modular hydrologic model
+morphe: Desktop app and CLI for patching Android apps with Morphe
+openshell: Safe, private runtime for autonomous AI agents
+packslip: Signed release manifest for vendor binaries
+pg_activity: Top-like interactive monitoring tool for PostgreSQL server activity
+pypy3.12: Implementation of Python 3 in Python
+regenie: Whole genome regression modelling of large genome-wide association studies
+rustqc: Fast genomics quality control tools for sequencing data
+sac: Seismic Analysis Code, Community Edition
+sdrmm: Modular, client-server software-defined radio
+sniffles: Structural variant caller for long-read sequencing data
+tfswitch: Command-line tool to switch between Terraform versions
+unixcw: Morse code tutor and command-line tools
+vcfexpress: Filter and format VCF/BCF files with Lua expressions
+wavemon: Ncurses-based monitoring application for wireless network devices on Linux
+zig@0.16: Programming language designed for robustness, optimality, and clarity
+==> New Casks
+argo-books: Accounting software for small businesses
+auto-tune-central: Software download manager for Antares products
+buildin: Collaborative workspace for notes, documents and wikis
+cuadriver: Background desktop automation driver for AI agents
+deepseek-harness: Plugin-based AI agent desktop application
+fl-studio: Digital audio production application
+font-aptos
+font-lexica-ultralegible
+hagimimonitordirect: Menu bar monitor for system performance and hardware
+holst: Online whiteboard for team collaboration
+ideashell: AI partner for notes, voice, and to-dos
+ideashell-cn: AI partner for notes, voice, and to-dos (China edition)
+keyecho: Mechanical keyboard sounds for every keystroke
+littlebird: AI assistant that captures meetings and work context
+lody: Share coding agent sessions across desktop and mobile
+manus-cue: Personal AI agents with their own identities
+markpad: Markdown viewer and editor
+mcplinker: Manage and sync MCP server configurations across AI clients
+napari: Multi-dimensional image viewer for Python
+picsart-ai-playground: Workspace for AI image, video and audio creation
+ruffle: Flash Player emulator
+sandisk: Managing SanDisk external drives
+sdrmm-app: Modular, client-server software-defined radio
+solidtime: Open-source time tracker
+stashcat: Secure messenger for organisations
+swiftcord: Native Discord client
+volumehud: Bring back the pre-Tahoe volume and brightness HUDs
+wheelwizard: Mod manager for Mario Kart Wii and Retro Rewind
+
+You have 49 outdated formulae and 5 outdated casks installed.
+
+==> Downloading bottle manifests
+✔︎ Bottle Manifest open-mpi (5.0.11)                                                         Downloaded   97.6KB/ 97.6KB
+✔︎ Bottle Manifest python@3.13 (3.13.16)                                                     Downloaded   98.1KB/ 98.1KB
+==> Would install 2 formulae:
+python@3.13  3.13.16
+open-mpi     5.0.11
+==> Would install 1 dependency for python@3.13:
+mpdecimal
+==> Would upgrade 5 dependencies for python@3.13:
+ca-certificates
+openssl@3
+readline
+sqlite
+xz
+==> Would install 9 dependencies for open-mpi:
+gmp
+isl
+mpfr
+libmpc
+gcc
+hwloc
+libevent
+pmix
+prrte
+==> Would upgrade 3 dependencies for open-mpi:
+xz
+ca-certificates
+openssl@3
+==> Do you want to proceed with the installation? [y/n]
+==> Fetching downloads for: python@3.13 and open-mpi
+✔︎ Bottle Manifest mpdecimal (4.0.1)                                                         Downloaded   16.6KB/ 16.6KB
+✔︎ Bottle ca-certificates (2026-09-25)                                                       Downloaded  112.2KB/112.2KB
+✔︎ Bottle Manifest readline (8.3.6)                                                          Downloaded   15.3KB/ 15.3KB
+✔︎ Bottle Manifest isl (0.28)                                                                Downloaded   13.9KB/ 13.9KB
+✔︎ Bottle Manifest openssl@3 (3.6.5)                                                         Downloaded   20.2KB/ 20.2KB
+✔︎ Bottle Manifest sqlite (3.53.4)                                                           Downloaded   35.4KB/ 35.4KB
+✔︎ Bottle Manifest mpfr (4.2.2)                                                              Downloaded   16.1KB/ 16.1KB
+✔︎ Bottle Manifest gmp (6.3.0)                                                               Downloaded   16.6KB/ 16.6KB
+✔︎ Bottle Manifest gcc (16.2.0)                                                              Downloaded   74.8KB/ 74.8KB
+✔︎ Bottle Manifest hwloc (2.15.0)                                                            Downloaded   23.6KB/ 23.6KB
+✔︎ Bottle Manifest xz (5.8.4)                                                                Downloaded   14.6KB/ 14.6KB
+✔︎ Bottle Manifest libmpc (1.4.1)                                                            Downloaded   16.4KB/ 16.4KB
+✔︎ Bottle libevent (2.1.13)                                                                  Downloaded  720.0KB/720.0KB
+✔︎ Bottle Manifest pmix (6.1.0)                                                              Downloaded   20.8KB/ 20.8KB
+✔︎ Bottle Manifest prrte (4.1.0_1)                                                           Downloaded   62.3KB/ 62.3KB
+✔︎ Bottle xz (5.8.4)                                                                         Downloaded  788.8KB/788.8KB
+✔︎ Bottle libmpc (1.4.1)                                                                     Downloaded  156.4KB/156.4KB
+✔︎ Bottle mpdecimal (4.0.1)                                                                  Downloaded  185.8KB/185.8KB
+✔︎ Bottle sqlite (3.53.4)                                                                    Downloaded    2.5MB/  2.5MB
+✔︎ Bottle mpfr (4.2.2)                                                                       Downloaded    1.1MB/  1.1MB
+✔︎ Bottle readline (8.3.6)                                                                   Downloaded  757.0KB/757.0KB
+✔︎ Bottle gmp (6.3.0)                                                                        Downloaded    1.0MB/  1.0MB
+✔︎ Bottle isl (0.28)                                                                         Downloaded    1.7MB/  1.7MB
+✔︎ Bottle hwloc (2.15.0)                                                                     Downloaded    4.5MB/  4.5MB
+✔︎ Bottle prrte (4.1.0_1)                                                                    Downloaded    8.4MB/  8.4MB
+✔︎ Bottle openssl@3 (3.6.5)                                                                  Downloaded   11.0MB/ 11.0MB
+✔︎ Bottle pmix (6.1.0)                                                                       Downloaded    9.5MB/  9.5MB
+✔︎ Bottle open-mpi (5.0.11)                                                                  Downloaded   17.9MB/ 17.9MB
+✔︎ Bottle python@3.13 (3.13.16)                                                              Downloaded   18.5MB/ 18.5MB
+✔︎ Bottle gcc (16.2.0)                                                                       Downloaded  164.2MB/164.2MB
+==> Installing dependencies for python@3.13: mpdecimal, ca-certificates ↑, openssl@3 ↑, readline ↑, sqlite ↑ and xz ↑
+==> Installing python@3.13 dependency: mpdecimal
+==> Pouring mpdecimal--4.0.1.arm64_golden_gate.bottle.1.tar.gz
+🍺  /opt/homebrew/Cellar/mpdecimal/4.0.1: 22 files, 627.4KB
+==> Upgrading python@3.13 dependency: ca-certificates
+==> Pouring ca-certificates--2026-09-25.all.bottle.tar.gz
+🍺  /opt/homebrew/Cellar/ca-certificates/2026-09-25: 5 files, 204.4KB
+==> Upgrading python@3.13 dependency: openssl@3
+==> Pouring openssl@3--3.6.5.arm64_golden_gate.bottle.tar.gz
+🍺  /opt/homebrew/Cellar/openssl@3/3.6.5: 7,642 files, 37.8MB
+==> Upgrading python@3.13 dependency: readline
+==> Pouring readline--8.3.6.arm64_golden_gate.bottle.tar.gz
+🍺  /opt/homebrew/Cellar/readline/8.3.6: 56 files, 2.6MB
+==> Upgrading python@3.13 dependency: sqlite
+==> Pouring sqlite--3.53.4.arm64_golden_gate.bottle.1.tar.gz
+🍺  /opt/homebrew/Cellar/sqlite/3.53.4: 13 files, 5.3MB
+==> Upgrading python@3.13 dependency: xz
+==> Pouring xz--5.8.4.arm64_golden_gate.bottle.tar.gz
+🍺  /opt/homebrew/Cellar/xz/5.8.4: 96 files, 2.7MB
+==> Installing python@3.13
+==> Pouring python@3.13--3.13.16.arm64_golden_gate.bottle.tar.gz
+🍺  /opt/homebrew/Cellar/python@3.13/3.13.16: 3,640 files, 71.4MB
+==> Installing dependencies for open-mpi: gmp, isl, mpfr, libmpc, gcc, hwloc, libevent, pmix and prrte
+==> Installing open-mpi dependency: gmp
+==> Pouring gmp--6.3.0.arm64_golden_gate.bottle.1.tar.gz
+🍺  /opt/homebrew/Cellar/gmp/6.3.0: 22 files, 3.4MB
+==> Installing open-mpi dependency: isl
+==> Pouring isl--0.28.arm64_golden_gate.bottle.tar.gz
+🍺  /opt/homebrew/Cellar/isl/0.28: 80 files, 8MB
+==> Installing open-mpi dependency: mpfr
+==> Pouring mpfr--4.2.2.arm64_golden_gate.bottle.tar.gz
+🍺  /opt/homebrew/Cellar/mpfr/4.2.2: 31 files, 3.3MB
+==> Installing open-mpi dependency: libmpc
+==> Pouring libmpc--1.4.1.arm64_golden_gate.bottle.tar.gz
+🍺  /opt/homebrew/Cellar/libmpc/1.4.1: 14 files, 527.5KB
+==> Installing open-mpi dependency: gcc
+==> Pouring gcc--16.2.0.arm64_golden_gate.bottle.1.tar.gz
+🍺  /opt/homebrew/Cellar/gcc/16.2.0: 1,705 files, 500.6MB
+==> Installing open-mpi dependency: hwloc
+==> Pouring hwloc--2.15.0.arm64_golden_gate.bottle.tar.gz
+🍺  /opt/homebrew/Cellar/hwloc/2.15.0: 996 files, 11.3MB
+==> Installing open-mpi dependency: libevent
+==> Pouring libevent--2.1.13.arm64_golden_gate.bottle.tar.gz
+🍺  /opt/homebrew/Cellar/libevent/2.1.13: 58 files, 2.3MB
+==> Installing open-mpi dependency: pmix
+==> Pouring pmix--6.1.0.arm64_golden_gate.bottle.tar.gz
+🍺  /opt/homebrew/Cellar/pmix/6.1.0: 410 files, 16.9MB
+==> Installing open-mpi dependency: prrte
+==> Pouring prrte--4.1.0_1.arm64_golden_gate.bottle.tar.gz
+🍺  /opt/homebrew/Cellar/prrte/4.1.0_1: 324 files, 13.2MB
+==> Installing open-mpi
+==> Pouring open-mpi--5.0.11.arm64_golden_gate.bottle.tar.gz
+🍺  /opt/homebrew/Cellar/open-mpi/5.0.11: 2,349 files, 77.2MB
+==> Caveats
+==> python@3.13
+Python is installed as
+  /opt/homebrew/bin/python3.13
+
+Unversioned and major-versioned symlinks `python`, `python3`, `python-config`, `python3-config`, `pip`, `pip3`, etc. pointing to
+`python3.13`, `python3.13-config`, `pip3.13` etc., respectively, are installed into
+  /opt/homebrew/opt/python@3.13/libexec/bin
+
+If you do not need a specific version of Python, and always want Homebrew's `python3` in your PATH:
+  brew install python3
+
+`idle3.13` requires tkinter, which is available separately:
+  brew install python-tk@3.13
+
+`dbm.gnu` is available separately:
+  brew install python-gdbm@3.13
+
+For more information about Homebrew and Python, see: https://docs.brew.sh/Homebrew-and-Python
+==> open-mpi
+The following open-mpi executables are shadowed by other commands earlier in your PATH:
+  mpiexec (shadowed by /Applications/ParaView-6.0.1.app/Contents/bin/mpiexec)
+Running these by name will not invoke the version provided by Homebrew.
+Disable this behaviour by setting `HOMEBREW_NO_PATH_SHADOW_CHECK=1`.
+Hide these hints with `HOMEBREW_NO_ENV_HINTS=1` (see `man brew`).
+faiq@Faiqs-MacBook-Pro fem-advection-diffusion % export PATH="/opt/homebrew/opt/python@3.13/libexec/bin:/opt/homebrew/opt/open-mpi/bin:/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
+hash -r
+bash environment/check_native_tools.sh
+Phase 0 native prerequisite selection check
+UTC: 2026-10-07T11:04:12Z
+CONDA_SHLVL: 0
+python3: /opt/homebrew/opt/python@3.13/libexec/bin/python3
+mpicc: /opt/homebrew/opt/open-mpi/bin/mpicc
+mpiexec: /opt/homebrew/opt/open-mpi/bin/mpiexec
+
+Python metadata
+Executable: /opt/homebrew/opt/python@3.13/bin/python3.13
+Version: 3.13.16
+Process architecture: arm64
+Inside Python venv: False
+CONDA_PREFIX: 
+
+Installed native formula versions
+open-mpi 5.0.11
+python@3.13 3.13.16
+
+MPI compiler command
+clang
+
+MPI include settings
+-I/opt/homebrew/Cellar/open-mpi/5.0.11/include
+
+MPI link settings
+-L/opt/homebrew/Cellar/open-mpi/5.0.11/lib -lmpi
+
+MPI launcher version
+mpiexec (Open MPI) 5.0.11
+
+Report bugs to https://www.open-mpi.org/community/help/
+
+
+SELECTION CHECK PASSED. Numerical stack remains functionally unverified.
+No MPI job was launched; no numerical package was imported.
+
+Saved record: /Users/faiq/Projects/fem-advection-diffusion/environment/records/native-tools-20261007T110412Z-8357.txt
+faiq@Faiqs-MacBook-Pro fem-advection-diffusion % /opt/homebrew/bin/brew install \
+  autoconf automake boost gcc libtool make ninja pkg-config \
+  python@3.13 cmake fftw hwloc metis openblas open-mpi \
+  scalapack suite-sparse zlib
+==> Downloading Homebrew API data
+✔︎ JSON API packages.arm64_golden_gate.jws.json                                              Downloaded   15.6MB/ 15.6MB
+Warning: gcc 16.2.0 is already installed and up-to-date.
+To reinstall 16.2.0, run:
+  brew reinstall gcc
+Warning: python@3.13 3.13.16 is already installed and up-to-date.
+To reinstall 3.13.16, run:
+  brew reinstall python@3.13
+Warning: hwloc 2.15.0 is already installed and up-to-date.
+To reinstall 2.15.0, run:
+  brew reinstall hwloc
+Warning: open-mpi 5.0.11 is already installed and up-to-date.
+To reinstall 5.0.11, run:
+  brew reinstall open-mpi
+==> Downloading bottle manifests
+✔︎ Bottle Manifest cmake (4.4.4)                                                             Downloaded   21.1KB/ 21.1KB
+✔︎ Bottle Manifest make (4.4.1)                                                              Downloaded   15.5KB/ 15.5KB
+✔︎ Bottle Manifest zlib (1.3.2)                                                              Downloaded    9.5KB/  9.5KB
+✔︎ Bottle Manifest openblas (0.3.34)                                                         Downloaded   83.6KB/ 83.6KB
+✔︎ Bottle Manifest suite-sparse (7.14.1)                                                     Downloaded   72.2KB/ 72.2KB
+✔︎ Bottle Manifest libtool (2.6.2)                                                           Downloaded   31.5KB/ 31.5KB
+✔︎ Bottle Manifest fftw (3.3.11)                                                             Downloaded   13.9KB/ 13.9KB
+✔︎ Bottle Manifest ninja (1.13.2)                                                            Downloaded   13.7KB/ 13.7KB
+✔︎ Bottle Manifest pkgconf (3.0.7)                                                           Downloaded   16.4KB/ 16.4KB
+✔︎ Bottle Manifest scalapack (2.2.3)                                                         Downloaded   44.6KB/ 44.6KB
+✔︎ Bottle Manifest metis (5.1.0)                                                             Downloaded   19.1KB/ 19.1KB
+✔︎ Bottle Manifest boost (1.92.0)                                                            Downloaded   73.9KB/ 73.9KB
+✔︎ Bottle Manifest autoconf (2.73)                                                           Downloaded   18.6KB/ 18.6KB
+✔︎ Bottle Manifest automake (1.19)                                                           Downloaded   30.2KB/ 30.2KB
+==> Would install 14 formulae:
+autoconf      2.73
+automake      1.19
+boost         1.92.0
+libtool       2.6.2
+make          4.4.1
+ninja         1.13.2
+pkg-config    3.0.7
+cmake         4.4.4
+fftw          3.3.11
+metis         5.1.0
+openblas      0.3.34
+scalapack     2.2.3
+suite-sparse  7.14.1
+zlib          1.3.2
+==> Would install 1 dependency for autoconf:
+m4
+==> Would install 2 dependencies for automake:
+m4
+autoconf
+==> Would install 1 dependency for libtool:
+m4
+==> Would install 1 dependency for fftw:
+libomp
+==> Would install 1 dependency for openblas:
+libomp
+==> Would install 2 dependencies for scalapack:
+libomp
+openblas
+==> Would install 1 dependency for suite-sparse:
+libomp
+==> Do you want to proceed with the installation? [y/n]
+==> Fetching downloads for: autoconf, automake, boost, libtool, make, ninja, pkgconf, cmake, fftw, metis, openblas, scalapack, suite-sparse and zlib
+✔︎ Bottle Manifest m4 (1.4.21)                                                               Downloaded   11.9KB/ 11.9KB
+✔︎ Bottle Manifest libomp (23.1.3)                                                           Downloaded   44.9KB/ 44.9KB
+✔︎ Bottle pkgconf (3.0.7)                                                                    Downloaded  193.6KB/193.6KB
+✔︎ Bottle zlib (1.3.2)                                                                       Downloaded  144.2KB/144.2KB
+✔︎ Bottle ninja (1.13.2)                                                                     Downloaded  160.4KB/160.4KB
+✔︎ Bottle autoconf (2.73)                                                                    Downloaded    1.1MB/  1.1MB
+✔︎ Bottle m4 (1.4.21)                                                                        Downloaded  283.8KB/283.8KB
+✔︎ Bottle make (4.4.1)                                                                       Downloaded  430.3KB/430.3KB
+✔︎ Bottle libtool (2.6.2)                                                                    Downloaded    1.1MB/  1.1MB
+✔︎ Bottle libomp (23.1.3)                                                                    Downloaded  597.2KB/597.2KB
+✔︎ Bottle automake (1.19)                                                                    Downloaded    1.1MB/  1.1MB
+✔︎ Bottle scalapack (2.2.3)                                                                  Downloaded    2.1MB/  2.1MB
+✔︎ Bottle fftw (3.3.11)                                                                      Downloaded    3.2MB/  3.2MB
+✔︎ Bottle metis (5.1.0)                                                                      Downloaded    4.6MB/  4.6MB
+✔︎ Bottle openblas (0.3.34)                                                                  Downloaded   14.1MB/ 14.1MB
+✔︎ Bottle suite-sparse (7.14.1)                                                              Downloaded   17.7MB/ 17.7MB
+✔︎ Bottle cmake (4.4.4)                                                                      Downloaded   20.2MB/ 20.2MB
+✔︎ Bottle boost (1.92.0)                                                                     Downloaded   60.8MB/ 60.8MB
+==> Installing autoconf dependency: m4
+==> Pouring m4--1.4.21.arm64_golden_gate.bottle.tar.gz
+🍺  /opt/homebrew/Cellar/m4/1.4.21: 14 files, 819.2KB
+==> Installing autoconf
+==> Pouring autoconf--2.73.arm64_golden_gate.bottle.tar.gz
+🍺  /opt/homebrew/Cellar/autoconf/2.73: 73 files, 3.9MB
+==> Pouring automake--1.19.arm64_golden_gate.bottle.tar.gz
+🍺  /opt/homebrew/Cellar/automake/1.19: 135 files, 3.6MB
+==> Pouring boost--1.92.0.arm64_golden_gate.bottle.tar.gz
+🍺  /opt/homebrew/Cellar/boost/1.92.0: 16,678 files, 360.9MB
+==> Pouring libtool--2.6.2.arm64_golden_gate.bottle.tar.gz
+🍺  /opt/homebrew/Cellar/libtool/2.6.2: 78 files, 4.2MB
+==> Pouring make--4.4.1.arm64_golden_gate.bottle.1.tar.gz
+🍺  /opt/homebrew/Cellar/make/4.4.1: 17 files, 1.3MB
+==> Pouring ninja--1.13.2.arm64_golden_gate.bottle.1.tar.gz
+🍺  /opt/homebrew/Cellar/ninja/1.13.2: 10 files, 438.1KB
+==> Pouring pkgconf--3.0.7.arm64_golden_gate.bottle.tar.gz
+🍺  /opt/homebrew/Cellar/pkgconf/3.0.7: 35 files, 751.7KB
+==> Pouring cmake--4.4.4.arm64_golden_gate.bottle.1.tar.gz
+🍺  /opt/homebrew/Cellar/cmake/4.4.4: 4,157 files, 68.2MB
+==> Installing fftw dependency: libomp
+==> Pouring libomp--23.1.3.arm64_golden_gate.bottle.tar.gz
+🍺  /opt/homebrew/Cellar/libomp/23.1.3: 11 files, 1.8MB
+==> Installing fftw
+==> Pouring fftw--3.3.11.arm64_golden_gate.bottle.tar.gz
+🍺  /opt/homebrew/Cellar/fftw/3.3.11: 74 files, 8.8MB
+==> Pouring metis--5.1.0.arm64_golden_gate.bottle.tar.gz
+🍺  /opt/homebrew/Cellar/metis/5.1.0: 19 files, 12.6MB
+==> Pouring openblas--0.3.34.arm64_golden_gate.bottle.tar.gz
+🍺  /opt/homebrew/Cellar/openblas/0.3.34: 30 files, 40.3MB
+==> Pouring scalapack--2.2.3.arm64_golden_gate.bottle.tar.gz
+🍺  /opt/homebrew/Cellar/scalapack/2.2.3: 28 files, 4.5MB
+==> Pouring suite-sparse--7.14.1.arm64_golden_gate.bottle.tar.gz
+🍺  /opt/homebrew/Cellar/suite-sparse/7.14.1: 258 files, 50.7MB
+==> Pouring zlib--1.3.2.arm64_golden_gate.bottle.tar.gz
+🍺  /opt/homebrew/Cellar/zlib/1.3.2: 14 files, 405KB
+==> Caveats
+zsh completions have been installed to:
+  /opt/homebrew/share/zsh/site-functions
+Emacs Lisp files have been installed to:
+  /opt/homebrew/share/emacs/site-lisp/cmake
+==> libtool
+All commands have been installed with the prefix "g".
+If you need to use these commands with their normal names, you
+can add a "gnubin" directory to your PATH from your bashrc like:
+  PATH="/opt/homebrew/opt/libtool/libexec/gnubin:$PATH"
+==> make
+GNU "make" has been installed as "gmake".
+If you need to use it as "make", you can add a "gnubin" directory
+to your PATH from your bashrc like:
+
+    PATH="/opt/homebrew/opt/make/libexec/gnubin:$PATH"
+==> cmake
+To install the CMake documentation, run:
+  brew install cmake-docs
+==> openblas
+openblas is keg-only, which means it was not symlinked into /opt/homebrew,
+because macOS provides BLAS in Accelerate.framework.
+
+For compilers to find openblas you may need to set:
+  export LDFLAGS=-L/opt/homebrew/opt/openblas/lib
+  export CPPFLAGS=-I/opt/homebrew/opt/openblas/include
+
+For pkgconf to find openblas you may need to set:
+  export PKG_CONFIG_PATH=/opt/homebrew/opt/openblas/lib/pkgconfig
+
+For cmake to find openblas you may need to set:
+  export CMAKE_PREFIX_PATH=/opt/homebrew/opt/openblas
+==> zlib
+zlib is keg-only, which means it was not symlinked into /opt/homebrew,
+because macOS already provides this software and installing another version in
+parallel can cause all kinds of trouble.
+
+For compilers to find zlib you may need to set:
+  export LDFLAGS=-L/opt/homebrew/opt/zlib/lib
+  export CPPFLAGS=-I/opt/homebrew/opt/zlib/include
+
+For pkgconf to find zlib you may need to set:
+  export PKG_CONFIG_PATH=/opt/homebrew/opt/zlib/lib/pkgconfig

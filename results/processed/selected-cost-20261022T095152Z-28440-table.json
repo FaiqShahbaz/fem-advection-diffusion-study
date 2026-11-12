@@ -1,0 +1,577 @@
+{
+  "raw_source": {
+    "path": "results/raw/selected-cost-20261022T095152Z-28440-serial.json",
+    "sha256": "7ecf9556bd36a9ff440c870618775b6f0d8d35f694478d534124e202b695049e"
+  },
+  "accepted_review": "results/processed/selected_cost_review.json",
+  "cases": {
+    "baseline_Jacobi": {
+      "point_id": "baseline",
+      "solver": "Jacobi",
+      "core_seconds": {
+        "values": [
+          0.23813320801127702,
+          0.2397273750102613,
+          0.23765062500024214
+        ],
+        "minimum": 0.23765062500024214,
+        "median": 0.23813320801127702,
+        "maximum": 0.2397273750102613
+      },
+      "relative_min_max_range_percent": 0.8720959278895792,
+      "total_iterations": 7258,
+      "physical_event_counts": {
+        "KSPSolve": 10,
+        "KSPSetUp": 10,
+        "PCSetUp": 1,
+        "PCApply": 7408,
+        "MatSolve": 0,
+        "MatLUFactorSym": 0,
+        "MatLUFactorNum": 0
+      },
+      "auxiliary_factor_nonzeros": null
+    },
+    "baseline_ASM": {
+      "point_id": "baseline",
+      "solver": "ASM",
+      "core_seconds": {
+        "values": [
+          0.08843041700311005,
+          0.0882239579805173,
+          0.088277000002563
+        ],
+        "minimum": 0.0882239579805173,
+        "median": 0.088277000002563,
+        "maximum": 0.08843041700311005
+      },
+      "relative_min_max_range_percent": 0.233876346711781,
+      "total_iterations": 600,
+      "physical_event_counts": {
+        "KSPSolve": 10,
+        "KSPSetUp": 10,
+        "PCSetUp": 1,
+        "PCApply": 620,
+        "MatSolve": 2480,
+        "MatLUFactorSym": 0,
+        "MatLUFactorNum": 4
+      },
+      "auxiliary_factor_nonzeros": null
+    },
+    "baseline_RanaLD": {
+      "point_id": "baseline",
+      "solver": "RanaLD",
+      "core_seconds": {
+        "values": [
+          0.04401941699325107,
+          0.04303279201849364,
+          0.044327499985229224
+        ],
+        "minimum": 0.04303279201849364,
+        "median": 0.04401941699325107,
+        "maximum": 0.044327499985229224
+      },
+      "relative_min_max_range_percent": 2.94122015958114,
+      "total_iterations": 70,
+      "physical_event_counts": {
+        "KSPSolve": 10,
+        "KSPSetUp": 10,
+        "PCSetUp": 2,
+        "PCApply": 80,
+        "MatSolve": 80,
+        "MatLUFactorSym": 1,
+        "MatLUFactorNum": 1
+      },
+      "auxiliary_factor_nonzeros": 167432.0
+    },
+    "mesh_refined_ASM": {
+      "point_id": "mesh_refined",
+      "solver": "ASM",
+      "core_seconds": {
+        "values": [
+          0.6580224159988575,
+          0.6536884999950416,
+          0.6523387080233078
+        ],
+        "minimum": 0.6523387080233078,
+        "median": 0.6536884999950416,
+        "maximum": 0.6580224159988575
+      },
+      "relative_min_max_range_percent": 0.8694826321088309,
+      "total_iterations": 1500,
+      "physical_event_counts": {
+        "KSPSolve": 10,
+        "KSPSetUp": 10,
+        "PCSetUp": 1,
+        "PCApply": 1530,
+        "MatSolve": 6120,
+        "MatLUFactorSym": 0,
+        "MatLUFactorNum": 4
+      },
+      "auxiliary_factor_nonzeros": null
+    },
+    "mesh_refined_RanaLD": {
+      "point_id": "mesh_refined",
+      "solver": "RanaLD",
+      "core_seconds": {
+        "values": [
+          0.1409294999903068,
+          0.15430508300778456,
+          0.14092166599584743
+        ],
+        "minimum": 0.14092166599584743,
+        "median": 0.1409294999903068,
+        "maximum": 0.15430508300778456
+      },
+      "relative_min_max_range_percent": 9.496533382192972,
+      "total_iterations": 70,
+      "physical_event_counts": {
+        "KSPSolve": 10,
+        "KSPSetUp": 10,
+        "PCSetUp": 2,
+        "PCApply": 80,
+        "MatSolve": 80,
+        "MatLUFactorSym": 1,
+        "MatLUFactorNum": 1
+      },
+      "auxiliary_factor_nonzeros": 1194936.0
+    },
+    "lower_diffusion_Jacobi": {
+      "point_id": "lower_diffusion",
+      "solver": "Jacobi",
+      "core_seconds": {
+        "values": [
+          0.08846104200347327,
+          0.08731191698461771,
+          0.08820058300625533
+        ],
+        "minimum": 0.08731191698461771,
+        "median": 0.08820058300625533,
+        "maximum": 0.08846104200347327
+      },
+      "relative_min_max_range_percent": 1.3028542212403051,
+      "total_iterations": 2280,
+      "physical_event_counts": {
+        "KSPSolve": 10,
+        "KSPSetUp": 10,
+        "PCSetUp": 1,
+        "PCApply": 2330,
+        "MatSolve": 0,
+        "MatLUFactorSym": 0,
+        "MatLUFactorNum": 0
+      },
+      "auxiliary_factor_nonzeros": null
+    },
+    "lower_diffusion_ASM": {
+      "point_id": "lower_diffusion",
+      "solver": "ASM",
+      "core_seconds": {
+        "values": [
+          0.060776917001931,
+          0.06070004199864343,
+          0.06094825000036508
+        ],
+        "minimum": 0.06070004199864343,
+        "median": 0.060776917001931,
+        "maximum": 0.06094825000036508
+      },
+      "relative_min_max_range_percent": 0.40839189278680316,
+      "total_iterations": 350,
+      "physical_event_counts": {
+        "KSPSolve": 10,
+        "KSPSetUp": 10,
+        "PCSetUp": 1,
+        "PCApply": 360,
+        "MatSolve": 1440,
+        "MatLUFactorSym": 0,
+        "MatLUFactorNum": 4
+      },
+      "auxiliary_factor_nonzeros": null
+    },
+    "lower_diffusion_RanaLD": {
+      "point_id": "lower_diffusion",
+      "solver": "RanaLD",
+      "core_seconds": {
+        "values": [
+          0.044926916976692155,
+          0.045448249991750345,
+          0.045684332988457754
+        ],
+        "minimum": 0.044926916976692155,
+        "median": 0.045448249991750345,
+        "maximum": 0.045684332988457754
+      },
+      "relative_min_max_range_percent": 1.6665460428137135,
+      "total_iterations": 80,
+      "physical_event_counts": {
+        "KSPSolve": 10,
+        "KSPSetUp": 10,
+        "PCSetUp": 2,
+        "PCApply": 90,
+        "MatSolve": 90,
+        "MatLUFactorSym": 1,
+        "MatLUFactorNum": 1
+      },
+      "auxiliary_factor_nonzeros": 167432.0
+    }
+  },
+  "within_point_ratios": {
+    "baseline": {
+      "asm_over_rana_median_core_ratio": 2.005410476383578,
+      "jacobi_over_asm_median_core_ratio": 2.6975679735872666,
+      "jacobi_over_rana_median_core_ratio": 5.409731074988724
+    },
+    "mesh_refined": {
+      "asm_over_rana_median_core_ratio": 4.638407856694323
+    },
+    "lower_diffusion": {
+      "asm_over_rana_median_core_ratio": 1.3372773872033152,
+      "jacobi_over_asm_median_core_ratio": 1.4512184453754544,
+      "jacobi_over_rana_median_core_ratio": 1.940681610892945
+    }
+  },
+  "timing_partitions": {
+    "baseline_Jacobi": {
+      "construction_seconds": {
+        "values": [
+          0.010026917007053271,
+          0.009606625011656433,
+          0.009858874982455745
+        ],
+        "minimum": 0.009606625011656433,
+        "median": 0.009858874982455745,
+        "maximum": 0.010026917007053271
+      },
+      "first_step_seconds": {
+        "values": [
+          0.025466374994721264,
+          0.02509791700867936,
+          0.02548562502488494
+        ],
+        "minimum": 0.02509791700867936,
+        "median": 0.025466374994721264,
+        "maximum": 0.02548562502488494
+      },
+      "remaining_steps_seconds": {
+        "values": [
+          0.20262837503105402,
+          0.20500420793541707,
+          0.2022930420062039
+        ],
+        "minimum": 0.2022930420062039,
+        "median": 0.20262837503105402,
+        "maximum": 0.20500420793541707
+      },
+      "trajectory_wall_seconds": {
+        "values": [
+          0.23813320801127702,
+          0.2397273750102613,
+          0.23765062500024214
+        ],
+        "minimum": 0.23765062500024214,
+        "median": 0.23813320801127702,
+        "maximum": 0.2397273750102613
+      }
+    },
+    "baseline_ASM": {
+      "construction_seconds": {
+        "values": [
+          0.010163667000597343,
+          0.00978524997481145,
+          0.00990449998062104
+        ],
+        "minimum": 0.00978524997481145,
+        "median": 0.00990449998062104,
+        "maximum": 0.010163667000597343
+      },
+      "first_step_seconds": {
+        "values": [
+          0.012653916986892,
+          0.012195790972327814,
+          0.012664500012760982
+        ],
+        "minimum": 0.012195790972327814,
+        "median": 0.012653916986892,
+        "maximum": 0.012664500012760982
+      },
+      "remaining_steps_seconds": {
+        "values": [
+          0.0656000840535853,
+          0.06623133303946815,
+          0.06569212695467286
+        ],
+        "minimum": 0.0656000840535853,
+        "median": 0.06569212695467286,
+        "maximum": 0.06623133303946815
+      },
+      "trajectory_wall_seconds": {
+        "values": [
+          0.08843041700311005,
+          0.0882239579805173,
+          0.088277000002563
+        ],
+        "minimum": 0.0882239579805173,
+        "median": 0.088277000002563,
+        "maximum": 0.08843041700311005
+      }
+    },
+    "baseline_RanaLD": {
+      "construction_seconds": {
+        "values": [
+          0.010060083004646003,
+          0.00980112500838004,
+          0.009779582993360236
+        ],
+        "minimum": 0.009779582993360236,
+        "median": 0.00980112500838004,
+        "maximum": 0.010060083004646003
+      },
+      "first_step_seconds": {
+        "values": [
+          0.017434832989238203,
+          0.017119750002166256,
+          0.01769800001056865
+        ],
+        "minimum": 0.017119750002166256,
+        "median": 0.017434832989238203,
+        "maximum": 0.01769800001056865
+      },
+      "remaining_steps_seconds": {
+        "values": [
+          0.0165139980672393,
+          0.016100084030767903,
+          0.01683595500071533
+        ],
+        "minimum": 0.016100084030767903,
+        "median": 0.0165139980672393,
+        "maximum": 0.01683595500071533
+      },
+      "trajectory_wall_seconds": {
+        "values": [
+          0.04401941699325107,
+          0.04303279201849364,
+          0.044327499985229224
+        ],
+        "minimum": 0.04303279201849364,
+        "median": 0.04401941699325107,
+        "maximum": 0.044327499985229224
+      }
+    },
+    "mesh_refined_ASM": {
+      "construction_seconds": {
+        "values": [
+          0.011411457991926,
+          0.011440750007750466,
+          0.011327957996400073
+        ],
+        "minimum": 0.011327957996400073,
+        "median": 0.011411457991926,
+        "maximum": 0.011440750007750466
+      },
+      "first_step_seconds": {
+        "values": [
+          0.07711645800736733,
+          0.07711529202060774,
+          0.07569387499825098
+        ],
+        "minimum": 0.07569387499825098,
+        "median": 0.07711529202060774,
+        "maximum": 0.07711645800736733
+      },
+      "remaining_steps_seconds": {
+        "values": [
+          0.5694728350208607,
+          0.5651135820371564,
+          0.5652995419804938
+        ],
+        "minimum": 0.5651135820371564,
+        "median": 0.5652995419804938,
+        "maximum": 0.5694728350208607
+      },
+      "trajectory_wall_seconds": {
+        "values": [
+          0.6580224159988575,
+          0.6536884999950416,
+          0.6523387080233078
+        ],
+        "minimum": 0.6523387080233078,
+        "median": 0.6536884999950416,
+        "maximum": 0.6580224159988575
+      }
+    },
+    "mesh_refined_RanaLD": {
+      "construction_seconds": {
+        "values": [
+          0.011468707991298288,
+          0.011400166986277327,
+          0.01148995800758712
+        ],
+        "minimum": 0.011400166986277327,
+        "median": 0.011468707991298288,
+        "maximum": 0.01148995800758712
+      },
+      "first_step_seconds": {
+        "values": [
+          0.05005454199272208,
+          0.04933775000972673,
+          0.05038299999432638
+        ],
+        "minimum": 0.04933775000972673,
+        "median": 0.05005454199272208,
+        "maximum": 0.05038299999432638
+      },
+      "remaining_steps_seconds": {
+        "values": [
+          0.07938670605653897,
+          0.09354774904204533,
+          0.07903504095156677
+        ],
+        "minimum": 0.07903504095156677,
+        "median": 0.07938670605653897,
+        "maximum": 0.09354774904204533
+      },
+      "trajectory_wall_seconds": {
+        "values": [
+          0.1409294999903068,
+          0.15430508300778456,
+          0.14092166599584743
+        ],
+        "minimum": 0.14092166599584743,
+        "median": 0.1409294999903068,
+        "maximum": 0.15430508300778456
+      }
+    },
+    "lower_diffusion_Jacobi": {
+      "construction_seconds": {
+        "values": [
+          0.01023741700919345,
+          0.00996787499752827,
+          0.009883874998195097
+        ],
+        "minimum": 0.009883874998195097,
+        "median": 0.00996787499752827,
+        "maximum": 0.01023741700919345
+      },
+      "first_step_seconds": {
+        "values": [
+          0.010285833006491885,
+          0.010335709026549011,
+          0.010210250009549782
+        ],
+        "minimum": 0.010210250009549782,
+        "median": 0.010285833006491885,
+        "maximum": 0.010335709026549011
+      },
+      "remaining_steps_seconds": {
+        "values": [
+          0.06792574902647175,
+          0.06699775098240934,
+          0.06809541495749727
+        ],
+        "minimum": 0.06699775098240934,
+        "median": 0.06792574902647175,
+        "maximum": 0.06809541495749727
+      },
+      "trajectory_wall_seconds": {
+        "values": [
+          0.08846104200347327,
+          0.08731191698461771,
+          0.08820058300625533
+        ],
+        "minimum": 0.08731191698461771,
+        "median": 0.08820058300625533,
+        "maximum": 0.08846104200347327
+      }
+    },
+    "lower_diffusion_ASM": {
+      "construction_seconds": {
+        "values": [
+          0.010153874987736344,
+          0.010024833987699822,
+          0.010032999998657033
+        ],
+        "minimum": 0.010024833987699822,
+        "median": 0.010032999998657033,
+        "maximum": 0.010153874987736344
+      },
+      "first_step_seconds": {
+        "values": [
+          0.009906874998705462,
+          0.009689124999567866,
+          0.009772666002390906
+        ],
+        "minimum": 0.009689124999567866,
+        "median": 0.009772666002390906,
+        "maximum": 0.009906874998705462
+      },
+      "remaining_steps_seconds": {
+        "values": [
+          0.040702457015868276,
+          0.04097183296107687,
+          0.04113154308288358
+        ],
+        "minimum": 0.040702457015868276,
+        "median": 0.04097183296107687,
+        "maximum": 0.04113154308288358
+      },
+      "trajectory_wall_seconds": {
+        "values": [
+          0.060776917001931,
+          0.06070004199864343,
+          0.06094825000036508
+        ],
+        "minimum": 0.06070004199864343,
+        "median": 0.060776917001931,
+        "maximum": 0.06094825000036508
+      }
+    },
+    "lower_diffusion_RanaLD": {
+      "construction_seconds": {
+        "values": [
+          0.010157166980206966,
+          0.01000691601075232,
+          0.010077415994601324
+        ],
+        "minimum": 0.01000691601075232,
+        "median": 0.010077415994601324,
+        "maximum": 0.010157166980206966
+      },
+      "first_step_seconds": {
+        "values": [
+          0.017510333011159673,
+          0.01759916599257849,
+          0.017770999984350055
+        ],
+        "minimum": 0.017510333011159673,
+        "median": 0.01759916599257849,
+        "maximum": 0.017770999984350055
+      },
+      "remaining_steps_seconds": {
+        "values": [
+          0.017247376032173634,
+          0.017831125936936587,
+          0.01782354197348468
+        ],
+        "minimum": 0.017247376032173634,
+        "median": 0.01782354197348468,
+        "maximum": 0.017831125936936587
+      },
+      "trajectory_wall_seconds": {
+        "values": [
+          0.044926916976692155,
+          0.045448249991750345,
+          0.045684332988457754
+        ],
+        "minimum": 0.044926916976692155,
+        "median": 0.045448249991750345,
+        "maximum": 0.045684332988457754
+      }
+    }
+  },
+  "limits": [
+    "Same three selected points and eight converged candidates; no full solution or cost for finer-mesh Jacobi.",
+    "All three repeats retained; min-max spread is not a confidence interval; no inferred cause for a slower sample.",
+    "Warm common residual-form core includes fresh setup and ten advances; excludes imports/shared mesh/verification/I-O/destruction.",
+    "Older different-driver absolute costs are separate; this is not a universal PC ranking or optimized PDE-accuracy comparison.",
+    "Full auxiliary sparse LU is fixed; low Rana iterations do not establish scalable stage subsolves, memory bytes or parallel scaling."
+  ]
+}

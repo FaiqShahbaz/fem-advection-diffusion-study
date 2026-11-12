@@ -1,0 +1,51 @@
+
+Working directory: /Users/faiq/Projects/fem-advection-diffusion
+Running: /Users/faiq/Projects/fem-advection-diffusion/.venv/bin/python /Users/faiq/Projects/fem-advection-diffusion/src/phase0_be_smoke.py --config /Users/faiq/Projects/fem-advection-diffusion/configs/phase0_be_smoke.json --expected-size 1 --output /Users/faiq/Projects/fem-advection-diffusion/environment/records/be-smoke-20261008T100517Z-31503-serial.json
+KSP Object: (phase0_be_) 1 MPI process
+  type: gmres
+    restart=50, using classical (unmodified) Gram-Schmidt orthogonalization with no iterative refinement
+    happy breakdown tolerance=1e-30
+  maximum iterations=200, initial guess is zero
+  tolerances: relative=1e-11, absolute=1e-13, divergence=10000.
+  right preconditioning
+  using UNPRECONDITIONED norm type for convergence test
+PC Object: (phase0_be_) 1 MPI process
+  type: jacobi
+    type DIAGONAL
+  linear system matrix, which is also used to construct the preconditioner:
+  Mat Object: 1 MPI process
+    type: seqaij
+    rows=81, cols=81
+    total: nonzeros=497, allocated nonzeros=497
+    total number of mallocs used during MatSetValues calls=0
+      not using I-node routines
+One BE step: P1, 81 total DOFs, dt=0.01, kappa=1.0.
+GMRES iterations=19, true relative residual=1.517410e-12.
+L2 error=1.649059e-02; this single value is not an observed order.
+Exit status: 0
+
+Working directory: /Users/faiq/Projects/fem-advection-diffusion
+Running: /opt/homebrew/opt/open-mpi/bin/mpiexec -n 2 /Users/faiq/Projects/fem-advection-diffusion/.venv/bin/python /Users/faiq/Projects/fem-advection-diffusion/src/phase0_be_smoke.py --config /Users/faiq/Projects/fem-advection-diffusion/configs/phase0_be_smoke.json --expected-size 2 --output /Users/faiq/Projects/fem-advection-diffusion/environment/records/be-smoke-20261008T100517Z-31503-two-rank.json
+KSP Object: (phase0_be_) 2 MPI processes
+  type: gmres
+    restart=50, using classical (unmodified) Gram-Schmidt orthogonalization with no iterative refinement
+    happy breakdown tolerance=1e-30
+  maximum iterations=200, initial guess is zero
+  tolerances: relative=1e-11, absolute=1e-13, divergence=10000.
+  right preconditioning
+  using UNPRECONDITIONED norm type for convergence test
+PC Object: (phase0_be_) 2 MPI processes
+  type: jacobi
+    type DIAGONAL
+  linear system matrix, which is also used to construct the preconditioner:
+  Mat Object: 2 MPI processes
+    type: mpiaij
+    rows=81, cols=81
+    total: nonzeros=497, allocated nonzeros=497
+    total number of mallocs used during MatSetValues calls=0
+      not using I-node (on process 0) routines
+One BE step: P1, 81 total DOFs, dt=0.01, kappa=1.0.
+GMRES iterations=19, true relative residual=1.517381e-12.
+L2 error=1.649059e-02; this single value is not an observed order.
+Exit status: 0
+MANUAL BE SMOKE CHECKPOINT PASSED. Review before Irksome or convergence experiments.

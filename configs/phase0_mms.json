@@ -1,0 +1,17 @@
+{
+  "status": "mathematical specification only; no experiment runner exists",
+  "dimension": 2,
+  "coordinates": "nondimensional",
+  "domain": {"shape": "unit square", "bounds": [[0.0, 1.0], [0.0, 1.0]]},
+  "equation": "u_t + beta dot grad(u) - kappa laplacian(u) = f",
+  "velocity": [1.0, 1.0],
+  "initial_verification_diffusion": 1.0,
+  "final_time": 1.0,
+  "boundary": {"type": "Dirichlet", "value": 0.0, "where": "entire boundary"},
+  "exact_solution": "exp(-t) sin(pi x) sin(pi y)",
+  "initial_condition": "sin(pi x) sin(pi y)",
+  "initial_approximation": "nodal interpolation",
+  "forcing": "exp(-t) [(2 kappa pi^2 - 1) sin(pi x) sin(pi y) + pi cos(pi x) sin(pi y) + pi sin(pi x) cos(pi y)]",
+  "candidate_elements": ["CG P1 on triangles", "CG P2 on triangles"],
+  "time_methods": ["backward Euler", "two-stage Radau IIA"]
+}

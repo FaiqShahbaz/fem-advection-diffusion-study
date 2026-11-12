@@ -1,0 +1,315 @@
+{
+  "raw_source": {
+    "path": "results/raw/solver-sensitivity-20261021T191746Z-23418-serial.json",
+    "sha256": "95733761bd0dd0d799b4e39dca288dacd19171f9c22ae28a8afb45cdf16ce50b"
+  },
+  "accepted_review": "results/processed/solver_sensitivity_review.json",
+  "points": {
+    "baseline": {
+      "metadata": {
+        "mesh_subdivisions": 16,
+        "diffusion": 1.0,
+        "cells": 512,
+        "total_dofs": 1089,
+        "free_dofs": 961,
+        "stage_total_dofs": 2178,
+        "h_max": 0.08838834764831845,
+        "cell_peclet": 0.06250000000000001,
+        "advective_step_ratio": 1.6,
+        "diffusive_step_ratio": 12.799999999999997,
+        "checkpoint_end_time": 0.1,
+        "research_final_time": 1.0
+      },
+      "reference_residual": {
+        "norm": 2.769730420021614e-15,
+        "rhs_norm": 0.05911796878920447,
+        "relative_norm": 4.6850906361441064e-14
+      },
+      "reference_factor_nonzeros": 223288.0,
+      "candidates": {
+        "Jacobi": {
+          "status": "passed",
+          "iterations": 734,
+          "converged_reason": 2,
+          "physical_event_counts": {
+            "KSPSolve": 1,
+            "KSPSetUp": 1,
+            "PCSetUp": 1,
+            "PCApply": 749,
+            "MatSolve": 0,
+            "MatLUFactorSym": 0,
+            "MatLUFactorNum": 0
+          },
+          "accepted_physical_solution": true,
+          "true_block_residual": {
+            "norm": 5.806515505434022e-13,
+            "rhs_norm": 0.05911796878920447,
+            "relative_norm": 9.821913073735966e-12
+          },
+          "update_reference_distance": {
+            "l2_error": 1.312668807103031e-13,
+            "h1_seminorm_error": 7.076586607918635e-13
+          }
+        },
+        "ASM": {
+          "status": "passed",
+          "iterations": 60,
+          "converged_reason": 2,
+          "physical_event_counts": {
+            "KSPSolve": 1,
+            "KSPSetUp": 1,
+            "PCSetUp": 1,
+            "PCApply": 62,
+            "MatSolve": 248,
+            "MatLUFactorSym": 0,
+            "MatLUFactorNum": 4
+          },
+          "accepted_physical_solution": true,
+          "true_block_residual": {
+            "norm": 4.905480811664014e-13,
+            "rhs_norm": 0.05911796878920447,
+            "relative_norm": 8.297783080395352e-12
+          },
+          "update_reference_distance": {
+            "l2_error": 2.0992414673208857e-13,
+            "h1_seminorm_error": 1.0107431648315134e-12
+          }
+        },
+        "RanaLD": {
+          "status": "passed",
+          "iterations": 7,
+          "converged_reason": 2,
+          "physical_event_counts": {
+            "KSPSolve": 1,
+            "KSPSetUp": 1,
+            "PCSetUp": 2,
+            "PCApply": 8,
+            "MatSolve": 8,
+            "MatLUFactorSym": 1,
+            "MatLUFactorNum": 1
+          },
+          "auxiliary_factor_nonzeros": 167432.0,
+          "accepted_physical_solution": true,
+          "true_block_residual": {
+            "norm": 2.0449372418582055e-13,
+            "rhs_norm": 0.05911796878920447,
+            "relative_norm": 3.45907899703014e-12
+          },
+          "update_reference_distance": {
+            "l2_error": 4.341944262616527e-14,
+            "h1_seminorm_error": 3.5440860071945644e-13
+          }
+        }
+      }
+    },
+    "mesh_refined": {
+      "metadata": {
+        "mesh_subdivisions": 32,
+        "diffusion": 1.0,
+        "cells": 2048,
+        "total_dofs": 4225,
+        "free_dofs": 3969,
+        "stage_total_dofs": 8450,
+        "h_max": 0.04419417382415922,
+        "cell_peclet": 0.03125000000000001,
+        "advective_step_ratio": 3.2,
+        "diffusive_step_ratio": 51.19999999999999,
+        "checkpoint_end_time": 0.1,
+        "research_final_time": 1.0
+      },
+      "reference_residual": {
+        "norm": 6.661708744829921e-15,
+        "rhs_norm": 0.029364334872583896,
+        "relative_norm": 2.2686394136751403e-13
+      },
+      "reference_factor_nonzeros": 1593336.0,
+      "candidates": {
+        "Jacobi": {
+          "status": "iteration_limit",
+          "iterations": 1000,
+          "converged_reason": -3,
+          "physical_event_counts": {
+            "KSPSolve": 1,
+            "KSPSetUp": 1,
+            "PCSetUp": 1,
+            "PCApply": 1020,
+            "MatSolve": 0,
+            "MatLUFactorSym": 0,
+            "MatLUFactorNum": 0
+          },
+          "accepted_physical_solution": false
+        },
+        "ASM": {
+          "status": "passed",
+          "iterations": 150,
+          "converged_reason": 2,
+          "physical_event_counts": {
+            "KSPSolve": 1,
+            "KSPSetUp": 1,
+            "PCSetUp": 1,
+            "PCApply": 153,
+            "MatSolve": 612,
+            "MatLUFactorSym": 0,
+            "MatLUFactorNum": 4
+          },
+          "accepted_physical_solution": true,
+          "true_block_residual": {
+            "norm": 2.712694276687482e-13,
+            "rhs_norm": 0.029364334872583896,
+            "relative_norm": 9.238057965413674e-12
+          },
+          "update_reference_distance": {
+            "l2_error": 8.590066800393129e-14,
+            "h1_seminorm_error": 6.867027226219644e-13
+          }
+        },
+        "RanaLD": {
+          "status": "passed",
+          "iterations": 7,
+          "converged_reason": 3,
+          "physical_event_counts": {
+            "KSPSolve": 1,
+            "KSPSetUp": 1,
+            "PCSetUp": 2,
+            "PCApply": 8,
+            "MatSolve": 8,
+            "MatLUFactorSym": 1,
+            "MatLUFactorNum": 1
+          },
+          "auxiliary_factor_nonzeros": 1194936.0,
+          "accepted_physical_solution": true,
+          "true_block_residual": {
+            "norm": 9.995362854619338e-14,
+            "rhs_norm": 0.029364334872583896,
+            "relative_norm": 3.4039125687643414e-12
+          },
+          "update_reference_distance": {
+            "l2_error": 3.790185183443412e-14,
+            "h1_seminorm_error": 3.3102065861091737e-13
+          }
+        }
+      }
+    },
+    "lower_diffusion": {
+      "metadata": {
+        "mesh_subdivisions": 16,
+        "diffusion": 0.1,
+        "cells": 512,
+        "total_dofs": 1089,
+        "free_dofs": 961,
+        "stage_total_dofs": 2178,
+        "h_max": 0.08838834764831845,
+        "cell_peclet": 0.6250000000000001,
+        "advective_step_ratio": 1.6,
+        "diffusive_step_ratio": 1.28,
+        "checkpoint_end_time": 0.1,
+        "research_final_time": 1.0
+      },
+      "reference_residual": {
+        "norm": 2.877363986232357e-16,
+        "rhs_norm": 0.028242663544833308,
+        "relative_norm": 1.0188005043025553e-14
+      },
+      "reference_factor_nonzeros": 223288.0,
+      "candidates": {
+        "Jacobi": {
+          "status": "passed",
+          "iterations": 228,
+          "converged_reason": 2,
+          "physical_event_counts": {
+            "KSPSolve": 1,
+            "KSPSetUp": 1,
+            "PCSetUp": 1,
+            "PCApply": 233,
+            "MatSolve": 0,
+            "MatLUFactorSym": 0,
+            "MatLUFactorNum": 0
+          },
+          "accepted_physical_solution": true,
+          "true_block_residual": {
+            "norm": 2.581080403330922e-13,
+            "rhs_norm": 0.028242663544833308,
+            "relative_norm": 9.138941159829463e-12
+          },
+          "update_reference_distance": {
+            "l2_error": 1.8666589863363314e-13,
+            "h1_seminorm_error": 2.451268300764821e-12
+          }
+        },
+        "ASM": {
+          "status": "passed",
+          "iterations": 35,
+          "converged_reason": 2,
+          "physical_event_counts": {
+            "KSPSolve": 1,
+            "KSPSetUp": 1,
+            "PCSetUp": 1,
+            "PCApply": 36,
+            "MatSolve": 144,
+            "MatLUFactorSym": 0,
+            "MatLUFactorNum": 4
+          },
+          "accepted_physical_solution": true,
+          "true_block_residual": {
+            "norm": 1.550289528081555e-13,
+            "rhs_norm": 0.028242663544833308,
+            "relative_norm": 5.489176067337189e-12
+          },
+          "update_reference_distance": {
+            "l2_error": 9.793392635577482e-14,
+            "h1_seminorm_error": 1.0618376924389901e-12
+          }
+        },
+        "RanaLD": {
+          "status": "passed",
+          "iterations": 8,
+          "converged_reason": 3,
+          "physical_event_counts": {
+            "KSPSolve": 1,
+            "KSPSetUp": 1,
+            "PCSetUp": 2,
+            "PCApply": 9,
+            "MatSolve": 9,
+            "MatLUFactorSym": 1,
+            "MatLUFactorNum": 1
+          },
+          "auxiliary_factor_nonzeros": 167432.0,
+          "accepted_physical_solution": true,
+          "true_block_residual": {
+            "norm": 2.22072511181532e-14,
+            "rhs_norm": 0.028242663544833308,
+            "relative_norm": 7.863015852913696e-13
+          },
+          "update_reference_distance": {
+            "l2_error": 7.572795547163802e-15,
+            "h1_seminorm_error": 1.3287262801553708e-13
+          }
+        }
+      }
+    }
+  },
+  "preserved_caps": [
+    {
+      "point_id": "mesh_refined",
+      "solver": "Jacobi",
+      "iterations": 1000,
+      "reason": -3,
+      "reported_residual_norm": 1.206137755423356e-07,
+      "correction_residual": {
+        "norm": 1.206137755360802e-07,
+        "rhs_norm": 0.029364334872583896,
+        "relative_norm": 4.107492168967587e-06,
+        "nominal_target": 2.9364334872583895e-13,
+        "meaning": "Recomputed using the PETSc KSP correction operator; not the independent physical-stage check of a completed step"
+      },
+      "accepted_physical_solution": false,
+      "physical_update_change_l2": 0.0
+    }
+  ],
+  "limits": [
+    "Only the first interval [0,0.1]; no full T=1 or elapsed-cost conclusion.",
+    "One finer mesh and one lower diffusion; no mesh-independent iteration bound or broad robustness proof.",
+    "Rana applies full auxiliary sparse LU; constant iteration count does not imply constant storage, time or scalable subsolves.",
+    "Saved arithmetic and hashes rechecked without numerical imports; actual matrix/graph/field/probe operations remain researcher runtime evidence."
+  ]
+}

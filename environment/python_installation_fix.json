@@ -1,0 +1,36 @@
+{
+  "date_local": "2026-10-07",
+  "timezone": "Asia/Karachi",
+  "status": "Constraint conflict diagnosed and corrected; researcher retry pending",
+  "failed_manifest": "environment/records/python-install-20261007T121633Z-16278-manifest.json",
+  "failed_manifest_sha256": "62ab3a562e06b96b8f7e7c0a0ac758271c86b9a975bb49f8c1d702d415f20da9",
+  "failed_transcript": "environment/records/python-install-20261007T121633Z-16278.txt",
+  "failed_transcript_sha256": "6be735dee604324c566373b88529c1b39135a12864058f935c2015a93aad31f2",
+  "original_input_git_commit": "45456c3",
+  "original_python_plan_sha256": "bd0458941b7fbdc21cdd7b228ba6f545acfaf8b1a40cb483bf9719530a79ec97",
+  "original_build_constraints_sha256": "938516f532dd2f81ac93f7c3939055c16ee9975e76b7e9ed6fe9a97e0870e35e",
+  "original_requirements_sha256": "9125d30e943a33e10d29d77d44a00eb75aa953fe70ca91d54798603233a0f9d4",
+  "cause": "Mentor-added build constraint mpi4py==4.1.2 conflicts with h5py 3.16.0 dynamic build requirement mpi4py==4.0.1 on Python 3.13.",
+  "upstream_source": {
+    "package": "h5py",
+    "version": "3.16.0",
+    "sdist_sha256": "a0dbaad796840ccaa67a4c144a0d0c8080073c34c76d5a6941d6818678ef2738",
+    "backend_file": "h5py-3.16.0/_custom_build/backend.py",
+    "build_requirement": "mpi4py==4.0.1; python_version==\"3.13.*\"",
+    "mpi_runtime_requirement_from_setup_py": "mpi4py>=4.0",
+    "build_policy": "Build against oldest supported MPI Python binding; use that version or newer at runtime.",
+    "documentation": "https://docs.h5py.org/en/stable/build.html"
+  },
+  "corrected_build_constraint": "mpi4py<=4.1.2",
+  "runtime_mpi4py_pin": "4.1.2",
+  "corrected_constraints_sha256": "15ed703a4c990550bb53e25b7d932a8aea607c98e12b96edb26ac12532e4781d",
+  "existing_venv_metadata": {
+    "architecture": "arm64",
+    "packages": {
+      "pip": "26.2.1"
+    },
+    "project_marker_verified": true
+  },
+  "petsc_rebuild_required": false,
+  "mentor_validation": "Check constraint acceptance against upstream Python 3.13 build requirement and MPI runtime bound; display-only installer; preserve failed records. Do not retry installation or import numerical packages in the mentor session."
+}

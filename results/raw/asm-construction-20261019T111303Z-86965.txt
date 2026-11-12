@@ -1,0 +1,92 @@
+
+Working directory: /Users/faiq/Projects/fem-advection-diffusion
+Running: /Users/faiq/Projects/fem-advection-diffusion/.venv/bin/python /Users/faiq/Projects/fem-advection-diffusion/src/phase3_asm_construction.py --config /Users/faiq/Projects/fem-advection-diffusion/configs/phase3_asm_construction.json --output /Users/faiq/Projects/fem-advection-diffusion/results/raw/asm-construction-20261019T111303Z-86965-serial.json
+  asm_irksome_jacobi: dt=0.1, steps=1, rtol=1.0e-11
+    asm_irksome_jacobi: 1/1 steps checked, t=0.100000
+KSP Object: (phase1_spatial_asm_irksome_jacobi_) 1 MPI process
+  type: gmres
+    restart=50, using classical (unmodified) Gram-Schmidt orthogonalization with no iterative refinement
+    happy breakdown tolerance=1e-30
+  maximum iterations=1000, initial guess is zero
+  tolerances: relative=1e-11, absolute=1e-13, divergence=10000.
+  right preconditioning
+  using UNPRECONDITIONED norm type for convergence test
+PC Object: (phase1_spatial_asm_irksome_jacobi_) 1 MPI process
+  type: jacobi
+    type DIAGONAL
+  linear system matrix, which is also used to construct the preconditioner:
+  Mat Object: (phase1_spatial_asm_irksome_jacobi_) 1 MPI process
+    type: seqaij
+    rows=2178, cols=2178
+    total: nonzeros=48132, allocated nonzeros=48132
+    total number of mallocs used during MatSetValues calls=0
+      not using I-node routines
+  asm_irksome_jacobi: final L2=6.305752796e-05, H1 seminorm=7.618161443e-03, checks=passed
+KSP Object: (phase3_manual_jacobi_reference_) 1 MPI process
+  type: gmres
+    restart=50, using classical (unmodified) Gram-Schmidt orthogonalization with no iterative refinement
+    happy breakdown tolerance=1e-30
+  maximum iterations=1000, initial guess is zero
+  tolerances: relative=1e-12, absolute=1e-14, divergence=10000.
+  right preconditioning
+  using UNPRECONDITIONED norm type for convergence test
+PC Object: (phase3_manual_jacobi_reference_) 1 MPI process
+  type: jacobi
+    type DIAGONAL
+  linear system matrix, which is also used to construct the preconditioner:
+  Mat Object: (phase3_manual_jacobi_reference_) 1 MPI process
+    type: seqaij
+    rows=2178, cols=2178
+    total: nonzeros=48132, allocated nonzeros=48132
+    total number of mallocs used during MatSetValues calls=0
+      not using I-node routines
+KSP Object: (phase3_manual_asm_) 1 MPI process
+  type: gmres
+    restart=50, using classical (unmodified) Gram-Schmidt orthogonalization with no iterative refinement
+    happy breakdown tolerance=1e-30
+  maximum iterations=1000, initial guess is zero
+  tolerances: relative=1e-11, absolute=1e-13, divergence=10000.
+  right preconditioning
+  using UNPRECONDITIONED norm type for convergence test
+PC Object: (phase3_manual_asm_) 1 MPI process
+  type: asm
+    total subdomain blocks = 4, amount of overlap = 1
+    restriction/interpolation type - BASIC
+    Local solver information for first block is in the following KSP and PC objects on rank 0:
+    Use -phase3_manual_asm_ksp_view ::ascii_info_detail to display information for all blocks
+    KSP Object: (phase3_manual_asm_sub_) 1 MPI process
+      type: preonly
+      maximum iterations=10000, initial guess is zero
+      tolerances: relative=1e-05, absolute=1e-50, divergence=10000.
+      left preconditioning
+      not checking for convergence
+    PC Object: (phase3_manual_asm_sub_) 1 MPI process
+      type: ilu
+        out-of-place factorization
+        0 levels of fill
+        tolerance for zero pivot 2.22045e-14
+        matrix ordering: rcm
+        factor fill ratio given 1., needed 1.
+          Factored matrix:
+            Mat Object: (phase3_manual_asm_sub_) 1 MPI process
+              type: seqaij
+              rows=1248, cols=1248
+              package used to perform factorization: petsc
+              total: nonzeros=27192, allocated nonzeros=27192
+                not using I-node routines
+      linear system matrix, which is also used to construct the preconditioner:
+      Mat Object: (phase3_manual_asm_sub_) 1 MPI process
+        type: seqaij
+        rows=1248, cols=1248
+        total: nonzeros=27192, allocated nonzeros=27192
+        total number of mallocs used during MatSetValues calls=0
+          not using I-node routines
+  linear system matrix, which is also used to construct the preconditioner:
+  Mat Object: (phase3_manual_asm_) 1 MPI process
+    type: seqaij
+    rows=2178, cols=2178
+    total: nonzeros=48132, allocated nonzeros=48132
+    total number of mallocs used during MatSetValues calls=0
+      not using I-node routines
+Exit status: 0
+ASM CONSTRUCTION CHECKPOINT PASSED. Review before integrating ASM into timed trajectories.

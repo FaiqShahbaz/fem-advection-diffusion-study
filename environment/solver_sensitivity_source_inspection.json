@@ -1,0 +1,35 @@
+{
+  "purpose": "Read-only pinned generic first-step interfaces and capped-solve reason mapping; no package changes",
+  "previous_inspection": "environment/rana_trajectory_source_inspection.json",
+  "previous_inspection_sha256": "00c61bf0f5fac71a54a8d31490cf780afb258ec6e83e19cda0f58bda6670ca94",
+  "installed_source_sha256": {
+    ".venv/lib/python3.13/site-packages/irksome/pc.py": "bb6ff87009f7017f1839b9a3fe031f4dfb04fbce7f5de4331470980570a68060",
+    ".venv/lib/python3.13/site-packages/irksome/__init__.py": "3b8b7574dc3fe56664a69db4fccd075909ead6a13fa69335628049f737dc02ae",
+    ".venv/lib/python3.13/site-packages/irksome/base_time_stepper.py": "96c0f8b0babfbe09e425ddac07a6d57780e14e65badfbc783f5c9ddf2fde4c1f",
+    ".venv/lib/python3.13/site-packages/irksome/stage_derivative.py": "d42e0a9564ab871704699718c443db98b936f6bf604bf2159959bdc5780fe85d",
+    ".venv/lib/python3.13/site-packages/firedrake/preconditioners/assembled.py": "21a04d5991d7f35cae988a56c102c915d38dae62cdacf9592c21c5fc3e6f97ff",
+    ".venv/lib/python3.13/site-packages/firedrake/preconditioners/base.py": "d1c3956b9b70cda8121610d39cee3c599c05362ceacd7d853b61b69185f1702a",
+    ".venv/lib/python3.13/site-packages/irksome/backends/firedrake.py": "2beff1219d33c99f4764755df29698270c2ea67f2ca6614ab6977ec411ff4269",
+    ".venv/lib/python3.13/site-packages/petsc4py/PETSc.pyi": "1d60f327b673026832a7db1b0fe69b4d617c23c2decbbb3387b246be7f9020c9",
+    "environment/build/petsc/src/ksp/pc/interface/precon.c": "645da3ec4836d3e06910370be78da9f46ad4fbae5119090dd7f57c1e8a72679d",
+    "environment/build/petsc/src/mat/interface/dlregismat.c": "09a44dd6f9eedeaa4f185e11b47fc234f4cc73e950af4961035056a34f8a9f4b",
+    "environment/build/petsc/src/mat/interface/matrix.c": "8eb30552c08dab3d6c72f2839bf59d94159cd842193e50b2063f72256468e814",
+    "environment/build/petsc/include/petscksp.h": "82dc34bebc300b3089ef4ca0265baa9d4e25bbdf9c6b5be80737300de272d5ec",
+    "environment/build/petsc/src/binding/petsc4py/src/petsc4py/PETSc/KSP.pyx": "cc3db687734497d0d33d36ddcd88b221fd86150f50d3549750b9d19c8d22ff97",
+    "environment/build/petsc/src/binding/petsc4py/src/petsc4py/PETSc/petscksp.pxi": "dde5e53c30f02fec80f45074f4e7afb52a4dc6b6eb7867327eb8d5487e6d69db",
+    "environment/build/petsc/src/ksp/pc/impls/factor/ilu/ilu.c": "137dd9a26ede699b2bb5f68cdf4189ac8fdeda969781acbe0f033c35eb564420"
+  },
+  "inspected_contracts": [
+    "RanaLD requires one-test-argument state Function residual and uses a copied LD tableau",
+    "Residual backend propagates constant_jacobian to the Firedrake problem",
+    "AuxiliaryOperatorPC initializes P and LU once; its update reassembles P if PETSc requests setup",
+    "Each AssembledPC.apply calls its fixed internal PC once; no inner KSP for the selected LU configuration",
+    "PETSc Object.getId/stateGet and PC.getFactorMatrix are available in the installed binding stub",
+    "PETSc PCSetUp returns before its event when setup/matrix state is unchanged",
+    "MatSolve, MatLUFactorSym and MatLUFactorNum are registered PETSc events; count actual auxiliary LU solves and factorization work separately from the probe",
+    "PETSc KSP_DIVERGED_ITS=-3 is exposed by this petsc4py as KSP.ConvergedReason.DIVERGED_MAX_IT via its Cython alias",
+    "Irksome advance calls solver.solve before updating u0, so an exception leaves its physical update uncommitted; verify the initial field remains unchanged",
+    "Fixed PETSc ILU application uses MatSolve on its existing factor"
+  ],
+  "numerical_operations_performed": false
+}

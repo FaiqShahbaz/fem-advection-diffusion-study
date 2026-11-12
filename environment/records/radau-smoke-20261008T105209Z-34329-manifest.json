@@ -1,0 +1,120 @@
+{
+  "started_utc": "2026-10-08T10:52:09.313628+00:00",
+  "status": "Radau coupled-block, update, boundary, and selected serial/MPI checks passed; mentor review and convergence verification pending",
+  "irksome_be_review": "environment/irksome_be_review.json",
+  "irksome_be_review_sha256": "07d2118e3ba908aa81a9ff775ba4bc4e8dbdaa4560aa3b4fdd1d48ba1952218e",
+  "verified_environment": "environment/verified_environment.json",
+  "verified_environment_sha256": "c2441b3e78aa5f1f5cd5c1d50ba2160148991da35988eaa31ef4bd02d796fa36",
+  "config": "configs/phase0_radau_smoke.json",
+  "config_sha256": "7719c8cc9970a4be9b01d5cf304bcc24e862b8764cd643bbb2af99b0e7ce9dbc",
+  "script_sha256": {
+    "src/phase0_radau_smoke.py": "0d93682d3f5d002cf98524fa1e67dd2a09f1f7aec7bd0c1db9454492f9c70b9a",
+    "src/phase0_be_smoke.py": "382567d3a9a2d51b09f3e42f4e5ed8f4db2e5273148e917f390609538b0c0480",
+    "src/phase0_irksome_be.py": "ec4f69af4e0ff160e1fc74ec965952d4aaf1f6853d9d3a3affc82ec099de3c68",
+    "environment/check_radau_smoke.py": "23df1fff453736a8e06dc345f533d61a106a754f02de62c6359a7be741d38ace",
+    "environment/check_irksome_be.py": "75cfad87a8c2c81cd8a025224acdb8ca3d7b9e270c17d13efa021c2bd554fcca",
+    "environment/check_be_smoke.py": "cf3e869775b23818f26aab3ff37051cdbb7154f168af3400001fc79f261070d8",
+    "environment/check_python_runtime.py": "d0784d5ba3fc156f7c78321a4772b638bf38689cfc46bc69aae4f6f93bcb73b3",
+    "environment/configure_petsc.py": "da97e917ff176d5a1d577b986622b36304441728180a5d57277a78e58698af02"
+  },
+  "code_commit": "44d149b7d1da8a9ea15824b360beb45dba818f72",
+  "working_tree_status_before_run": "",
+  "selected_tools": {
+    "python": "/opt/homebrew/opt/python@3.13/bin/python3.13",
+    "mpicc": "/opt/homebrew/opt/open-mpi/bin/mpicc",
+    "mpicxx": "/opt/homebrew/opt/open-mpi/bin/mpicxx",
+    "mpif90": "/opt/homebrew/opt/open-mpi/bin/mpif90",
+    "mpiexec": "/opt/homebrew/opt/open-mpi/bin/mpiexec"
+  },
+  "selected_environment": {
+    "PETSC_DIR": "/Users/faiq/Projects/fem-advection-diffusion/environment/build/petsc",
+    "PETSC_ARCH": "arch-firedrake-default",
+    "OPENBLAS_NUM_THREADS": "1",
+    "OMP_NUM_THREADS": "1",
+    "FIREDRAKE_CACHE_DIR": "/Users/faiq/Projects/fem-advection-diffusion/environment/build/runtime-cache",
+    "PYOP2_CACHE_DIR": "/Users/faiq/Projects/fem-advection-diffusion/environment/build/runtime-cache/pyop2",
+    "FIREDRAKE_TSFC_KERNEL_CACHE_DIR": "/Users/faiq/Projects/fem-advection-diffusion/environment/build/runtime-cache/tsfc",
+    "XDG_CACHE_HOME": "/Users/faiq/Projects/fem-advection-diffusion/environment/build/runtime-cache",
+    "TMPDIR": "/Users/faiq/Projects/fem-advection-diffusion/environment/build/runtime-tmp",
+    "PYTHONNOUSERSITE": "1",
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "inherited_options_or_library_settings": {},
+  "commands": {
+    "serial": [
+      "/Users/faiq/Projects/fem-advection-diffusion/.venv/bin/python",
+      "/Users/faiq/Projects/fem-advection-diffusion/src/phase0_radau_smoke.py",
+      "--config",
+      "/Users/faiq/Projects/fem-advection-diffusion/configs/phase0_radau_smoke.json",
+      "--expected-size",
+      "1",
+      "--output",
+      "/Users/faiq/Projects/fem-advection-diffusion/environment/records/radau-smoke-20261008T105209Z-34329-serial.json"
+    ],
+    "two_rank": [
+      "/opt/homebrew/opt/open-mpi/bin/mpiexec",
+      "-n",
+      "2",
+      "/Users/faiq/Projects/fem-advection-diffusion/.venv/bin/python",
+      "/Users/faiq/Projects/fem-advection-diffusion/src/phase0_radau_smoke.py",
+      "--config",
+      "/Users/faiq/Projects/fem-advection-diffusion/configs/phase0_radau_smoke.json",
+      "--expected-size",
+      "2",
+      "--output",
+      "/Users/faiq/Projects/fem-advection-diffusion/environment/records/radau-smoke-20261008T105209Z-34329-two-rank.json"
+    ]
+  },
+  "completed_steps": [
+    "serial",
+    "two_rank"
+  ],
+  "performance_measurement": false,
+  "accuracy_order_verified": false,
+  "radau_time_step_run": true,
+  "serial_mpi_comparison": {
+    "status": "passed",
+    "compared_global_quantities": {
+      "domain_area": {
+        "serial": 1.0000000000000002,
+        "two_rank": 1.0000000000000002,
+        "absolute_difference": 0.0
+      },
+      "initial_l2_error": {
+        "serial": 0.0155534683098119,
+        "two_rank": 0.0155534683098119,
+        "absolute_difference": 0.0
+      },
+      "final_l2_error": {
+        "serial": 0.016649136276671396,
+        "two_rank": 0.016649136276671393,
+        "absolute_difference": 3.469446951953614e-18
+      },
+      "final_h1_seminorm_error": {
+        "serial": 0.42808961099421755,
+        "two_rank": 0.42808961099421766,
+        "absolute_difference": 1.1102230246251565e-16
+      },
+      "solution_l2_norm": {
+        "serial": 0.48129310225185595,
+        "two_rank": 0.48129310225185595,
+        "absolute_difference": 0.0
+      }
+    },
+    "relative_tolerance": 1e-09,
+    "absolute_tolerance": 1e-12,
+    "limit": "Comparison of selected scalar quantities, not a pointwise field-equality proof or scaling measurement"
+  },
+  "solve_records": {
+    "serial": {
+      "path": "environment/records/radau-smoke-20261008T105209Z-34329-serial.json",
+      "sha256": "468470820cfe48dc1fcfcbeda567bd0a33fb0615778cbdac33f992b0425528af"
+    },
+    "two-rank": {
+      "path": "environment/records/radau-smoke-20261008T105209Z-34329-two-rank.json",
+      "sha256": "0a9bfe3cba5955a9e6a81455ea3a43758bdf3dc46b7d4b67f96ab163dc2d0a14"
+    }
+  },
+  "finished_utc": "2026-10-08T10:52:25.716551+00:00",
+  "checkpoint_exit_status": 0
+}

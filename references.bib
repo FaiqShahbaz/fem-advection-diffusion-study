@@ -1,0 +1,102 @@
+% Background and software references for the completed study.
+
+@book{ern2004fem,
+  author    = {Ern, Alexandre and Guermond, Jean-Luc},
+  title     = {Theory and Practice of Finite Elements},
+  publisher = {Springer},
+  year      = {2004},
+  doi       = {10.1007/978-1-4757-4355-5}
+}
+
+@techreport{salari2000mms,
+  author      = {Salari, Kambiz and Knupp, Patrick},
+  title       = {Code Verification by the Method of Manufactured Solutions},
+  institution = {Sandia National Laboratories},
+  number      = {SAND2000-1444},
+  year        = {2000},
+  doi         = {10.2172/759450},
+  url         = {https://www.osti.gov/biblio/759450}
+}
+
+@article{farrell2021irksome,
+  author  = {Farrell, Patrick E. and Kirby, Robert C. and Marchena-Menendez, Jorge},
+  title   = {Irksome: Automating Runge--Kutta Time-stepping for Finite Element Methods},
+  journal = {ACM Transactions on Mathematical Software},
+  volume  = {47},
+  number  = {4},
+  pages   = {30:1--30:26},
+  year    = {2021},
+  doi     = {10.1145/3466168},
+  url     = {https://arxiv.org/abs/2006.16282}
+}
+
+@article{rana2021irk,
+  author  = {Rana, Md Masud and Howle, Victoria E. and Long, Katharine and Meek, Ashley and Milestone, William},
+  title   = {A New Block Preconditioner for Implicit Runge--Kutta Methods for Parabolic {PDE} Problems},
+  journal = {SIAM Journal on Scientific Computing},
+  volume  = {43},
+  number  = {5},
+  pages   = {S475--S495},
+  year    = {2021},
+  doi     = {10.1137/20M1349680},
+  url     = {https://arxiv.org/abs/2010.11377}
+}
+
+@book{saad2003iterative,
+  author    = {Saad, Yousef},
+  title     = {Iterative Methods for Sparse Linear Systems},
+  edition   = {2},
+  publisher = {SIAM},
+  year      = {2003},
+  doi       = {10.1137/1.9780898718003}
+}
+
+@misc{firedrake_install_docs,
+  author = {{Firedrake Project}},
+  title  = {Installing Firedrake},
+  url    = {https://www.firedrakeproject.org/install.html},
+  note   = {Accessed 7 October 2026; tested versions recorded in the project environment snapshot}
+}
+
+@misc{irksome_docs,
+  author = {{Irksome developers}},
+  title  = {Irksome documentation},
+  url    = {https://www.firedrakeproject.org/Irksome/},
+  note   = {Accessed 7 October 2026; tested version recorded in the project environment snapshot}
+}
+
+@misc{petsc_gmres_docs,
+  author = {{PETSc developers}},
+  title  = {{KSPGMRES} manual page},
+  url    = {https://petsc.org/release/manualpages/KSP/KSPGMRES/},
+  note   = {Accessed 7 October 2026; tested version recorded in the project environment snapshot}
+}
+
+@misc{petsc_asm_docs,
+  author = {{PETSc developers}},
+  title  = {{PCASM} manual page},
+  url    = {https://petsc.org/release/manualpages/PC/PCASM/},
+  note   = {Accessed 19 October 2026; implementation also inspected in pinned PETSc 3.26.0 source}
+}
+
+@misc{petsc_ilu_docs,
+  author = {{PETSc developers}},
+  title  = {{PCILU} manual page},
+  url    = {https://petsc.org/release/manualpages/PC/PCILU/},
+  note   = {Accessed 19 October 2026; local factor options checked against the tested PETSc source}
+}
+
+@misc{petsc_ptscotch_docs,
+  author = {{PETSc developers}},
+  title  = {{MATPARTITIONINGPTSCOTCH} manual page},
+  url    = {https://petsc.org/release/manualpages/MatGraphOperations/MATPARTITIONINGPTSCOTCH/},
+  note   = {Accessed 19 October 2026; existing compiled support confirmed from the tested build configuration}
+}
+
+@misc{irksome_rana_demo,
+  author = {{Irksome developers}},
+  title = {{Rana/Howle/et al preconditioning}},
+  howpublished = {Official Irksome demonstration},
+  url = {https://www.firedrakeproject.org/Irksome/demos/demo_heat_rana.py.html},
+  note = {Accessed 21 October 2026; installed Irksome 2026.0.0 source inspected separately and pinned for the construction checkpoint}
+}

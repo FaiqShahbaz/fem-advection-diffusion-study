@@ -1,0 +1,583 @@
+
+Working directory: /Users/faiq/Projects/fem-advection-diffusion
+Running: /Users/faiq/Projects/fem-advection-diffusion/.venv/bin/python /Users/faiq/Projects/fem-advection-diffusion/src/phase3_accuracy_cost.py --config /Users/faiq/Projects/fem-advection-diffusion/configs/phase3_accuracy_cost.json --output /Users/faiq/Projects/fem-advection-diffusion/results/raw/accuracy-cost-20261019T102618Z-70377-serial.json
+  reference_coarse: dt=0.0015625, steps=640, rtol=1.0e-11
+    reference_coarse: 100/640 steps checked, t=0.156250
+    reference_coarse: 200/640 steps checked, t=0.312500
+    reference_coarse: 300/640 steps checked, t=0.468750
+    reference_coarse: 400/640 steps checked, t=0.625000
+    reference_coarse: 500/640 steps checked, t=0.781250
+    reference_coarse: 600/640 steps checked, t=0.937500
+    reference_coarse: 640/640 steps checked, t=1.000000
+KSP Object: (phase1_spatial_reference_coarse_) 1 MPI process
+  type: gmres
+    restart=50, using classical (unmodified) Gram-Schmidt orthogonalization with no iterative refinement
+    happy breakdown tolerance=1e-30
+  maximum iterations=1000, initial guess is zero
+  tolerances: relative=1e-11, absolute=1e-13, divergence=10000.
+  right preconditioning
+  using UNPRECONDITIONED norm type for convergence test
+PC Object: (phase1_spatial_reference_coarse_) 1 MPI process
+  type: jacobi
+    type DIAGONAL
+  linear system matrix, which is also used to construct the preconditioner:
+  Mat Object: (phase1_spatial_reference_coarse_) 1 MPI process
+    type: seqaij
+    rows=2178, cols=2178
+    total: nonzeros=48132, allocated nonzeros=48132
+    total number of mallocs used during MatSetValues calls=0
+      not using I-node routines
+  reference_coarse: final L2=2.530096480e-05, H1 seminorm=3.097296017e-03, checks=passed
+  reference_fine: dt=0.00078125, steps=1280, rtol=1.0e-11
+    reference_fine: 100/1280 steps checked, t=0.078125
+    reference_fine: 200/1280 steps checked, t=0.156250
+    reference_fine: 300/1280 steps checked, t=0.234375
+    reference_fine: 400/1280 steps checked, t=0.312500
+    reference_fine: 500/1280 steps checked, t=0.390625
+    reference_fine: 600/1280 steps checked, t=0.468750
+    reference_fine: 700/1280 steps checked, t=0.546875
+    reference_fine: 800/1280 steps checked, t=0.625000
+    reference_fine: 900/1280 steps checked, t=0.703125
+    reference_fine: 1000/1280 steps checked, t=0.781250
+    reference_fine: 1100/1280 steps checked, t=0.859375
+    reference_fine: 1200/1280 steps checked, t=0.937500
+    reference_fine: 1280/1280 steps checked, t=1.000000
+KSP Object: (phase1_spatial_reference_fine_) 1 MPI process
+  type: gmres
+    restart=50, using classical (unmodified) Gram-Schmidt orthogonalization with no iterative refinement
+    happy breakdown tolerance=1e-30
+  maximum iterations=1000, initial guess is zero
+  tolerances: relative=1e-11, absolute=1e-13, divergence=10000.
+  right preconditioning
+  using UNPRECONDITIONED norm type for convergence test
+PC Object: (phase1_spatial_reference_fine_) 1 MPI process
+  type: jacobi
+    type DIAGONAL
+  linear system matrix, which is also used to construct the preconditioner:
+  Mat Object: (phase1_spatial_reference_fine_) 1 MPI process
+    type: seqaij
+    rows=2178, cols=2178
+    total: nonzeros=48132, allocated nonzeros=48132
+    total number of mallocs used during MatSetValues calls=0
+      not using I-node routines
+  reference_fine: final L2=2.530096354e-05, H1 seminorm=3.097296017e-03, checks=passed
+  reference_fine_tighter: dt=0.00078125, steps=1280, rtol=1.0e-12
+    reference_fine_tighter: 100/1280 steps checked, t=0.078125
+    reference_fine_tighter: 200/1280 steps checked, t=0.156250
+    reference_fine_tighter: 300/1280 steps checked, t=0.234375
+    reference_fine_tighter: 400/1280 steps checked, t=0.312500
+    reference_fine_tighter: 500/1280 steps checked, t=0.390625
+    reference_fine_tighter: 600/1280 steps checked, t=0.468750
+    reference_fine_tighter: 700/1280 steps checked, t=0.546875
+    reference_fine_tighter: 800/1280 steps checked, t=0.625000
+    reference_fine_tighter: 900/1280 steps checked, t=0.703125
+    reference_fine_tighter: 1000/1280 steps checked, t=0.781250
+    reference_fine_tighter: 1100/1280 steps checked, t=0.859375
+    reference_fine_tighter: 1200/1280 steps checked, t=0.937500
+    reference_fine_tighter: 1280/1280 steps checked, t=1.000000
+KSP Object: (phase1_spatial_reference_fine_tighter_) 1 MPI process
+  type: gmres
+    restart=50, using classical (unmodified) Gram-Schmidt orthogonalization with no iterative refinement
+    happy breakdown tolerance=1e-30
+  maximum iterations=1000, initial guess is zero
+  tolerances: relative=1e-12, absolute=1e-14, divergence=10000.
+  right preconditioning
+  using UNPRECONDITIONED norm type for convergence test
+PC Object: (phase1_spatial_reference_fine_tighter_) 1 MPI process
+  type: jacobi
+    type DIAGONAL
+  linear system matrix, which is also used to construct the preconditioner:
+  Mat Object: (phase1_spatial_reference_fine_tighter_) 1 MPI process
+    type: seqaij
+    rows=2178, cols=2178
+    total: nonzeros=48132, allocated nonzeros=48132
+    total number of mallocs used during MatSetValues calls=0
+      not using I-node routines
+  reference_fine_tighter: final L2=2.530096354e-05, H1 seminorm=3.097296017e-03, checks=passed
+BE_loose_verified: manual BE dt=0.0125, steps=80, rtol=1.0e-11
+  BE_loose_verified: 80/80 checked steps
+KSP Object: (phase2_BE_loose_verified_) 1 MPI process
+  type: gmres
+    restart=50, using classical (unmodified) Gram-Schmidt orthogonalization with no iterative refinement
+    happy breakdown tolerance=1e-30
+  maximum iterations=1000, initial guess is zero
+  tolerances: relative=1e-11, absolute=1e-13, divergence=10000.
+  right preconditioning
+  using UNPRECONDITIONED norm type for convergence test
+PC Object: (phase2_BE_loose_verified_) 1 MPI process
+  type: jacobi
+    type DIAGONAL
+  linear system matrix, which is also used to construct the preconditioner:
+  Mat Object: 1 MPI process
+    type: seqaij
+    rows=1089, cols=1089
+    total: nonzeros=12033, allocated nonzeros=12033
+    total number of mallocs used during MatSetValues calls=0
+      not using I-node routines
+BE_loose: checked baseline time errors {'l2_error': 6.080634437804757e-05, 'h1_seminorm_error': 0.00027148292110795665}
+  Radau_coarse_verified: dt=0.1, steps=10, rtol=1.0e-11
+    Radau_coarse_verified: 10/10 steps checked, t=1.000000
+KSP Object: (phase1_spatial_Radau_coarse_verified_) 1 MPI process
+  type: gmres
+    restart=50, using classical (unmodified) Gram-Schmidt orthogonalization with no iterative refinement
+    happy breakdown tolerance=1e-30
+  maximum iterations=1000, initial guess is zero
+  tolerances: relative=1e-11, absolute=1e-13, divergence=10000.
+  right preconditioning
+  using UNPRECONDITIONED norm type for convergence test
+PC Object: (phase1_spatial_Radau_coarse_verified_) 1 MPI process
+  type: jacobi
+    type DIAGONAL
+  linear system matrix, which is also used to construct the preconditioner:
+  Mat Object: (phase1_spatial_Radau_coarse_verified_) 1 MPI process
+    type: seqaij
+    rows=2178, cols=2178
+    total: nonzeros=48132, allocated nonzeros=48132
+    total number of mallocs used during MatSetValues calls=0
+      not using I-node routines
+  Radau_coarse_verified: final L2=2.572717561e-05, H1 seminorm=3.097320824e-03, checks=passed
+Radau_coarse: checked baseline time errors {'l2_error': 2.6705645653924393e-06, 'h1_seminorm_error': 1.1879314906408024e-05}
+BE_fine_verified: manual BE dt=0.0005, steps=2000, rtol=1.0e-11
+  BE_fine_verified: 100/2000 checked steps
+  BE_fine_verified: 200/2000 checked steps
+  BE_fine_verified: 300/2000 checked steps
+  BE_fine_verified: 400/2000 checked steps
+  BE_fine_verified: 500/2000 checked steps
+  BE_fine_verified: 600/2000 checked steps
+  BE_fine_verified: 700/2000 checked steps
+  BE_fine_verified: 800/2000 checked steps
+  BE_fine_verified: 900/2000 checked steps
+  BE_fine_verified: 1000/2000 checked steps
+  BE_fine_verified: 1100/2000 checked steps
+  BE_fine_verified: 1200/2000 checked steps
+  BE_fine_verified: 1300/2000 checked steps
+  BE_fine_verified: 1400/2000 checked steps
+  BE_fine_verified: 1500/2000 checked steps
+  BE_fine_verified: 1600/2000 checked steps
+  BE_fine_verified: 1700/2000 checked steps
+  BE_fine_verified: 1800/2000 checked steps
+  BE_fine_verified: 1900/2000 checked steps
+  BE_fine_verified: 2000/2000 checked steps
+KSP Object: (phase2_BE_fine_verified_) 1 MPI process
+  type: gmres
+    restart=50, using classical (unmodified) Gram-Schmidt orthogonalization with no iterative refinement
+    happy breakdown tolerance=1e-30
+  maximum iterations=1000, initial guess is zero
+  tolerances: relative=1e-11, absolute=1e-13, divergence=10000.
+  right preconditioning
+  using UNPRECONDITIONED norm type for convergence test
+PC Object: (phase2_BE_fine_verified_) 1 MPI process
+  type: jacobi
+    type DIAGONAL
+  linear system matrix, which is also used to construct the preconditioner:
+  Mat Object: 1 MPI process
+    type: seqaij
+    rows=1089, cols=1089
+    total: nonzeros=12033, allocated nonzeros=12033
+    total number of mallocs used during MatSetValues calls=0
+      not using I-node routines
+BE_fine: checked baseline time errors {'l2_error': 2.4217726926874535e-06, 'h1_seminorm_error': 1.0812505410293365e-05}
+  Radau_fine_verified: dt=0.05, steps=20, rtol=1.0e-11
+    Radau_fine_verified: 20/20 steps checked, t=1.000000
+KSP Object: (phase1_spatial_Radau_fine_verified_) 1 MPI process
+  type: gmres
+    restart=50, using classical (unmodified) Gram-Schmidt orthogonalization with no iterative refinement
+    happy breakdown tolerance=1e-30
+  maximum iterations=1000, initial guess is zero
+  tolerances: relative=1e-11, absolute=1e-13, divergence=10000.
+  right preconditioning
+  using UNPRECONDITIONED norm type for convergence test
+PC Object: (phase1_spatial_Radau_fine_verified_) 1 MPI process
+  type: jacobi
+    type DIAGONAL
+  linear system matrix, which is also used to construct the preconditioner:
+  Mat Object: (phase1_spatial_Radau_fine_verified_) 1 MPI process
+    type: seqaij
+    rows=2178, cols=2178
+    total: nonzeros=48132, allocated nonzeros=48132
+    total number of mallocs used during MatSetValues calls=0
+      not using I-node routines
+  Radau_fine_verified: final L2=2.534480197e-05, H1 seminorm=3.097296750e-03, checks=passed
+Radau_fine: checked baseline time errors {'l2_error': 3.7958916319920294e-07, 'h1_seminorm_error': 1.6875200742090108e-06}
+manual_backward_euler_finest_tighter: manual BE dt=0.0005, steps=2000, rtol=1.0e-12
+  manual_backward_euler_finest_tighter: 100/2000 checked steps
+  manual_backward_euler_finest_tighter: 200/2000 checked steps
+  manual_backward_euler_finest_tighter: 300/2000 checked steps
+  manual_backward_euler_finest_tighter: 400/2000 checked steps
+  manual_backward_euler_finest_tighter: 500/2000 checked steps
+  manual_backward_euler_finest_tighter: 600/2000 checked steps
+  manual_backward_euler_finest_tighter: 700/2000 checked steps
+  manual_backward_euler_finest_tighter: 800/2000 checked steps
+  manual_backward_euler_finest_tighter: 900/2000 checked steps
+  manual_backward_euler_finest_tighter: 1000/2000 checked steps
+  manual_backward_euler_finest_tighter: 1100/2000 checked steps
+  manual_backward_euler_finest_tighter: 1200/2000 checked steps
+  manual_backward_euler_finest_tighter: 1300/2000 checked steps
+  manual_backward_euler_finest_tighter: 1400/2000 checked steps
+  manual_backward_euler_finest_tighter: 1500/2000 checked steps
+  manual_backward_euler_finest_tighter: 1600/2000 checked steps
+  manual_backward_euler_finest_tighter: 1700/2000 checked steps
+  manual_backward_euler_finest_tighter: 1800/2000 checked steps
+  manual_backward_euler_finest_tighter: 1900/2000 checked steps
+  manual_backward_euler_finest_tighter: 2000/2000 checked steps
+KSP Object: (phase2_manual_backward_euler_finest_tighter_) 1 MPI process
+  type: gmres
+    restart=50, using classical (unmodified) Gram-Schmidt orthogonalization with no iterative refinement
+    happy breakdown tolerance=1e-30
+  maximum iterations=1000, initial guess is zero
+  tolerances: relative=1e-12, absolute=1e-14, divergence=10000.
+  right preconditioning
+  using UNPRECONDITIONED norm type for convergence test
+PC Object: (phase2_manual_backward_euler_finest_tighter_) 1 MPI process
+  type: jacobi
+    type DIAGONAL
+  linear system matrix, which is also used to construct the preconditioner:
+  Mat Object: 1 MPI process
+    type: seqaij
+    rows=1089, cols=1089
+    total: nonzeros=12033, allocated nonzeros=12033
+    total number of mallocs used during MatSetValues calls=0
+      not using I-node routines
+  RadauIIA_finest_tighter: dt=0.05, steps=20, rtol=1.0e-12
+    RadauIIA_finest_tighter: 20/20 steps checked, t=1.000000
+KSP Object: (phase1_spatial_RadauIIA_finest_tighter_) 1 MPI process
+  type: gmres
+    restart=50, using classical (unmodified) Gram-Schmidt orthogonalization with no iterative refinement
+    happy breakdown tolerance=1e-30
+  maximum iterations=1000, initial guess is zero
+  tolerances: relative=1e-12, absolute=1e-14, divergence=10000.
+  right preconditioning
+  using UNPRECONDITIONED norm type for convergence test
+PC Object: (phase1_spatial_RadauIIA_finest_tighter_) 1 MPI process
+  type: jacobi
+    type DIAGONAL
+  linear system matrix, which is also used to construct the preconditioner:
+  Mat Object: (phase1_spatial_RadauIIA_finest_tighter_) 1 MPI process
+    type: seqaij
+    rows=2178, cols=2178
+    total: nonzeros=48132, allocated nonzeros=48132
+    total number of mallocs used during MatSetValues calls=0
+      not using I-node routines
+  RadauIIA_finest_tighter: final L2=2.534480197e-05, H1 seminorm=3.097296750e-03, checks=passed
+BE_loose_warmup0: manual_backward_euler, dt=0.0125, 80 steps
+KSP Object: (phase3_BE_loose_warmup0_) 1 MPI process
+  type: gmres
+    restart=50, using classical (unmodified) Gram-Schmidt orthogonalization with no iterative refinement
+    happy breakdown tolerance=1e-30
+  maximum iterations=1000, initial guess is zero
+  tolerances: relative=1e-11, absolute=1e-13, divergence=10000.
+  right preconditioning
+  using UNPRECONDITIONED norm type for convergence test
+PC Object: (phase3_BE_loose_warmup0_) 1 MPI process
+  type: jacobi
+    type DIAGONAL
+  linear system matrix, which is also used to construct the preconditioner:
+  Mat Object: 1 MPI process
+    type: seqaij
+    rows=1089, cols=1089
+    total: nonzeros=12033, allocated nonzeros=12033
+    total number of mallocs used during MatSetValues calls=0
+      not using I-node routines
+BE_loose_warmup0: field checks passed; core wall=0.170157 s; PC setups=1
+Radau_coarse_warmup0: RadauIIA, dt=0.1, 10 steps
+KSP Object: (phase3_Radau_coarse_warmup0_) 1 MPI process
+  type: gmres
+    restart=50, using classical (unmodified) Gram-Schmidt orthogonalization with no iterative refinement
+    happy breakdown tolerance=1e-30
+  maximum iterations=1000, initial guess is zero
+  tolerances: relative=1e-11, absolute=1e-13, divergence=10000.
+  right preconditioning
+  using UNPRECONDITIONED norm type for convergence test
+PC Object: (phase3_Radau_coarse_warmup0_) 1 MPI process
+  type: jacobi
+    type DIAGONAL
+  linear system matrix, which is also used to construct the preconditioner:
+  Mat Object: (phase3_Radau_coarse_warmup0_) 1 MPI process
+    type: seqaij
+    rows=2178, cols=2178
+    total: nonzeros=48132, allocated nonzeros=48132
+    total number of mallocs used during MatSetValues calls=0
+      not using I-node routines
+Radau_coarse_warmup0: field checks passed; core wall=0.240367 s; PC setups=1
+BE_fine_warmup0: manual_backward_euler, dt=0.0005, 2000 steps
+KSP Object: (phase3_BE_fine_warmup0_) 1 MPI process
+  type: gmres
+    restart=50, using classical (unmodified) Gram-Schmidt orthogonalization with no iterative refinement
+    happy breakdown tolerance=1e-30
+  maximum iterations=1000, initial guess is zero
+  tolerances: relative=1e-11, absolute=1e-13, divergence=10000.
+  right preconditioning
+  using UNPRECONDITIONED norm type for convergence test
+PC Object: (phase3_BE_fine_warmup0_) 1 MPI process
+  type: jacobi
+    type DIAGONAL
+  linear system matrix, which is also used to construct the preconditioner:
+  Mat Object: 1 MPI process
+    type: seqaij
+    rows=1089, cols=1089
+    total: nonzeros=12033, allocated nonzeros=12033
+    total number of mallocs used during MatSetValues calls=0
+      not using I-node routines
+BE_fine_warmup0: field checks passed; core wall=2.337017 s; PC setups=1
+Radau_fine_warmup0: RadauIIA, dt=0.05, 20 steps
+KSP Object: (phase3_Radau_fine_warmup0_) 1 MPI process
+  type: gmres
+    restart=50, using classical (unmodified) Gram-Schmidt orthogonalization with no iterative refinement
+    happy breakdown tolerance=1e-30
+  maximum iterations=1000, initial guess is zero
+  tolerances: relative=1e-11, absolute=1e-13, divergence=10000.
+  right preconditioning
+  using UNPRECONDITIONED norm type for convergence test
+PC Object: (phase3_Radau_fine_warmup0_) 1 MPI process
+  type: jacobi
+    type DIAGONAL
+  linear system matrix, which is also used to construct the preconditioner:
+  Mat Object: (phase3_Radau_fine_warmup0_) 1 MPI process
+    type: seqaij
+    rows=2178, cols=2178
+    total: nonzeros=48132, allocated nonzeros=48132
+    total number of mallocs used during MatSetValues calls=0
+      not using I-node routines
+Radau_fine_warmup0: field checks passed; core wall=0.318692 s; PC setups=1
+BE_loose_measured1: manual_backward_euler, dt=0.0125, 80 steps
+KSP Object: (phase3_BE_loose_measured1_) 1 MPI process
+  type: gmres
+    restart=50, using classical (unmodified) Gram-Schmidt orthogonalization with no iterative refinement
+    happy breakdown tolerance=1e-30
+  maximum iterations=1000, initial guess is zero
+  tolerances: relative=1e-11, absolute=1e-13, divergence=10000.
+  right preconditioning
+  using UNPRECONDITIONED norm type for convergence test
+PC Object: (phase3_BE_loose_measured1_) 1 MPI process
+  type: jacobi
+    type DIAGONAL
+  linear system matrix, which is also used to construct the preconditioner:
+  Mat Object: 1 MPI process
+    type: seqaij
+    rows=1089, cols=1089
+    total: nonzeros=12033, allocated nonzeros=12033
+    total number of mallocs used during MatSetValues calls=0
+      not using I-node routines
+BE_loose_measured1: field checks passed; core wall=0.177013 s; PC setups=1
+Radau_coarse_measured1: RadauIIA, dt=0.1, 10 steps
+KSP Object: (phase3_Radau_coarse_measured1_) 1 MPI process
+  type: gmres
+    restart=50, using classical (unmodified) Gram-Schmidt orthogonalization with no iterative refinement
+    happy breakdown tolerance=1e-30
+  maximum iterations=1000, initial guess is zero
+  tolerances: relative=1e-11, absolute=1e-13, divergence=10000.
+  right preconditioning
+  using UNPRECONDITIONED norm type for convergence test
+PC Object: (phase3_Radau_coarse_measured1_) 1 MPI process
+  type: jacobi
+    type DIAGONAL
+  linear system matrix, which is also used to construct the preconditioner:
+  Mat Object: (phase3_Radau_coarse_measured1_) 1 MPI process
+    type: seqaij
+    rows=2178, cols=2178
+    total: nonzeros=48132, allocated nonzeros=48132
+    total number of mallocs used during MatSetValues calls=0
+      not using I-node routines
+Radau_coarse_measured1: field checks passed; core wall=0.242049 s; PC setups=1
+BE_fine_measured1: manual_backward_euler, dt=0.0005, 2000 steps
+KSP Object: (phase3_BE_fine_measured1_) 1 MPI process
+  type: gmres
+    restart=50, using classical (unmodified) Gram-Schmidt orthogonalization with no iterative refinement
+    happy breakdown tolerance=1e-30
+  maximum iterations=1000, initial guess is zero
+  tolerances: relative=1e-11, absolute=1e-13, divergence=10000.
+  right preconditioning
+  using UNPRECONDITIONED norm type for convergence test
+PC Object: (phase3_BE_fine_measured1_) 1 MPI process
+  type: jacobi
+    type DIAGONAL
+  linear system matrix, which is also used to construct the preconditioner:
+  Mat Object: 1 MPI process
+    type: seqaij
+    rows=1089, cols=1089
+    total: nonzeros=12033, allocated nonzeros=12033
+    total number of mallocs used during MatSetValues calls=0
+      not using I-node routines
+BE_fine_measured1: field checks passed; core wall=2.444522 s; PC setups=1
+Radau_fine_measured1: RadauIIA, dt=0.05, 20 steps
+KSP Object: (phase3_Radau_fine_measured1_) 1 MPI process
+  type: gmres
+    restart=50, using classical (unmodified) Gram-Schmidt orthogonalization with no iterative refinement
+    happy breakdown tolerance=1e-30
+  maximum iterations=1000, initial guess is zero
+  tolerances: relative=1e-11, absolute=1e-13, divergence=10000.
+  right preconditioning
+  using UNPRECONDITIONED norm type for convergence test
+PC Object: (phase3_Radau_fine_measured1_) 1 MPI process
+  type: jacobi
+    type DIAGONAL
+  linear system matrix, which is also used to construct the preconditioner:
+  Mat Object: (phase3_Radau_fine_measured1_) 1 MPI process
+    type: seqaij
+    rows=2178, cols=2178
+    total: nonzeros=48132, allocated nonzeros=48132
+    total number of mallocs used during MatSetValues calls=0
+      not using I-node routines
+Radau_fine_measured1: field checks passed; core wall=0.330970 s; PC setups=1
+Radau_fine_measured2: RadauIIA, dt=0.05, 20 steps
+KSP Object: (phase3_Radau_fine_measured2_) 1 MPI process
+  type: gmres
+    restart=50, using classical (unmodified) Gram-Schmidt orthogonalization with no iterative refinement
+    happy breakdown tolerance=1e-30
+  maximum iterations=1000, initial guess is zero
+  tolerances: relative=1e-11, absolute=1e-13, divergence=10000.
+  right preconditioning
+  using UNPRECONDITIONED norm type for convergence test
+PC Object: (phase3_Radau_fine_measured2_) 1 MPI process
+  type: jacobi
+    type DIAGONAL
+  linear system matrix, which is also used to construct the preconditioner:
+  Mat Object: (phase3_Radau_fine_measured2_) 1 MPI process
+    type: seqaij
+    rows=2178, cols=2178
+    total: nonzeros=48132, allocated nonzeros=48132
+    total number of mallocs used during MatSetValues calls=0
+      not using I-node routines
+Radau_fine_measured2: field checks passed; core wall=0.317358 s; PC setups=1
+BE_fine_measured2: manual_backward_euler, dt=0.0005, 2000 steps
+KSP Object: (phase3_BE_fine_measured2_) 1 MPI process
+  type: gmres
+    restart=50, using classical (unmodified) Gram-Schmidt orthogonalization with no iterative refinement
+    happy breakdown tolerance=1e-30
+  maximum iterations=1000, initial guess is zero
+  tolerances: relative=1e-11, absolute=1e-13, divergence=10000.
+  right preconditioning
+  using UNPRECONDITIONED norm type for convergence test
+PC Object: (phase3_BE_fine_measured2_) 1 MPI process
+  type: jacobi
+    type DIAGONAL
+  linear system matrix, which is also used to construct the preconditioner:
+  Mat Object: 1 MPI process
+    type: seqaij
+    rows=1089, cols=1089
+    total: nonzeros=12033, allocated nonzeros=12033
+    total number of mallocs used during MatSetValues calls=0
+      not using I-node routines
+BE_fine_measured2: field checks passed; core wall=2.346190 s; PC setups=1
+Radau_coarse_measured2: RadauIIA, dt=0.1, 10 steps
+KSP Object: (phase3_Radau_coarse_measured2_) 1 MPI process
+  type: gmres
+    restart=50, using classical (unmodified) Gram-Schmidt orthogonalization with no iterative refinement
+    happy breakdown tolerance=1e-30
+  maximum iterations=1000, initial guess is zero
+  tolerances: relative=1e-11, absolute=1e-13, divergence=10000.
+  right preconditioning
+  using UNPRECONDITIONED norm type for convergence test
+PC Object: (phase3_Radau_coarse_measured2_) 1 MPI process
+  type: jacobi
+    type DIAGONAL
+  linear system matrix, which is also used to construct the preconditioner:
+  Mat Object: (phase3_Radau_coarse_measured2_) 1 MPI process
+    type: seqaij
+    rows=2178, cols=2178
+    total: nonzeros=48132, allocated nonzeros=48132
+    total number of mallocs used during MatSetValues calls=0
+      not using I-node routines
+Radau_coarse_measured2: field checks passed; core wall=0.239614 s; PC setups=1
+BE_loose_measured2: manual_backward_euler, dt=0.0125, 80 steps
+KSP Object: (phase3_BE_loose_measured2_) 1 MPI process
+  type: gmres
+    restart=50, using classical (unmodified) Gram-Schmidt orthogonalization with no iterative refinement
+    happy breakdown tolerance=1e-30
+  maximum iterations=1000, initial guess is zero
+  tolerances: relative=1e-11, absolute=1e-13, divergence=10000.
+  right preconditioning
+  using UNPRECONDITIONED norm type for convergence test
+PC Object: (phase3_BE_loose_measured2_) 1 MPI process
+  type: jacobi
+    type DIAGONAL
+  linear system matrix, which is also used to construct the preconditioner:
+  Mat Object: 1 MPI process
+    type: seqaij
+    rows=1089, cols=1089
+    total: nonzeros=12033, allocated nonzeros=12033
+    total number of mallocs used during MatSetValues calls=0
+      not using I-node routines
+BE_loose_measured2: field checks passed; core wall=0.170905 s; PC setups=1
+BE_loose_measured3: manual_backward_euler, dt=0.0125, 80 steps
+KSP Object: (phase3_BE_loose_measured3_) 1 MPI process
+  type: gmres
+    restart=50, using classical (unmodified) Gram-Schmidt orthogonalization with no iterative refinement
+    happy breakdown tolerance=1e-30
+  maximum iterations=1000, initial guess is zero
+  tolerances: relative=1e-11, absolute=1e-13, divergence=10000.
+  right preconditioning
+  using UNPRECONDITIONED norm type for convergence test
+PC Object: (phase3_BE_loose_measured3_) 1 MPI process
+  type: jacobi
+    type DIAGONAL
+  linear system matrix, which is also used to construct the preconditioner:
+  Mat Object: 1 MPI process
+    type: seqaij
+    rows=1089, cols=1089
+    total: nonzeros=12033, allocated nonzeros=12033
+    total number of mallocs used during MatSetValues calls=0
+      not using I-node routines
+BE_loose_measured3: field checks passed; core wall=0.172750 s; PC setups=1
+Radau_coarse_measured3: RadauIIA, dt=0.1, 10 steps
+KSP Object: (phase3_Radau_coarse_measured3_) 1 MPI process
+  type: gmres
+    restart=50, using classical (unmodified) Gram-Schmidt orthogonalization with no iterative refinement
+    happy breakdown tolerance=1e-30
+  maximum iterations=1000, initial guess is zero
+  tolerances: relative=1e-11, absolute=1e-13, divergence=10000.
+  right preconditioning
+  using UNPRECONDITIONED norm type for convergence test
+PC Object: (phase3_Radau_coarse_measured3_) 1 MPI process
+  type: jacobi
+    type DIAGONAL
+  linear system matrix, which is also used to construct the preconditioner:
+  Mat Object: (phase3_Radau_coarse_measured3_) 1 MPI process
+    type: seqaij
+    rows=2178, cols=2178
+    total: nonzeros=48132, allocated nonzeros=48132
+    total number of mallocs used during MatSetValues calls=0
+      not using I-node routines
+Radau_coarse_measured3: field checks passed; core wall=0.238230 s; PC setups=1
+BE_fine_measured3: manual_backward_euler, dt=0.0005, 2000 steps
+KSP Object: (phase3_BE_fine_measured3_) 1 MPI process
+  type: gmres
+    restart=50, using classical (unmodified) Gram-Schmidt orthogonalization with no iterative refinement
+    happy breakdown tolerance=1e-30
+  maximum iterations=1000, initial guess is zero
+  tolerances: relative=1e-11, absolute=1e-13, divergence=10000.
+  right preconditioning
+  using UNPRECONDITIONED norm type for convergence test
+PC Object: (phase3_BE_fine_measured3_) 1 MPI process
+  type: jacobi
+    type DIAGONAL
+  linear system matrix, which is also used to construct the preconditioner:
+  Mat Object: 1 MPI process
+    type: seqaij
+    rows=1089, cols=1089
+    total: nonzeros=12033, allocated nonzeros=12033
+    total number of mallocs used during MatSetValues calls=0
+      not using I-node routines
+BE_fine_measured3: field checks passed; core wall=2.328504 s; PC setups=1
+Radau_fine_measured3: RadauIIA, dt=0.05, 20 steps
+KSP Object: (phase3_Radau_fine_measured3_) 1 MPI process
+  type: gmres
+    restart=50, using classical (unmodified) Gram-Schmidt orthogonalization with no iterative refinement
+    happy breakdown tolerance=1e-30
+  maximum iterations=1000, initial guess is zero
+  tolerances: relative=1e-11, absolute=1e-13, divergence=10000.
+  right preconditioning
+  using UNPRECONDITIONED norm type for convergence test
+PC Object: (phase3_Radau_fine_measured3_) 1 MPI process
+  type: jacobi
+    type DIAGONAL
+  linear system matrix, which is also used to construct the preconditioner:
+  Mat Object: (phase3_Radau_fine_measured3_) 1 MPI process
+    type: seqaij
+    rows=2178, cols=2178
+    total: nonzeros=48132, allocated nonzeros=48132
+    total number of mallocs used during MatSetValues calls=0
+      not using I-node routines
+Radau_fine_measured3: field checks passed; core wall=0.318708 s; PC setups=1
+Exit status: 0
+ACCURACY-COST CHECKPOINT PASSED. Review the four candidates before preconditioner changes.

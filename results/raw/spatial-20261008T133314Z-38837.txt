@@ -1,0 +1,325 @@
+
+Working directory: /Users/faiq/Projects/fem-advection-diffusion
+Running: /Users/faiq/Projects/fem-advection-diffusion/.venv/bin/python /Users/faiq/Projects/fem-advection-diffusion/src/phase1_spatial.py --config /Users/faiq/Projects/fem-advection-diffusion/configs/phase1_spatial.json --output /Users/faiq/Projects/fem-advection-diffusion/results/raw/spatial-20261008T133314Z-38837-serial.json
+P1-n8: transient spatial verification at T=1
+  primary: dt=0.005, steps=200, rtol=1.0e-11
+    primary: 100/200 steps checked, t=0.500000
+    primary: 200/200 steps checked, t=1.000000
+KSP Object: (phase1_spatial_primary_) 1 MPI process
+  type: gmres
+    restart=50, using classical (unmodified) Gram-Schmidt orthogonalization with no iterative refinement
+    happy breakdown tolerance=1e-30
+  maximum iterations=1000, initial guess is zero
+  tolerances: relative=1e-11, absolute=1e-13, divergence=10000.
+  right preconditioning
+  using UNPRECONDITIONED norm type for convergence test
+PC Object: (phase1_spatial_primary_) 1 MPI process
+  type: jacobi
+    type DIAGONAL
+  linear system matrix, which is also used to construct the preconditioner:
+  Mat Object: (phase1_spatial_primary_) 1 MPI process
+    type: seqaij
+    rows=162, cols=162
+    total: nonzeros=1988, allocated nonzeros=1988
+    total number of mallocs used during MatSetValues calls=0
+      not using I-node routines
+  primary: final L2=8.044242239e-03, H1 seminorm=1.588742830e-01, checks=passed
+  half_dt: dt=0.0025, steps=400, rtol=1.0e-11
+    half_dt: 100/400 steps checked, t=0.250000
+    half_dt: 200/400 steps checked, t=0.500000
+    half_dt: 300/400 steps checked, t=0.750000
+    half_dt: 400/400 steps checked, t=1.000000
+KSP Object: (phase1_spatial_half_dt_) 1 MPI process
+  type: gmres
+    restart=50, using classical (unmodified) Gram-Schmidt orthogonalization with no iterative refinement
+    happy breakdown tolerance=1e-30
+  maximum iterations=1000, initial guess is zero
+  tolerances: relative=1e-11, absolute=1e-13, divergence=10000.
+  right preconditioning
+  using UNPRECONDITIONED norm type for convergence test
+PC Object: (phase1_spatial_half_dt_) 1 MPI process
+  type: jacobi
+    type DIAGONAL
+  linear system matrix, which is also used to construct the preconditioner:
+  Mat Object: (phase1_spatial_half_dt_) 1 MPI process
+    type: seqaij
+    rows=162, cols=162
+    total: nonzeros=1988, allocated nonzeros=1988
+    total number of mallocs used during MatSetValues calls=0
+      not using I-node routines
+  half_dt: final L2=8.044241915e-03, H1 seminorm=1.588742830e-01, checks=passed
+P1-n8: controls passed
+P1-n16: transient spatial verification at T=1
+  primary: dt=0.005, steps=200, rtol=1.0e-11
+    primary: 100/200 steps checked, t=0.500000
+    primary: 200/200 steps checked, t=1.000000
+KSP Object: (phase1_spatial_primary_) 1 MPI process
+  type: gmres
+    restart=50, using classical (unmodified) Gram-Schmidt orthogonalization with no iterative refinement
+    happy breakdown tolerance=1e-30
+  maximum iterations=1000, initial guess is zero
+  tolerances: relative=1e-11, absolute=1e-13, divergence=10000.
+  right preconditioning
+  using UNPRECONDITIONED norm type for convergence test
+PC Object: (phase1_spatial_primary_) 1 MPI process
+  type: jacobi
+    type DIAGONAL
+  linear system matrix, which is also used to construct the preconditioner:
+  Mat Object: (phase1_spatial_primary_) 1 MPI process
+    type: seqaij
+    rows=578, cols=578
+    total: nonzeros=7556, allocated nonzeros=7556
+    total number of mallocs used during MatSetValues calls=0
+      not using I-node routines
+  primary: final L2=2.049683548e-03, H1 seminorm=8.003041656e-02, checks=passed
+  half_dt: dt=0.0025, steps=400, rtol=1.0e-11
+    half_dt: 100/400 steps checked, t=0.250000
+    half_dt: 200/400 steps checked, t=0.500000
+    half_dt: 300/400 steps checked, t=0.750000
+    half_dt: 400/400 steps checked, t=1.000000
+KSP Object: (phase1_spatial_half_dt_) 1 MPI process
+  type: gmres
+    restart=50, using classical (unmodified) Gram-Schmidt orthogonalization with no iterative refinement
+    happy breakdown tolerance=1e-30
+  maximum iterations=1000, initial guess is zero
+  tolerances: relative=1e-11, absolute=1e-13, divergence=10000.
+  right preconditioning
+  using UNPRECONDITIONED norm type for convergence test
+PC Object: (phase1_spatial_half_dt_) 1 MPI process
+  type: jacobi
+    type DIAGONAL
+  linear system matrix, which is also used to construct the preconditioner:
+  Mat Object: (phase1_spatial_half_dt_) 1 MPI process
+    type: seqaij
+    rows=578, cols=578
+    total: nonzeros=7556, allocated nonzeros=7556
+    total number of mallocs used during MatSetValues calls=0
+      not using I-node routines
+  half_dt: final L2=2.049683211e-03, H1 seminorm=8.003041656e-02, checks=passed
+P1-n16: controls passed
+P1-n32: transient spatial verification at T=1
+  primary: dt=0.005, steps=200, rtol=1.0e-11
+    primary: 100/200 steps checked, t=0.500000
+    primary: 200/200 steps checked, t=1.000000
+KSP Object: (phase1_spatial_primary_) 1 MPI process
+  type: gmres
+    restart=50, using classical (unmodified) Gram-Schmidt orthogonalization with no iterative refinement
+    happy breakdown tolerance=1e-30
+  maximum iterations=1000, initial guess is zero
+  tolerances: relative=1e-11, absolute=1e-13, divergence=10000.
+  right preconditioning
+  using UNPRECONDITIONED norm type for convergence test
+PC Object: (phase1_spatial_primary_) 1 MPI process
+  type: jacobi
+    type DIAGONAL
+  linear system matrix, which is also used to construct the preconditioner:
+  Mat Object: (phase1_spatial_primary_) 1 MPI process
+    type: seqaij
+    rows=2178, cols=2178
+    total: nonzeros=29444, allocated nonzeros=29444
+    total number of mallocs used during MatSetValues calls=0
+      not using I-node routines
+  primary: final L2=5.149169594e-04, H1 seminorm=4.009023317e-02, checks=passed
+  half_dt: dt=0.0025, steps=400, rtol=1.0e-11
+    half_dt: 100/400 steps checked, t=0.250000
+    half_dt: 200/400 steps checked, t=0.500000
+    half_dt: 300/400 steps checked, t=0.750000
+    half_dt: 400/400 steps checked, t=1.000000
+KSP Object: (phase1_spatial_half_dt_) 1 MPI process
+  type: gmres
+    restart=50, using classical (unmodified) Gram-Schmidt orthogonalization with no iterative refinement
+    happy breakdown tolerance=1e-30
+  maximum iterations=1000, initial guess is zero
+  tolerances: relative=1e-11, absolute=1e-13, divergence=10000.
+  right preconditioning
+  using UNPRECONDITIONED norm type for convergence test
+PC Object: (phase1_spatial_half_dt_) 1 MPI process
+  type: jacobi
+    type DIAGONAL
+  linear system matrix, which is also used to construct the preconditioner:
+  Mat Object: (phase1_spatial_half_dt_) 1 MPI process
+    type: seqaij
+    rows=2178, cols=2178
+    total: nonzeros=29444, allocated nonzeros=29444
+    total number of mallocs used during MatSetValues calls=0
+      not using I-node routines
+  half_dt: final L2=5.149166195e-04, H1 seminorm=4.009023317e-02, checks=passed
+P1-n32: controls passed
+P2-n8: transient spatial verification at T=1
+  primary: dt=0.005, steps=200, rtol=1.0e-11
+    primary: 100/200 steps checked, t=0.500000
+    primary: 200/200 steps checked, t=1.000000
+KSP Object: (phase1_spatial_primary_) 1 MPI process
+  type: gmres
+    restart=50, using classical (unmodified) Gram-Schmidt orthogonalization with no iterative refinement
+    happy breakdown tolerance=1e-30
+  maximum iterations=1000, initial guess is zero
+  tolerances: relative=1e-11, absolute=1e-13, divergence=10000.
+  right preconditioning
+  using UNPRECONDITIONED norm type for convergence test
+PC Object: (phase1_spatial_primary_) 1 MPI process
+  type: jacobi
+    type DIAGONAL
+  linear system matrix, which is also used to construct the preconditioner:
+  Mat Object: (phase1_spatial_primary_) 1 MPI process
+    type: seqaij
+    rows=578, cols=578
+    total: nonzeros=12292, allocated nonzeros=12292
+    total number of mallocs used during MatSetValues calls=0
+      not using I-node routines
+  primary: final L2=2.020229608e-04, H1 seminorm=1.228333714e-02, checks=passed
+  half_dt: dt=0.0025, steps=400, rtol=1.0e-11
+    half_dt: 100/400 steps checked, t=0.250000
+    half_dt: 200/400 steps checked, t=0.500000
+    half_dt: 300/400 steps checked, t=0.750000
+    half_dt: 400/400 steps checked, t=1.000000
+KSP Object: (phase1_spatial_half_dt_) 1 MPI process
+  type: gmres
+    restart=50, using classical (unmodified) Gram-Schmidt orthogonalization with no iterative refinement
+    happy breakdown tolerance=1e-30
+  maximum iterations=1000, initial guess is zero
+  tolerances: relative=1e-11, absolute=1e-13, divergence=10000.
+  right preconditioning
+  using UNPRECONDITIONED norm type for convergence test
+PC Object: (phase1_spatial_half_dt_) 1 MPI process
+  type: jacobi
+    type DIAGONAL
+  linear system matrix, which is also used to construct the preconditioner:
+  Mat Object: (phase1_spatial_half_dt_) 1 MPI process
+    type: seqaij
+    rows=578, cols=578
+    total: nonzeros=12292, allocated nonzeros=12292
+    total number of mallocs used during MatSetValues calls=0
+      not using I-node routines
+  half_dt: final L2=2.020228802e-04, H1 seminorm=1.228333714e-02, checks=passed
+P2-n8: controls passed
+P2-n16: transient spatial verification at T=1
+  primary: dt=0.005, steps=200, rtol=1.0e-11
+    primary: 100/200 steps checked, t=0.500000
+    primary: 200/200 steps checked, t=1.000000
+KSP Object: (phase1_spatial_primary_) 1 MPI process
+  type: gmres
+    restart=50, using classical (unmodified) Gram-Schmidt orthogonalization with no iterative refinement
+    happy breakdown tolerance=1e-30
+  maximum iterations=1000, initial guess is zero
+  tolerances: relative=1e-11, absolute=1e-13, divergence=10000.
+  right preconditioning
+  using UNPRECONDITIONED norm type for convergence test
+PC Object: (phase1_spatial_primary_) 1 MPI process
+  type: jacobi
+    type DIAGONAL
+  linear system matrix, which is also used to construct the preconditioner:
+  Mat Object: (phase1_spatial_primary_) 1 MPI process
+    type: seqaij
+    rows=2178, cols=2178
+    total: nonzeros=48132, allocated nonzeros=48132
+    total number of mallocs used during MatSetValues calls=0
+      not using I-node routines
+  primary: final L2=2.530101034e-05, H1 seminorm=3.097296017e-03, checks=passed
+  half_dt: dt=0.0025, steps=400, rtol=1.0e-11
+    half_dt: 100/400 steps checked, t=0.250000
+    half_dt: 200/400 steps checked, t=0.500000
+    half_dt: 300/400 steps checked, t=0.750000
+    half_dt: 400/400 steps checked, t=1.000000
+KSP Object: (phase1_spatial_half_dt_) 1 MPI process
+  type: gmres
+    restart=50, using classical (unmodified) Gram-Schmidt orthogonalization with no iterative refinement
+    happy breakdown tolerance=1e-30
+  maximum iterations=1000, initial guess is zero
+  tolerances: relative=1e-11, absolute=1e-13, divergence=10000.
+  right preconditioning
+  using UNPRECONDITIONED norm type for convergence test
+PC Object: (phase1_spatial_half_dt_) 1 MPI process
+  type: jacobi
+    type DIAGONAL
+  linear system matrix, which is also used to construct the preconditioner:
+  Mat Object: (phase1_spatial_half_dt_) 1 MPI process
+    type: seqaij
+    rows=2178, cols=2178
+    total: nonzeros=48132, allocated nonzeros=48132
+    total number of mallocs used during MatSetValues calls=0
+      not using I-node routines
+  half_dt: final L2=2.530096927e-05, H1 seminorm=3.097296017e-03, checks=passed
+P2-n16: controls passed
+P2-n32: transient spatial verification at T=1
+  primary: dt=0.005, steps=200, rtol=1.0e-11
+    primary: 100/200 steps checked, t=0.500000
+    primary: 200/200 steps checked, t=1.000000
+KSP Object: (phase1_spatial_primary_) 1 MPI process
+  type: gmres
+    restart=50, using classical (unmodified) Gram-Schmidt orthogonalization with no iterative refinement
+    happy breakdown tolerance=1e-30
+  maximum iterations=1000, initial guess is zero
+  tolerances: relative=1e-11, absolute=1e-13, divergence=10000.
+  right preconditioning
+  using UNPRECONDITIONED norm type for convergence test
+PC Object: (phase1_spatial_primary_) 1 MPI process
+  type: jacobi
+    type DIAGONAL
+  linear system matrix, which is also used to construct the preconditioner:
+  Mat Object: (phase1_spatial_primary_) 1 MPI process
+    type: seqaij
+    rows=8450, cols=8450
+    total: nonzeros=190468, allocated nonzeros=190468
+    total number of mallocs used during MatSetValues calls=0
+      not using I-node routines
+  primary: final L2=3.164403264e-06, H1 seminorm=7.760551107e-04, checks=passed
+  half_dt: dt=0.0025, steps=400, rtol=1.0e-11
+    half_dt: 100/400 steps checked, t=0.250000
+    half_dt: 200/400 steps checked, t=0.500000
+    half_dt: 300/400 steps checked, t=0.750000
+    half_dt: 400/400 steps checked, t=1.000000
+KSP Object: (phase1_spatial_half_dt_) 1 MPI process
+  type: gmres
+    restart=50, using classical (unmodified) Gram-Schmidt orthogonalization with no iterative refinement
+    happy breakdown tolerance=1e-30
+  maximum iterations=1000, initial guess is zero
+  tolerances: relative=1e-11, absolute=1e-13, divergence=10000.
+  right preconditioning
+  using UNPRECONDITIONED norm type for convergence test
+PC Object: (phase1_spatial_half_dt_) 1 MPI process
+  type: jacobi
+    type DIAGONAL
+  linear system matrix, which is also used to construct the preconditioner:
+  Mat Object: (phase1_spatial_half_dt_) 1 MPI process
+    type: seqaij
+    rows=8450, cols=8450
+    total: nonzeros=190468, allocated nonzeros=190468
+    total number of mallocs used during MatSetValues calls=0
+      not using I-node routines
+  half_dt: final L2=3.164382605e-06, H1 seminorm=7.760551106e-04, checks=passed
+  tighter_solver: dt=0.0025, steps=400, rtol=1.0e-12
+    tighter_solver: 100/400 steps checked, t=0.250000
+    tighter_solver: 200/400 steps checked, t=0.500000
+    tighter_solver: 300/400 steps checked, t=0.750000
+    tighter_solver: 400/400 steps checked, t=1.000000
+KSP Object: (phase1_spatial_tighter_solver_) 1 MPI process
+  type: gmres
+    restart=50, using classical (unmodified) Gram-Schmidt orthogonalization with no iterative refinement
+    happy breakdown tolerance=1e-30
+  maximum iterations=1000, initial guess is zero
+  tolerances: relative=1e-12, absolute=1e-14, divergence=10000.
+  right preconditioning
+  using UNPRECONDITIONED norm type for convergence test
+PC Object: (phase1_spatial_tighter_solver_) 1 MPI process
+  type: jacobi
+    type DIAGONAL
+  linear system matrix, which is also used to construct the preconditioner:
+  Mat Object: (phase1_spatial_tighter_solver_) 1 MPI process
+    type: seqaij
+    rows=8450, cols=8450
+    total: nonzeros=190468, allocated nonzeros=190468
+    total number of mallocs used during MatSetValues calls=0
+      not using I-node routines
+  tighter_solver: final L2=3.164382599e-06, H1 seminorm=7.760551106e-04, checks=passed
+P2-n32: controls passed
+P1 l2_error, n=8->16: order=1.9725555173066145, checks=passed
+P1 h1_seminorm_error, n=8->16: order=0.9892652910495483, checks=passed
+P1 l2_error, n=16->32: order=1.9929902107327497, checks=passed
+P1 h1_seminorm_error, n=16->32: order=0.9972976100267142, checks=passed
+P2 l2_error, n=8->16: order=2.997254135191703, checks=passed
+P2 h1_seminorm_error, n=8->16: order=1.9876213886616294, checks=passed
+P2 l2_error, n=16->32: order=2.99919670360796, checks=passed
+P2 h1_seminorm_error, n=16->32: order=1.9967782595181642, checks=passed
+Exit status: 0
+TRANSIENT SPATIAL CHECKPOINT PASSED. Review before temporal-order or cost experiments.

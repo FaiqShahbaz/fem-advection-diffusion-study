@@ -1,0 +1,30 @@
+{
+  "raw_source": {
+    "path": "results/raw/rana-cost-20261021T114632Z-21462-serial.json",
+    "sha256": "ccf570180bdd2cc5865183938bca26ae7f24eae144ca8111172c57f106c3de6f"
+  },
+  "review": {
+    "path": "results/processed/rana_cost_review.json",
+    "sha256": "2bd038cc0e0cc5110ae51d4376f94ac60a46d71e0fe7d862a2555e462b9fb75b"
+  },
+  "processor": {
+    "path": "scripts/process_rana_cost.py",
+    "sha256": "4d215aa8f417610fe6815566198e438d6197e4aa8b4e65dc6785967295f742ff"
+  },
+  "plotting_inventory": {
+    "path": "environment/requirements-postprocessing-resolved.txt",
+    "sha256": "e7845de9d2dd08c397109b9cee73dd1caef3eaa7ed9f164dd9a64a2472582fbe"
+  },
+  "python": "/Users/faiq/Projects/fem-advection-diffusion/environment/build/postprocessing-venv/bin/python",
+  "python_version": "3.13.16",
+  "matplotlib_version": "3.10.7",
+  "regeneration_command": "/Users/faiq/Projects/fem-advection-diffusion/environment/build/postprocessing-venv/bin/python /Users/faiq/Projects/fem-advection-diffusion/scripts/process_rana_cost.py",
+  "output_sha256": {
+    "results/processed/rana-cost-20261021T114632Z-21462-table.json": "f36707e1376c77683a412d4077d79f3fa0e5aa4c82492c89fc94adfa12980454",
+    "results/processed/rana-cost-20261021T114632Z-21462-table.md": "b5f464b70c3c1f63906fbe7a985168da842498f5dcecc7a134a2ec524f5df937",
+    "results/figures/rana-cost-20261021T114632Z-21462.png": "a259a353f4a5c13d3ec4e12a13a811c945668be1b95f8a92485ade2f18386b4d",
+    "results/figures/rana-cost-20261021T114632Z-21462.svg": "dbdd7b1c5a23495146edc6955fe96ff541a308e9c543417001b6f54c38be8a15"
+  },
+  "processing_only": true,
+  "new_fem_experiment_run": false
+}

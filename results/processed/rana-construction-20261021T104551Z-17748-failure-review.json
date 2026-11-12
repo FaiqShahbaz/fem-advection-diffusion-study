@@ -1,0 +1,99 @@
+{
+  "status": "preserved failed RanaLD setup; residual-form retry prepared",
+  "rana_construction_verified": false,
+  "checkpoint_exit_status": 1,
+  "historical_source_commit": "c5cbf35f3aa1a9d1fe8faed645ffa2ff88095ac0",
+  "measurement_records": {
+    "serial": {
+      "path": "results/raw/rana-construction-20261021T104551Z-17748-serial.json",
+      "sha256": "f4980cd9fd5439b7d4e2b205b76d5f503832dfdbf94cec2e292e7d0d02d9eab9"
+    }
+  },
+  "historical_run_script_sha256": {
+    "src/phase3_rana_construction.py": "d48ca921b38d75536c04388998d6c42536fde565953c13a52c8bc7e67cba6e97",
+    "src/phase3_asm_construction.py": "a1a22df2a45b8a9b5e6eab21fddd90f8015a499e60c951bf0be6b32ed2d5f41b",
+    "environment/check_asm_construction.py": "21ffb46ecac6cd18724cc8be86f1d4425ffcf06d2577dfe749e4f4666120fa4f",
+    "src/phase3_asm_trajectory.py": "c6444e1e83a2eec9093d293801207c91b784ce0e5d8ab5f50ee67aeb375bc008",
+    "environment/check_asm_trajectory.py": "065329dd97c7b4c2f0db2e81dec4362a9a89dae5a0a779203381ae35c0b74130",
+    "src/phase3_asm_cost.py": "5874b190e6094fda1b8d978253b2d88462339ab11f65b48268ad275dacbc5c35",
+    "environment/check_asm_cost.py": "5c10a35f36a805620e77077bbd4935b53b93a7b736ce57d4143bdee426237909",
+    "src/phase3_accuracy_cost.py": "16e2dee7c150e101120c0f1f3fc601f8646849fc6162539b339e78b00944633f",
+    "environment/check_accuracy_cost.py": "fa44a01260232ba0dc796dfea0c789ccdaea9693d8d426e79d49cc8b9507c3e9",
+    "src/phase3_cost_pilot.py": "458bd6db1b81d2c1bfaf729fca511f01efec51e9141de2d14046bdad3fefba7c",
+    "environment/check_cost_pilot.py": "a2ab9e3d8e5e0333af9e49c44a649ac34750bbb59e4ca22c04e3766d75219dfa",
+    "src/phase2_temporal.py": "f54ca4d047b133c38ba321e5d1a4e74edd6b8ddc21c4263fe7f8726362728464",
+    "environment/check_temporal.py": "01384464231e023efe2158eb7deb834723abc237042123e0e64293bdaf7ed26b",
+    "src/phase0_be_smoke.py": "382567d3a9a2d51b09f3e42f4e5ed8f4db2e5273148e917f390609538b0c0480",
+    "src/phase0_irksome_be.py": "ec4f69af4e0ff160e1fc74ec965952d4aaf1f6853d9d3a3affc82ec099de3c68",
+    "src/phase0_radau_smoke.py": "0d93682d3f5d002cf98524fa1e67dd2a09f1f7aec7bd0c1db9454492f9c70b9a",
+    "src/phase1_interpolation.py": "c9b17b5701ccc3724e66a734628cf62b5c7eef0b67803a46e0a63ae39b982e69",
+    "src/phase1_spatial.py": "297617e318cb0d339ae2c9ddf94407abec7273b075dddec641fc5bda2498d391",
+    "environment/check_rana_construction.py": "7be1afe08c827bc919f0ea0cb0c1fc64851a9a428efd53dc70ba492152523c65",
+    "environment/check_spatial.py": "f88e2644a14eadf00f28999fd5f0baf1d7dd5dbc85fb274416cdbf020a9c5ceb",
+    "environment/check_interpolation.py": "6240abded7ef6902746b42f55542c94c8dfbdf07312bcd9fc7b33fa84077d759",
+    "environment/check_radau_smoke.py": "23df1fff453736a8e06dc345f533d61a106a754f02de62c6359a7be741d38ace",
+    "environment/check_irksome_be.py": "75cfad87a8c2c81cd8a025224acdb8ca3d7b9e270c17d13efa021c2bd554fcca",
+    "environment/check_be_smoke.py": "cf3e869775b23818f26aab3ff37051cdbb7154f168af3400001fc79f261070d8",
+    "environment/check_python_runtime.py": "d0784d5ba3fc156f7c78321a4772b638bf38689cfc46bc69aae4f6f93bcb73b3",
+    "environment/configure_petsc.py": "da97e917ff176d5a1d577b986622b36304441728180a5d57277a78e58698af02"
+  },
+  "independent_audit": {
+    "status": "preserved failed RanaLD setup; no Rana numerical result accepted",
+    "historical_source_commit": "c5cbf35f3aa1a9d1fe8faed645ffa2ff88095ac0",
+    "completed_physical_reference_solves": {
+      "irksome_jacobi": {
+        "iterations": 734,
+        "true_block_residual": {
+          "norm": 5.806515505434022e-13,
+          "rhs_norm": 0.05911796878920447,
+          "relative_norm": 9.821913073735966e-12
+        },
+        "nominal_target": 5.911796878920447e-13
+      },
+      "manual_jacobi_reference": {
+        "iterations": 800,
+        "true_block_residual": {
+          "norm": 5.796705363107841e-14,
+          "rhs_norm": 0.05911796878920447,
+          "relative_norm": 9.805318893443405e-13
+        },
+        "nominal_target": 5.911796878920447e-14
+      }
+    },
+    "failure_phase": "Python PC setup before first GMRES iteration",
+    "root_cause": "Two-argument trial/test weak form passed to installed RanaLD one-test-argument residual interface",
+    "rana_completed_steps": 0,
+    "rana_outer_iterations": 0,
+    "failed_iterate_accepted": false,
+    "secondary_diagnostic": "KSPBuildResidual failed because setup had not initialized the Krylov basis; no physical residual was obtained",
+    "numerical_environment_modified": false,
+    "configuration_changed": false,
+    "audit_limit": "Historical source/raw hashes and saved partial records audited without numerical imports or rerunning operations"
+  },
+  "repair": {
+    "description": "Use a state Function residual with one test argument in the Rana path; explicit arity guard; avoid uninitialized Krylov residual diagnostic",
+    "source_sha256": {
+      "src/phase3_rana_construction.py": "2fc4db50340c87b980b2bff1f60e8e89f78b19f930497b352825b5a700478bc8",
+      "environment/check_rana_construction.py": "a69fb15f91f0aea407e355baab681ddf7e7731536e5492734562d2a9401ab57e"
+    },
+    "numerical_retry_run_by_mentor": false,
+    "configuration_changed": false,
+    "installed_environment_changed": false
+  },
+  "audit_source": {
+    "path": "scripts/audit_rana_setup_failure.py",
+    "sha256": "2691ed95fa8aa7b691f6f8560610f6fbd8bd2c48b61d34f17a35edbdcd0ac6e8"
+  },
+  "failure_manifest": "results/raw/rana-construction-20261021T104551Z-17748-manifest.json",
+  "failure_manifest_sha256": "5230998eaf5e6ce756bba5a4648ab0069660193141b9f484d41fd1107dfd9239",
+  "failure_transcript": "results/raw/rana-construction-20261021T104551Z-17748.txt",
+  "failure_transcript_sha256": "dc534340dbf7efaddd27e017071684a802aca645cedffdde67197b456615d768",
+  "config": "configs/phase3_rana_construction.json",
+  "config_sha256": "33d3cd2e24c7a663f8d00f8bb1ca6f4f1ff49a75f61c96bb50adedc9cd8114f2",
+  "asm_cost_review": "results/processed/asm_cost_review.json",
+  "asm_cost_review_sha256": "645c9f79637cb43dc06ae4406c8e9ba7cf4cd6c77e9030d43e5b0b2f59d842fe",
+  "verified_environment": "environment/verified_environment.json",
+  "verified_environment_sha256": "c2441b3e78aa5f1f5cd5c1d50ba2160148991da35988eaa31ef4bd02d796fa36",
+  "installed_source_inspection": "environment/rana_source_inspection.json",
+  "installed_source_inspection_sha256": "483e1f2a1b9bac52b5f75a51964c68c05fb1bd91c2cbcacafc82024548e01caa"
+}

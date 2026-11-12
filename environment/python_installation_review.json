@@ -1,0 +1,47 @@
+{
+  "review_date": "2026-10-07",
+  "status": "Installation and dependency metadata accepted; runtime imports, vendor checks, and project FEM/Irksome checks pending",
+  "installation_manifest": "environment/records/python-install-20261007T123623Z-20763-manifest.json",
+  "installation_manifest_sha256": "78971080b241a1ee69c9384555277b4a960dab0aa6ed1eaa7afc3c0c8ff043aa",
+  "installation_transcript": "environment/records/python-install-20261007T123623Z-20763.txt",
+  "installation_transcript_sha256": "30bbc09431d4893965b217c37aabd6247e3b859e185bf2afef0c5e8d1205dced",
+  "pip_report": "environment/records/python-install-20261007T123623Z-20763-pip-report.json",
+  "pip_report_sha256": "9b41e45a2685b157089d61a5c92a6e9fac90660fc45382160155a3fc2afc7db0",
+  "candidate_inventory": "environment/records/python-install-20261007T123623Z-20763-packages.txt",
+  "candidate_inventory_sha256": "1efc25d3b0c190be29997ba521f32211b732d12235cfe91820ffead157f0bcde",
+  "python_plan_sha256": "5b41418c22b872fe7cddaeb55918cf52747c6d7c77dab77e02d0ed9ca7f7d173",
+  "requirements_sha256": "9125d30e943a33e10d29d77d44a00eb75aa953fe70ca91d54798603233a0f9d4",
+  "build_constraints_sha256": "15ed703a4c990550bb53e25b7d932a8aea607c98e12b96edb26ac12532e4781d",
+  "petsc_build_review": "environment/petsc_build_review.json",
+  "petsc_build_review_sha256": "e684f4769f64baed6cc2225a5450e1083a82a47cab7af6ecd657cdaa975d6ab7",
+  "installed_metadata": {
+    "executable": "/Users/faiq/Projects/fem-advection-diffusion/.venv/bin/python",
+    "prefix": "/Users/faiq/Projects/fem-advection-diffusion/.venv",
+    "base_prefix": "/opt/homebrew/opt/python@3.13/Frameworks/Python.framework/Versions/3.13",
+    "architecture": "arm64",
+    "versions": {
+      "firedrake": "2026.10.0",
+      "irksome": "2026.0.0",
+      "petsc4py": "3.26.0",
+      "mpi4py": "4.1.2",
+      "h5py": "3.16.0"
+    }
+  },
+  "checkpoint_exit_status": 0,
+  "pip_check_exit_status": 0,
+  "warning": {
+    "text": "pytools 2026.1.1 does not provide the extra siphash",
+    "metadata_observation": "pytools 2026.1.1 declares siphash24>=1.6 as a base dependency; siphash24 1.9 is installed; pip check passed",
+    "action": "Retain the warning; no dependency change before functional checks"
+  },
+  "upstream_checker": ".venv/bin/firedrake-check",
+  "upstream_checker_sha256": "76178c671cbfad0d62b8eb834e7b1c626254c3b2af19104725a416470127a1fa",
+  "upstream_checker_process_counts": [
+    1,
+    2,
+    3
+  ],
+  "planning_snapshot_note": "python_plan.json is preserved unchanged as the historical input whose hash the successful installation recorded. This review supersedes its pending status.",
+  "functional_checks_run_by_mentor": false,
+  "verified_environment_lock_created": false
+}

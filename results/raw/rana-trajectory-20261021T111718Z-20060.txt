@@ -1,0 +1,111 @@
+
+Working directory: /Users/faiq/Projects/fem-advection-diffusion
+Running: /Users/faiq/Projects/fem-advection-diffusion/.venv/bin/python /Users/faiq/Projects/fem-advection-diffusion/src/phase3_rana_trajectory.py --config /Users/faiq/Projects/fem-advection-diffusion/configs/phase3_rana_trajectory.json --output /Users/faiq/Projects/fem-advection-diffusion/results/raw/rana-trajectory-20261021T111718Z-20060-serial.json
+  rana_trajectory_original_jacobi: dt=0.1, steps=10, rtol=1.0e-11
+    rana_trajectory_original_jacobi: 10/10 steps checked, t=1.000000
+KSP Object: (phase1_spatial_rana_trajectory_original_jacobi_) 1 MPI process
+  type: gmres
+    restart=50, using classical (unmodified) Gram-Schmidt orthogonalization with no iterative refinement
+    happy breakdown tolerance=1e-30
+  maximum iterations=1000, initial guess is zero
+  tolerances: relative=1e-11, absolute=1e-13, divergence=10000.
+  right preconditioning
+  using UNPRECONDITIONED norm type for convergence test
+PC Object: (phase1_spatial_rana_trajectory_original_jacobi_) 1 MPI process
+  type: jacobi
+    type DIAGONAL
+  linear system matrix, which is also used to construct the preconditioner:
+  Mat Object: (phase1_spatial_rana_trajectory_original_jacobi_) 1 MPI process
+    type: seqaij
+    rows=2178, cols=2178
+    total: nonzeros=48132, allocated nonzeros=48132
+    total number of mallocs used during MatSetValues calls=0
+      not using I-node routines
+  rana_trajectory_original_jacobi: final L2=2.572717561e-05, H1 seminorm=3.097320824e-03, checks=passed
+KSP Object: (phase3_trajectory_rana_trajectory_reference_) 1 MPI process
+  type: gmres
+    restart=50, using classical (unmodified) Gram-Schmidt orthogonalization with no iterative refinement
+    happy breakdown tolerance=1e-30
+  maximum iterations=1000, initial guess is zero
+  tolerances: relative=1e-12, absolute=1e-14, divergence=10000.
+  right preconditioning
+  using UNPRECONDITIONED norm type for convergence test
+PC Object: (phase3_trajectory_rana_trajectory_reference_) 1 MPI process
+  type: jacobi
+    type DIAGONAL
+  linear system matrix, which is also used to construct the preconditioner:
+  Mat Object: (phase3_trajectory_rana_trajectory_reference_) 1 MPI process
+    type: seqaij
+    rows=2178, cols=2178
+    total: nonzeros=48132, allocated nonzeros=48132
+    total number of mallocs used during MatSetValues calls=0
+      not using I-node routines
+  rana_trajectory_reference: 10 steps passed; total GMRES iterations=7973
+KSP Object: (phase3_rana_trajectory_residual_jacobi_) 1 MPI process
+  type: gmres
+    restart=50, using classical (unmodified) Gram-Schmidt orthogonalization with no iterative refinement
+    happy breakdown tolerance=1e-30
+  maximum iterations=1000, initial guess is zero
+  tolerances: relative=1e-11, absolute=1e-13, divergence=10000.
+  right preconditioning
+  using UNPRECONDITIONED norm type for convergence test
+PC Object: (phase3_rana_trajectory_residual_jacobi_) 1 MPI process
+  type: jacobi
+    type DIAGONAL
+  linear system matrix, which is also used to construct the preconditioner:
+  Mat Object: (phase3_rana_trajectory_residual_jacobi_) 1 MPI process
+    type: seqaij
+    rows=2178, cols=2178
+    total: nonzeros=48132, allocated nonzeros=48132
+    total number of mallocs used during MatSetValues calls=0
+      not using I-node routines
+  residual_jacobi: 10 steps checked; total outer GMRES iterations=7258
+KSP Object: (phase3_rana_trajectory_rana_ld_) 1 MPI process
+  type: gmres
+    restart=50, using classical (unmodified) Gram-Schmidt orthogonalization with no iterative refinement
+    happy breakdown tolerance=1e-30
+  maximum iterations=1000, initial guess is zero
+  tolerances: relative=1e-11, absolute=1e-13, divergence=10000.
+  right preconditioning
+  using UNPRECONDITIONED norm type for convergence test
+PC Object: (phase3_rana_trajectory_rana_ld_) 1 MPI process
+  type: python
+    Python: irksome.RanaLD
+  Firedrake custom preconditioner RanaLD
+  PC to apply inverse
+  PC Object: (phase3_rana_trajectory_rana_ld_aux_) 1 MPI process
+    type: lu
+      out-of-place factorization
+      tolerance for zero pivot 2.22045e-14
+      matrix ordering: rcm
+      factor fill ratio given 5., needed 4.63813
+        Factored matrix:
+          Mat Object: (phase3_rana_trajectory_rana_ld_aux_) 1 MPI process
+            type: seqaij
+            rows=2178, cols=2178
+            package used to perform factorization: petsc
+            total: nonzeros=167432, allocated nonzeros=167432
+              not using I-node routines
+    linear system matrix, followed by the matrix used to construct the preconditioner:
+    Mat Object: (phase3_rana_trajectory_rana_ld_) 1 MPI process
+      type: seqaij
+      rows=2178, cols=2178
+      total: nonzeros=48132, allocated nonzeros=48132
+      total number of mallocs used during MatSetValues calls=0
+        not using I-node routines
+    Mat Object: (phase3_rana_trajectory_rana_ld_aux_) 1 MPI process
+      type: seqaij
+      rows=2178, cols=2178
+      total: nonzeros=36099, allocated nonzeros=36099
+      total number of mallocs used during MatSetValues calls=0
+        not using I-node routines
+  linear system matrix, which is also used to construct the preconditioner:
+  Mat Object: (phase3_rana_trajectory_rana_ld_) 1 MPI process
+    type: seqaij
+    rows=2178, cols=2178
+    total: nonzeros=48132, allocated nonzeros=48132
+    total number of mallocs used during MatSetValues calls=0
+      not using I-node routines
+  rana_ld: 10 steps checked; total outer GMRES iterations=70
+Exit status: 0
+RANA TRAJECTORY CHECKPOINT PASSED. Review before repeated timing experiments.

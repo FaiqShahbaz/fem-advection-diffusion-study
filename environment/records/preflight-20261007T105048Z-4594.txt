@@ -1,0 +1,37 @@
+Phase 0 prerequisite diagnostic
+UTC: 2026-10-07T10:50:48Z
+Status: tool selection only; numerical stack NOT functionally verified
+
+Architecture and OS
+arm64
+ProductName:		macOS
+ProductVersion:		27.0
+BuildVersion:		26A428
+/Library/Developer/CommandLineTools
+
+Selected programs
+python3: /Users/faiq/miniforge3/envs/main/bin/python3
+brew: /opt/homebrew/bin/brew
+mpicc: NOT FOUND
+mpiexec: /Applications/ParaView-6.0.1.app/Contents/bin/mpiexec
+git: /opt/homebrew/bin/git
+gh: /opt/homebrew/bin/gh
+
+Selected Python metadata and package discovery
+Executable: /Users/faiq/miniforge3/envs/main/bin/python3
+Version: 3.11.14
+Process architecture: arm64
+Inside virtual environment: False
+firedrake: not discoverable
+petsc4py: not discoverable
+mpi4py: not discoverable
+irksome: not discoverable
+
+Relevant installed Homebrew formulae (local listing only)
+None of the listed numerical prerequisites found.
+
+Git version
+git version 2.51.1
+
+Next: review this report with your mentor before installation.
+No MPI launcher was executed. No numerical package was imported.

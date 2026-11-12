@@ -1,0 +1,50 @@
+{
+  "accessed_date": "2026-10-22",
+  "purpose": "Primary-source context and bibliography verification; experiment claims use local raw/review records",
+  "sources": [
+    {
+      "title": "Firedrake and PyOP2 publications",
+      "url": "https://www.firedrakeproject.org/publications.html",
+      "supports": "Firedrake publication metadata and software role"
+    },
+    {
+      "title": "Irksome: Automating Runge--Kutta time-stepping for finite element methods",
+      "url": "https://arxiv.org/abs/2006.16282",
+      "supports": "Original Irksome stage-form generation and Firedrake integration"
+    },
+    {
+      "title": "Extending Irksome",
+      "url": "https://arxiv.org/abs/2403.08084v2",
+      "supports": "Existing stage formulations and preconditioning tools; v2 revised February 2025"
+    },
+    {
+      "title": "A New Block Preconditioner for Implicit Runge-Kutta Methods for Parabolic PDE Problems",
+      "url": "https://arxiv.org/abs/2010.11377v2",
+      "supports": "Prior LDU-family method and heat/advection-diffusion tests with scalable subsolves"
+    },
+    {
+      "title": "Rana/Howle/et al preconditioning",
+      "url": "https://www.firedrakeproject.org/Irksome/demos/demo_heat_rana.py.html",
+      "supports": "Official RanaLD auxiliary-tableau demonstration; our full-auxiliary LU differs from its fieldsplit/multigrid setup"
+    },
+    {
+      "title": "Solving Ordinary Differential Equations II",
+      "url": "https://link.springer.com/book/10.1007/978-3-642-05221-7",
+      "supports": "Hairer/Wanner second-edition 1996 metadata and stiff Runge-Kutta theory context"
+    },
+    {
+      "title": "PETSc KSPGMRES",
+      "url": "https://petsc.org/release/manualpages/KSP/KSPGMRES/",
+      "supports": "Restarted GMRES and supported preconditioning sides"
+    },
+    {
+      "title": "PETSc PCASM",
+      "url": "https://petsc.org/release/manualpages/PC/PCASM/",
+      "supports": "Basic ASM, block/overlap/local composition settings"
+    }
+  ],
+  "limits": [
+    "Online pages can change; installed implementation sources remain separately hash-pinned.",
+    "Bibliographic context is not a novelty assessment or an exhaustive literature review."
+  ]
+}

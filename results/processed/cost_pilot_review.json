@@ -1,0 +1,863 @@
+{
+  "reviewed_utc": "2026-10-18T12:09:44.457463+00:00",
+  "status": "accepted timing instrumentation and solution equivalence pilot",
+  "checkpoint_exit_status": 0,
+  "pilot_manifest": "results/raw/cost-pilot-20261018T120233Z-81068-manifest.json",
+  "pilot_manifest_sha256": "3612e8aea570c1564f4c4fe7f7f7ebd3f6d8b4af96f7ec2d1c74b6c718dd0e80",
+  "pilot_transcript": "results/raw/cost-pilot-20261018T120233Z-81068.txt",
+  "pilot_transcript_sha256": "27392d2eac89de06c1db16971641e8b4f0edc2975ead65337dd75cd646b523ad",
+  "config": "configs/phase3_cost_pilot.json",
+  "config_sha256": "c058914bc0a1480e86e92ec77b4650f2f234789d336fac0ecde10be6e441ccc6",
+  "temporal_review": "results/processed/temporal_review.json",
+  "temporal_review_sha256": "ff2bbef3cd1cd8b55f595f12e4adfb0794e009948650208a74c89ce7afa16bb9",
+  "verified_environment": "environment/verified_environment.json",
+  "verified_environment_sha256": "c2441b3e78aa5f1f5cd5c1d50ba2160148991da35988eaa31ef4bd02d796fa36",
+  "code_commit": "c9eba1144bb05d4273650ade591fd0d7224029e7",
+  "working_tree_status_before_run": "",
+  "measurement_records": {
+    "serial": {
+      "path": "results/raw/cost-pilot-20261018T120233Z-81068-serial.json",
+      "sha256": "fa5bf90211ed4711179694f22eb72f332829e7dbe761b382ad0dfed0324ef4d0"
+    }
+  },
+  "run_script_sha256": {
+    "src/phase3_cost_pilot.py": "458bd6db1b81d2c1bfaf729fca511f01efec51e9141de2d14046bdad3fefba7c",
+    "src/phase2_temporal.py": "f54ca4d047b133c38ba321e5d1a4e74edd6b8ddc21c4263fe7f8726362728464",
+    "environment/check_temporal.py": "01384464231e023efe2158eb7deb834723abc237042123e0e64293bdaf7ed26b",
+    "src/phase0_be_smoke.py": "382567d3a9a2d51b09f3e42f4e5ed8f4db2e5273148e917f390609538b0c0480",
+    "src/phase0_irksome_be.py": "ec4f69af4e0ff160e1fc74ec965952d4aaf1f6853d9d3a3affc82ec099de3c68",
+    "src/phase0_radau_smoke.py": "0d93682d3f5d002cf98524fa1e67dd2a09f1f7aec7bd0c1db9454492f9c70b9a",
+    "src/phase1_interpolation.py": "c9b17b5701ccc3724e66a734628cf62b5c7eef0b67803a46e0a63ae39b982e69",
+    "src/phase1_spatial.py": "297617e318cb0d339ae2c9ddf94407abec7273b075dddec641fc5bda2498d391",
+    "environment/check_cost_pilot.py": "a2ab9e3d8e5e0333af9e49c44a649ac34750bbb59e4ca22c04e3766d75219dfa",
+    "environment/check_spatial.py": "f88e2644a14eadf00f28999fd5f0baf1d7dd5dbc85fb274416cdbf020a9c5ceb",
+    "environment/check_interpolation.py": "6240abded7ef6902746b42f55542c94c8dfbdf07312bcd9fc7b33fa84077d759",
+    "environment/check_radau_smoke.py": "23df1fff453736a8e06dc345f533d61a106a754f02de62c6359a7be741d38ace",
+    "environment/check_irksome_be.py": "75cfad87a8c2c81cd8a025224acdb8ca3d7b9e270c17d13efa021c2bd554fcca",
+    "environment/check_be_smoke.py": "cf3e869775b23818f26aab3ff37051cdbb7154f168af3400001fc79f261070d8",
+    "environment/check_python_runtime.py": "d0784d5ba3fc156f7c78321a4772b638bf38689cfc46bc69aae4f6f93bcb73b3",
+    "environment/configure_petsc.py": "da97e917ff176d5a1d577b986622b36304441728180a5d57277a78e58698af02"
+  },
+  "audit_source": {
+    "path": "scripts/audit_cost_pilot.py",
+    "sha256": "88c127c1ef600dc92d961347a9f5aaac23b2ed9fd1f082606f4c38b8e685f644"
+  },
+  "independent_audit": {
+    "audit": "passed",
+    "trajectories": 10,
+    "steps": 200,
+    "extrema": {
+      "max_true_residual_over_target": 0.9916275814539328,
+      "max_update_or_stiff_defect": 6.748760217036894e-17,
+      "max_field_equivalence_difference": 0.0
+    },
+    "timing_summary": {
+      "manual_backward_euler": {
+        "wall_median": 0.056258834010805,
+        "wall_min": 0.05517829200834967,
+        "wall_max": 0.059559165994869545,
+        "range_over_median": 0.07786997479682013
+      },
+      "RadauIIA": {
+        "wall_median": 0.3096572089998517,
+        "wall_min": 0.30768416699720547,
+        "wall_max": 0.31159483300871216,
+        "range_over_median": 0.012629016531336638
+      }
+    },
+    "power_source": "Battery Power",
+    "numerical_modules_loaded": []
+  },
+  "study": {
+    "space": "CG P2",
+    "mesh_subdivisions": 16,
+    "total_dofs": 1089,
+    "velocity": [
+      1.0,
+      1.0
+    ],
+    "diffusion": 1.0,
+    "dt": 0.05,
+    "final_time": 1.0
+  },
+  "timing_scope": "Warm code/cache; fresh operators and solvers per trajectory; construction plus all steps; excludes imports/shared mesh/verification/printing/I-O/destruction; includes profiling and small step counters",
+  "timing_summary": {
+    "manual_backward_euler": {
+      "repetitions": 3,
+      "construction_seconds": {
+        "values": [
+          0.004203165997751057,
+          0.003321708005387336,
+          0.003394875006051734
+        ],
+        "minimum": 0.003321708005387336,
+        "median": 0.003394875006051734,
+        "maximum": 0.004203165997751057
+      },
+      "first_step_seconds": {
+        "values": [
+          0.003886666992912069,
+          0.003147124996758066,
+          0.0032677080016583204
+        ],
+        "minimum": 0.003147124996758066,
+        "median": 0.0032677080016583204,
+        "maximum": 0.003886666992912069
+      },
+      "remaining_steps_seconds": {
+        "values": [
+          0.051459538997733034,
+          0.04870066398871131,
+          0.04958679202536587
+        ],
+        "minimum": 0.04870066398871131,
+        "median": 0.04958679202536587,
+        "maximum": 0.051459538997733034
+      },
+      "trajectory_wall_seconds": {
+        "values": [
+          0.059559165994869545,
+          0.05517829200834967,
+          0.056258834010805
+        ],
+        "minimum": 0.05517829200834967,
+        "median": 0.056258834010805,
+        "maximum": 0.059559165994869545
+      }
+    },
+    "RadauIIA": {
+      "repetitions": 3,
+      "construction_seconds": {
+        "values": [
+          0.012625625007785857,
+          0.012143333995481953,
+          0.012276458000997081
+        ],
+        "minimum": 0.012143333995481953,
+        "median": 0.012276458000997081,
+        "maximum": 0.012625625007785857
+      },
+      "first_step_seconds": {
+        "values": [
+          0.017629334004595876,
+          0.017811875004554167,
+          0.017628500005230308
+        ],
+        "minimum": 0.017628500005230308,
+        "median": 0.017629334004595876,
+        "maximum": 0.017811875004554167
+      },
+      "remaining_steps_seconds": {
+        "values": [
+          0.27741854298801627,
+          0.2796912500198232,
+          0.2816769570345059
+        ],
+        "minimum": 0.27741854298801627,
+        "median": 0.2796912500198232,
+        "maximum": 0.2816769570345059
+      },
+      "trajectory_wall_seconds": {
+        "values": [
+          0.30768416699720547,
+          0.3096572089998517,
+          0.31159483300871216
+        ],
+        "minimum": 0.30768416699720547,
+        "median": 0.3096572089998517,
+        "maximum": 0.31159483300871216
+      }
+    }
+  },
+  "power_source": "Battery Power",
+  "power_interpretation": "Accept correctness/instrumentation. Preserve battery timings as preliminary pilot observations; formal cost run requires AC power.",
+  "trajectory_summaries": {
+    "manual_backward_euler_verified": {
+      "role": "verified_baseline",
+      "method": "manual_backward_euler",
+      "dt": 0.05,
+      "completed_steps": 20,
+      "total_iterations": 3140,
+      "maximum_step_iterations": 157,
+      "actual_solver": {
+        "ksp_type": "gmres",
+        "pc_type": "jacobi",
+        "side": "right",
+        "norm": "unpreconditioned",
+        "rtol": 1e-11,
+        "atol": 1e-13,
+        "divtol": 10000.0,
+        "max_it": 1000,
+        "requested_restart": 50,
+        "actual_restart_evidence": "KSP view in transcript"
+      }
+    },
+    "RadauIIA_verified": {
+      "role": "verified_baseline",
+      "method": "RadauIIA",
+      "dt": 0.05,
+      "completed_steps": 20,
+      "total_iterations": 9648,
+      "maximum_step_iterations": 489,
+      "actual_solver": {
+        "ksp_type": "gmres",
+        "pc_type": "jacobi",
+        "side": "right",
+        "norm": "unpreconditioned",
+        "rtol": 1e-11,
+        "atol": 1e-13,
+        "divtol": 10000.0,
+        "max_it": 1000,
+        "requested_restart": 50,
+        "actual_restart_evidence": "KSP view in transcript"
+      }
+    },
+    "manual_backward_euler_warmup0": {
+      "role": "warmup",
+      "method": "manual_backward_euler",
+      "dt": 0.05,
+      "completed_steps": 20,
+      "total_iterations": 3140,
+      "maximum_step_iterations": 157,
+      "actual_solver": {
+        "ksp_type": "gmres",
+        "pc_type": "jacobi",
+        "side": "right",
+        "norm": "unpreconditioned",
+        "rtol": 1e-11,
+        "atol": 1e-13,
+        "divtol": 10000.0,
+        "max_it": 1000,
+        "requested_restart": 50,
+        "actual_restart_evidence": "KSP view in transcript"
+      },
+      "timing": {
+        "construction_seconds": 0.003538250006386079,
+        "first_step_seconds": 0.0032892500021262094,
+        "remaining_steps_seconds": 0.04917299700900912,
+        "trajectory_wall_seconds": 0.05601170800218824,
+        "loop_bookkeeping_seconds": 1.1210984666831791e-05,
+        "petsc_event_deltas": {
+          "KSPSolve": {
+            "count": 20,
+            "time": 0.033226000000000866,
+            "flops": 430224300.0
+          },
+          "KSPSetUp": {
+            "count": 20,
+            "time": 1.0000000000065512e-05,
+            "flops": 0.0
+          },
+          "PCSetUp": {
+            "count": 1,
+            "time": 9.999999996956888e-07,
+            "flops": 0.0
+          },
+          "PCApply": {
+            "count": 3220,
+            "time": 0.0008370000000041955,
+            "flops": 3506580.0
+          }
+        },
+        "petsc_event_interpretation": "Inclusive nested event times; do not add them or add to wall time"
+      },
+      "equivalence": {
+        "l2_error": {
+          "actual_field_difference": 0.0,
+          "baseline_field_norm": 0.18418278807442878,
+          "allowed_difference": 1.9418278807442878e-11
+        },
+        "h1_seminorm_error": {
+          "actual_field_difference": 0.0,
+          "baseline_field_norm": 0.8183084432780473,
+          "allowed_difference": 8.283084432780473e-11
+        }
+      },
+      "final_equation_check": {
+        "equation": "(M+dt L) U_new = M U_old + dt F(T)",
+        "true_residual": {
+          "norm": 1.2120043163391116e-13,
+          "rhs_norm": 0.013256274401183989,
+          "relative_norm": 9.142872874077358e-12
+        },
+        "source_times": [
+          1.0
+        ],
+        "nominal_target": 1.3256274401183988e-13,
+        "allowance_factor": 10.0,
+        "status": "passed"
+      }
+    },
+    "RadauIIA_warmup0": {
+      "role": "warmup",
+      "method": "RadauIIA",
+      "dt": 0.05,
+      "completed_steps": 20,
+      "total_iterations": 9648,
+      "maximum_step_iterations": 489,
+      "actual_solver": {
+        "ksp_type": "gmres",
+        "pc_type": "jacobi",
+        "side": "right",
+        "norm": "unpreconditioned",
+        "rtol": 1e-11,
+        "atol": 1e-13,
+        "divtol": 10000.0,
+        "max_it": 1000,
+        "requested_restart": 50,
+        "actual_restart_evidence": "KSP view in transcript"
+      },
+      "timing": {
+        "construction_seconds": 0.01580275000014808,
+        "first_step_seconds": 0.019769416001508944,
+        "remaining_steps_seconds": 0.2759190429642331,
+        "trajectory_wall_seconds": 0.3115021669946145,
+        "loop_bookkeeping_seconds": 1.095802872441709e-05,
+        "petsc_event_deltas": {
+          "KSPSolve": {
+            "count": 20,
+            "time": 0.2749019999999991,
+            "flops": 3147398359.0
+          },
+          "KSPSetUp": {
+            "count": 20,
+            "time": 2.0000000000131024e-05,
+            "flops": 0.0
+          },
+          "PCSetUp": {
+            "count": 1,
+            "time": 9.999999992515995e-07,
+            "flops": 0.0
+          },
+          "PCApply": {
+            "count": 9848,
+            "time": 0.003880000000003214,
+            "flops": 21448944.0
+          }
+        },
+        "petsc_event_interpretation": "Inclusive nested event times; do not add them or add to wall time"
+      },
+      "equivalence": {
+        "l2_error": {
+          "actual_field_difference": 0.0,
+          "baseline_field_norm": 0.1839366095810924,
+          "allowed_difference": 1.939366095810924e-11
+        },
+        "h1_seminorm_error": {
+          "actual_field_difference": 0.0,
+          "baseline_field_norm": 0.8172146861516519,
+          "allowed_difference": 8.27214686151652e-11
+        }
+      },
+      "final_equation_check": {
+        "equation": "(delta_ij M+dt A_ij L) Z_j = F(t_old+c_i dt)-L U_old",
+        "true_residual": {
+          "norm": 1.6086733744693882e-13,
+          "rhs_norm": 0.0162225861239159,
+          "relative_norm": 9.916257261213279e-12
+        },
+        "source_times": [
+          0.9666666666666668,
+          1.0
+        ],
+        "update_identity_l2": 2.7792813176583734e-17,
+        "stiff_accuracy_l2": 2.7792813176583734e-17,
+        "slope_boundary_trace_l2": [
+          0.0,
+          0.0
+        ],
+        "nominal_target": 1.6222586123915899e-13,
+        "allowance_factor": 10.0,
+        "status": "passed"
+      }
+    },
+    "manual_backward_euler_measured1": {
+      "role": "measured",
+      "method": "manual_backward_euler",
+      "dt": 0.05,
+      "completed_steps": 20,
+      "total_iterations": 3140,
+      "maximum_step_iterations": 157,
+      "actual_solver": {
+        "ksp_type": "gmres",
+        "pc_type": "jacobi",
+        "side": "right",
+        "norm": "unpreconditioned",
+        "rtol": 1e-11,
+        "atol": 1e-13,
+        "divtol": 10000.0,
+        "max_it": 1000,
+        "requested_restart": 50,
+        "actual_restart_evidence": "KSP view in transcript"
+      },
+      "timing": {
+        "construction_seconds": 0.004203165997751057,
+        "first_step_seconds": 0.003886666992912069,
+        "remaining_steps_seconds": 0.051459538997733034,
+        "trajectory_wall_seconds": 0.059559165994869545,
+        "loop_bookkeeping_seconds": 9.794006473384798e-06,
+        "petsc_event_deltas": {
+          "KSPSolve": {
+            "count": 20,
+            "time": 0.03548700000000249,
+            "flops": 430224300.0
+          },
+          "KSPSetUp": {
+            "count": 20,
+            "time": 1.4000000000180535e-05,
+            "flops": 0.0
+          },
+          "PCSetUp": {
+            "count": 1,
+            "time": 1.000000000139778e-06,
+            "flops": 0.0
+          },
+          "PCApply": {
+            "count": 3220,
+            "time": 0.0008430000000032578,
+            "flops": 3506580.0
+          }
+        },
+        "petsc_event_interpretation": "Inclusive nested event times; do not add them or add to wall time"
+      },
+      "equivalence": {
+        "l2_error": {
+          "actual_field_difference": 0.0,
+          "baseline_field_norm": 0.18418278807442878,
+          "allowed_difference": 1.9418278807442878e-11
+        },
+        "h1_seminorm_error": {
+          "actual_field_difference": 0.0,
+          "baseline_field_norm": 0.8183084432780473,
+          "allowed_difference": 8.283084432780473e-11
+        }
+      },
+      "final_equation_check": {
+        "equation": "(M+dt L) U_new = M U_old + dt F(T)",
+        "true_residual": {
+          "norm": 1.2120043163391116e-13,
+          "rhs_norm": 0.013256274401183989,
+          "relative_norm": 9.142872874077358e-12
+        },
+        "source_times": [
+          1.0
+        ],
+        "nominal_target": 1.3256274401183988e-13,
+        "allowance_factor": 10.0,
+        "status": "passed"
+      }
+    },
+    "RadauIIA_measured1": {
+      "role": "measured",
+      "method": "RadauIIA",
+      "dt": 0.05,
+      "completed_steps": 20,
+      "total_iterations": 9648,
+      "maximum_step_iterations": 489,
+      "actual_solver": {
+        "ksp_type": "gmres",
+        "pc_type": "jacobi",
+        "side": "right",
+        "norm": "unpreconditioned",
+        "rtol": 1e-11,
+        "atol": 1e-13,
+        "divtol": 10000.0,
+        "max_it": 1000,
+        "requested_restart": 50,
+        "actual_restart_evidence": "KSP view in transcript"
+      },
+      "timing": {
+        "construction_seconds": 0.012625625007785857,
+        "first_step_seconds": 0.017629334004595876,
+        "remaining_steps_seconds": 0.27741854298801627,
+        "trajectory_wall_seconds": 0.30768416699720547,
+        "loop_bookkeeping_seconds": 1.0664996807463467e-05,
+        "petsc_event_deltas": {
+          "KSPSolve": {
+            "count": 20,
+            "time": 0.274733000000003,
+            "flops": 3147398359.0
+          },
+          "KSPSetUp": {
+            "count": 20,
+            "time": 1.699999999971169e-05,
+            "flops": 0.0
+          },
+          "PCSetUp": {
+            "count": 1,
+            "time": 1.000000000139778e-06,
+            "flops": 0.0
+          },
+          "PCApply": {
+            "count": 9848,
+            "time": 0.0038559999999900896,
+            "flops": 21448944.0
+          }
+        },
+        "petsc_event_interpretation": "Inclusive nested event times; do not add them or add to wall time"
+      },
+      "equivalence": {
+        "l2_error": {
+          "actual_field_difference": 0.0,
+          "baseline_field_norm": 0.1839366095810924,
+          "allowed_difference": 1.939366095810924e-11
+        },
+        "h1_seminorm_error": {
+          "actual_field_difference": 0.0,
+          "baseline_field_norm": 0.8172146861516519,
+          "allowed_difference": 8.27214686151652e-11
+        }
+      },
+      "final_equation_check": {
+        "equation": "(delta_ij M+dt A_ij L) Z_j = F(t_old+c_i dt)-L U_old",
+        "true_residual": {
+          "norm": 1.6086733744693882e-13,
+          "rhs_norm": 0.0162225861239159,
+          "relative_norm": 9.916257261213279e-12
+        },
+        "source_times": [
+          0.9666666666666668,
+          1.0
+        ],
+        "update_identity_l2": 2.7792813176583734e-17,
+        "stiff_accuracy_l2": 2.7792813176583734e-17,
+        "slope_boundary_trace_l2": [
+          0.0,
+          0.0
+        ],
+        "nominal_target": 1.6222586123915899e-13,
+        "allowance_factor": 10.0,
+        "status": "passed"
+      }
+    },
+    "RadauIIA_measured2": {
+      "role": "measured",
+      "method": "RadauIIA",
+      "dt": 0.05,
+      "completed_steps": 20,
+      "total_iterations": 9648,
+      "maximum_step_iterations": 489,
+      "actual_solver": {
+        "ksp_type": "gmres",
+        "pc_type": "jacobi",
+        "side": "right",
+        "norm": "unpreconditioned",
+        "rtol": 1e-11,
+        "atol": 1e-13,
+        "divtol": 10000.0,
+        "max_it": 1000,
+        "requested_restart": 50,
+        "actual_restart_evidence": "KSP view in transcript"
+      },
+      "timing": {
+        "construction_seconds": 0.012143333995481953,
+        "first_step_seconds": 0.017811875004554167,
+        "remaining_steps_seconds": 0.2796912500198232,
+        "trajectory_wall_seconds": 0.3096572089998517,
+        "loop_bookkeeping_seconds": 1.074997999239713e-05,
+        "petsc_event_deltas": {
+          "KSPSolve": {
+            "count": 20,
+            "time": 0.2772239999999986,
+            "flops": 3147398359.0
+          },
+          "KSPSetUp": {
+            "count": 20,
+            "time": 5.000000001587068e-06,
+            "flops": 0.0
+          },
+          "PCSetUp": {
+            "count": 1,
+            "time": 9.999999992515995e-07,
+            "flops": 0.0
+          },
+          "PCApply": {
+            "count": 9848,
+            "time": 0.003862000000083299,
+            "flops": 21448944.0
+          }
+        },
+        "petsc_event_interpretation": "Inclusive nested event times; do not add them or add to wall time"
+      },
+      "equivalence": {
+        "l2_error": {
+          "actual_field_difference": 0.0,
+          "baseline_field_norm": 0.1839366095810924,
+          "allowed_difference": 1.939366095810924e-11
+        },
+        "h1_seminorm_error": {
+          "actual_field_difference": 0.0,
+          "baseline_field_norm": 0.8172146861516519,
+          "allowed_difference": 8.27214686151652e-11
+        }
+      },
+      "final_equation_check": {
+        "equation": "(delta_ij M+dt A_ij L) Z_j = F(t_old+c_i dt)-L U_old",
+        "true_residual": {
+          "norm": 1.6086733744693882e-13,
+          "rhs_norm": 0.0162225861239159,
+          "relative_norm": 9.916257261213279e-12
+        },
+        "source_times": [
+          0.9666666666666668,
+          1.0
+        ],
+        "update_identity_l2": 2.7792813176583734e-17,
+        "stiff_accuracy_l2": 2.7792813176583734e-17,
+        "slope_boundary_trace_l2": [
+          0.0,
+          0.0
+        ],
+        "nominal_target": 1.6222586123915899e-13,
+        "allowance_factor": 10.0,
+        "status": "passed"
+      }
+    },
+    "manual_backward_euler_measured2": {
+      "role": "measured",
+      "method": "manual_backward_euler",
+      "dt": 0.05,
+      "completed_steps": 20,
+      "total_iterations": 3140,
+      "maximum_step_iterations": 157,
+      "actual_solver": {
+        "ksp_type": "gmres",
+        "pc_type": "jacobi",
+        "side": "right",
+        "norm": "unpreconditioned",
+        "rtol": 1e-11,
+        "atol": 1e-13,
+        "divtol": 10000.0,
+        "max_it": 1000,
+        "requested_restart": 50,
+        "actual_restart_evidence": "KSP view in transcript"
+      },
+      "timing": {
+        "construction_seconds": 0.003321708005387336,
+        "first_step_seconds": 0.003147124996758066,
+        "remaining_steps_seconds": 0.04870066398871131,
+        "trajectory_wall_seconds": 0.05517829200834967,
+        "loop_bookkeeping_seconds": 8.795017492957413e-06,
+        "petsc_event_deltas": {
+          "KSPSolve": {
+            "count": 20,
+            "time": 0.03317999999999088,
+            "flops": 430224300.0
+          },
+          "KSPSetUp": {
+            "count": 20,
+            "time": 9.999999999621423e-06,
+            "flops": 0.0
+          },
+          "PCSetUp": {
+            "count": 1,
+            "time": 0.0,
+            "flops": 0.0
+          },
+          "PCApply": {
+            "count": 3220,
+            "time": 0.0008260000000017698,
+            "flops": 3506580.0
+          }
+        },
+        "petsc_event_interpretation": "Inclusive nested event times; do not add them or add to wall time"
+      },
+      "equivalence": {
+        "l2_error": {
+          "actual_field_difference": 0.0,
+          "baseline_field_norm": 0.18418278807442878,
+          "allowed_difference": 1.9418278807442878e-11
+        },
+        "h1_seminorm_error": {
+          "actual_field_difference": 0.0,
+          "baseline_field_norm": 0.8183084432780473,
+          "allowed_difference": 8.283084432780473e-11
+        }
+      },
+      "final_equation_check": {
+        "equation": "(M+dt L) U_new = M U_old + dt F(T)",
+        "true_residual": {
+          "norm": 1.2120043163391116e-13,
+          "rhs_norm": 0.013256274401183989,
+          "relative_norm": 9.142872874077358e-12
+        },
+        "source_times": [
+          1.0
+        ],
+        "nominal_target": 1.3256274401183988e-13,
+        "allowance_factor": 10.0,
+        "status": "passed"
+      }
+    },
+    "manual_backward_euler_measured3": {
+      "role": "measured",
+      "method": "manual_backward_euler",
+      "dt": 0.05,
+      "completed_steps": 20,
+      "total_iterations": 3140,
+      "maximum_step_iterations": 157,
+      "actual_solver": {
+        "ksp_type": "gmres",
+        "pc_type": "jacobi",
+        "side": "right",
+        "norm": "unpreconditioned",
+        "rtol": 1e-11,
+        "atol": 1e-13,
+        "divtol": 10000.0,
+        "max_it": 1000,
+        "requested_restart": 50,
+        "actual_restart_evidence": "KSP view in transcript"
+      },
+      "timing": {
+        "construction_seconds": 0.003394875006051734,
+        "first_step_seconds": 0.0032677080016583204,
+        "remaining_steps_seconds": 0.04958679202536587,
+        "trajectory_wall_seconds": 0.056258834010805,
+        "loop_bookkeeping_seconds": 9.458977729082108e-06,
+        "petsc_event_deltas": {
+          "KSPSolve": {
+            "count": 20,
+            "time": 0.03391699999999709,
+            "flops": 430224300.0
+          },
+          "KSPSetUp": {
+            "count": 20,
+            "time": 5.999999999062311e-06,
+            "flops": 0.0
+          },
+          "PCSetUp": {
+            "count": 1,
+            "time": 1.0000000010279564e-06,
+            "flops": 0.0
+          },
+          "PCApply": {
+            "count": 3220,
+            "time": 0.0008030000000154303,
+            "flops": 3506580.0
+          }
+        },
+        "petsc_event_interpretation": "Inclusive nested event times; do not add them or add to wall time"
+      },
+      "equivalence": {
+        "l2_error": {
+          "actual_field_difference": 0.0,
+          "baseline_field_norm": 0.18418278807442878,
+          "allowed_difference": 1.9418278807442878e-11
+        },
+        "h1_seminorm_error": {
+          "actual_field_difference": 0.0,
+          "baseline_field_norm": 0.8183084432780473,
+          "allowed_difference": 8.283084432780473e-11
+        }
+      },
+      "final_equation_check": {
+        "equation": "(M+dt L) U_new = M U_old + dt F(T)",
+        "true_residual": {
+          "norm": 1.2120043163391116e-13,
+          "rhs_norm": 0.013256274401183989,
+          "relative_norm": 9.142872874077358e-12
+        },
+        "source_times": [
+          1.0
+        ],
+        "nominal_target": 1.3256274401183988e-13,
+        "allowance_factor": 10.0,
+        "status": "passed"
+      }
+    },
+    "RadauIIA_measured3": {
+      "role": "measured",
+      "method": "RadauIIA",
+      "dt": 0.05,
+      "completed_steps": 20,
+      "total_iterations": 9648,
+      "maximum_step_iterations": 489,
+      "actual_solver": {
+        "ksp_type": "gmres",
+        "pc_type": "jacobi",
+        "side": "right",
+        "norm": "unpreconditioned",
+        "rtol": 1e-11,
+        "atol": 1e-13,
+        "divtol": 10000.0,
+        "max_it": 1000,
+        "requested_restart": 50,
+        "actual_restart_evidence": "KSP view in transcript"
+      },
+      "timing": {
+        "construction_seconds": 0.012276458000997081,
+        "first_step_seconds": 0.017628500005230308,
+        "remaining_steps_seconds": 0.2816769570345059,
+        "trajectory_wall_seconds": 0.31159483300871216,
+        "loop_bookkeeping_seconds": 1.2917967978864908e-05,
+        "petsc_event_deltas": {
+          "KSPSolve": {
+            "count": 20,
+            "time": 0.27776400000000656,
+            "flops": 3147398359.0
+          },
+          "KSPSetUp": {
+            "count": 20,
+            "time": 2.1999999997746045e-05,
+            "flops": 0.0
+          },
+          "PCSetUp": {
+            "count": 1,
+            "time": 9.999999992515995e-07,
+            "flops": 0.0
+          },
+          "PCApply": {
+            "count": 9848,
+            "time": 0.0038970000000055904,
+            "flops": 21448944.0
+          }
+        },
+        "petsc_event_interpretation": "Inclusive nested event times; do not add them or add to wall time"
+      },
+      "equivalence": {
+        "l2_error": {
+          "actual_field_difference": 0.0,
+          "baseline_field_norm": 0.1839366095810924,
+          "allowed_difference": 1.939366095810924e-11
+        },
+        "h1_seminorm_error": {
+          "actual_field_difference": 0.0,
+          "baseline_field_norm": 0.8172146861516519,
+          "allowed_difference": 8.27214686151652e-11
+        }
+      },
+      "final_equation_check": {
+        "equation": "(delta_ij M+dt A_ij L) Z_j = F(t_old+c_i dt)-L U_old",
+        "true_residual": {
+          "norm": 1.6086733744693882e-13,
+          "rhs_norm": 0.0162225861239159,
+          "relative_norm": 9.916257261213279e-12
+        },
+        "source_times": [
+          0.9666666666666668,
+          1.0
+        ],
+        "update_identity_l2": 2.7792813176583734e-17,
+        "stiff_accuracy_l2": 2.7792813176583734e-17,
+        "slope_boundary_trace_l2": [
+          0.0,
+          0.0
+        ],
+        "nominal_target": 1.6222586123915899e-13,
+        "allowance_factor": 10.0,
+        "status": "passed"
+      }
+    }
+  },
+  "timing_instrumentation_verified": true,
+  "solution_equivalence_verified": true,
+  "performance_measurement": true,
+  "accuracy_cost_ranking_established": false,
+  "limits": [
+    "One fixed dt and small serial mesh with three repetitions and warm code/cache",
+    "Battery power; do not pool these timings with future AC measurements",
+    "PCSetUp times at zero or about one microsecond are below useful resolution for a speed claim",
+    "Nested event times are inclusive; KSPSetUp calls do not imply repeated PC construction",
+    "No equal-accuracy cost ranking, broad robustness or novelty claim"
+  ]
+}

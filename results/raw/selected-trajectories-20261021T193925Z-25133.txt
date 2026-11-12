@@ -1,0 +1,412 @@
+
+Working directory: /Users/faiq/Projects/fem-advection-diffusion
+Running: /Users/faiq/Projects/fem-advection-diffusion/.venv/bin/python /Users/faiq/Projects/fem-advection-diffusion/src/phase3_selected_trajectories.py --config /Users/faiq/Projects/fem-advection-diffusion/configs/phase3_selected_trajectories.json --output /Users/faiq/Projects/fem-advection-diffusion/results/raw/selected-trajectories-20261021T193925Z-25133-serial.json
+KSP Object: (phase3_selected_reference_baseline_) 1 MPI process
+  type: preonly
+  maximum iterations=10000, initial guess is zero
+  tolerances: relative=1e-05, absolute=1e-50, divergence=10000.
+  left preconditioning
+  not checking for convergence
+PC Object: (phase3_selected_reference_baseline_) 1 MPI process
+  type: lu
+    out-of-place factorization
+    tolerance for zero pivot 2.22045e-14
+    matrix ordering: rcm
+    factor fill ratio given 5., needed 4.63908
+      Factored matrix:
+        Mat Object: (phase3_selected_reference_baseline_) 1 MPI process
+          type: seqaij
+          rows=2178, cols=2178
+          package used to perform factorization: petsc
+          total: nonzeros=223288, allocated nonzeros=223288
+            not using I-node routines
+  linear system matrix, which is also used to construct the preconditioner:
+  Mat Object: 1 MPI process
+    type: seqaij
+    rows=2178, cols=2178
+    total: nonzeros=48132, allocated nonzeros=48132
+    total number of mallocs used during MatSetValues calls=0
+      not using I-node routines
+  baseline / physical LU reference: ten steps verified
+KSP Object: (phase3_selected_baseline_Jacobi_) 1 MPI process
+  type: gmres
+    restart=50, using classical (unmodified) Gram-Schmidt orthogonalization with no iterative refinement
+    happy breakdown tolerance=1e-30
+  maximum iterations=1000, initial guess is zero
+  tolerances: relative=1e-11, absolute=1e-13, divergence=10000.
+  right preconditioning
+  using UNPRECONDITIONED norm type for convergence test
+PC Object: (phase3_selected_baseline_Jacobi_) 1 MPI process
+  type: jacobi
+    type DIAGONAL
+  linear system matrix, which is also used to construct the preconditioner:
+  Mat Object: (phase3_selected_baseline_Jacobi_) 1 MPI process
+    type: seqaij
+    rows=2178, cols=2178
+    total: nonzeros=48132, allocated nonzeros=48132
+    total number of mallocs used during MatSetValues calls=0
+      not using I-node routines
+  baseline / Jacobi: ten steps verified; outer iterations=7258
+KSP Object: (phase3_selected_baseline_ASM_) 1 MPI process
+  type: gmres
+    restart=50, using classical (unmodified) Gram-Schmidt orthogonalization with no iterative refinement
+    happy breakdown tolerance=1e-30
+  maximum iterations=1000, initial guess is zero
+  tolerances: relative=1e-11, absolute=1e-13, divergence=10000.
+  right preconditioning
+  using UNPRECONDITIONED norm type for convergence test
+PC Object: (phase3_selected_baseline_ASM_) 1 MPI process
+  type: asm
+    total subdomain blocks = 4, amount of overlap = 1
+    restriction/interpolation type - BASIC
+    Local solver information for first block is in the following KSP and PC objects on rank 0:
+    Use -phase3_selected_baseline_ASM_ksp_view ::ascii_info_detail to display information for all blocks
+    KSP Object: (phase3_selected_baseline_ASM_sub_) 1 MPI process
+      type: preonly
+      maximum iterations=10000, initial guess is zero
+      tolerances: relative=1e-05, absolute=1e-50, divergence=10000.
+      left preconditioning
+      not checking for convergence
+    PC Object: (phase3_selected_baseline_ASM_sub_) 1 MPI process
+      type: ilu
+        out-of-place factorization
+        0 levels of fill
+        tolerance for zero pivot 2.22045e-14
+        matrix ordering: rcm
+        factor fill ratio given 1., needed 1.
+          Factored matrix:
+            Mat Object: (phase3_selected_baseline_ASM_sub_) 1 MPI process
+              type: seqaij
+              rows=1248, cols=1248
+              package used to perform factorization: petsc
+              total: nonzeros=27192, allocated nonzeros=27192
+                not using I-node routines
+      linear system matrix, which is also used to construct the preconditioner:
+      Mat Object: (phase3_selected_baseline_ASM_sub_) 1 MPI process
+        type: seqaij
+        rows=1248, cols=1248
+        total: nonzeros=27192, allocated nonzeros=27192
+        total number of mallocs used during MatSetValues calls=0
+          not using I-node routines
+  linear system matrix, which is also used to construct the preconditioner:
+  Mat Object: (phase3_selected_baseline_ASM_) 1 MPI process
+    type: seqaij
+    rows=2178, cols=2178
+    total: nonzeros=48132, allocated nonzeros=48132
+    total number of mallocs used during MatSetValues calls=0
+      not using I-node routines
+  baseline / ASM: ten steps verified; outer iterations=600
+KSP Object: (phase3_selected_baseline_RanaLD_) 1 MPI process
+  type: gmres
+    restart=50, using classical (unmodified) Gram-Schmidt orthogonalization with no iterative refinement
+    happy breakdown tolerance=1e-30
+  maximum iterations=1000, initial guess is zero
+  tolerances: relative=1e-11, absolute=1e-13, divergence=10000.
+  right preconditioning
+  using UNPRECONDITIONED norm type for convergence test
+PC Object: (phase3_selected_baseline_RanaLD_) 1 MPI process
+  type: python
+    Python: irksome.RanaLD
+  Firedrake custom preconditioner RanaLD
+  PC to apply inverse
+  PC Object: (phase3_selected_baseline_RanaLD_aux_) 1 MPI process
+    type: lu
+      out-of-place factorization
+      tolerance for zero pivot 2.22045e-14
+      matrix ordering: rcm
+      factor fill ratio given 5., needed 4.63813
+        Factored matrix:
+          Mat Object: (phase3_selected_baseline_RanaLD_aux_) 1 MPI process
+            type: seqaij
+            rows=2178, cols=2178
+            package used to perform factorization: petsc
+            total: nonzeros=167432, allocated nonzeros=167432
+              not using I-node routines
+    linear system matrix, followed by the matrix used to construct the preconditioner:
+    Mat Object: (phase3_selected_baseline_RanaLD_) 1 MPI process
+      type: seqaij
+      rows=2178, cols=2178
+      total: nonzeros=48132, allocated nonzeros=48132
+      total number of mallocs used during MatSetValues calls=0
+        not using I-node routines
+    Mat Object: (phase3_selected_baseline_RanaLD_aux_) 1 MPI process
+      type: seqaij
+      rows=2178, cols=2178
+      total: nonzeros=36099, allocated nonzeros=36099
+      total number of mallocs used during MatSetValues calls=0
+        not using I-node routines
+  linear system matrix, which is also used to construct the preconditioner:
+  Mat Object: (phase3_selected_baseline_RanaLD_) 1 MPI process
+    type: seqaij
+    rows=2178, cols=2178
+    total: nonzeros=48132, allocated nonzeros=48132
+    total number of mallocs used during MatSetValues calls=0
+      not using I-node routines
+  baseline / RanaLD: ten steps verified; outer iterations=70
+KSP Object: (phase3_selected_reference_mesh_refined_) 1 MPI process
+  type: preonly
+  maximum iterations=10000, initial guess is zero
+  tolerances: relative=1e-05, absolute=1e-50, divergence=10000.
+  left preconditioning
+  not checking for convergence
+PC Object: (phase3_selected_reference_mesh_refined_) 1 MPI process
+  type: lu
+    out-of-place factorization
+    tolerance for zero pivot 2.22045e-14
+    matrix ordering: rcm
+    factor fill ratio given 5., needed 8.36537
+      Factored matrix:
+        Mat Object: (phase3_selected_reference_mesh_refined_) 1 MPI process
+          type: seqaij
+          rows=8450, cols=8450
+          package used to perform factorization: petsc
+          total: nonzeros=1593336, allocated nonzeros=1593336
+            not using I-node routines
+  linear system matrix, which is also used to construct the preconditioner:
+  Mat Object: 1 MPI process
+    type: seqaij
+    rows=8450, cols=8450
+    total: nonzeros=190468, allocated nonzeros=190468
+    total number of mallocs used during MatSetValues calls=0
+      not using I-node routines
+  mesh_refined / physical LU reference: ten steps verified
+KSP Object: (phase3_selected_mesh_refined_ASM_) 1 MPI process
+  type: gmres
+    restart=50, using classical (unmodified) Gram-Schmidt orthogonalization with no iterative refinement
+    happy breakdown tolerance=1e-30
+  maximum iterations=1000, initial guess is zero
+  tolerances: relative=1e-11, absolute=1e-13, divergence=10000.
+  right preconditioning
+  using UNPRECONDITIONED norm type for convergence test
+PC Object: (phase3_selected_mesh_refined_ASM_) 1 MPI process
+  type: asm
+    total subdomain blocks = 4, amount of overlap = 1
+    restriction/interpolation type - BASIC
+    Local solver information for first block is in the following KSP and PC objects on rank 0:
+    Use -phase3_selected_mesh_refined_ASM_ksp_view ::ascii_info_detail to display information for all blocks
+    KSP Object: (phase3_selected_mesh_refined_ASM_sub_) 1 MPI process
+      type: preonly
+      maximum iterations=10000, initial guess is zero
+      tolerances: relative=1e-05, absolute=1e-50, divergence=10000.
+      left preconditioning
+      not checking for convergence
+    PC Object: (phase3_selected_mesh_refined_ASM_sub_) 1 MPI process
+      type: ilu
+        out-of-place factorization
+        0 levels of fill
+        tolerance for zero pivot 2.22045e-14
+        matrix ordering: rcm
+        factor fill ratio given 1., needed 1.
+          Factored matrix:
+            Mat Object: (phase3_selected_mesh_refined_ASM_sub_) 1 MPI process
+              type: seqaij
+              rows=4544, cols=4544
+              package used to perform factorization: petsc
+              total: nonzeros=101560, allocated nonzeros=101560
+                not using I-node routines
+      linear system matrix, which is also used to construct the preconditioner:
+      Mat Object: (phase3_selected_mesh_refined_ASM_sub_) 1 MPI process
+        type: seqaij
+        rows=4544, cols=4544
+        total: nonzeros=101560, allocated nonzeros=101560
+        total number of mallocs used during MatSetValues calls=0
+          not using I-node routines
+  linear system matrix, which is also used to construct the preconditioner:
+  Mat Object: (phase3_selected_mesh_refined_ASM_) 1 MPI process
+    type: seqaij
+    rows=8450, cols=8450
+    total: nonzeros=190468, allocated nonzeros=190468
+    total number of mallocs used during MatSetValues calls=0
+      not using I-node routines
+  mesh_refined / ASM: ten steps verified; outer iterations=1500
+KSP Object: (phase3_selected_mesh_refined_RanaLD_) 1 MPI process
+  type: gmres
+    restart=50, using classical (unmodified) Gram-Schmidt orthogonalization with no iterative refinement
+    happy breakdown tolerance=1e-30
+  maximum iterations=1000, initial guess is zero
+  tolerances: relative=1e-11, absolute=1e-13, divergence=10000.
+  right preconditioning
+  using UNPRECONDITIONED norm type for convergence test
+PC Object: (phase3_selected_mesh_refined_RanaLD_) 1 MPI process
+  type: python
+    Python: irksome.RanaLD
+  Firedrake custom preconditioner RanaLD
+  PC to apply inverse
+  PC Object: (phase3_selected_mesh_refined_RanaLD_aux_) 1 MPI process
+    type: lu
+      out-of-place factorization
+      tolerance for zero pivot 2.22045e-14
+      matrix ordering: rcm
+      factor fill ratio given 5., needed 8.36491
+        Factored matrix:
+          Mat Object: (phase3_selected_mesh_refined_RanaLD_aux_) 1 MPI process
+            type: seqaij
+            rows=8450, cols=8450
+            package used to perform factorization: petsc
+            total: nonzeros=1194936, allocated nonzeros=1194936
+              not using I-node routines
+    linear system matrix, followed by the matrix used to construct the preconditioner:
+    Mat Object: (phase3_selected_mesh_refined_RanaLD_) 1 MPI process
+      type: seqaij
+      rows=8450, cols=8450
+      total: nonzeros=190468, allocated nonzeros=190468
+      total number of mallocs used during MatSetValues calls=0
+        not using I-node routines
+    Mat Object: (phase3_selected_mesh_refined_RanaLD_aux_) 1 MPI process
+      type: seqaij
+      rows=8450, cols=8450
+      total: nonzeros=142851, allocated nonzeros=142851
+      total number of mallocs used during MatSetValues calls=0
+        not using I-node routines
+  linear system matrix, which is also used to construct the preconditioner:
+  Mat Object: (phase3_selected_mesh_refined_RanaLD_) 1 MPI process
+    type: seqaij
+    rows=8450, cols=8450
+    total: nonzeros=190468, allocated nonzeros=190468
+    total number of mallocs used during MatSetValues calls=0
+      not using I-node routines
+  mesh_refined / RanaLD: ten steps verified; outer iterations=70
+KSP Object: (phase3_selected_reference_lower_diffusion_) 1 MPI process
+  type: preonly
+  maximum iterations=10000, initial guess is zero
+  tolerances: relative=1e-05, absolute=1e-50, divergence=10000.
+  left preconditioning
+  not checking for convergence
+PC Object: (phase3_selected_reference_lower_diffusion_) 1 MPI process
+  type: lu
+    out-of-place factorization
+    tolerance for zero pivot 2.22045e-14
+    matrix ordering: rcm
+    factor fill ratio given 5., needed 4.63908
+      Factored matrix:
+        Mat Object: (phase3_selected_reference_lower_diffusion_) 1 MPI process
+          type: seqaij
+          rows=2178, cols=2178
+          package used to perform factorization: petsc
+          total: nonzeros=223288, allocated nonzeros=223288
+            not using I-node routines
+  linear system matrix, which is also used to construct the preconditioner:
+  Mat Object: 1 MPI process
+    type: seqaij
+    rows=2178, cols=2178
+    total: nonzeros=48132, allocated nonzeros=48132
+    total number of mallocs used during MatSetValues calls=0
+      not using I-node routines
+  lower_diffusion / physical LU reference: ten steps verified
+KSP Object: (phase3_selected_lower_diffusion_Jacobi_) 1 MPI process
+  type: gmres
+    restart=50, using classical (unmodified) Gram-Schmidt orthogonalization with no iterative refinement
+    happy breakdown tolerance=1e-30
+  maximum iterations=1000, initial guess is zero
+  tolerances: relative=1e-11, absolute=1e-13, divergence=10000.
+  right preconditioning
+  using UNPRECONDITIONED norm type for convergence test
+PC Object: (phase3_selected_lower_diffusion_Jacobi_) 1 MPI process
+  type: jacobi
+    type DIAGONAL
+  linear system matrix, which is also used to construct the preconditioner:
+  Mat Object: (phase3_selected_lower_diffusion_Jacobi_) 1 MPI process
+    type: seqaij
+    rows=2178, cols=2178
+    total: nonzeros=48132, allocated nonzeros=48132
+    total number of mallocs used during MatSetValues calls=0
+      not using I-node routines
+  lower_diffusion / Jacobi: ten steps verified; outer iterations=2280
+KSP Object: (phase3_selected_lower_diffusion_ASM_) 1 MPI process
+  type: gmres
+    restart=50, using classical (unmodified) Gram-Schmidt orthogonalization with no iterative refinement
+    happy breakdown tolerance=1e-30
+  maximum iterations=1000, initial guess is zero
+  tolerances: relative=1e-11, absolute=1e-13, divergence=10000.
+  right preconditioning
+  using UNPRECONDITIONED norm type for convergence test
+PC Object: (phase3_selected_lower_diffusion_ASM_) 1 MPI process
+  type: asm
+    total subdomain blocks = 4, amount of overlap = 1
+    restriction/interpolation type - BASIC
+    Local solver information for first block is in the following KSP and PC objects on rank 0:
+    Use -phase3_selected_lower_diffusion_ASM_ksp_view ::ascii_info_detail to display information for all blocks
+    KSP Object: (phase3_selected_lower_diffusion_ASM_sub_) 1 MPI process
+      type: preonly
+      maximum iterations=10000, initial guess is zero
+      tolerances: relative=1e-05, absolute=1e-50, divergence=10000.
+      left preconditioning
+      not checking for convergence
+    PC Object: (phase3_selected_lower_diffusion_ASM_sub_) 1 MPI process
+      type: ilu
+        out-of-place factorization
+        0 levels of fill
+        tolerance for zero pivot 2.22045e-14
+        matrix ordering: rcm
+        factor fill ratio given 1., needed 1.
+          Factored matrix:
+            Mat Object: (phase3_selected_lower_diffusion_ASM_sub_) 1 MPI process
+              type: seqaij
+              rows=1248, cols=1248
+              package used to perform factorization: petsc
+              total: nonzeros=27192, allocated nonzeros=27192
+                not using I-node routines
+      linear system matrix, which is also used to construct the preconditioner:
+      Mat Object: (phase3_selected_lower_diffusion_ASM_sub_) 1 MPI process
+        type: seqaij
+        rows=1248, cols=1248
+        total: nonzeros=27192, allocated nonzeros=27192
+        total number of mallocs used during MatSetValues calls=0
+          not using I-node routines
+  linear system matrix, which is also used to construct the preconditioner:
+  Mat Object: (phase3_selected_lower_diffusion_ASM_) 1 MPI process
+    type: seqaij
+    rows=2178, cols=2178
+    total: nonzeros=48132, allocated nonzeros=48132
+    total number of mallocs used during MatSetValues calls=0
+      not using I-node routines
+  lower_diffusion / ASM: ten steps verified; outer iterations=350
+KSP Object: (phase3_selected_lower_diffusion_RanaLD_) 1 MPI process
+  type: gmres
+    restart=50, using classical (unmodified) Gram-Schmidt orthogonalization with no iterative refinement
+    happy breakdown tolerance=1e-30
+  maximum iterations=1000, initial guess is zero
+  tolerances: relative=1e-11, absolute=1e-13, divergence=10000.
+  right preconditioning
+  using UNPRECONDITIONED norm type for convergence test
+PC Object: (phase3_selected_lower_diffusion_RanaLD_) 1 MPI process
+  type: python
+    Python: irksome.RanaLD
+  Firedrake custom preconditioner RanaLD
+  PC to apply inverse
+  PC Object: (phase3_selected_lower_diffusion_RanaLD_aux_) 1 MPI process
+    type: lu
+      out-of-place factorization
+      tolerance for zero pivot 2.22045e-14
+      matrix ordering: rcm
+      factor fill ratio given 5., needed 4.63813
+        Factored matrix:
+          Mat Object: (phase3_selected_lower_diffusion_RanaLD_aux_) 1 MPI process
+            type: seqaij
+            rows=2178, cols=2178
+            package used to perform factorization: petsc
+            total: nonzeros=167432, allocated nonzeros=167432
+              not using I-node routines
+    linear system matrix, followed by the matrix used to construct the preconditioner:
+    Mat Object: (phase3_selected_lower_diffusion_RanaLD_) 1 MPI process
+      type: seqaij
+      rows=2178, cols=2178
+      total: nonzeros=48132, allocated nonzeros=48132
+      total number of mallocs used during MatSetValues calls=0
+        not using I-node routines
+    Mat Object: (phase3_selected_lower_diffusion_RanaLD_aux_) 1 MPI process
+      type: seqaij
+      rows=2178, cols=2178
+      total: nonzeros=36099, allocated nonzeros=36099
+      total number of mallocs used during MatSetValues calls=0
+        not using I-node routines
+  linear system matrix, which is also used to construct the preconditioner:
+  Mat Object: (phase3_selected_lower_diffusion_RanaLD_) 1 MPI process
+    type: seqaij
+    rows=2178, cols=2178
+    total: nonzeros=48132, allocated nonzeros=48132
+    total number of mallocs used during MatSetValues calls=0
+      not using I-node routines
+  lower_diffusion / RanaLD: ten steps verified; outer iterations=80
+Exit status: 0
+SELECTED TRAJECTORY RECORDS SAVED. Review full-trajectory outcomes and reuse before timing.

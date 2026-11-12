@@ -1,0 +1,53 @@
+
+Working directory: /Users/faiq/Projects/fem-advection-diffusion
+Running: /Users/faiq/Projects/fem-advection-diffusion/.venv/bin/python /Users/faiq/Projects/fem-advection-diffusion/src/phase0_radau_smoke.py --config /Users/faiq/Projects/fem-advection-diffusion/configs/phase0_radau_smoke.json --expected-size 1 --output /Users/faiq/Projects/fem-advection-diffusion/environment/records/radau-smoke-20261008T105209Z-34329-serial.json
+KSP Object: (phase0_radau_) 1 MPI process
+  type: gmres
+    restart=50, using classical (unmodified) Gram-Schmidt orthogonalization with no iterative refinement
+    happy breakdown tolerance=1e-30
+  maximum iterations=200, initial guess is zero
+  tolerances: relative=1e-11, absolute=1e-13, divergence=10000.
+  right preconditioning
+  using UNPRECONDITIONED norm type for convergence test
+PC Object: (phase0_radau_) 1 MPI process
+  type: jacobi
+    type DIAGONAL
+  linear system matrix, which is also used to construct the preconditioner:
+  Mat Object: (phase0_radau_) 1 MPI process
+    type: seqaij
+    rows=162, cols=162
+    total: nonzeros=1988, allocated nonzeros=1988
+    total number of mallocs used during MatSetValues calls=0
+      not using I-node routines
+Radau IIA: two coupled slopes, 162 total stage coefficients, dt=0.01.
+GMRES iterations=28, independent block relative residual=9.430773e-12.
+Update/stiff-accuracy L2 defects=1.799369e-17/1.799369e-17.
+Final continuum L2 error=1.664914e-02; order/cost verification remains future work.
+Exit status: 0
+
+Working directory: /Users/faiq/Projects/fem-advection-diffusion
+Running: /opt/homebrew/opt/open-mpi/bin/mpiexec -n 2 /Users/faiq/Projects/fem-advection-diffusion/.venv/bin/python /Users/faiq/Projects/fem-advection-diffusion/src/phase0_radau_smoke.py --config /Users/faiq/Projects/fem-advection-diffusion/configs/phase0_radau_smoke.json --expected-size 2 --output /Users/faiq/Projects/fem-advection-diffusion/environment/records/radau-smoke-20261008T105209Z-34329-two-rank.json
+KSP Object: (phase0_radau_) 2 MPI processes
+  type: gmres
+    restart=50, using classical (unmodified) Gram-Schmidt orthogonalization with no iterative refinement
+    happy breakdown tolerance=1e-30
+  maximum iterations=200, initial guess is zero
+  tolerances: relative=1e-11, absolute=1e-13, divergence=10000.
+  right preconditioning
+  using UNPRECONDITIONED norm type for convergence test
+PC Object: (phase0_radau_) 2 MPI processes
+  type: jacobi
+    type DIAGONAL
+  linear system matrix, which is also used to construct the preconditioner:
+  Mat Object: (phase0_radau_) 2 MPI processes
+    type: mpiaij
+    rows=162, cols=162
+    total: nonzeros=1988, allocated nonzeros=1988
+    total number of mallocs used during MatSetValues calls=0
+      not using I-node (on process 0) routines
+Radau IIA: two coupled slopes, 162 total stage coefficients, dt=0.01.
+GMRES iterations=28, independent block relative residual=9.430954e-12.
+Update/stiff-accuracy L2 defects=1.765734e-17/1.765734e-17.
+Final continuum L2 error=1.664914e-02; order/cost verification remains future work.
+Exit status: 0
+RADAU COUPLED CHECKPOINT PASSED. Review before convergence or timing experiments.

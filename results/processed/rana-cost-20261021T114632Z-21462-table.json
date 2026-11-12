@@ -1,0 +1,493 @@
+{
+  "raw_source": {
+    "path": "results/raw/rana-cost-20261021T114632Z-21462-serial.json",
+    "sha256": "ccf570180bdd2cc5865183938bca26ae7f24eae144ca8111172c57f106c3de6f"
+  },
+  "accepted_review": "results/processed/rana_cost_review.json",
+  "rows": [
+    {
+      "trajectory": "Jacobi_measured1",
+      "case_id": "Jacobi",
+      "total_iterations": 7258,
+      "timing": {
+        "construction_seconds": 0.009714875021018088,
+        "first_step_seconds": 0.02503120800247416,
+        "remaining_steps_seconds": 0.1966693329741247,
+        "trajectory_wall_seconds": 0.23142845800612122,
+        "loop_bookkeeping_seconds": 1.3042008504271507e-05,
+        "petsc_event_deltas": {
+          "KSPSolve": {
+            "count": 10,
+            "time": 0.21113600000000154,
+            "flops": 2378511929.0
+          },
+          "KSPSetUp": {
+            "count": 10,
+            "time": 4.999999999810711e-06,
+            "flops": 0.0
+          },
+          "PCSetUp": {
+            "count": 1,
+            "time": 1.000000000139778e-06,
+            "flops": 0.0
+          },
+          "PCApply": {
+            "count": 7408,
+            "time": 0.0029540000000016775,
+            "flops": 16134624.0
+          },
+          "MatSolve": {
+            "count": 0,
+            "time": 0.0,
+            "flops": 0.0
+          },
+          "MatLUFactorSym": {
+            "count": 0,
+            "time": 0.0,
+            "flops": 0.0
+          },
+          "MatLUFactorNum": {
+            "count": 0,
+            "time": 0.0,
+            "flops": 0.0
+          }
+        },
+        "interpretation": "Construction plus ten advances; setup/assembly may occur lazily in the first advance; nested event times are inclusive, not additive"
+      },
+      "equivalence": {
+        "l2_error": {
+          "actual_field_difference": 0.0,
+          "baseline_field_norm": 0.1839343202503933,
+          "allowed_difference": 1.939343202503933e-11
+        },
+        "h1_seminorm_error": {
+          "actual_field_difference": 0.0,
+          "baseline_field_norm": 0.8172045148516984,
+          "allowed_difference": 8.272045148516985e-11
+        }
+      },
+      "auxiliary_solver": null
+    },
+    {
+      "trajectory": "RanaLD_measured1",
+      "case_id": "RanaLD",
+      "total_iterations": 70,
+      "timing": {
+        "construction_seconds": 0.00965104199713096,
+        "first_step_seconds": 0.016932375001488253,
+        "remaining_steps_seconds": 0.016063498944276944,
+        "trajectory_wall_seconds": 0.04265879199374467,
+        "loop_bookkeeping_seconds": 1.1876050848513842e-05,
+        "petsc_event_deltas": {
+          "KSPSolve": {
+            "count": 10,
+            "time": 0.012249999999999872,
+            "flops": 41793752.0
+          },
+          "KSPSetUp": {
+            "count": 10,
+            "time": 4.999999999810711e-06,
+            "flops": 0.0
+          },
+          "PCSetUp": {
+            "count": 2,
+            "time": 0.012528000000000539,
+            "flops": 15517150.0
+          },
+          "PCApply": {
+            "count": 80,
+            "time": 0.010918999999999457,
+            "flops": 31897532.0
+          },
+          "MatSolve": {
+            "count": 80,
+            "time": 0.008679000000002546,
+            "flops": 26614880.0
+          },
+          "MatLUFactorSym": {
+            "count": 1,
+            "time": 0.0008650000000001157,
+            "flops": 0.0
+          },
+          "MatLUFactorNum": {
+            "count": 1,
+            "time": 0.0010729999999998796,
+            "flops": 5282652.0
+          }
+        },
+        "interpretation": "Construction plus ten advances; setup/assembly may occur lazily in the first advance; nested event times are inclusive, not additive"
+      },
+      "equivalence": {
+        "l2_error": {
+          "actual_field_difference": 0.0,
+          "baseline_field_norm": 0.18393432025026363,
+          "allowed_difference": 1.9393432025026363e-11
+        },
+        "h1_seminorm_error": {
+          "actual_field_difference": 0.0,
+          "baseline_field_norm": 0.8172045148511219,
+          "allowed_difference": 8.272045148511219e-11
+        }
+      },
+      "auxiliary_solver": {
+        "pc_type": "lu",
+        "factor_solver_type": "petsc",
+        "factor_nonzeros": 167432.0,
+        "inner_krylov_solve": false
+      }
+    },
+    {
+      "trajectory": "RanaLD_measured2",
+      "case_id": "RanaLD",
+      "total_iterations": 70,
+      "timing": {
+        "construction_seconds": 0.009634499991079792,
+        "first_step_seconds": 0.016892749990802258,
+        "remaining_steps_seconds": 0.016924042050959542,
+        "trajectory_wall_seconds": 0.04346583297592588,
+        "loop_bookkeeping_seconds": 1.4540943084284663e-05,
+        "petsc_event_deltas": {
+          "KSPSolve": {
+            "count": 10,
+            "time": 0.012605999999999007,
+            "flops": 41793752.0
+          },
+          "KSPSetUp": {
+            "count": 10,
+            "time": 4.999999999810711e-06,
+            "flops": 0.0
+          },
+          "PCSetUp": {
+            "count": 2,
+            "time": 0.012449999999998518,
+            "flops": 15517150.0
+          },
+          "PCApply": {
+            "count": 80,
+            "time": 0.011225000000001373,
+            "flops": 31897532.0
+          },
+          "MatSolve": {
+            "count": 80,
+            "time": 0.008915999999997481,
+            "flops": 26614880.0
+          },
+          "MatLUFactorSym": {
+            "count": 1,
+            "time": 0.0008710000000000662,
+            "flops": 0.0
+          },
+          "MatLUFactorNum": {
+            "count": 1,
+            "time": 0.001106999999999303,
+            "flops": 5282652.0
+          }
+        },
+        "interpretation": "Construction plus ten advances; setup/assembly may occur lazily in the first advance; nested event times are inclusive, not additive"
+      },
+      "equivalence": {
+        "l2_error": {
+          "actual_field_difference": 0.0,
+          "baseline_field_norm": 0.18393432025026363,
+          "allowed_difference": 1.9393432025026363e-11
+        },
+        "h1_seminorm_error": {
+          "actual_field_difference": 0.0,
+          "baseline_field_norm": 0.8172045148511219,
+          "allowed_difference": 8.272045148511219e-11
+        }
+      },
+      "auxiliary_solver": {
+        "pc_type": "lu",
+        "factor_solver_type": "petsc",
+        "factor_nonzeros": 167432.0,
+        "inner_krylov_solve": false
+      }
+    },
+    {
+      "trajectory": "Jacobi_measured2",
+      "case_id": "Jacobi",
+      "total_iterations": 7258,
+      "timing": {
+        "construction_seconds": 0.009872082999208942,
+        "first_step_seconds": 0.024997917003929615,
+        "remaining_steps_seconds": 0.19693824902060442,
+        "trajectory_wall_seconds": 0.23182437499053776,
+        "loop_bookkeeping_seconds": 1.6125966794788837e-05,
+        "petsc_event_deltas": {
+          "KSPSolve": {
+            "count": 10,
+            "time": 0.210994000000003,
+            "flops": 2378511929.0
+          },
+          "KSPSetUp": {
+            "count": 10,
+            "time": 1.3000000000040757e-05,
+            "flops": 0.0
+          },
+          "PCSetUp": {
+            "count": 1,
+            "time": 0.0,
+            "flops": 0.0
+          },
+          "PCApply": {
+            "count": 7408,
+            "time": 0.002996999999992589,
+            "flops": 16134624.0
+          },
+          "MatSolve": {
+            "count": 0,
+            "time": 0.0,
+            "flops": 0.0
+          },
+          "MatLUFactorSym": {
+            "count": 0,
+            "time": 0.0,
+            "flops": 0.0
+          },
+          "MatLUFactorNum": {
+            "count": 0,
+            "time": 0.0,
+            "flops": 0.0
+          }
+        },
+        "interpretation": "Construction plus ten advances; setup/assembly may occur lazily in the first advance; nested event times are inclusive, not additive"
+      },
+      "equivalence": {
+        "l2_error": {
+          "actual_field_difference": 0.0,
+          "baseline_field_norm": 0.1839343202503933,
+          "allowed_difference": 1.939343202503933e-11
+        },
+        "h1_seminorm_error": {
+          "actual_field_difference": 0.0,
+          "baseline_field_norm": 0.8172045148516984,
+          "allowed_difference": 8.272045148516985e-11
+        }
+      },
+      "auxiliary_solver": null
+    },
+    {
+      "trajectory": "Jacobi_measured3",
+      "case_id": "Jacobi",
+      "total_iterations": 7258,
+      "timing": {
+        "construction_seconds": 0.009683457989012823,
+        "first_step_seconds": 0.024163082998711616,
+        "remaining_steps_seconds": 0.19998449992272072,
+        "trajectory_wall_seconds": 0.23384649999206886,
+        "loop_bookkeeping_seconds": 1.545908162370324e-05,
+        "petsc_event_deltas": {
+          "KSPSolve": {
+            "count": 10,
+            "time": 0.213044,
+            "flops": 2378511929.0
+          },
+          "KSPSetUp": {
+            "count": 10,
+            "time": 5.999999999950489e-06,
+            "flops": 0.0
+          },
+          "PCSetUp": {
+            "count": 1,
+            "time": 1.000000000139778e-06,
+            "flops": 0.0
+          },
+          "PCApply": {
+            "count": 7408,
+            "time": 0.00302800000001735,
+            "flops": 16134624.0
+          },
+          "MatSolve": {
+            "count": 0,
+            "time": 0.0,
+            "flops": 0.0
+          },
+          "MatLUFactorSym": {
+            "count": 0,
+            "time": 0.0,
+            "flops": 0.0
+          },
+          "MatLUFactorNum": {
+            "count": 0,
+            "time": 0.0,
+            "flops": 0.0
+          }
+        },
+        "interpretation": "Construction plus ten advances; setup/assembly may occur lazily in the first advance; nested event times are inclusive, not additive"
+      },
+      "equivalence": {
+        "l2_error": {
+          "actual_field_difference": 0.0,
+          "baseline_field_norm": 0.1839343202503933,
+          "allowed_difference": 1.939343202503933e-11
+        },
+        "h1_seminorm_error": {
+          "actual_field_difference": 0.0,
+          "baseline_field_norm": 0.8172045148516984,
+          "allowed_difference": 8.272045148516985e-11
+        }
+      },
+      "auxiliary_solver": null
+    },
+    {
+      "trajectory": "RanaLD_measured3",
+      "case_id": "RanaLD",
+      "total_iterations": 70,
+      "timing": {
+        "construction_seconds": 0.009788540977751836,
+        "first_step_seconds": 0.016937625012360513,
+        "remaining_steps_seconds": 0.01608845902956091,
+        "trajectory_wall_seconds": 0.04282687499653548,
+        "loop_bookkeeping_seconds": 1.2249976862221956e-05,
+        "petsc_event_deltas": {
+          "KSPSolve": {
+            "count": 10,
+            "time": 0.012309000000000125,
+            "flops": 41793752.0
+          },
+          "KSPSetUp": {
+            "count": 10,
+            "time": 5.999999999950489e-06,
+            "flops": 0.0
+          },
+          "PCSetUp": {
+            "count": 2,
+            "time": 0.012496999999999758,
+            "flops": 15517150.0
+          },
+          "PCApply": {
+            "count": 80,
+            "time": 0.010967999999996536,
+            "flops": 31897532.0
+          },
+          "MatSolve": {
+            "count": 80,
+            "time": 0.008698999999998236,
+            "flops": 26614880.0
+          },
+          "MatLUFactorSym": {
+            "count": 1,
+            "time": 0.0008869999999996381,
+            "flops": 0.0
+          },
+          "MatLUFactorNum": {
+            "count": 1,
+            "time": 0.0010799999999999699,
+            "flops": 5282652.0
+          }
+        },
+        "interpretation": "Construction plus ten advances; setup/assembly may occur lazily in the first advance; nested event times are inclusive, not additive"
+      },
+      "equivalence": {
+        "l2_error": {
+          "actual_field_difference": 0.0,
+          "baseline_field_norm": 0.18393432025026363,
+          "allowed_difference": 1.9393432025026363e-11
+        },
+        "h1_seminorm_error": {
+          "actual_field_difference": 0.0,
+          "baseline_field_norm": 0.8172045148511219,
+          "allowed_difference": 8.272045148511219e-11
+        }
+      },
+      "auxiliary_solver": {
+        "pc_type": "lu",
+        "factor_solver_type": "petsc",
+        "factor_nonzeros": 167432.0,
+        "inner_krylov_solve": false
+      }
+    }
+  ],
+  "summary": {
+    "Jacobi": {
+      "construction_seconds": {
+        "values": [
+          0.009714875021018088,
+          0.009872082999208942,
+          0.009683457989012823
+        ],
+        "minimum": 0.009683457989012823,
+        "median": 0.009714875021018088,
+        "maximum": 0.009872082999208942
+      },
+      "first_step_seconds": {
+        "values": [
+          0.02503120800247416,
+          0.024997917003929615,
+          0.024163082998711616
+        ],
+        "minimum": 0.024163082998711616,
+        "median": 0.024997917003929615,
+        "maximum": 0.02503120800247416
+      },
+      "remaining_steps_seconds": {
+        "values": [
+          0.1966693329741247,
+          0.19693824902060442,
+          0.19998449992272072
+        ],
+        "minimum": 0.1966693329741247,
+        "median": 0.19693824902060442,
+        "maximum": 0.19998449992272072
+      },
+      "trajectory_wall_seconds": {
+        "values": [
+          0.23142845800612122,
+          0.23182437499053776,
+          0.23384649999206886
+        ],
+        "minimum": 0.23142845800612122,
+        "median": 0.23182437499053776,
+        "maximum": 0.23384649999206886
+      }
+    },
+    "RanaLD": {
+      "construction_seconds": {
+        "values": [
+          0.00965104199713096,
+          0.009634499991079792,
+          0.009788540977751836
+        ],
+        "minimum": 0.009634499991079792,
+        "median": 0.00965104199713096,
+        "maximum": 0.009788540977751836
+      },
+      "first_step_seconds": {
+        "values": [
+          0.016932375001488253,
+          0.016892749990802258,
+          0.016937625012360513
+        ],
+        "minimum": 0.016892749990802258,
+        "median": 0.016932375001488253,
+        "maximum": 0.016937625012360513
+      },
+      "remaining_steps_seconds": {
+        "values": [
+          0.016063498944276944,
+          0.016924042050959542,
+          0.01608845902956091
+        ],
+        "minimum": 0.016063498944276944,
+        "median": 0.01608845902956091,
+        "maximum": 0.016924042050959542
+      },
+      "trajectory_wall_seconds": {
+        "values": [
+          0.04265879199374467,
+          0.04346583297592588,
+          0.04282687499653548
+        ],
+        "minimum": 0.04265879199374467,
+        "median": 0.04282687499653548,
+        "maximum": 0.04346583297592588
+      }
+    }
+  },
+  "jacobi_over_rana_median_core_ratio": 5.41305838937096,
+  "power": "AC confirmed before/after",
+  "timing_scope": "Fresh residual-form functions/forms/TimeStepper/SNES/KSP/PC construction plus ten advances, including lazy assembly and auxiliary factorization; warm code/cache and fixed within-trajectory reuse",
+  "timing_exclusions": "Imports; shared mesh/space/initial interpolation; preliminary tableau algebra; deliberate pre-run garbage collection; independent numerical diagnostics and inverse probes; solver views; printing/file I/O; later object destruction",
+  "ranking_scope": "One fixed residual-form Irksome Radau P2/n16 kappa=1 dt=0.1 T=1 trajectory on one laptop"
+}

@@ -1,0 +1,9 @@
+{
+  "upstream_repository": "https://github.com/firedrakeproject/firedrake",
+  "branch_at_snapshot": "release",
+  "source_commit": "4c964d5494854e125b1cbc269ccf0fd5494029b9",
+  "source_url": "https://raw.githubusercontent.com/firedrakeproject/firedrake/4c964d5494854e125b1cbc269ccf0fd5494029b9/scripts/firedrake-configure",
+  "snapshot_date": "2026-10-07",
+  "sha256": "a2d87be59fad0790ed9028e8e17d9785864558fb75011baa3405e080947f0f5e",
+  "status": "Official helper snapshot only; no PETSc build or Firedrake installation yet"
+}

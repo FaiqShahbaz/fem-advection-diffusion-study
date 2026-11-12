@@ -1,0 +1,189 @@
+{
+  "raw_source": {
+    "path": "results/raw/interpolation-20261008T124802Z-35838-serial.json",
+    "sha256": "6d35516e17d20d699c3e0edf8e4886bfaf9beae80df47758f18823bad160a515"
+  },
+  "accepted_review": "results/processed/interpolation_review.json",
+  "quantity": "Nodal interpolation error at t=0; primary quadrature degree 10",
+  "rows": [
+    {
+      "case_id": "P1-n8",
+      "element_degree": 1,
+      "mesh_subdivisions": 8,
+      "h": 0.1767766952966369,
+      "total_dofs": 81,
+      "domain_area": 1.0000000000000002,
+      "l2_error": 0.0155534683098119,
+      "h1_seminorm_error": 0.4328319497400562,
+      "boundary_trace_l2": 0.0,
+      "exact_l2_norm": 0.5000000000000002,
+      "exact_h1_seminorm": 2.2214414690791844,
+      "interpolant_l2_norm": 0.4873958203048733,
+      "l2_error_observed_order": null,
+      "h1_seminorm_error_observed_order": null
+    },
+    {
+      "case_id": "P1-n16",
+      "element_degree": 1,
+      "mesh_subdivisions": 16,
+      "h": 0.08838834764831845,
+      "total_dofs": 289,
+      "domain_area": 1.0000000000000002,
+      "l2_error": 0.0039231518861216836,
+      "h1_seminorm_error": 0.2176696101038459,
+      "boundary_trace_l2": 0.0,
+      "exact_l2_norm": 0.5,
+      "exact_h1_seminorm": 2.221441469079183,
+      "interpolant_l2_norm": 0.49680270761566375,
+      "l2_error_observed_order": 1.9871512306615609,
+      "h1_seminorm_error_observed_order": 0.9916669964367139
+    },
+    {
+      "case_id": "P1-n32",
+      "element_degree": 1,
+      "mesh_subdivisions": 32,
+      "h": 0.04419417382415922,
+      "total_dofs": 1089,
+      "domain_area": 1.0000000000000002,
+      "l2_error": 0.000982973758112223,
+      "h1_seminorm_error": 0.1089922187047551,
+      "boundary_trace_l2": 0.0,
+      "exact_l2_norm": 0.5000000000000006,
+      "exact_h1_seminorm": 2.2214414690791804,
+      "interpolant_l2_norm": 0.49919777700268,
+      "l2_error_observed_order": 1.996788383522632,
+      "h1_seminorm_error_observed_order": 0.9979148598559966
+    },
+    {
+      "case_id": "P2-n8",
+      "element_degree": 2,
+      "mesh_subdivisions": 8,
+      "h": 0.1767766952966369,
+      "total_dofs": 289,
+      "domain_area": 1.0000000000000002,
+      "l2_error": 0.0005469140991504649,
+      "h1_seminorm_error": 0.03356942168307997,
+      "boundary_trace_l2": 0.0,
+      "exact_l2_norm": 0.5000000000000002,
+      "exact_h1_seminorm": 2.2214414690791844,
+      "interpolant_l2_norm": 0.49993909112769885,
+      "l2_error_observed_order": null,
+      "h1_seminorm_error_observed_order": null
+    },
+    {
+      "case_id": "P2-n16",
+      "element_degree": 2,
+      "mesh_subdivisions": 16,
+      "h": 0.08838834764831845,
+      "total_dofs": 1089,
+      "domain_area": 1.0000000000000002,
+      "l2_error": 6.871217523754571e-05,
+      "h1_seminorm_error": 0.008431481021589107,
+      "boundary_trace_l2": 0.0,
+      "exact_l2_norm": 0.5,
+      "exact_h1_seminorm": 2.221441469079183,
+      "interpolant_l2_norm": 0.49999614542750326,
+      "l2_error_observed_order": 2.9926765938654167,
+      "h1_seminorm_error_observed_order": 1.993289709843601
+    },
+    {
+      "case_id": "P2-n32",
+      "element_degree": 2,
+      "mesh_subdivisions": 32,
+      "h": 0.04419417382415922,
+      "total_dofs": 4225,
+      "domain_area": 1.0000000000000002,
+      "l2_error": 8.59993190422603e-06,
+      "h1_seminorm_error": 0.002110323498397932,
+      "boundary_trace_l2": 0.0,
+      "exact_l2_norm": 0.5000000000000006,
+      "exact_h1_seminorm": 2.2214414690791804,
+      "interpolant_l2_norm": 0.4999997583343107,
+      "l2_error_observed_order": 2.9981686140400754,
+      "h1_seminorm_error_observed_order": 1.9983218969460557
+    }
+  ],
+  "rates": [
+    {
+      "element_degree": 1,
+      "metric": "l2_error",
+      "coarse_case": "P1-n8",
+      "fine_case": "P1-n16",
+      "observed_order": 1.9871512306615609,
+      "theoretical_expected_order": 2.0,
+      "allowed_order_difference": 0.35,
+      "status": "passed"
+    },
+    {
+      "element_degree": 1,
+      "metric": "h1_seminorm_error",
+      "coarse_case": "P1-n8",
+      "fine_case": "P1-n16",
+      "observed_order": 0.9916669964367139,
+      "theoretical_expected_order": 1.0,
+      "allowed_order_difference": 0.35,
+      "status": "passed"
+    },
+    {
+      "element_degree": 1,
+      "metric": "l2_error",
+      "coarse_case": "P1-n16",
+      "fine_case": "P1-n32",
+      "observed_order": 1.996788383522632,
+      "theoretical_expected_order": 2.0,
+      "allowed_order_difference": 0.35,
+      "status": "passed"
+    },
+    {
+      "element_degree": 1,
+      "metric": "h1_seminorm_error",
+      "coarse_case": "P1-n16",
+      "fine_case": "P1-n32",
+      "observed_order": 0.9979148598559966,
+      "theoretical_expected_order": 1.0,
+      "allowed_order_difference": 0.35,
+      "status": "passed"
+    },
+    {
+      "element_degree": 2,
+      "metric": "l2_error",
+      "coarse_case": "P2-n8",
+      "fine_case": "P2-n16",
+      "observed_order": 2.9926765938654167,
+      "theoretical_expected_order": 3.0,
+      "allowed_order_difference": 0.35,
+      "status": "passed"
+    },
+    {
+      "element_degree": 2,
+      "metric": "h1_seminorm_error",
+      "coarse_case": "P2-n8",
+      "fine_case": "P2-n16",
+      "observed_order": 1.993289709843601,
+      "theoretical_expected_order": 2.0,
+      "allowed_order_difference": 0.35,
+      "status": "passed"
+    },
+    {
+      "element_degree": 2,
+      "metric": "l2_error",
+      "coarse_case": "P2-n16",
+      "fine_case": "P2-n32",
+      "observed_order": 2.9981686140400754,
+      "theoretical_expected_order": 3.0,
+      "allowed_order_difference": 0.35,
+      "status": "passed"
+    },
+    {
+      "element_degree": 2,
+      "metric": "h1_seminorm_error",
+      "coarse_case": "P2-n16",
+      "fine_case": "P2-n32",
+      "observed_order": 1.9983218969460557,
+      "theoretical_expected_order": 2.0,
+      "allowed_order_difference": 0.35,
+      "status": "passed"
+    }
+  ],
+  "transient_convergence_claim": false
+}

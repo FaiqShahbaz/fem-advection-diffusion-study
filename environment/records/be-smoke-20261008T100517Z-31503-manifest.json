@@ -1,0 +1,112 @@
+{
+  "started_utc": "2026-10-08T10:05:17.010936+00:00",
+  "status": "manual BE one-step serial/MPI checks passed; review and Irksome cross-check pending",
+  "runtime_review": "environment/python_runtime_review.json",
+  "runtime_review_sha256": "b030dec7c76d1f2a2c1b073db3d1442d2c3ee977b81013ccead7db8278d31573",
+  "config": "configs/phase0_be_smoke.json",
+  "config_sha256": "ab64e860ee429e805e394cd44dbdbfb4452c9b677ee11f7ce82cd407949459b6",
+  "script_sha256": {
+    "src/phase0_be_smoke.py": "df0ec8d3e94a95e191b9f8405b1ff45e64ebcaa76a0f2400b9b12cec41c3b047",
+    "environment/check_be_smoke.py": "cf3e869775b23818f26aab3ff37051cdbb7154f168af3400001fc79f261070d8",
+    "environment/check_python_runtime.py": "d0784d5ba3fc156f7c78321a4772b638bf38689cfc46bc69aae4f6f93bcb73b3"
+  },
+  "code_commit": "8a5c2c10e28dee238a3b7c1935d0ce583bd28e55",
+  "working_tree_status_before_run": "",
+  "selected_tools": {
+    "python": "/opt/homebrew/opt/python@3.13/bin/python3.13",
+    "mpicc": "/opt/homebrew/opt/open-mpi/bin/mpicc",
+    "mpicxx": "/opt/homebrew/opt/open-mpi/bin/mpicxx",
+    "mpif90": "/opt/homebrew/opt/open-mpi/bin/mpif90",
+    "mpiexec": "/opt/homebrew/opt/open-mpi/bin/mpiexec"
+  },
+  "selected_environment": {
+    "PETSC_DIR": "/Users/faiq/Projects/fem-advection-diffusion/environment/build/petsc",
+    "PETSC_ARCH": "arch-firedrake-default",
+    "OPENBLAS_NUM_THREADS": "1",
+    "OMP_NUM_THREADS": "1",
+    "FIREDRAKE_CACHE_DIR": "/Users/faiq/Projects/fem-advection-diffusion/environment/build/runtime-cache",
+    "PYOP2_CACHE_DIR": "/Users/faiq/Projects/fem-advection-diffusion/environment/build/runtime-cache/pyop2",
+    "FIREDRAKE_TSFC_KERNEL_CACHE_DIR": "/Users/faiq/Projects/fem-advection-diffusion/environment/build/runtime-cache/tsfc",
+    "XDG_CACHE_HOME": "/Users/faiq/Projects/fem-advection-diffusion/environment/build/runtime-cache",
+    "TMPDIR": "/Users/faiq/Projects/fem-advection-diffusion/environment/build/runtime-tmp",
+    "PYTHONNOUSERSITE": "1",
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "inherited_options_or_library_settings": {},
+  "commands": {
+    "serial": [
+      "/Users/faiq/Projects/fem-advection-diffusion/.venv/bin/python",
+      "/Users/faiq/Projects/fem-advection-diffusion/src/phase0_be_smoke.py",
+      "--config",
+      "/Users/faiq/Projects/fem-advection-diffusion/configs/phase0_be_smoke.json",
+      "--expected-size",
+      "1",
+      "--output",
+      "/Users/faiq/Projects/fem-advection-diffusion/environment/records/be-smoke-20261008T100517Z-31503-serial.json"
+    ],
+    "two_rank": [
+      "/opt/homebrew/opt/open-mpi/bin/mpiexec",
+      "-n",
+      "2",
+      "/Users/faiq/Projects/fem-advection-diffusion/.venv/bin/python",
+      "/Users/faiq/Projects/fem-advection-diffusion/src/phase0_be_smoke.py",
+      "--config",
+      "/Users/faiq/Projects/fem-advection-diffusion/configs/phase0_be_smoke.json",
+      "--expected-size",
+      "2",
+      "--output",
+      "/Users/faiq/Projects/fem-advection-diffusion/environment/records/be-smoke-20261008T100517Z-31503-two-rank.json"
+    ]
+  },
+  "completed_steps": [
+    "serial",
+    "two_rank"
+  ],
+  "performance_measurement": false,
+  "irksome_time_step_run": false,
+  "serial_mpi_comparison": {
+    "status": "passed",
+    "compared_global_quantities": {
+      "domain_area": {
+        "serial": 1.0000000000000002,
+        "two_rank": 1.0000000000000002,
+        "absolute_difference": 0.0
+      },
+      "initial_l2_error": {
+        "serial": 0.0155534683098119,
+        "two_rank": 0.0155534683098119,
+        "absolute_difference": 0.0
+      },
+      "final_l2_error": {
+        "serial": 0.01649059017582105,
+        "two_rank": 0.016490590175820777,
+        "absolute_difference": 2.740863092043355e-16
+      },
+      "final_h1_seminorm_error": {
+        "serial": 0.42813306420877706,
+        "two_rank": 0.4281330642087773,
+        "absolute_difference": 2.220446049250313e-16
+      },
+      "solution_l2_norm": {
+        "serial": 0.48142428868243325,
+        "two_rank": 0.4814242886824336,
+        "absolute_difference": 3.3306690738754696e-16
+      }
+    },
+    "relative_tolerance": 1e-09,
+    "absolute_tolerance": 1e-12,
+    "limit": "Comparison of selected scalar quantities, not a pointwise field-equality proof or scaling measurement"
+  },
+  "solve_records": {
+    "serial": {
+      "path": "environment/records/be-smoke-20261008T100517Z-31503-serial.json",
+      "sha256": "8d1364f82d388835dc62d92572078ca6ae2ca79fc9871dd0b143a2f78d6d2e59"
+    },
+    "two-rank": {
+      "path": "environment/records/be-smoke-20261008T100517Z-31503-two-rank.json",
+      "sha256": "992d628735f7f670794ef7cf1c78d1c887b7946a537d95b5eba80daaec5b16a8"
+    }
+  },
+  "finished_utc": "2026-10-08T10:05:27.336483+00:00",
+  "checkpoint_exit_status": 0
+}

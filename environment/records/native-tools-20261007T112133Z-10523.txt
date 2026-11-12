@@ -1,0 +1,35 @@
+Phase 0 native prerequisite selection check
+UTC: 2026-10-07T11:21:33Z
+CONDA_SHLVL: 0
+python3: /opt/homebrew/opt/python@3.13/libexec/bin/python3
+mpicc: /opt/homebrew/opt/open-mpi/bin/mpicc
+mpiexec: /opt/homebrew/opt/open-mpi/bin/mpiexec
+
+Python metadata
+Executable: /opt/homebrew/opt/python@3.13/bin/python3.13
+Version: 3.13.16
+Process architecture: arm64
+Inside Python venv: False
+CONDA_PREFIX: 
+
+Installed native formula versions
+open-mpi 5.0.11
+python@3.13 3.13.16
+
+MPI compiler command
+clang
+
+MPI include settings
+-I/opt/homebrew/Cellar/open-mpi/5.0.11/include
+
+MPI link settings
+-L/opt/homebrew/Cellar/open-mpi/5.0.11/lib -lmpi
+
+MPI launcher version
+mpiexec (Open MPI) 5.0.11
+
+Report bugs to https://www.open-mpi.org/community/help/
+
+
+SELECTION CHECK PASSED. Numerical stack remains functionally unverified.
+No MPI job was launched; no numerical package was imported.

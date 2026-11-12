@@ -1,0 +1,107 @@
+{
+  "started_utc": "2026-10-19T10:26:18.242135+00:00",
+  "status": "Targeted temporal accuracy/cost checks passed; mentor review pending",
+  "measurement_kind": "Four targeted fixed-mesh temporal-accuracy/core-cost candidates; Jacobi baseline",
+  "cost_pilot_review": "results/processed/cost_pilot_review.json",
+  "cost_pilot_review_sha256": "5ab85f8a6169ae59954025e799a696f6d632b3a863eb75929346a96af0526c53",
+  "verified_environment": "environment/verified_environment.json",
+  "verified_environment_sha256": "c2441b3e78aa5f1f5cd5c1d50ba2160148991da35988eaa31ef4bd02d796fa36",
+  "config": "configs/phase3_accuracy_cost.json",
+  "config_sha256": "7d60d63da4db123729dd27cd31124d69df29cc750d04ad81e12b672b378f96f6",
+  "script_sha256": {
+    "src/phase3_accuracy_cost.py": "16e2dee7c150e101120c0f1f3fc601f8646849fc6162539b339e78b00944633f",
+    "src/phase3_cost_pilot.py": "458bd6db1b81d2c1bfaf729fca511f01efec51e9141de2d14046bdad3fefba7c",
+    "environment/check_cost_pilot.py": "a2ab9e3d8e5e0333af9e49c44a649ac34750bbb59e4ca22c04e3766d75219dfa",
+    "src/phase2_temporal.py": "f54ca4d047b133c38ba321e5d1a4e74edd6b8ddc21c4263fe7f8726362728464",
+    "environment/check_temporal.py": "01384464231e023efe2158eb7deb834723abc237042123e0e64293bdaf7ed26b",
+    "src/phase0_be_smoke.py": "382567d3a9a2d51b09f3e42f4e5ed8f4db2e5273148e917f390609538b0c0480",
+    "src/phase0_irksome_be.py": "ec4f69af4e0ff160e1fc74ec965952d4aaf1f6853d9d3a3affc82ec099de3c68",
+    "src/phase0_radau_smoke.py": "0d93682d3f5d002cf98524fa1e67dd2a09f1f7aec7bd0c1db9454492f9c70b9a",
+    "src/phase1_interpolation.py": "c9b17b5701ccc3724e66a734628cf62b5c7eef0b67803a46e0a63ae39b982e69",
+    "src/phase1_spatial.py": "297617e318cb0d339ae2c9ddf94407abec7273b075dddec641fc5bda2498d391",
+    "environment/check_accuracy_cost.py": "fa44a01260232ba0dc796dfea0c789ccdaea9693d8d426e79d49cc8b9507c3e9",
+    "environment/check_spatial.py": "f88e2644a14eadf00f28999fd5f0baf1d7dd5dbc85fb274416cdbf020a9c5ceb",
+    "environment/check_interpolation.py": "6240abded7ef6902746b42f55542c94c8dfbdf07312bcd9fc7b33fa84077d759",
+    "environment/check_radau_smoke.py": "23df1fff453736a8e06dc345f533d61a106a754f02de62c6359a7be741d38ace",
+    "environment/check_irksome_be.py": "75cfad87a8c2c81cd8a025224acdb8ca3d7b9e270c17d13efa021c2bd554fcca",
+    "environment/check_be_smoke.py": "cf3e869775b23818f26aab3ff37051cdbb7154f168af3400001fc79f261070d8",
+    "environment/check_python_runtime.py": "d0784d5ba3fc156f7c78321a4772b638bf38689cfc46bc69aae4f6f93bcb73b3",
+    "environment/configure_petsc.py": "da97e917ff176d5a1d577b986622b36304441728180a5d57277a78e58698af02"
+  },
+  "code_commit": "e01cc87f5ebd50e9cff7c178997e9af05bb15e2f",
+  "working_tree_status_before_run": "",
+  "selected_tools": {
+    "python": "/opt/homebrew/opt/python@3.13/bin/python3.13",
+    "mpicc": "/opt/homebrew/opt/open-mpi/bin/mpicc",
+    "mpicxx": "/opt/homebrew/opt/open-mpi/bin/mpicxx",
+    "mpif90": "/opt/homebrew/opt/open-mpi/bin/mpif90",
+    "mpiexec": "/opt/homebrew/opt/open-mpi/bin/mpiexec"
+  },
+  "selected_environment": {
+    "PETSC_DIR": "/Users/faiq/Projects/fem-advection-diffusion/environment/build/petsc",
+    "PETSC_ARCH": "arch-firedrake-default",
+    "OPENBLAS_NUM_THREADS": "1",
+    "OMP_NUM_THREADS": "1",
+    "FIREDRAKE_CACHE_DIR": "/Users/faiq/Projects/fem-advection-diffusion/environment/build/runtime-cache",
+    "PYOP2_CACHE_DIR": "/Users/faiq/Projects/fem-advection-diffusion/environment/build/runtime-cache/pyop2",
+    "FIREDRAKE_TSFC_KERNEL_CACHE_DIR": "/Users/faiq/Projects/fem-advection-diffusion/environment/build/runtime-cache/tsfc",
+    "XDG_CACHE_HOME": "/Users/faiq/Projects/fem-advection-diffusion/environment/build/runtime-cache",
+    "TMPDIR": "/Users/faiq/Projects/fem-advection-diffusion/environment/build/runtime-tmp",
+    "PYTHONNOUSERSITE": "1",
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "inherited_options_or_library_settings": {},
+  "commands": {
+    "serial": [
+      "/Users/faiq/Projects/fem-advection-diffusion/.venv/bin/python",
+      "/Users/faiq/Projects/fem-advection-diffusion/src/phase3_accuracy_cost.py",
+      "--config",
+      "/Users/faiq/Projects/fem-advection-diffusion/configs/phase3_accuracy_cost.json",
+      "--output",
+      "/Users/faiq/Projects/fem-advection-diffusion/results/raw/accuracy-cost-20261019T102618Z-70377-serial.json"
+    ]
+  },
+  "completed_steps": [
+    "serial"
+  ],
+  "power_state": {
+    "command": [
+      "/usr/bin/pmset",
+      "-g",
+      "batt"
+    ],
+    "exit_status": 0,
+    "source": "AC Power",
+    "header": "Now drawing from 'AC Power'"
+  },
+  "accuracy_cost_review_pending": true,
+  "performance_measurement": true,
+  "accuracy_cost_ranking_established": false,
+  "power_state_after": {
+    "command": [
+      "/usr/bin/pmset",
+      "-g",
+      "batt"
+    ],
+    "exit_status": 0,
+    "source": "AC Power",
+    "header": "Now drawing from 'AC Power'"
+  },
+  "study_validation": {
+    "status": "passed",
+    "candidates": 4,
+    "trajectories": 25,
+    "validated_steps": 15770,
+    "measured_repetitions_per_candidate": 3,
+    "performance_measurement": true,
+    "interpretation": "Controlled fixed-mesh time-error/cost candidates; mentor review pending"
+  },
+  "measurement_records": {
+    "serial": {
+      "path": "results/raw/accuracy-cost-20261019T102618Z-70377-serial.json",
+      "sha256": "dbd87752e63e7029d030c49b406d8ec9c8b03b854441dcdb1077f784c28bfdaf"
+    }
+  },
+  "finished_utc": "2026-10-19T10:27:02.548286+00:00",
+  "checkpoint_exit_status": 0
+}
